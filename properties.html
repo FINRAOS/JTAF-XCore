@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <title>XCore Framework - Property Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet">
+	<style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      
+      .navbar-inverse .navbar-nav>li>a {
+		color: #D5D5D5;
+	  }
+	  
+	  .navbar-inverse {
+	  	background-image: linear-gradient(to bottom,#5cb85c 0,#097909 100%);
+	  	background-color: #5cb85c;
+	  	border-color: #497649;
+	  }
+	  .navbar-inverse .navbar-brand {
+		color: #DAD7D7;
+	}
+	
+	
+	  .navbar-inverse .navbar-nav>.active>a {
+		background-image: linear-gradient(to bottom,#419641 0,#097909 100%);
+		background-color: #497649;
+		filter: #497649;
+	  }
+	  
+	  .navbar-inverse .navbar-nav>.active>a:hover {
+		background-image: linear-gradient(to bottom,#419641 0,#097909 100%);
+		background-color: #497649;
+		filter: #497649;
+	  }
+	  
+	  
+	   .navbar-inverse .navbar-nav>.active>a:focus {
+		background-image: linear-gradient(to bottom,#419641 0,#097909 100%);
+		background-color: #497649;
+		filter: #497649;
+	  }
+	  
+	  .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+		background-color: #003D00;
+	  }
+	  
+	  
+	  
+	  .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+		color: #fff;
+		background-color: #497649;
+		}
+		
+		.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:focus{	
+		background-image: linear-gradient(to bottom,#f5f5f5 0,#e8e8e8 100%);
+		color: #fff;
+		}
+		
+		
+		
+		.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a, .navbar-inverse .navbar-nav 
+		.open .dropdown-menu>.active>a:hover, .navbar-inverse .navbar-nav .open 
+		.dropdown-menu>.active>a:focus{
+			background-color: #19A319;
+			background-image: linear-gradient(to bottom,#19A319 0,#19A319 100%);
+			filter: #19A319;
+		}
+		
+		.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
+		background-color: #19A319;
+		background-image: linear-gradient(to bottom,#19A319 0,#19A319 100%);
+		filter: #19A319;
+		}
+		
+		.navbar-nav .open .dropdown-menu{
+		background-color: #fff;
+		}
+    </style>
+    <link href="./css/prettify.css" rel="stylesheet">
+    <script src="./js/prettify.js"></script>
+    <script src="./js/run_prettify.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script>
+  		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  		ga('create', 'UA-46470036-1', 'finraos.github.io');
+  		ga('send', 'pageview');
+	</script>
+  </head>
+
+  <body>
+
+   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+           <div class="container">
+             <div class="navbar-header">
+             	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+             		<span class="sr-only">Toggle navigation</span>
+               	<span class="icon-bar"></span>
+               	<span class="icon-bar"></span>
+               	<span class="icon-bar"></span>
+             	</button>
+             	<span class="navbar-brand">JTAF</span>
+             </div>
+             <div class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                 <li><a href="./index.html#"><b> XCore</b></a></li>
+                 <li class="active dropdown">
+                   <a href="./index.html#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                   <ul class="dropdown-menu">
+   				  <li class="dropdown-header">Introduction</li>
+                     <li><a href="./howitworks.html">Getting Started</a></li>
+                     <li><a href="./commands.html">Commands</a></li>
+                     <li><a href="./pluginregistration.html">Plugin Registration</a></li>
+                     <li><a href="./strategy.html">Strategy</a></li>
+                     <li class="active"><a href="./properties.html">Property Management</a></li>
+
+
+                     <li class="divider"></li>
+                     <li class="dropdown-header">Advanced</li>
+                     <li><a href="./blockparameters.html">Block Parameters</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="./apidoc.html">API Doc</a></li>
+                 <li><a href="./contribute.html">Development</a></li>
+                 <li><a href="./about.html">About</a></li>
+               </ul>
+             </div><!--/.nav-collapse -->
+           </div>
+
+    </div>
+
+	<div class="container">
+      <div class="page-header"><h1>Property Management</h1>
+		</div>
+      <p>XCore has support for testing in a multitude of environments and browsers.</p>
+      <p>Making use of Properties files can help get the job done.
+
+      <p>
+      	<b>JTAF.properties</b>
+      	<div>
+      		<pre class="prettyprint">
+strategy=profiles/strategies/Regression.strategy.xml
+target=profiles/targets/qa.properties
+client=profiles/clients/firefox.properties
+
+</pre></div>
+      </p>
+
+
+      	<p>JTAF.properties holds properties specific to the current test run. A strategy property is always defined. You can declare any other properties you'd like - it's our convention to make these values the file paths of other property files. For example, one could have a target property declared to specify a config holding environment-specific variables; a client property could be declared to access client/browser-specific variables.</p>
+		<p>These additional properties files could be opened in whatever Property Reader you'd prefer - for example, the built-in java.util.Properties class.
+
+		<p>If one needed environment-specific variables like the application url and the corresponding database credentials for that environment, they could manage them in a configuration file named qa.properties in the profiles/targets directory.</p>
+		
+		<b>profiles/targets/qa.properties</b>
+		
+		<div><pre class="prettyprint">
+applicationUrl=http://myapp.qa.myco.com/
+myDatabase.driver=oracle.jdbc.OracleDriver
+myDatabase.url=jdbc:oracle:thin:@databaseserver.qa.myco.com:1521:DBQ
+myDatabase.username=johnsmith
+myDatabase.password=secret123
+		</pre></div>
+
+		<p>A built-in method of grabbing the target configuration file name is provided by the <a href="./apidoc.html">JTAFPropertyManager</a>.</p>
+
+      	<br><b>Command Class</b>
+      	
+      	<p>Assume a class exists that opens up a URL passed to it. The example below shows how an environment-specific URL can be opened, given the configuration described above.</p> 
+      	<div><pre class="prettyprint">
+package org.myorg.example.commands.main;
+
+import org.myorg.example.PageOpener;
+
+import org.finra.jtaf.core.model.exceptions.NameFormatException;
+import org.finra.jtaf.core.model.execution.IInvocationContext;
+import org.finra.jtaf.core.model.invocationtarget.Command;
+
+import java.util.Properties;
+
+/**
+ * Opens the application
+ */
+public class OpenApplicationCmd extends Command {
+
+	public OpenApplicationCmd(String name) throws NameFormatException {
+		super(name);
+	}
+
+	@Override
+	protected void execute(IInvocationContext ctx) throws Throwable {
+		PageOpener po = new PageOpener();
+		Properties target = new Properties();
+		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(JTAFPropertyManager.getInstance().getProperty("target"));
+		target.load(inputStream);
+		po.openPage(target.getProperty("applicationUrl"));
+	}
+}
+</pre></div>
+	  </p>
+
+	  <hr>
+
+	 	<footer>
+    		<p>JTAF projects are released under <a href="http://www.apache.org/licenses/LICENSE-2.0"><b>Apache License 2.0</b></a></p>
+	    	<p>&copy; Copyright 2014 JTAF Contributors</p>
+    	</footer>
+    </div> <!-- /container -->
+</body></html>

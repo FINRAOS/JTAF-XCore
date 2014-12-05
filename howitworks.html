@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <title>Introduction to XCore Framework - Getting Started</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet">
+	<style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      
+      .navbar-inverse .navbar-nav>li>a {
+		color: #D5D5D5;
+	  }
+	  
+	  .navbar-inverse {
+	  	background-image: linear-gradient(to bottom,#5cb85c 0,#097909 100%);
+	  	background-color: #5cb85c;
+	  	border-color: #497649;
+	  }
+	  .navbar-inverse .navbar-brand {
+		color: #DAD7D7;
+	}
+	
+	
+	  .navbar-inverse .navbar-nav>.active>a {
+		background-image: linear-gradient(to bottom,#419641 0,#097909 100%);
+		background-color: #497649;
+		filter: #497649;
+	  }
+	  
+	  .navbar-inverse .navbar-nav>.active>a:hover {
+		background-image: linear-gradient(to bottom,#419641 0,#097909 100%);
+		background-color: #497649;
+		filter: #497649;
+	  }
+	  
+	   .navbar-inverse .navbar-nav>.active>a:focus {
+		background-image: linear-gradient(to bottom,#419641 0,#097909 100%);
+		background-color: #497649;
+		filter: #497649;
+	  }
+	  
+	  .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+		background-color: #003D00;
+	  }
+	  
+	  
+	  .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+		color: #fff;
+		background-color: #497649;
+		}
+		
+		.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:focus{	
+		background-image: linear-gradient(to bottom,#f5f5f5 0,#e8e8e8 100%);
+		color: #fff;
+		}
+		
+		
+		
+		.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a, .navbar-inverse .navbar-nav 
+		.open .dropdown-menu>.active>a:hover, .navbar-inverse .navbar-nav .open 
+		.dropdown-menu>.active>a:focus{
+			background-color: #19A319;
+			background-image: linear-gradient(to bottom,#19A319 0,#19A319 100%);
+			filter: #19A319;
+		}
+		
+	.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
+		background-color: #19A319;
+		background-image: linear-gradient(to bottom,#19A319 0,#19A319 100%);
+		filter: #19A319;
+
+		}	
+		
+		.navbar-nav .open .dropdown-menu{
+		background-color: #fff;
+		}
+    </style>
+    <link href="./css/prettify.css" rel="stylesheet">
+    <script src="./js/prettify.js"></script>
+    <script src="./js/run_prettify.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script>
+  		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  		ga('create', 'UA-46470036-1', 'finraos.github.io');
+  		ga('send', 'pageview');
+	</script>
+  </head>
+
+  <body>
+
+   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+           <div class="container">
+             <div class="navbar-header">
+             	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+             		<span class="sr-only">Toggle navigation</span>
+               	<span class="icon-bar"></span>
+               	<span class="icon-bar"></span>
+               	<span class="icon-bar"></span>
+             	</button>
+             	<span class="navbar-brand">JTAF</span>
+             </div>
+             <div class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                 <li ><a href="./index.html#"><b> XCore</b></a></li>
+                 <li class="active dropdown">
+                   <a href="./index.html#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                   <ul class="dropdown-menu">
+   				  <li class="dropdown-header">Introduction</li>
+                     <li class="active"><a href="./howitworks.html">Getting Started</a></li>
+                     <li><a href="./commands.html">Commands</a></li>
+                     <li><a href="./pluginregistration.html">Plugin Registration</a></li>
+                     <li><a href="./strategy.html">Strategy</a></li>
+                     <li><a href="./properties.html">Property Management</a></li>
+
+
+                     <li class="divider"></li>
+                     <li class="dropdown-header">Advanced</li>
+                     <li><a href="./blockparameters.html">Block Parameters</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="./apidoc.html">API Doc</a></li>
+                 <li><a href="./contribute.html">Development</a></li>
+                 <li><a href="./about.html">About</a></li>
+               </ul>
+             </div><!--/.nav-collapse -->
+           </div>
+
+    </div>
+
+	<div class="container">
+      <div class="page-header"><h1>Getting Started</h1>
+		</div>
+      <p>XCore is a framework that lets you manage your test cases in XML 'test scripts' instead of code. This guide will help you understand your first test run using the XCore framework.</p>
+      <p>Our recommendation is to grab a copy of our sample XCore project from <a href="http://finraos.github.io/JTAF-XCore">GitHub</a>. Once your project is built, you can see the XCore Maven dependency automatically placed in your new project's pom file and after successfully running <span><pre class="prettyprint">mvn install</pre></span> on the project, you should have all of XCore's required libraries.</p>
+      <p>
+      	<b>.POM Snippet</b>
+      	<div>
+      		<pre class="prettyprint">&lt;dependency&gt;
+  &lt;groupId&gt;org.finra.jtaf&lt;/groupId&gt;
+  &lt;artifactId&gt;jtaf-xcore&lt;/artifactId&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+&lt;/dependency&gt;
+</pre></div>
+      </p>
+
+
+      	  Ready to see the components of what's now <em>your own</em> XCore project?
+      	<br><br>The relevant files involved in declaring this test run are the Test Suite, Test Library, Test Strategy, Java command, and jtaf.properties configuration. A test run is executed with the XMLTestDriver.
+
+      	<br><br><b>Test Suite</b><br>Open up HelloWorldTest.xml under the testscripts folder.<br>
+      	<p>One of these files is where anybody testing an application under test can write tests in a domain specific language and see their test case defined in xml format.
+      	<div><pre class="prettyprint">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
+&lt;testsuite name=&quot;First Tests&quot;&gt; &lt;!-- testsuites can have multiple test scripts inside --&gt;
+  &lt;!-- The following is an example of an xml test script: --&gt;
+  &lt;test name=&quot;HelloWorldTest&quot;&gt;
+        &lt;desc&gt;Simple Hello World Test Case&lt;/desc&gt; &lt;!-- desc tag and coverage are optional --&gt;
+	&lt;coverage&gt;APP-001&lt;/coverage&gt;
+	&lt;automationValue&gt;Regression&lt;/automationValue&gt; &lt;!-- a tag for filtering which tests run in your strategy --&gt;
+	&lt;teststeps&gt;
+	  &lt;ExampleCommand assertableText=&quot;Hello world&quot; printHello=&quot;true&quot;&gt;
+	    &lt;map name=&quot;mapToPrint&quot;&gt;
+	      &lt;string name=&quot;Hello&quot;&gt;World&lt;/string&gt;
+	      &lt;string name=&quot;Test&quot;&gt;This is not a test&lt;/string&gt;
+	      &lt;string name=&quot;X&quot;&gt;Core&lt;/string&gt;
+	    &lt;/map&gt;
+	  &lt;/ExampleCommand&gt;
+	&lt;/teststeps&gt;
+  &lt;/test&gt;
+&lt;/testsuite&gt;</pre></div>
+	  </p>
+
+	  <b><br>Test Strategy</b><br><p>
+	  	Open up helloworld.strategy.xml, located under profiles/strategies.<br/>
+	  	Strategy files are where the tests to include in your test run are defined. A full tutorial of the stategy's possibilities can be seen <a href="./strategy.html">here</a>.
+	  	<div><pre class="prettyprint">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
+&lt;execute&gt;
+  &lt;target name=&quot;HelloWorldTest.xml&quot; /&gt;
+&lt;/execute&gt;</pre></div>
+	  </p><b><br>Test Library</b><br>
+	  <p>
+	  	Open up helloworld.commands.xml under src/main/resources/testlibrary.<br/>
+	  	This is where a definition of your DSL which goes into your test script is declared and where that DSL is mapped to a Java command class.
+	  	<div>
+	  	<pre class="prettyprint">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
+&lt;library&gt;
+  &lt;command name=&quot;ExampleCommand&quot; class=&quot;org.myorg.example.commands.helloworld.ExampleCommand&quot;&gt;
+    &lt;usage&gt;
+      This command is just a simple example to showcase some features of JTAF XCore:
+      Assert that some input text is "Hello world", optionally printing a map of key
+      value pairs and a "Hello." statement if a boolean's value if included in test script. 
+    &lt;/usage&gt;
+    &lt;requiredParameters&gt;
+      &lt;string name=&quot;assertableText&quot;&gt;What to compare against the text from the application (&quot;Hello world&quot;)&lt;/string&gt;
+    &lt;/requiredParameters&gt;
+    &lt;optionalParameters&gt;
+      &lt;map name=&quot;mapToPrint&quot;&gt;A map of key value pairs to print if specified&lt;/map&gt;
+      &lt;boolean name=&quot;printHello&quot;&gt;A boolean value to print &quot;Hello.&quot; if specified true&lt;/boolean&gt;
+    &lt;/optionalParameters&gt;
+  &lt;/command&gt;
+&lt;/library&gt;
+</pre></div>
+	  </p><b><br>Command Class</b></b><br>
+	  <p>
+	  	Open up the Java class under org.myorg.example.commands named ExampleCommand.java.
+		Command classes are where the logic behind the DSL is coded.
+	  	<div>
+	  	<pre class="prettyprint">
+package org.myorg.example.commands.helloworld;
+
+import java.util.Map;
+
+import org.finra.jtaf.xcore.model.exceptions.NameFormatException;
+import org.finra.jtaf.xcore.model.execution.IInvocationContext;
+import org.finra.jtaf.xcore.model.invocationtarget.Command;
+import org.junit.Assert;
+
+public class ExampleCommand extends Command {
+
+  public ExampleCommand(String name) throws NameFormatException {
+    super(name);
+  }
+
+  protected void execute(IInvocationContext ctx) throws Throwable {
+    String expectedText="Hello world";
+    /* All objects from the test script can be accessed from the associated Command class */
+    String actualText=getRequiredString("assertableText");
+    
+    /* The Command class is usually a smart place to perform your assertions */
+    Assert.assertEquals("Your text doesn't match " + expectedText, expectedText, actualText);
+    
+    /* Lists and maps passed into the context from the test script must be casted from objects */
+    Map&lt;String, Object&gt; map = (Map&lt;String, Object&gt;) getOptionalObject(&quot;mapToPrint&quot;);
+    
+    if(map != null) {
+      for(String k : map.keySet()) {
+        System.out.println(k + ": " + map.get(k));
+      }
+    }
+    
+    boolean printHello = getBooleanOrDefault(&quot;printHello&quot;, false);
+    if(printHello) {
+      System.out.println("Hello.");
+    }
+  }
+}<br></pre></div>
+	  </p><br/><b>Run Configuration</b><br>Open up jtaf.properties, located under the profiles folder<br><br><div>
+	  	<pre class="prettyprint">
+strategy=profiles/strategies/helloworld.strategy.xml
+	  </pre><p>
+		Setting the strategy property in jtaf.properties is necessary so that when you run your project's XMLTestDriver, XCore knows which set of tests to run for the test run.
+		Other run-specific properties can be set in this properties file as well, however are not mandatory. A typical scenario is to set a target property for the test run, which will be used to provide any environment-specific values to be used for the run. See an example showing how to use the Property Manager to retrieve information set from jtaf.properties right <a href="./properties.html">here</a>.
+	  </p>
+	  <br/>
+	  <b>Test Execution</b>
+	  	<p>
+		Now you're ready to run some tests.
+		</p>
+		
+		<p>
+		Find the class XMLTestDriver.java in src/test/java under the org.myorg.example package. As XCore runs with JUnit, run the class with JUnit, grab a bowl of popcorn, and watch your XCore test script run!
+		</p>
+		
+		<p>
+		 XCore includes many features like multithreading, exception handling, block statements, random generators, dependency-exclusion handling, looping, plugins and utilities like a Data Comparator and Property Manager. For more information on these, take a look at the Documentation dropdown.
+<br/>
+	  <hr>
+
+	 	<footer>
+    		<p>JTAF projects are released under <a href="http://www.apache.org/licenses/LICENSE-2.0"><b>Apache License 2.0</b></a></p>
+	    	<p>&copy; Copyright 2014 JTAF Contributors</p>
+    	</footer>
+    </div> <!-- /container -->
+</body></html>
