@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<testsuite name="Add List to List">
+	<test name="AddListToListCmd - Storing one object at end of list">
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<list name="default">
+					<string name="item2">item2</string>
+				</list>
+			</storeDefaultObject>
+			<addListToList tolist="list1" addlist="list2" />
+			<storeObjectFromList list="list1" object="newItem1"
+				index="1" />
+			<storeObjectFromList list="list1" object="newItem2"
+				index="2" />
+
+			<verifyObjectInContext actualKey="newItem1"
+				expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2"
+				expectedKey="testKey" testKey="item2" />
+
+		</teststeps>
+	</test>
+
+
+	<test name="AddListToListCmd - Storing one object at start of list">
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<list name="default">
+					<string name="item2">item2</string>
+				</list>
+			</storeDefaultObject>
+			<addListToList tolist="list1" addlist="list2" index="1" />
+			<storeObjectFromList list="list1" object="newItem1"
+				index="1" />
+			<storeObjectFromList list="list1" object="newItem2"
+				index="2" />
+
+			<verifyObjectInContext actualKey="newItem1"
+				expectedKey="testKey" testKey="item2" />
+			<verifyObjectInContext actualKey="newItem2"
+				expectedKey="testKey" testKey="item1" />
+
+		</teststeps>
+	</test>
+
+
+	<test
+		name="AddListToListCmd - Storing one object at end of list, negative index">
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<list name="default">
+					<string name="item2">item2</string>
+				</list>
+			</storeDefaultObject>
+			<addListToList tolist="list1" addlist="list2" index="-1" />
+			<storeObjectFromList list="list1" object="newItem1"
+				index="1" />
+			<storeObjectFromList list="list1" object="newItem2"
+				index="2" />
+
+			<verifyObjectInContext actualKey="newItem1"
+				expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2"
+				expectedKey="testKey" testKey="item2" />
+
+		</teststeps>
+	</test>
+
+
+
+
+
+
+	<test name="AddListToListCmd - Storing two object at end of list">
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<list name="default">
+					<string name="item2">item2</string>
+					<string name="item3">item3</string>
+				</list>
+			</storeDefaultObject>
+			<addListToList tolist="list1" addlist="list2" />
+			<storeObjectFromList list="list1" object="newItem1"
+				index="1" />
+			<storeObjectFromList list="list1" object="newItem2"
+				index="2" />
+			<storeObjectFromList list="list1" object="newItem3"
+				index="3" />
+
+			<verifyObjectInContext actualKey="newItem1"
+				expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2"
+				expectedKey="testKey" testKey="item2" />
+			<verifyObjectInContext actualKey="newItem3"
+				expectedKey="testKey" testKey="item3" />
+
+
+		</teststeps>
+	</test>
+
+
+	<test name="AddListToListCmd - Storing two object at start of list">
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<list name="default">
+					<string name="item2">item2</string>
+					<string name="item3">item3</string>
+				</list>
+			</storeDefaultObject>
+			<addListToList tolist="list1" addlist="list2" index="1" />
+			<storeObjectFromList list="list1" object="newItem1"
+				index="1" />
+			<storeObjectFromList list="list1" object="newItem2"
+				index="2" />
+			<storeObjectFromList list="list1" object="newItem3"
+				index="3" />
+
+			<verifyObjectInContext actualKey="newItem1"
+				expectedKey="testKey" testKey="item2" />
+			<verifyObjectInContext actualKey="newItem2"
+				expectedKey="testKey" testKey="item3" />
+			<verifyObjectInContext actualKey="newItem3"
+				expectedKey="testKey" testKey="item1" />
+
+		</teststeps>
+	</test>
+
+
+	<test
+		name="AddListToListCmd - Storing two object at end of list, negative index">
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<list name="default">
+					<string name="item2">item2</string>
+					<string name="item3">item3</string>
+				</list>
+			</storeDefaultObject>
+			<addListToList tolist="list1" addlist="list2" index="-1" />
+			<storeObjectFromList list="list1" object="newItem1"
+				index="1" />
+			<storeObjectFromList list="list1" object="newItem2"
+				index="2" />
+			<storeObjectFromList list="list1" object="newItem3"
+				index="3" />
+
+			<verifyObjectInContext actualKey="newItem1"
+				expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2"
+				expectedKey="testKey" testKey="item2" />
+			<verifyObjectInContext actualKey="newItem3"
+				expectedKey="testKey" testKey="item3" />
+		</teststeps>
+	</test>
+
+
+
+	<test name="AddListToListCmd - Null value out">
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+
+			<addListToList tolist="list2" addlist="list1" index="0" />
+			<storeObjectFromList list="list2" object="newItem1"
+				index="1" />
+
+			<verifyObjectInContext actualKey="newItem1"
+				expectedKey="testKey" testKey="item1" />
+		</teststeps>
+	</test>
+
+</testsuite>

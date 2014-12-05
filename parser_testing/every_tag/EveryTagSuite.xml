@@ -1,0 +1,26 @@
+<testsuite name="Suite with Every Tag">
+	
+	<test name="Test with Every Tag">
+		<automationValue>EveryTagSuiteAutomationValue</automationValue>
+		<dependencies>
+			<testsuite name="Dependency Tests" />
+			<test name="Test1" />
+		</dependencies>
+		<exclusions>
+			<testsuite name="Exclusion Tests" />
+			<test name="Exclusion Plugin Debug Test C" testcaseid="TC123"/>
+		</exclusions>
+		<issues>
+			Some issue
+			<cr no="cr123" />
+		</issues>
+		<coverage>Some coverage</coverage>
+		<teststeps>
+			<mockstep2 />
+			<tearDown>
+				<mockstep2 />
+			</tearDown>
+		</teststeps>
+	</test>
+	
+</testsuite>

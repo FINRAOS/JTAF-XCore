@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<testsuite name="Store Object in Context">
+	<test name="storeObjectInContext - Storing one object " >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="verifyKey" default="Test value in context" />
+			<verifyObjectInContext actualKey="verifyKey" expectedKey="testKey" testKey="Test value in context" />
+		</teststeps>
+	</test>
+	
+	<test name="storeObjectInContext - Storing two objects" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="verifyKey" default="Test value in context" />
+			<verifyObjectInContext actualKey="verifyKey" expectedKey="testKey" testKey="Test value in context" />
+			
+			<storeDefaultObject contextKey="verifyKey2" default="Test value in context" />
+			<verifyObjectInContext actualKey="verifyKey2" expectedKey="testKey" testKey="Test value in context" />
+			<verifyObjectInContext actualKey="verifyKey" expectedKey="testKey" testKey="Test value in context" />
+
+		</teststeps>
+	</test>
+</testsuite>

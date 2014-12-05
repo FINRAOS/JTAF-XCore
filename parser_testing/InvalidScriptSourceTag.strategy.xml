@@ -1,0 +1,5 @@
+<execute>
+	
+	<NotTarget name="path/to/some/script" />
+	
+</execute>

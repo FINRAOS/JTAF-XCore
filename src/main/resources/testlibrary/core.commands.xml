@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<library>
+	<command name="RandomGenerator"
+		class="org.finra.jtaf.core.commands.RandomGenerator">
+		<usage>Random generator</usage>
+		<optionalParameters>
+			<string name="name" />
+			<string name="method" />
+			<string name="length" />
+			<string name="lengthMin" />
+			<string name="lengthMax" />
+			<string name="min" />
+			<string name="max" />
+			<string name="regexp" />
+			<string name="saveToGlobalContextAs" />
+		</optionalParameters>
+	</command>
+
+
+	<command name="expectFailure" class="org.finra.jtaf.core.commands.ExpectFailure">
+		<usage>Expect Failure command</usage>
+		<optionalParameters>
+			<string name="name" />
+		</optionalParameters>
+	</command>
+	<command name="FailHere" class="org.finra.jtaf.core.commands.FailHere">
+		<usage>This command expects failure</usage>
+		<optionalParameters>
+			<string name="name" />
+		</optionalParameters>
+	</command>
+	
+
+	<command name="ignoreErrors" class="org.finra.jtaf.core.commands.IgnoreErrors">
+		<usage>IgnoreErrors command</usage>
+	</command>
+
+	<command name="multipath" class="org.finra.jtaf.core.commands.Multipath">
+		<usage>Multipath command</usage>
+	</command>
+
+	<command name="repeat" class="org.finra.jtaf.core.commands.Repeat">
+		<usage>Repeat command</usage>
+		<requiredParameters>
+			<string name="iterations" />
+		</requiredParameters>
+	</command>
+
+
+
+	<command name="block" class="org.finra.jtaf.core.commands.Block">
+		<usage>Collection of parameters/commands</usage>
+		
+	</command>
+
+	<command name="path" class="org.finra.jtaf.core.commands.Block">
+		<usage>Collection of parameters/commands</usage>
+	</command>
+	
+	<command name="try" class="org.finra.jtaf.core.commands.Block">
+		<usage>Collection of parameters/commands</usage>
+		
+	</command>
+
+	<command name="recover" class="org.finra.jtaf.core.commands.Block">
+		<usage>Collection of parameters/commands</usage>
+	</command>
+	
+	<command name="cleanup" class="org.finra.jtaf.core.commands.Block">
+		<usage>Collection of parameters/commands</usage>
+	</command>
+	
+	
+	<command name="TryRecoverCleanup" class="org.finra.jtaf.core.commands.TryRecoverCleanup">
+		<usage>TryRecoverCleanup command</usage>
+		
+	</command>
+	
+	<command name="invoke" class="org.finra.jtaf.core.commands.Invoke">
+		<usage>Invoke command</usage>	
+	</command>
+	
+	<command name="replaceContext" class="org.finra.jtaf.core.commands.ReplaceContext">
+		<usage>ReplaceContext command</usage>	
+	</command>
+	
+	<command name="verifyException" class="org.finra.jtaf.core.commands.VerifyException">
+		<usage>VerifyException command</usage>	
+		<string>exceptionType</string>
+	</command>
+
+
+</library>

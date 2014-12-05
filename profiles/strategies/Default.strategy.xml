@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<execute>
+ 
+	<automationValue>High</automationValue>
+	<automationValue>AutomationValueTest</automationValue>
+	
+
+ 	<target name="MockTestScript.xml" />
+	<target name="CommandTest.xml" />
+	<target name="VerifyObjectInContextTest.xml" />
+	<target name="Multipath.xml" />
+	<target name="Function.xml" />
+	<target name="ExpectFailure.xml" />
+	<target name="Invoke.xml" />
+	<target name="ReplaceContext.xml" />
+	<target name="Repeat.xml" />
+	<target name="ConcurrentScheduler.xml" />
+	<target name="TryRecoverCleanup.xml" />
+	<target name="Block.xml" />
+	<target name="IgnoreErrors.xml" />
+	<target name="StoreObjectAsStringCmdTest.xml" />
+	<target name="StoreObjectFromListCmdTest.xml" />
+	<target name="StoreObjectFromMapCmdTest.xml" />
+	<target name="StoreObjectInContextCmdTest.xml" />
+	<target name="RemoveObjectFromContextCmdTest.xml" />
+	<target name="PutObjectInMapCmdTest.xml" />
+	<target name="AddListToListCmdTest.xml" />
+	<target name="AddObjectToListCmdTest.xml" />
+	<target name="AutomationValue.xml" />
+	<target name="RandomGenerator.xml" /> 
+	<target name="CommandThrowingExceptionTest.xml"/>
+	<target name="TestCommandLibraryDiscovery.xml"/>
+	 
+</execute>

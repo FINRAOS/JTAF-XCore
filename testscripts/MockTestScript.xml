@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JTAF CORE">
+
+	<test name="Execution Plugins- Integration Test">
+		<desc>
+		</desc>
+		<automationValue>High</automationValue>
+		<teststeps>
+
+			<mockstep1 param1="true"/>
+			<mockstep2 />
+
+		</teststeps>
+	</test> 
+
+
+</testsuite>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+ <testsuite name="Sutie Dependency Parser Tests">
+ 	
+ 	<dependencies>
+ 		<testsuite name="JTAF CORE" />
+ 		<test name="Block Testing" />
+ 	</dependencies>
+	
+</testsuite> 

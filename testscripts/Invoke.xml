@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<testsuite name="Invoke Tests">
+	<test name="Simple Invoke" testCaseID="TC4001" >
+		<desc>Test that a block passed to a function which invokes it produces the expected result</desc>
+		<coverage></coverage>
+		<automationValue>High</automationValue>
+		<teststeps>
+      <simpleInvokeTest originalKey="Test value in context" >
+        <block name="testBlockName">
+          <storeObjectInContext loadKey="originalKey" storeKey="verifyKey" />
+        </block>
+      </simpleInvokeTest>
+	    <verifyObjectInContext actualKey="verifyKey" expectedKey="testKey" testKey="Test value in context" />
+		</teststeps>
+	</test>
+</testsuite>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<execute>
+	<maxThreads>3</maxThreads>
+	<target name="DummyTestFile.xml"/>
+
+</execute>

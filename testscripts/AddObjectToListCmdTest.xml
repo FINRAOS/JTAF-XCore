@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<testsuite name="Add Object to List">
+	<test name="addObjectTolistCmd - Storing a list in the list" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<list name="default">
+					<string name ="item2">item2</string>
+				</list>
+			</storeDefaultObject>
+			<addObjectToList list="list1" object="list2"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2"  index="2"/>
+
+			<storeDefaultObject contextKey="test list">
+				<list name="default">
+					<string name ="item2">item2</string>
+				</list>
+			</storeDefaultObject>
+			<verifyObjectInContext actualKey="newItem1" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2" expectedKey="test list"/>
+
+		</teststeps>
+	</test>
+	
+	
+	<test name="addObjectTolistCmd - Storing a map in the list" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<map name="default">
+					<string name ="item2">item2</string>
+				</map>
+			</storeDefaultObject>
+			<addObjectToList list="list1" object="list2"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2" index="2"/>
+
+			<storeDefaultObject contextKey="test map">
+				<map name="default">
+					<string name ="item2">item2</string>
+				</map>
+			</storeDefaultObject>
+			<verifyObjectInContext actualKey="newItem1" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2" expectedKey="test map"/>
+
+		</teststeps>
+	</test>
+	
+	<test name="addObjectTolistCmd - Storing a string in the list" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2" default="test text"/>
+				
+			<addObjectToList list="list1" object="list2"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2" index="2"/>
+
+			
+			<verifyObjectInContext actualKey="newItem1" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2" expectedKey="testKey" testKey="test text"/>
+
+		</teststeps>
+	</test>
+	
+	
+	
+	<test name="addObjectTolistCmd - Storing a list in the list, index negative" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<list name="default">
+					<string name ="item2">item2</string>
+				</list>
+			</storeDefaultObject>
+			<addObjectToList list="list1" object="list2" index="-1"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2"  index="2"/>
+
+			<storeDefaultObject contextKey="test list">
+				<list name="default">
+					<string name ="item2">item2</string>
+				</list>
+			</storeDefaultObject>
+			<verifyObjectInContext actualKey="newItem1" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2" expectedKey="test list"/>
+
+		</teststeps>
+	</test>
+	
+	
+	<test name="addObjectTolistCmd - Storing a map in the list,  index negative" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<map name="default">
+					<string name ="item2">item2</string>
+				</map>
+			</storeDefaultObject>
+			<addObjectToList list="list1" object="list2" index="-1"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2" index="2"/>
+
+			<storeDefaultObject contextKey="test map">
+				<map name="default">
+					<string name ="item2">item2</string>
+				</map>
+			</storeDefaultObject>
+			<verifyObjectInContext actualKey="newItem1" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2" expectedKey="test map"/>
+
+		</teststeps>
+	</test>
+	
+	<test name="addObjectTolistCmd - Storing a string in the list,  index negative" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2" default="test text"/>
+				
+			<addObjectToList list="list1" object="list2" index="-1"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2" index="2"/>
+
+			
+			<verifyObjectInContext actualKey="newItem1" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2" expectedKey="testKey" testKey="test text"/>
+
+		</teststeps>
+	</test>
+	
+	
+	
+	<test name="addObjectTolistCmd - Storing a list in the list, index>size" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<list name="default">
+					<string name ="item2">item2</string>
+				</list>
+			</storeDefaultObject>
+			<addObjectToList list="list1" object="list2" index="5"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2"  index="2"/>
+
+			<storeDefaultObject contextKey="test list">
+				<list name="default">
+					<string name ="item2">item2</string>
+				</list>
+			</storeDefaultObject>
+			<verifyObjectInContext actualKey="newItem1" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2" expectedKey="test list"/>
+
+		</teststeps>
+	</test>
+	
+	
+	<test name="addObjectTolistCmd - Storing a map in the list, index>size" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<map name="default">
+					<string name ="item2">item2</string>
+				</map>
+			</storeDefaultObject>
+			<addObjectToList list="list1" object="list2" index="5"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2" index="2"/>
+
+			<storeDefaultObject contextKey="test map">
+				<map name="default">
+					<string name ="item2">item2</string>
+				</map>
+			</storeDefaultObject>
+			<verifyObjectInContext actualKey="newItem1" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2" expectedKey="test map"/>
+
+		</teststeps>
+	</test>
+	
+	<test name="addObjectTolistCmd - Storing a string in the list, index>size" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2" default="test text"/>
+				
+			<addObjectToList list="list1" object="list2" index="5"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2" index="2"/>
+
+			
+			<verifyObjectInContext actualKey="newItem1" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem2" expectedKey="testKey" testKey="test text"/>
+
+		</teststeps>
+	</test>
+	
+	
+	
+	<test name="addObjectTolistCmd - Storing a list in the list, index=start" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<list name="default">
+					<string name ="item2">item2</string>
+				</list>
+			</storeDefaultObject>
+			<addObjectToList list="list1" object="list2" index="1"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2"  index="2"/>
+
+			<storeDefaultObject contextKey="test list">
+				<list name="default">
+					<string name ="item2">item2</string>
+				</list>
+			</storeDefaultObject>
+			<verifyObjectInContext actualKey="newItem2" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem1" expectedKey="test list"/>
+
+		</teststeps>
+	</test>
+	
+	
+	<test name="addObjectTolistCmd - Storing a map in the list, index=start" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2">
+				<map name="default">
+					<string name ="item2">item2</string>
+				</map>
+			</storeDefaultObject>
+			<addObjectToList list="list1" object="list2" index="1"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2" index="2"/>
+
+			<storeDefaultObject contextKey="test map">
+				<map name="default">
+					<string name ="item2">item2</string>
+				</map>
+			</storeDefaultObject>
+			<verifyObjectInContext actualKey="newItem2" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem1" expectedKey="test map"/>
+
+		</teststeps>
+	</test>
+	
+	<test name="addObjectTolistCmd - Storing a string in the list, index=start" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 <storeDefaultObject contextKey="list1">
+				<list name="default">
+					<string name ="item1">item1</string>
+				</list>
+			</storeDefaultObject>
+			<storeDefaultObject contextKey="list2" default="test text"/>
+				
+			<addObjectToList list="list1" object="list2" index="1"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+			<storeObjectFromList list="list1" object="newItem2" index="2"/>
+
+			
+			<verifyObjectInContext actualKey="newItem2" expectedKey="testKey" testKey="item1" />
+			<verifyObjectInContext actualKey="newItem1" expectedKey="testKey" testKey="test text"/>
+
+		</teststeps>
+	</test>
+	
+	
+	<test name="addObjectTolistCmd - null vlaue out" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			 
+			<storeDefaultObject contextKey="list2" default="test text"/>
+				
+			<addObjectToList list="list1" object="list2" index="0"/>
+			<storeObjectFromList list="list1" object="newItem1"  index="1"/>
+
+			
+			<verifyObjectInContext actualKey="newItem1" expectedKey="testKey" testKey="test text"/>
+			
+			
+			
+
+		</teststeps>
+	</test>
+	
+</testsuite>

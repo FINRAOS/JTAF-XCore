@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<testsuite name="IgnoreErrors Tests">
+	
+	<test name="Errors">
+        <automationValue>High</automationValue>
+		<expectedException>AssertionFailedError</expectedException>
+        <teststeps>
+			<ignoreErrors>
+					<FailHere/>										
+			</ignoreErrors>
+        </teststeps>
+	</test>
+	   
+	<test name="No Errors">
+        <automationValue>High</automationValue>
+			<teststeps>
+				<ignoreErrors>
+					<string name="name">huh</string>
+					<RandomGenerator method="string"  string="name"/>															
+				</ignoreErrors>
+            </teststeps>
+    </test>
+	
+	<test name="IgnoreErrors no Body">
+        <automationValue>High</automationValue>
+        <teststeps>
+			<ignoreErrors>										
+			</ignoreErrors>
+        </teststeps>
+	</test>
+	
+	<test name="Error after block">
+        <automationValue>High</automationValue>
+		<expectedException>AssertionFailedError</expectedException>
+        <teststeps>
+			<ignoreErrors>		
+				<FailHere/>	
+			</ignoreErrors>
+			<FailHere/>	
+        </teststeps>
+	</test>
+	   
+</testsuite>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<testsuite name="First Tests">
+    
+  <test name="HelloWorldTest">
+    <desc>Simple Hello World Test Case</desc>
+	<coverage>APP-001</coverage>
+	<automationValue>Regression</automationValue>
+	<teststeps>
+	  <ExampleCommand assertableText="Hello world" printHello="true">
+	    <map name="mapToPrint">
+	      <string name="Hello">World</string>
+	      <string name="Test">This is not a test</string>
+	      <string name="X">Core</string>
+	    </map>
+	  </ExampleCommand>
+	</teststeps>
+  </test>
+  
+</testsuite>

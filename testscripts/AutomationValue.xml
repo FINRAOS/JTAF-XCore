@@ -1,0 +1,63 @@
+<testsuite name="AutomationValue Tests">
+	
+	<test name="AutomationValue in Strategy Test">
+		<automationValue>High</automationValue>
+		<desc>This test should be in the test agenda since the automationValue is in the strategy</desc>
+		<teststeps>
+			<mockStep1 param1="true" />
+		</teststeps>
+	</test>
+	
+	<test name="AutomationValue Not in Strategy Test">
+		<automationValue>DontPutThisInTheStrategy</automationValue>
+		<desc>This test should not be in the test agenda since the automationValue is not in the strategy</desc>
+		<teststeps>
+			<FailHere />
+		</teststeps>
+	</test>
+	
+	<test name="Missing AutomationValue in Test">
+		<desc>This test should not be in any test agenda unless the strategy doesn't specify any automationValue.</desc>
+		<teststeps>
+			<FailHere />
+		</teststeps>
+	</test>
+	
+	<test name="Multiple AutomationValues in Strategy File">
+		<automationValue>AutomationValueTest</automationValue>
+		<desc>This script should be in the agenda even if it has an automationValue that isn't listed first in the strategy</desc>
+		<teststeps>
+			<mockStep1 param1="true" />
+		</teststeps>
+	</test>
+	
+	<test name="Dependent Test with AutomationValue not Specified in Strategy">
+		<automationValue>DontPutThisInTheStrategy</automationValue>
+		<desc>
+			This test has an automationValue that is not specified in the
+			strategy, but should be added to the agenda anyways because the
+			below test is dependent on it.
+		</desc>
+		<teststeps>
+			<mockstep2 />
+		</teststeps>
+	</test>
+	
+	<test name="Test Dependent on Test with AutomationValue not Specified in Strategy">
+		<automationValue>AutomationValueTest</automationValue>
+		<desc>
+			This test has an automationValue that *is* specified in the
+			strategy, but is dependent on a test whose automationValue is *not*
+			specified in the strategy. This should cause the dependent test to
+			be added to the strategy anyways.
+		</desc>
+		<dependencies>
+			<test name="Dependent Test with AutomationValue not Specified in Strategy" />
+			<test name="Automation Value not Specified in Strategy, also in file not specified in strategy" />
+		</dependencies>
+		<teststeps>
+			<mockstep2 />
+		</teststeps>
+	</test>
+	
+</testsuite>

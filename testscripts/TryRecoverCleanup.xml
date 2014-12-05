@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<testsuite name="TryCleanupRecover Tests">
+	
+	<test name="TryCleanupRecover Testing">
+		<automationValue>High</automationValue>
+			<teststeps>
+				<verifyException>
+					<string name = "exceptionType">AssertionFailedError</string>
+					<TryRecoverCleanup>
+						<try>
+							<FailHere/>					
+						</try>
+						<recover>
+							<string name="name">huh</string>
+							<RandomGenerator method="string"  string="name"/>	
+						</recover>
+						<cleanup>
+							<string name="name">huh</string>
+							<RandomGenerator method="string"  string="name"/>	
+						</cleanup>
+					</TryRecoverCleanup>
+				</verifyException>
+            </teststeps>
+    </test>
+	   
+	<test name="Compatibility Testing">
+		<automationValue>High</automationValue>
+			<teststeps>
+				<verifyException>
+					<string name = "exceptionType">AssertionFailedError</string>
+					<try>
+						<FailHere/>					
+					</try>
+					<recover>
+						<string name="name">huh</string>
+						<RandomGenerator method="string"  string="name"/>	
+					</recover>
+					<cleanup>
+						<string name="name">huh</string>
+						<RandomGenerator method="string"  string="name"/>	
+					</cleanup>
+				</verifyException>
+            </teststeps>
+    </test>
+	   
+	<test name="No Recover Testing">
+		<automationValue>High</automationValue>
+			<teststeps>
+				<verifyException>
+					<string name = "exceptionType">AssertionFailedError</string>
+					<try>
+						<FailHere/>					
+					</try>
+					<cleanup>
+						<string name="name">huh</string>
+						<RandomGenerator method="string"  string="name"/>	
+					</cleanup>
+				</verifyException>
+            </teststeps>
+    </test>
+	   
+	   
+	<test name="Teardown Testing">
+		<automationValue>High</automationValue>
+			<teststeps>
+				<block>
+					<string name="name">huh</string>
+					<RandomGenerator method="string"  string="name"/>					
+				</block>
+			<teardown>
+				<string name="name">huh</string>
+				<RandomGenerator method="string"  string="name"/>					
+			</teardown>
+			</teststeps>
+    </test>
+	
+	<test name="TryRecoverCleanup no Body">
+		<automationValue>High</automationValue>
+			<teststeps>
+				<TryRecoverCleanup>
+				</TryRecoverCleanup>
+            </teststeps>
+    </test>
+	   
+	
+	
+	<test name="Recover Fail">
+		<automationValue>High</automationValue>
+			<teststeps>
+				<verifyException>
+					<string name = "exceptionType">AssertionFailedError</string>
+					<TryRecoverCleanup>
+						<try>
+							<FailHere/>					
+						</try>
+						<recover>
+							<FailHere/>	
+						</recover>
+					</TryRecoverCleanup>
+				</verifyException>
+            </teststeps>
+    </test>
+	
+	<test name="Try only">
+		<automationValue>High</automationValue>
+			<teststeps>
+				<verifyException>
+					<string name = "exceptionType">AssertionFailedError</string>
+					<TryRecoverCleanup>
+						<try>
+							<FailHere/>					
+						</try>
+					</TryRecoverCleanup>
+				</verifyException>
+            </teststeps>
+    </test>
+	
+	<test name="Unsupported block">
+		<automationValue>High</automationValue>
+			<teststeps>
+				<verifyException>
+					<string name = "exceptionType">AssertionFailedError</string>
+					<TryRecoverCleanup>
+						<try>
+							<FailHere/>					
+						</try>
+						<cleanup>
+							<string name="name">huh</string>
+							<RandomGenerator method="string"  string="name"/>			
+						</cleanup>
+						<test>
+						</test>
+					</TryRecoverCleanup>
+				</verifyException>
+            </teststeps>
+    </test>
+	   
+	   
+	<test name="Another Unsupported block">
+		<automationValue>High</automationValue>
+			<teststeps>
+				<verifyException>
+					<string name = "exceptionType">AssertionFailedError</string>
+					<TryRecoverCleanup>
+						<try>
+							<FailHere/>					
+						</try>
+						<test>
+						</test>
+					</TryRecoverCleanup>
+				</verifyException>
+            </teststeps>
+    </test>   
+	
+	
+	<test name="Cleanup fail">
+		<automationValue>High</automationValue>
+			<teststeps>
+				<verifyException>
+					<string name = "exceptionType">AssertionFailedError</string>
+					<TryRecoverCleanup>
+						<try>
+							<string name="name">huh</string>
+							<RandomGenerator method="string"  string="name"/>					
+						</try>
+						<cleanup>
+							<FailHere/>	
+						</cleanup>
+					</TryRecoverCleanup>
+				</verifyException>
+            </teststeps>
+    </test>   
+	   
+</testsuite>

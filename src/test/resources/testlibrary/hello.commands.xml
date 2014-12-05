@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="CommandViewer.xsl"?>
+<library>
+	<command name="ExtendedBye" class="org.finra.jtaf.core.commands.ExtendedByeCommand">
+		<usage>
+			ExtendedBye
+		</usage>
+	</command>
+	
+	<command name="ExtendedHello" class="org.finra.jtaf.core.commands.ExtendedHelloCommand">
+		<usage>
+			ExtendedBye
+		</usage>
+	</command>
+	
+</library>

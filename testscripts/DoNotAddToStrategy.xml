@@ -1,0 +1,10 @@
+<testsuite name="Do not add this to the strategy file">
+	
+	<test name="Automation Value not Specified in Strategy, also in file not specified in strategy">
+		<automationValue>DontPutThisInTheStrategy</automationValue>
+		<teststeps>
+			<mockstep2 />
+		</teststeps>
+	</test>
+	
+</testsuite>

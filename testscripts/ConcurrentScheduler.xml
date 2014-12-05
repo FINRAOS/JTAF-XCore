@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<testsuite name="ConcurrentScheduler Tests">
+
+
+	<test name="TestA">
+		<automationValue>High</automationValue>
+		<dependencies>
+			<test name="TestB" />
+		</dependencies>
+		<maxThreads>-1</maxThreads>
+		<teststeps>
+			<repeat iterations="5">
+			</repeat>
+		</teststeps>
+	</test>
+
+
+	<test name="TestB">
+		<automationValue>High</automationValue>
+		<maxThreads>-1</maxThreads>
+		<teststeps>
+			<repeat iterations="5">
+			</repeat>
+		</teststeps>
+	</test>
+
+
+
+	<test name="TestC">
+		<automationValue>High</automationValue>
+		<maxThreads>-1</maxThreads>
+		<exclusions>
+			<test name="TestB" />
+		</exclusions>
+		<teststeps>
+			<repeat iterations="5">
+			</repeat>
+		</teststeps>
+	</test>
+
+</testsuite>

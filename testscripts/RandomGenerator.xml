@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<testsuite name="Random Generator Tests">
+	
+	<test name="GenerateRegexp">
+        <automationValue>High</automationValue>
+			<teststeps>
+					<RandomGenerator regexp="[abc][def]" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>
+    
+	<test name="GenerateRegexp2">
+        <automationValue>High</automationValue>
+			<teststeps>
+					<RandomGenerator regexp="[abc][def]" name="it" saveToGlobalContextAs="it" method="test"/>	
+            </teststeps>
+    </test>
+    
+	<test name="GeneratePhone">
+        <automationValue>High</automationValue>
+			<teststeps>
+					<RandomGenerator method="phone" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>
+
+	<test name="GenerateAbbrevUSState">
+        <automationValue>High</automationValue>
+			<teststeps>
+					<RandomGenerator method="abbrevUSState" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>
+
+	<test name="GenerateUSState">
+        <automationValue>High</automationValue>
+			<teststeps>
+					<RandomGenerator method="usState" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>
+    
+	<test name="GenerateNumber">
+        <automationValue>High</automationValue>
+			<teststeps>
+					<RandomGenerator method="number" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>
+    
+	<test name="GenerateNumber2">
+        <automationValue>High</automationValue>
+			<teststeps>
+					<RandomGenerator method="number" length="7" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>
+    
+	<test name="GenerateNumber3">
+        <automationValue>High</automationValue>
+			<teststeps>
+					<RandomGenerator method="number" min="10" max="100" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>
+    
+		<test name="GenerateNumber4">
+        <automationValue>High</automationValue>
+			<teststeps>
+				<RandomGenerator method="number" min="10" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>
+	
+	<test name="GenerateString">
+        <automationValue>High</automationValue>
+			<teststeps>
+					<RandomGenerator method="string" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>
+	
+	<test name="GenerateString2">
+        <automationValue>High</automationValue>
+			<teststeps>
+					<RandomGenerator method="string" length="7" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>	
+    
+	<test name="GenerateString3">
+        <automationValue>High</automationValue>
+			<teststeps>
+				<RandomGenerator method="string" lengthMin="5" lengthMax="10" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>	
+    
+	<test name="GenerateString4">
+        <automationValue>High</automationValue>
+			<teststeps>
+				<RandomGenerator method="string" length="7" lengthMin="3" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>	
+    
+	<test name="GenerateString5">
+        <automationValue>High</automationValue>
+			<teststeps>
+				<RandomGenerator method="string" lengthMin="3" name="it" saveToGlobalContextAs="it"/>	
+            </teststeps>
+    </test>
+</testsuite>

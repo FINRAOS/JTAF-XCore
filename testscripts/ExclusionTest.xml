@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+ <testsuite name="Exclusion Tests">
+	
+	<test name="Exclusion Plugin Debug Test C">
+		<automationValue></automationValue>
+		<teststeps>
+		</teststeps>
+	</test>
+	
+	<test name="Exclusion Plugin Debug Test D">
+		<automationValue></automationValue>
+		
+		<teststeps>
+		</teststeps>
+	</test>
+	
+	<test name="Exclusion Plugin Debug Test F">
+		<automationValue></automationValue>
+		<exclusions>
+			<test name="Exclusion Plugin Debug Test C" />
+			<test name="Exclusion Plugin Debug Test D" />
+		</exclusions>
+		<teststeps>
+		</teststeps>
+	</test>
+	
+</testsuite> 

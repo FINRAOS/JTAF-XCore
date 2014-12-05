@@ -1,0 +1,15 @@
+<testsuite name="Duplicate Test Name Suite">
+	
+	<test name="Duplicate Test Name">
+		<teststeps>
+			<mockstep2 />
+		</teststeps>
+	</test>
+	
+	<test name="Duplicate Test Name">
+		<teststeps>
+			<mockstep2 />
+		</teststeps>
+	</test>
+	
+</testsuite>

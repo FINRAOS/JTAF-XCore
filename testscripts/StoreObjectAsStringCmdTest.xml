@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<testsuite name="Store Object as String">
+	<test name="StringObjectAsStringCmd - Storing one object " >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="verifyKey" default="Test value in context" />
+			<storeObjectAsString key="verifyKey"/>
+			<verifyObjectInContext actualKey="verifyKey" expectedKey="testKey" testKey="Test value in context" />
+		</teststeps>
+	</test>
+	
+	<test name="StringObjectAsStringCmd - Storing two objects" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="verifyKey" default="Test value in context" />
+			<storeObjectAsString key="verifyKey"/>
+			<verifyObjectInContext actualKey="verifyKey" expectedKey="testKey" testKey="Test value in context" />
+
+			<storeDefaultObject contextKey="verifyKey2" default="Test value in context2" />
+			<storeObjectAsString key="verifyKey2"/>
+			<verifyObjectInContext actualKey="verifyKey2" expectedKey="testKey" testKey="Test value in context2" />
+			<verifyObjectInContext actualKey="verifyKey" expectedKey="testKey" testKey="Test value in context" />
+
+		</teststeps>
+	</test>
+	
+	
+	
+	
+	<test name="StringObjectAsStringCmd - Null value" >		
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeObjectAsString key="verifyKey"/>
+			<verifyObjectInContext actualKey="verifyKey" expectedKey="testKey" testKey="null" />
+
+			
+
+		</teststeps>
+	</test>
+</testsuite>

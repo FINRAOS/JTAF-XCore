@@ -1,0 +1,16 @@
+<testsuite name="TestData Debug Suite">
+	
+	<test name="TestData Debug Test">
+		<automationValue>TDD</automationValue>
+		<loop iterations="2" />
+		<testdata file="testdata/debug/testdataDebug.csv" />
+		<teststeps>
+			
+<!-- 			<DebugPrint message="ABC" /> -->
+			<DebugPrint message="$contextKey(valA)" />
+<!-- 			<FailHere /> -->
+			
+		</teststeps>
+	</test>
+	
+</testsuite>

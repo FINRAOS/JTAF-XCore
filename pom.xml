@@ -1,0 +1,262 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.finra.jtaf</groupId>
+	<artifactId>jtaf-xcore</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>JTAF XCore</name>
+	<description>The core functionality provided by JTAF. Includes script parsing, test execution, and JUnit support.</description>
+	<url>http://finraos.github.io/JTAF-XCore/</url>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:git:https://github.com/FINRAOS/JTAF-XCore.git</connection>
+		<developerConnection>scm:git:https://github.com/FINRAOS/JTAF-XCore.git</developerConnection>
+		<url>https://github.com/FINRAOS/JTAF-XCore.git</url>
+		<tag>HEAD</tag>
+	</scm>
+	<developers>
+		<developer>
+			<id>kood1</id>
+			<name>Daniel Koo</name>
+			<email>danieljamin.koo@gmail.com</email>
+			<url>http://github.com/kood1</url>
+		</developer>
+		<developer>
+			<id>bryantrobbins</id>
+			<name>Bryan Robbins</name>
+			<email>bryantrobbins@gmail.com</email>
+			<url>https://github.com/bryantrobbins</url>
+		</developer>
+		<developer>
+			<id>lathanagaraj</id>
+			<name>Latha Nagaraj</name>
+			<email>latha.nagaraj@gmail.com</email>
+			<url>https://github.com/lathanagaraj</url>
+		</developer>
+		<developer>
+			<id>JacobSheppard</id>
+			<name>Jacob Sheppard</name>
+			<email>jshep409@gmail.com</email>
+			<url>http://github.com/JacobSheppard</url>
+		</developer>
+		<developer>
+			<id>dpulitano</id>
+			<name>Daniel Pulitano</name>
+			<email>danielpulitano@gmail.com</email>
+			<url>https://github.com/dpulitano</url>
+		</developer>
+		<developer>
+			<id>SonOfFlyingPig</id>
+			<name>Michael Linford</name>
+			<email>mike.linford@gmail.com</email>
+			<url>http://github.com/sonofflyingpig</url>
+		</developer>
+		<developer>
+			<id>koshya</id>
+			<name>Anju Koshy</name>
+			<email>anjuthomas.be@gmail.com</email>
+			<url>http://github.com/koshya</url>
+		</developer>
+		<developer>
+			<id>na-na</id>
+			<name>Nishtha Agarwal</name>
+			<email>nnishtha.agarwal@gmail.com</email>
+			<url>https://github.com/na-na</url>
+		</developer>
+	</developers>
+
+	<parent>
+	<groupId>org.sonatype.oss</groupId>
+	<artifactId>oss-parent</artifactId>
+	<version>7</version>
+	</parent>
+
+	<properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<additionalClasspathElements>
+						<additionalClasspathElement>${project.build.directory}/test-classes/SampleAutomationJar-1.0.jar</additionalClasspathElement>
+					</additionalClasspathElements>
+					<argLine>${jaCoCoArgLine}</argLine>
+
+					<includes>
+						<include>**/*Test*.java</include>
+					</includes>
+					<runOrder>alphabetical</runOrder>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.17</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.17</version>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+						<configuration>
+							<additionalClasspathElements>
+								<additionalClasspathElement>${project.build.directory}/test-classes/SampleAutomationJar-1.0.jar</additionalClasspathElement>
+							</additionalClasspathElements>
+
+							<systemPropertyVariables>
+								<target>profiles/targets/default.properties</target>
+								<strategy>profiles/strategies/Default.strategy.xml</strategy>
+							</systemPropertyVariables>
+							<includes>
+								<include>**/XMLParallelDriver*</include>
+							</includes>
+						</configuration>
+					</execution>
+
+				</executions>
+				<configuration>
+					<testFailureIgnore>false</testFailureIgnore>
+					<argLine>${jaCoCoArgLine}</argLine>
+				</configuration>
+			</plugin>
+
+
+
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.6.3.201306030806</version>
+				<executions>
+					<!-- Prepares the property pointing to the JaCoCo runtime agent which 
+						is passed as VM argument when Maven the Surefire plugin is executed. -->
+					<execution>
+						<id>initialize</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<!-- Sets the path to the file which contains the execution data. -->
+							<destFile>${project.build.directory}/coverage-reports/jacoco.exec</destFile>
+							<!-- Sets the name of the property containing the settings for JaCoCo 
+								runtime agent. -->
+							<propertyName>jaCoCoArgLine</propertyName>
+						</configuration>
+					</execution>
+					<!-- Ensures that the code coverage report for unit tests is created 
+						after unit tests have been run. -->
+					<execution>
+						<id>post-all-tests</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<!-- Sets the path to the file which contains the execution data. -->
+							<dataFile>${project.build.directory}/coverage-reports/jacoco.exec</dataFile>
+							<!-- Sets the output directory for the code coverage report. -->
+							<outputDirectory>${project.reporting.outputDirectory}/jacoco</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>dk.brics.automaton</groupId>
+			<artifactId>automaton</artifactId>
+			<version>1.11-8</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.1.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>dk.brics</groupId>
+			<artifactId>xeger</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jgrapht</groupId>
+			<artifactId>jgrapht-jdk1.6</artifactId>
+			<version>0.8.3</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+	</dependencies>
+	<distributionManagement>
+                <repository>
+                    <id>sonatype-nexus-staging</id>
+                    <name>Sonatype Nexus release repository</name>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+                </repository>
+
+                <snapshotRepository>
+                        <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Snapshot Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+        </distributionManagement>
+</project>

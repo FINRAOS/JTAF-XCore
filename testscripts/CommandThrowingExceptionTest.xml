@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Exception Handling">
+
+	<test name="Command throwing Exception- Integration Test">
+		<desc>
+		</desc>
+		<automationValue>High</automationValue>
+		<teststeps>
+
+			
+				<verifyException>
+					<string name="exceptionType">SQLException</string>
+					<iThrowException />
+				</verifyException>
+			
+		</teststeps>
+	</test>
+
+
+</testsuite>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Traceability Matrix TestSuite">
+
+	<test name="No Automation Value Associated">
+		<desc>
+		Test for building the Traceability Matrix when NO Automation Value exists in Strategy file
+		</desc>
+		<automationValue>High</automationValue>
+		<teststeps>
+
+		
+			<repeat/>
+
+		</teststeps>
+	</test> 
+
+
+</testsuite>
