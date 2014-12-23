@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.finra.jtaf</groupId>
 	<artifactId>jtaf-xcore</artifactId>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>JTAF XCore</name>
 	<description>The core functionality provided by JTAF. Includes script parsing, test execution, and JUnit support.</description>
@@ -19,7 +19,7 @@
 		<connection>scm:git:https://github.com/FINRAOS/JTAF-XCore.git</connection>
 		<developerConnection>scm:git:https://github.com/FINRAOS/JTAF-XCore.git</developerConnection>
 		<url>https://github.com/FINRAOS/JTAF-XCore.git</url>
-		<tag>jtaf-xcore-1.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 	<developers>
 		<developer>
