@@ -8,7 +8,9 @@ Here is the link to [getting started](http://finraos.github.io/JTAF-XCore/howitw
 
 Releases
 ========
->Release 1.0 - Coming soon!
+>Release 1.0 - 12/23/2015
+
+>Release 1.1 - Coming soon!
 
 Contributing
 =============
