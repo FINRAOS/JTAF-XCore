@@ -4,7 +4,6 @@
  
 	<automationValue>High</automationValue>
 	<automationValue>AutomationValueTest</automationValue>
-	
 
  	<target name="MockTestScript.xml" />
 	<target name="CommandTest.xml" />
@@ -31,5 +30,6 @@
 	<target name="RandomGenerator.xml" /> 
 	<target name="CommandThrowingExceptionTest.xml"/>
 	<target name="TestCommandLibraryDiscovery.xml"/>
+	<target name="TearDownPluginsTests.xml" />
 	 
 </execute>
