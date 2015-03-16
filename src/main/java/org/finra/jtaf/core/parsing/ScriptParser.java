@@ -671,7 +671,6 @@ public class ScriptParser {
             }
 
             elem.removeChild(last);
-            cleanupBlock.setAttribute("isTearDown", "true");
             for (Element e : ParserHelper.getChildren(last)) {
                 cleanupBlock.appendChild(e);
             }
