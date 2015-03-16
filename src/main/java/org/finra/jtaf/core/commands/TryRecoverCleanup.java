@@ -21,7 +21,6 @@ import java.util.ArrayList;
 
 import org.finra.jtaf.core.model.exceptions.NameFormatException;
 import org.finra.jtaf.core.model.execution.IInvocationContext;
-import org.finra.jtaf.core.model.execution.exceptions.ErrorBeforeTearDownException;
 import org.finra.jtaf.core.model.invocationtarget.Command;
 import org.finra.jtaf.core.model.statement.Invocation;
 
@@ -82,20 +81,10 @@ public class TryRecoverCleanup extends Command {
                 }
             } finally { // Cleanup
                 try {
-                    Invocation cleanupInvocation = (Invocation) params.get(cleanup);
-                    if (cleanupInvocation.getTargetName().equalsIgnoreCase("cleanup")) {
-                    	// handle tearDown block
-                       	Object isTearDownParameter = cleanupInvocation.getParameters().get("isteardown");
-                       	boolean isTearDown = isTearDownParameter != null && isTearDownParameter.toString().equalsIgnoreCase("true");
-                       	if(error != null && isTearDown) {
-                       		throw new ErrorBeforeTearDownException(error, cleanupInvocation, ctx);
-                       	}
-                       	else {
-                       		executeInvocation(cleanupInvocation);
-                       	}
+                    if (((Invocation) params.get(cleanup)).getTargetName().equals("cleanup")) {
+
+                        executeInvocation((Invocation) params.get(cleanup));
                     }
-                } catch(ErrorBeforeTearDownException errorBeforeTearDownException) {
-                	throw errorBeforeTearDownException;
                 } catch (Throwable ignore) {
                     // Only handle cleanup exceptions if there was no other
                     // exception
