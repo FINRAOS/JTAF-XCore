@@ -22,13 +22,6 @@
 			<list>
 			</list>
 		</property>
-		
-		<property name="tearDownPlugins">
-			<list>
-				<bean class="org.finra.jtaf.core.plugins.execution.TearDownTestPlugin" />
-			</list>
-		</property>
-
 	</bean>
 
 
