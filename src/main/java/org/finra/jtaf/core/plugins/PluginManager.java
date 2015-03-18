@@ -19,6 +19,7 @@ package org.finra.jtaf.core.plugins;
 import java.util.List;
 
 import org.finra.jtaf.core.plugins.execution.ICommandRunnerPlugin;
+import org.finra.jtaf.core.plugins.execution.ITearDownPlugin;
 import org.finra.jtaf.core.plugins.execution.ITestRunnerPlugin;
 import org.finra.jtaf.core.plugins.parsing.IPostParseAllPlugin;
 import org.finra.jtaf.core.plugins.parsing.IPostParseStrategyElementPlugin;
@@ -36,6 +37,7 @@ public class PluginManager {
 	private List<IPostParseSuitePlugin> postParseSuitePlugins;
 	private List<IPostParseTestPlugin> postParseTestPlugins;
 	private List<IPostParseStrategyElementPlugin> postParseStrategyElementPlugins;
+	private List<ITearDownPlugin> tearDownPlugins;
 
 	private List<ITestRunnerPlugin> testRunnerPlugins;
 	private List<ICommandRunnerPlugin> commandRunnerPlugins;
@@ -88,6 +90,14 @@ public class PluginManager {
 
 	public List<ICommandRunnerPlugin> getCommandRunnerPlugins() {
 		return commandRunnerPlugins;
+	}
+ 	
+	public void setTearDownPlugins(List<ITearDownPlugin> tearDownPlugins) {
+		this.tearDownPlugins = tearDownPlugins;
+	}
+	
+	public List<ITearDownPlugin> getTearDownPlugins() {
+		return tearDownPlugins;
 	}
 
 }

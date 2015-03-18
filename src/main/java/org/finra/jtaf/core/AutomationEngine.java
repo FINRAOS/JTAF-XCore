@@ -21,13 +21,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.finra.jtaf.core.model.execution.Interpreter;
-import org.finra.jtaf.core.model.invocationtarget.InvocationTarget;
 import org.finra.jtaf.core.model.test.TestAgenda;
 import org.finra.jtaf.core.model.test.TestNamespace;
 import org.finra.jtaf.core.model.test.digraph.DiEdge;
@@ -121,6 +118,7 @@ public class AutomationEngine {
 					.getCommandRunnerPlugins());
 			this.interpreter.setTestRunnerPlugins(pluginManager
 					.getTestRunnerPlugins());
+			this.interpreter.setTearDownPlugins(pluginManager.getTearDownPlugins());
 
 			initPostParseAllPlugins();
 			initPostParseSuitePlugins();
