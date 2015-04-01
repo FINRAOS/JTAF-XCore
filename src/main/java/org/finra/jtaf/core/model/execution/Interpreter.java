@@ -26,7 +26,6 @@ import org.finra.jtaf.core.DefaultAutomationClassLoader;
 import org.finra.jtaf.core.IAutomationClassLoader;
 import org.finra.jtaf.core.asserts.ErrorAccumulator;
 import org.finra.jtaf.core.model.exceptions.MissingInvocationTargetException;
-import org.finra.jtaf.core.model.execution.exceptions.ErrorBeforeTearDownException;
 import org.finra.jtaf.core.model.invocationtarget.Command;
 import org.finra.jtaf.core.model.invocationtarget.Function;
 import org.finra.jtaf.core.model.invocationtarget.InvocationTarget;
@@ -119,15 +118,6 @@ public class Interpreter {
 		try {
 			visitInvocationList(test.getBody());
 			failure = ea.getWrappedErrors();
-		} catch (ErrorBeforeTearDownException errorBeforeTearDownException) {
-			try {
-				failure = errorBeforeTearDownException.getCause();
-				this.testStatus = TestStatus.Failed;
-				executeTearDownPlugins(errorBeforeTearDownException);
-				visitInvocation(errorBeforeTearDownException.getCleanupInvocation());
-			} catch(Throwable throwable) {
-				logger.error("Error while executing teardown after error in teststeps", throwable);
-			}
 		} catch (Throwable t) {
 			failure = t;
 			this.testStatus = TestStatus.Failed;
@@ -415,14 +405,12 @@ public class Interpreter {
 
 	}
 	
-	private void executeTearDownPlugins(ErrorBeforeTearDownException errorBeforeTearDownException) {
+	public void executeTearDownPlugins(Throwable failureReason, IInvocationContext invocationContext) {
 		try {
 			if(tearDownPlugins != null) {
 				for(ITearDownPlugin tearDownPlugin : tearDownPlugins) {
 					TestScript testScript = context.getTestScript();
-					TestResult testResult = new TestResult(getTestStepDetails(), testStatus, errorBeforeTearDownException.getCause());
-					IInvocationContext invocationContext = errorBeforeTearDownException.getInvocationContext();
-					TearDownPluginContext tearDownPluginContext = new TearDownPluginContext(testScript, testResult, invocationContext);
+					TearDownPluginContext tearDownPluginContext = new TearDownPluginContext(testScript, failureReason, invocationContext);
 					tearDownPlugin.handleBeforeTearDown(tearDownPluginContext);
 				}
 			}

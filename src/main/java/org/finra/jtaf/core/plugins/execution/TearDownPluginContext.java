@@ -17,7 +17,6 @@
 package org.finra.jtaf.core.plugins.execution;
 
 import org.finra.jtaf.core.model.execution.IInvocationContext;
-import org.finra.jtaf.core.model.test.TestResult;
 import org.finra.jtaf.core.model.test.TestScript;
 
 /**
@@ -27,13 +26,13 @@ import org.finra.jtaf.core.model.test.TestScript;
 public class TearDownPluginContext
 {
 	private TestScript testScript;
-	private TestResult testResult;
+	private Throwable failureReason;
 	private IInvocationContext invocationContext;
 	
-	public TearDownPluginContext(TestScript testScript, TestResult testResult, IInvocationContext invocationContext)
+	public TearDownPluginContext(TestScript testScript, Throwable failureReason, IInvocationContext invocationContext)
 	{
 		this.testScript = testScript;
-		this.testResult = testResult;
+		this.failureReason = failureReason;
 		this.invocationContext = invocationContext;
 	}
 	
@@ -42,9 +41,9 @@ public class TearDownPluginContext
 		return testScript;
 	}
 	
-	public TestResult getTestResult()
+	public Throwable getFailureReason()
 	{
-		return testResult;
+		return failureReason;
 	}
 	
 	public IInvocationContext getInvocationContext()
