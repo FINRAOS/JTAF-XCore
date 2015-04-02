@@ -1,7 +1,0 @@
-<!-- This tests that the test strategy parser correctly responds to a strategy file whose root isn't <execute> -->
-<incorrect>
-
-	<automationValue>ValidAutomationValue</automationValue>
-	<target name="path/to/some/script.xml" />
-	
-</incorrect>

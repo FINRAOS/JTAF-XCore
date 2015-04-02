@@ -1,5 +1,0 @@
-<testsuite name="Unexpected Element Suite Exclusion">
-	<exclusions>
-		<unexpectedElement name="Unexpected" />
-	</exclusions>
-</testsuite>

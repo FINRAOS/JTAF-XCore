@@ -1,6 +1,0 @@
-<execute>
-	
-	<automationValue>ValidAutomationValue</automationValue>
-	<target xname="path/to/some/script.xml" />
-	
-</execute>

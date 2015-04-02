@@ -1,5 +1,0 @@
-<testsuite name="Unexpected Element Suite Dependency">
-	<dependencies>
-		<unexpectedElement name="Unexpected" />
-	</dependencies>
-</testsuite>
