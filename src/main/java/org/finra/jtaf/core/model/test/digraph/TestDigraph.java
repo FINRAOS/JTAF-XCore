@@ -23,19 +23,19 @@ import java.util.Map;
 
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.EdgeFactory;
-import org.jgrapht.graph.DirectedMultigraph;
+import org.jgrapht.graph.AbstractBaseGraph;
 
 
 /**
  * This is a container class that houses the dependencies and exclusions across the tests.
  *
  */
-public class TestDigraph extends DirectedMultigraph<DiNode, DiEdge> implements DirectedGraph<DiNode, DiEdge>{
+public class TestDigraph extends AbstractBaseGraph<DiNode, DiEdge> implements DirectedGraph<DiNode, DiEdge>{
 	private static final long serialVersionUID = 1L;
 	private Map<String, DiNode> digraphVertexMapping = new HashMap<String, DiNode>();
 	
 	public TestDigraph(EdgeFactory<DiNode, DiEdge> arg0) {
-		super(arg0);
+		super(arg0, true, true);
 	}
 	
 	

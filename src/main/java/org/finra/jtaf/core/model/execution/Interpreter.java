@@ -162,12 +162,6 @@ public class Interpreter {
 		try {
 
 			for (Invocation invocation : invocationtList) {
-
-				if (invocation.getTargetName().equals("TryRecoverCleanup")) {
-					// Ignore logging TryRecoverCleanup statement
-				} else {
-					logger.info(invocation.toString());
-				}
 				try {
 
 					visitInvocation((Invocation) invocation);
@@ -226,6 +220,11 @@ public class Interpreter {
 	 * @throws Throwable
 	 */
 	public final void visitInvocation(Invocation invocation) throws Throwable {
+		if (invocation.getTargetName().equals("TryRecoverCleanup")) {
+			// Ignore logging TryRecoverCleanup statement
+		} else {
+			logger.info(invocation.toString());
+		}
 		if (this.commandRegistry.containsInvocationTarget(invocation
 				.getTargetName())) {
 			final InvocationTarget target = this.commandRegistry
