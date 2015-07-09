@@ -37,7 +37,9 @@ import org.finra.jtaf.core.model.test.TestStatus;
 import org.finra.jtaf.core.model.test.TestStepsDetails;
 import org.finra.jtaf.core.plugins.execution.CommandRunnerPluginContext;
 import org.finra.jtaf.core.plugins.execution.ICommandRunnerPlugin;
+import org.finra.jtaf.core.plugins.execution.ITearDownPlugin;
 import org.finra.jtaf.core.plugins.execution.ITestRunnerPlugin;
+import org.finra.jtaf.core.plugins.execution.TearDownPluginContext;
 import org.finra.jtaf.core.plugins.execution.TestRunnerPluginContext;
 
 /**
@@ -53,6 +55,7 @@ public class Interpreter {
 
 	private List<ITestRunnerPlugin> testRunnerPlugins;
 	private List<ICommandRunnerPlugin> commandRunnerPlugins;
+	private List<ITearDownPlugin> tearDownPlugins;
 	private IAutomationClassLoader automationClassLoader;
 	private List<TestStepsDetails> testStepDetails;
 
@@ -75,6 +78,10 @@ public class Interpreter {
 	public void setCommandRunnerPlugins(
 			List<ICommandRunnerPlugin> commandRunnerPlugins) {
 		this.commandRunnerPlugins = commandRunnerPlugins;
+	}
+	
+	public void setTearDownPlugins(List<ITearDownPlugin> tearDownPlugins) {
+		this.tearDownPlugins = tearDownPlugins;
 	}
 
 	/**
@@ -115,7 +122,6 @@ public class Interpreter {
 			failure = t;
 			this.testStatus = TestStatus.Failed;
 		}
-
 		finally {
 			if (failure == null)
 				this.testStatus = TestStatus.Passed;
@@ -156,12 +162,6 @@ public class Interpreter {
 		try {
 
 			for (Invocation invocation : invocationtList) {
-
-				if (invocation.getTargetName().equals("TryRecoverCleanup")) {
-					// Ignore logging TryRecoverCleanup statement
-				} else {
-					logger.info(invocation.toString());
-				}
 				try {
 
 					visitInvocation((Invocation) invocation);
@@ -220,6 +220,11 @@ public class Interpreter {
 	 * @throws Throwable
 	 */
 	public final void visitInvocation(Invocation invocation) throws Throwable {
+		if (invocation.getTargetName().equals("TryRecoverCleanup")) {
+			// Ignore logging TryRecoverCleanup statement
+		} else {
+			logger.info(invocation.toString());
+		}
 		if (this.commandRegistry.containsInvocationTarget(invocation
 				.getTargetName())) {
 			final InvocationTarget target = this.commandRegistry
@@ -397,6 +402,20 @@ public class Interpreter {
 			logger.error(th);
 		}
 
+	}
+	
+	public void executeTearDownPlugins(Throwable failureReason, IInvocationContext invocationContext) {
+		try {
+			if(tearDownPlugins != null) {
+				for(ITearDownPlugin tearDownPlugin : tearDownPlugins) {
+					TestScript testScript = context.getTestScript();
+					TearDownPluginContext tearDownPluginContext = new TearDownPluginContext(testScript, failureReason, invocationContext);
+					tearDownPlugin.handleBeforeTearDown(tearDownPluginContext);
+				}
+			}
+		} catch (Throwable throwable) {
+			logger.error("Error while executing teardown plugins", throwable);
+		}
 	}
 
 }

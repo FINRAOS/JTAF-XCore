@@ -81,9 +81,14 @@ public class TryRecoverCleanup extends Command {
                 }
             } finally { // Cleanup
                 try {
-                    if (((Invocation) params.get(cleanup)).getTargetName().equals("cleanup")) {
-
-                        executeInvocation((Invocation) params.get(cleanup));
+                    Invocation cleanupInvocation = (Invocation) params.get(cleanup);
+                    if (cleanupInvocation.getTargetName().equalsIgnoreCase("cleanup")) {
+                    	// handle tearDown block
+                       	Object isTearDownParameter = cleanupInvocation.getParameters().get("isteardown");
+                       	boolean isTearDown = isTearDownParameter != null && isTearDownParameter.toString().equalsIgnoreCase("true");
+                       	if(isTearDown)
+                       		interpreter.executeTearDownPlugins(error, ctx);
+                       	executeInvocation(cleanupInvocation);
                     }
                 } catch (Throwable ignore) {
                     // Only handle cleanup exceptions if there was no other
