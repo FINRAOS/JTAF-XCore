@@ -24,13 +24,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import nl.flotsam.xeger.Xeger;
-
-import org.apache.log4j.Logger;
 import org.finra.jtaf.core.model.exceptions.NameFormatException;
 import org.finra.jtaf.core.model.execution.IInvocationContext;
 import org.finra.jtaf.core.model.invocationtarget.Command;
 import org.finra.jtaf.core.parsing.helpers.AttributeHelper;
+
+import com.mifmif.common.regex.Generex;
+import org.apache.log4j.Logger;
 
 
 /**
@@ -124,8 +124,8 @@ public class RandomGenerator extends Command {
 						int minInt = Integer.valueOf(min);
 						valueGenerated = String.valueOf(minInt + (int) (Math.random() * (maxInt - minInt)));
 					} catch (Exception e) {
-						Xeger generator = new Xeger("[0-9]{" + length + "}");
-						valueGenerated = generator.generate();
+						Generex generex = new Generex("[0-9]{" + length + "}");
+						valueGenerated = generex.random();
 					}
 				} else if (method.equalsIgnoreCase("string")) {
 					// verify input parameters
@@ -167,8 +167,8 @@ public class RandomGenerator extends Command {
      * @return the randomly generated string
      */
 	public static String generateRegexp(String regexp) {
-		Xeger generator = new Xeger(regexp);
-		return generator.generate();
+		Generex generex = new Generex(regexp);
+		return generex.random();
 	}
 
 	/**
@@ -177,8 +177,8 @@ public class RandomGenerator extends Command {
      * @return the randomly generated phone number.
      */
 	public static String generatePhone() {
-		Xeger generator = new Xeger("[0-9]{10}");
-		return generator.generate();
+		Generex generex = new Generex("[0-9]{10}");
+		return generex.random();
 	}
 
 	/**
@@ -210,8 +210,8 @@ public class RandomGenerator extends Command {
      * @return The generated string
      */
 	public static String generateString(String chars, int length) {
-		Xeger generator = new Xeger("[" + chars + "]{" + length + "}");
-		return generator.generate();
+		Generex generex = new Generex("[" + chars + "]{" + length + "}");
+		return generex.random();
 	}
 
 	@SuppressWarnings("unchecked")
