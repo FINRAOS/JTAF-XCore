@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<testsuite name="Iterate a Block over Objects from List">
+
+	<test name="SingleItemTest">
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="verifyList">
+				<list name="default">
+					<string name="Test1">Test1 value in context</string>
+				</list>
+			</storeDefaultObject>
+			<iterateOverList list="verifyList" storeElementFromListAs="currentElement">
+				<verifyObjectInContext actualKey="currentElement" expectedKey="testKey" testKey="Test1 value in context" />
+			</iterateOverList>
+
+		</teststeps>
+	</test>
+
+	<test name="MultipleItemIterationTest">
+		<automationValue>High</automationValue>
+		<teststeps>
+			<storeDefaultObject contextKey="verifyList">
+				<list name="default">
+					<string name="Test1">Test1 value in context</string>
+					<string name="Test2">Test2 value in context</string>
+					<string name="Test3">Test3 value in context</string>
+				</list>
+			</storeDefaultObject>
+			<iterateOverList list="verifyList" storeElementFromListAs="currentElement">
+				<DebugPrint message="$contextKey(currentElement)" />
+			</iterateOverList>
+
+		</teststeps>
+	</test>
+
+
+</testsuite>
