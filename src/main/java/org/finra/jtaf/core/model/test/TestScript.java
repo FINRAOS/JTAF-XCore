@@ -198,6 +198,14 @@ public final class TestScript extends TestComponent {
     }
 
     @Override
+    public int hashCode() {
+        return this.getName().hashCode()
+                + this.getBody().hashCode()
+                + this.getFileName().hashCode()
+                + this.getFullName().hashCode();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (!(o instanceof TestScript)) {
             return false;
