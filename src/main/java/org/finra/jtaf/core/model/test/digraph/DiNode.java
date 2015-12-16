@@ -48,6 +48,12 @@ public class DiNode {
     }
 
     @Override
+    public int hashCode() {
+        return this.getTestName().hashCode()
+                + this.getTestScript().hashCode();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o instanceof DiNode) {
             if (this.getTestName().equalsIgnoreCase(((DiNode) o).getTestName())
