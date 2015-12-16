@@ -22,9 +22,9 @@ import org.finra.jtaf.core.model.test.TestScript;
  * This class represents a vertex in the digraph
  */
 public class DiNode {
-    private String testName = ""; //This shouldnt change after being set initially
+    private final String testName; //This shouldnt change after being set initially
     private String testStatus = "";
-    private TestScript testScript = null; //This shouldnt change after being set initially
+    private final TestScript testScript; //This shouldnt change after being set initially
 
     public DiNode(TestScript ts) {
         this.testName = ts.getName();
