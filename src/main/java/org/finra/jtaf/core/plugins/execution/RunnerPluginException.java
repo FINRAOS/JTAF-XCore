@@ -19,16 +19,16 @@ package org.finra.jtaf.core.plugins.execution;
 /**
  * Thrown by Runner Execution Plugins to indicate a general Exception
  */
-public class RunnerPluginException extends Exception{
+public class RunnerPluginException extends Exception {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public RunnerPluginException(String message){
-		super(message);
-	}
-	
-	public RunnerPluginException(String message, Throwable th) {
-		super(message, th);
-	}
-	
+    public RunnerPluginException(String message) {
+        super(message);
+    }
+
+    public RunnerPluginException(String message, Throwable th) {
+        super(message, th);
+    }
+
 }

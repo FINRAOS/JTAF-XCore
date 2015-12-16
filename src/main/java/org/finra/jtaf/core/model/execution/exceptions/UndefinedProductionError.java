@@ -21,27 +21,24 @@ package org.finra.jtaf.core.model.execution.exceptions;
  * This is thrown when an InvocationTarget tries to place something in
  * the Context without explicitly stating that the value can be returned.
  * In other words: this forces people to annotate their Commands properly :-D
- * 
- *
  */
 public class UndefinedProductionError extends Error {
 
 
-	private static final long serialVersionUID = 8548760217888120440L;
+    private static final long serialVersionUID = 8548760217888120440L;
 
-	private final String productionName;
-	
-	/**
-	 * ProductionName associated with the InvocationTarget
-	 *
-	 */
+    private final String productionName;
 
-	public UndefinedProductionError(String productionName) {
-		super("'" + productionName + "' was not specified in the invocation target's definition");
-		this.productionName = productionName;
-	}
+    /**
+     * ProductionName associated with the InvocationTarget
+     */
 
-	public final String getProductionName() {
-		return this.productionName;
-	}
+    public UndefinedProductionError(String productionName) {
+        super("'" + productionName + "' was not specified in the invocation target's definition");
+        this.productionName = productionName;
+    }
+
+    public final String getProductionName() {
+        return this.productionName;
+    }
 }

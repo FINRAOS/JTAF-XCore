@@ -28,38 +28,38 @@ import org.apache.log4j.Logger;
  */
 public class ExceptionAccumulator extends ParsingException {
 
-	/**
-	 * AUTO-GENERATED
-	 */
-	private static final long serialVersionUID = 2524703384072863880L;
+    /**
+     * AUTO-GENERATED
+     */
+    private static final long serialVersionUID = 2524703384072863880L;
 
-	private final List<Throwable> exceptions;
-	
-	public ExceptionAccumulator() {
-		super("Multiple failures reported.");
-		this.exceptions = new ArrayList<Throwable>();
-	}
+    private final List<Throwable> exceptions;
+
+    public ExceptionAccumulator() {
+        super("Multiple failures reported.");
+        this.exceptions = new ArrayList<Throwable>();
+    }
 
 
-	/**
-	 * @return The exceptions that have been accumulated
-	 */
-	public final List<Throwable> getExceptions() {
-		return this.exceptions;
-	}
-	
-	/**
-	 * @param th A Throwable (Exception, Error, etc.) to add to the accumulator
-	 */
-	public final void add(Throwable th) {
-		this.getExceptions().add(th);
-		Logger.getLogger(ExceptionAccumulator.class).debug("Exception accumulated", th);
-	}
-	
-	/**
-	 * @return if true, then the accumulator has not accumulated any exceptions
-	 */
-	public final boolean isEmpty() {
-		return this.getExceptions().isEmpty();
-	}
+    /**
+     * @return The exceptions that have been accumulated
+     */
+    public final List<Throwable> getExceptions() {
+        return this.exceptions;
+    }
+
+    /**
+     * @param th A Throwable (Exception, Error, etc.) to add to the accumulator
+     */
+    public final void add(Throwable th) {
+        this.getExceptions().add(th);
+        Logger.getLogger(ExceptionAccumulator.class).debug("Exception accumulated", th);
+    }
+
+    /**
+     * @return if true, then the accumulator has not accumulated any exceptions
+     */
+    public final boolean isEmpty() {
+        return this.getExceptions().isEmpty();
+    }
 }

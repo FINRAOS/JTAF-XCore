@@ -38,91 +38,90 @@ import org.w3c.dom.NodeList;
 /**
  * Parser plugin meant to handle the loop element in the script that determines
  * the number of times a test script needs to be run.
- * 
  */
 public class LoopPlugin implements IPostParseTestPlugin {
-	protected TestDigraph testDigraph;
+    protected TestDigraph testDigraph;
 
-	@Override
-	public String getTagName() {
-		return "loop";
-	}
+    @Override
+    public String getTagName() {
+        return "loop";
+    }
 
-	public LoopPlugin(AutomationEngine automationEngine) {
-		this.testDigraph = automationEngine.getTestDigraph();
-	}
+    public LoopPlugin(AutomationEngine automationEngine) {
+        this.testDigraph = automationEngine.getTestDigraph();
+    }
 
-	@Override
-	public void execute(PostTestParserPluginContext ctx)
-			throws ParserPluginException {
-		int iterationCount = getIterationCount(ctx.getRootNodeTest());
-		if (iterationCount != 1) {
-			TestScript oldTestScript = getOldTestScript(ctx.getTestSuite());
-			List<TestScript> iteratedScripts = createIteratedTestScripts(ctx,
-					oldTestScript, iterationCount);
-			removeOldTestScript(ctx.getTestSuite());
-			addIteratedTestScripts(ctx.getTestSuite(), iteratedScripts);
-		}
-	}
+    @Override
+    public void execute(PostTestParserPluginContext ctx)
+            throws ParserPluginException {
+        int iterationCount = getIterationCount(ctx.getRootNodeTest());
+        if (iterationCount != 1) {
+            TestScript oldTestScript = getOldTestScript(ctx.getTestSuite());
+            List<TestScript> iteratedScripts = createIteratedTestScripts(ctx,
+                    oldTestScript, iterationCount);
+            removeOldTestScript(ctx.getTestSuite());
+            addIteratedTestScripts(ctx.getTestSuite(), iteratedScripts);
+        }
+    }
 
-	private int getIterationCount(Node rootNodeTest) {
-		int result = 1;
-		NodeList children = rootNodeTest.getChildNodes();
-		for (int i = 0; i < children.getLength(); i++) {
-			if (children.item(i).getNodeName().equalsIgnoreCase("loop")) {
-				result = Integer.parseInt(children.item(i).getAttributes()
-						.getNamedItem("iterations").getNodeValue());
-			}
-		}
-		return result;
-	}
+    private int getIterationCount(Node rootNodeTest) {
+        int result = 1;
+        NodeList children = rootNodeTest.getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) {
+            if (children.item(i).getNodeName().equalsIgnoreCase("loop")) {
+                result = Integer.parseInt(children.item(i).getAttributes()
+                        .getNamedItem("iterations").getNodeValue());
+            }
+        }
+        return result;
+    }
 
-	private TestScript getOldTestScript(TestSuite testSuite) {
-		List<TestComponent> testComponents = testSuite.getComponentList();
-		return (TestScript) testComponents.get(testComponents.size() - 1);
-	}
+    private TestScript getOldTestScript(TestSuite testSuite) {
+        List<TestComponent> testComponents = testSuite.getComponentList();
+        return (TestScript) testComponents.get(testComponents.size() - 1);
+    }
 
-	List<TestScript> createIteratedTestScripts(PostTestParserPluginContext ctx,
-			TestScript oldTestScript, int iterationCount)
-			throws ParserPluginException {
-		List<TestScript> result = new ArrayList<TestScript>();
-		for (int currentIteration = 1; currentIteration <= iterationCount; currentIteration++) {
-			TestScript newTestScript;
-			ScriptParser sp = AutomationEngine.getInstance().getScriptParser();
-			try {
-				newTestScript = sp
-						.processTestScript((Element) ctx.getRootNodeTest(),
-								new MessageCollector());
-			} catch (ParsingException parsingException) {
-				throw new ParserPluginException("Problem re-parsing test",
-						parsingException);
-			}
-			newTestScript.setName(newTestScript.getName() + " [iteration "
-					+ currentIteration + " of " + iterationCount + "]");
-			result.add(newTestScript);
-		}
-		return result;
-	}
+    List<TestScript> createIteratedTestScripts(PostTestParserPluginContext ctx,
+                                               TestScript oldTestScript, int iterationCount)
+            throws ParserPluginException {
+        List<TestScript> result = new ArrayList<TestScript>();
+        for (int currentIteration = 1; currentIteration <= iterationCount; currentIteration++) {
+            TestScript newTestScript;
+            ScriptParser sp = AutomationEngine.getInstance().getScriptParser();
+            try {
+                newTestScript = sp
+                        .processTestScript((Element) ctx.getRootNodeTest(),
+                                new MessageCollector());
+            } catch (ParsingException parsingException) {
+                throw new ParserPluginException("Problem re-parsing test",
+                        parsingException);
+            }
+            newTestScript.setName(newTestScript.getName() + " [iteration "
+                    + currentIteration + " of " + iterationCount + "]");
+            result.add(newTestScript);
+        }
+        return result;
+    }
 
-	private void removeOldTestScript(TestSuite testSuite) {
-		List<TestComponent> testComponents = testSuite.getComponentList();
-		testComponents.remove(testComponents.size() - 1);
-	}
+    private void removeOldTestScript(TestSuite testSuite) {
+        List<TestComponent> testComponents = testSuite.getComponentList();
+        testComponents.remove(testComponents.size() - 1);
+    }
 
-	private void addIteratedTestScripts(TestSuite testSuite,
-			List<TestScript> iteratedScripts) throws ParserPluginException {
-		try {
-			for (TestScript iteratedScript : iteratedScripts) {
-				testSuite.add(iteratedScript);
-				// DigraphPlugin dependenciesPlugin =
-				// DigraphPlugin.getInstance();
-				// TestDigraph testDigraph =
-				// dependenciesPlugin.getTestDigraph();
-				testDigraph.addVertex(new DiNode(iteratedScript));
-			}
-		} catch (NameCollisionException nameCollisionException) {
-			throw new ParserPluginException("Duplicate test name: ",
-					nameCollisionException);
-		}
-	}
+    private void addIteratedTestScripts(TestSuite testSuite,
+                                        List<TestScript> iteratedScripts) throws ParserPluginException {
+        try {
+            for (TestScript iteratedScript : iteratedScripts) {
+                testSuite.add(iteratedScript);
+                // DigraphPlugin dependenciesPlugin =
+                // DigraphPlugin.getInstance();
+                // TestDigraph testDigraph =
+                // dependenciesPlugin.getTestDigraph();
+                testDigraph.addVertex(new DiNode(iteratedScript));
+            }
+        } catch (NameCollisionException nameCollisionException) {
+            throw new ParserPluginException("Duplicate test name: ",
+                    nameCollisionException);
+        }
+    }
 }

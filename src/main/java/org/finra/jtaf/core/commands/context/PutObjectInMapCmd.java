@@ -23,29 +23,28 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
 
 /**
  * Gets an object from context and stores that object into a map in context
- *
  */
 public class PutObjectInMapCmd extends AbstractContextCmd {
-	public static final String VALUE_IN_ATTRIBUTE = "object";
-	public static final String KEY_ATTRIBUTE = "key";
-	public static final String VALUE_OUT_ATTRIBUTE = "map";
+    public static final String VALUE_IN_ATTRIBUTE = "object";
+    public static final String KEY_ATTRIBUTE = "key";
+    public static final String VALUE_OUT_ATTRIBUTE = "map";
 
-	public PutObjectInMapCmd(String name) throws NameFormatException {
-		super(name);
-	}
+    public PutObjectInMapCmd(String name) throws NameFormatException {
+        super(name);
+    }
 
-	@Override
-	protected void execute() throws Throwable {
-		Object valueIn = getRequiredObject(getRequiredString(VALUE_IN_ATTRIBUTE));
-		String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
-		@SuppressWarnings("unchecked")
-		Map<Object,Object> valueOut = (Map<Object,Object>) getOptionalObject(valueOutAttribute);
-		if(valueOut == null) {
-			Map<Object,Object> suppression = new HashMap<Object,Object>();
-			valueOut = suppression;
-		}
-		Object key = mch.getRequiredObject(KEY_ATTRIBUTE);
-		mch.setValueOut(valueOutAttribute, valueOut, valueIn, key);
-	}
+    @Override
+    protected void execute() throws Throwable {
+        Object valueIn = getRequiredObject(getRequiredString(VALUE_IN_ATTRIBUTE));
+        String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
+        @SuppressWarnings("unchecked")
+        Map<Object, Object> valueOut = (Map<Object, Object>) getOptionalObject(valueOutAttribute);
+        if (valueOut == null) {
+            Map<Object, Object> suppression = new HashMap<Object, Object>();
+            valueOut = suppression;
+        }
+        Object key = mch.getRequiredObject(KEY_ATTRIBUTE);
+        mch.setValueOut(valueOutAttribute, valueOut, valueIn, key);
+    }
 
 }

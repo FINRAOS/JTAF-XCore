@@ -54,341 +54,339 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 /**
- * 
  * The class is responsible for discovering and parsing commands.xml files from
  * the classpath and under the project folder
- * 
  */
 public class CommandLibraryParser {
-	private static final String READ_LIBRARY_WARN = "A suspected library %s' was not loaded due to %s";
-	private StatementParser stmtParser;
-	static Logger logger = Logger.getLogger(ScriptParser.class.getPackage()
-			.getName());
+    private static final String READ_LIBRARY_WARN = "A suspected library %s' was not loaded due to %s";
+    private StatementParser stmtParser;
+    static Logger logger = Logger.getLogger(ScriptParser.class.getPackage()
+            .getName());
 
-	private final DocumentBuilder db;
+    private final DocumentBuilder db;
 
-	private IAutomationClassLoader automationClassLoader;
+    private IAutomationClassLoader automationClassLoader;
 
-	public CommandLibraryParser() throws ParserConfigurationException {
-		db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-		stmtParser = new StatementParser();
-	}
+    public CommandLibraryParser() throws ParserConfigurationException {
+        db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        stmtParser = new StatementParser();
+    }
 
-	public void setAutomationClassLoader(
-			IAutomationClassLoader automationClassLoader) {
-		this.automationClassLoader = automationClassLoader;
-	}
+    public void setAutomationClassLoader(
+            IAutomationClassLoader automationClassLoader) {
+        this.automationClassLoader = automationClassLoader;
+    }
 
-	public CommandRegistry parseCommandLibraries(
-			CommandRegistry commandRegistry, File additionalLibrarySource,
-			MessageCollector mc) throws NameFormatException,
-			NameCollisionException, SAXException, IOException,
-			ParsingException, URISyntaxException {
+    public CommandRegistry parseCommandLibraries(
+            CommandRegistry commandRegistry, File additionalLibrarySource,
+            MessageCollector mc) throws NameFormatException,
+            NameCollisionException, SAXException, IOException,
+            ParsingException, URISyntaxException {
 
-		FileWriter fileWriter = null;
-		try {
-			fileWriter = new FileWriter("commandNames.txt");
-			// process Core commands
-			for (InvocationTarget t : handleCoreLibrarySource(mc)) {
-				fileWriter.write(t.getName()
-						+ System.getProperty("line.separator"));
-				if (commandRegistry.containsInvocationTarget(t.getName()
-						.toLowerCase())) {
-					logger.warn("Oops! We have more then one command with same name ('"
-							+ t.getName()
-							+ "') (case insensitive)! Fix your test commands, please.");
-					mc.push("Oops! We have more then one command with same name ('"
-							+ t.getName()
-							+ "') (case insensitive)! Fix your test commands, please.");
-				}
-				commandRegistry.registerInvocationTarget(t.getName()
-						.toLowerCase(), t);
-			}
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter("commandNames.txt");
+            // process Core commands
+            for (InvocationTarget t : handleCoreLibrarySource(mc)) {
+                fileWriter.write(t.getName()
+                        + System.getProperty("line.separator"));
+                if (commandRegistry.containsInvocationTarget(t.getName()
+                        .toLowerCase())) {
+                    logger.warn("Oops! We have more then one command with same name ('"
+                            + t.getName()
+                            + "') (case insensitive)! Fix your test commands, please.");
+                    mc.push("Oops! We have more then one command with same name ('"
+                            + t.getName()
+                            + "') (case insensitive)! Fix your test commands, please.");
+                }
+                commandRegistry.registerInvocationTarget(t.getName()
+                        .toLowerCase(), t);
+            }
 
-			// process additional library source folder commands which are not
-			// in the classpath
-			for (InvocationTarget t : handleLibrarySource(
-					additionalLibrarySource, mc)) {
-				fileWriter.write(t.getName()
-						+ System.getProperty("line.separator"));
-				if (commandRegistry.containsInvocationTarget(t.getName()
-						.toLowerCase())) {
-					logger.warn("Oops! We have more then one command with same name ('"
-							+ t.getName()
-							+ "') (case insensitive)! Fix your test commands, please.");
-					mc.push("Oops! We have more then one command with same name ('"
-							+ t.getName()
-							+ "') (case insensitive)! Fix your test commands, please.");
-				}
-				commandRegistry.registerInvocationTarget(t.getName()
-						.toLowerCase(), t);
-			}
+            // process additional library source folder commands which are not
+            // in the classpath
+            for (InvocationTarget t : handleLibrarySource(
+                    additionalLibrarySource, mc)) {
+                fileWriter.write(t.getName()
+                        + System.getProperty("line.separator"));
+                if (commandRegistry.containsInvocationTarget(t.getName()
+                        .toLowerCase())) {
+                    logger.warn("Oops! We have more then one command with same name ('"
+                            + t.getName()
+                            + "') (case insensitive)! Fix your test commands, please.");
+                    mc.push("Oops! We have more then one command with same name ('"
+                            + t.getName()
+                            + "') (case insensitive)! Fix your test commands, please.");
+                }
+                commandRegistry.registerInvocationTarget(t.getName()
+                        .toLowerCase(), t);
+            }
 
-			return commandRegistry;
-		} finally {
-			if (fileWriter != null) {
-				try {
-					fileWriter.close();
-				} catch (IOException e) {
-				}
-			}
-		}
-	}
+            return commandRegistry;
+        } finally {
+            if (fileWriter != null) {
+                try {
+                    fileWriter.close();
+                } catch (IOException e) {
+                }
+            }
+        }
+    }
 
-	private List<InvocationTarget> handleCoreLibrarySource(MessageCollector mc)
-			throws NameFormatException, NameCollisionException, SAXException,
-			IOException, ParsingException, URISyntaxException {
-		List<InvocationTarget> retval = new ArrayList<InvocationTarget>();
+    private List<InvocationTarget> handleCoreLibrarySource(MessageCollector mc)
+            throws NameFormatException, NameCollisionException, SAXException,
+            IOException, ParsingException, URISyntaxException {
+        List<InvocationTarget> retval = new ArrayList<InvocationTarget>();
 
-		Resource[] resources = getResources();
+        Resource[] resources = getResources();
 
-		for (Resource resource : resources) {
-			logger.debug("Parsing library " + resource.getDescription());
-			List<InvocationTarget> library = readLibrary(mc,
-					resource.getInputStream(), resource.getDescription());
-			if ((library != null) && (library.size() > 0)) {
-				// try to read jars (maven or ant setup)
-				retval.addAll(library);
-			} else {
-				logger.debug("Found no commands");
-			}
-		}
-		return retval;
-	}
+        for (Resource resource : resources) {
+            logger.debug("Parsing library " + resource.getDescription());
+            List<InvocationTarget> library = readLibrary(mc,
+                    resource.getInputStream(), resource.getDescription());
+            if ((library != null) && (library.size() > 0)) {
+                // try to read jars (maven or ant setup)
+                retval.addAll(library);
+            } else {
+                logger.debug("Found no commands");
+            }
+        }
+        return retval;
+    }
 
-	/**
-	 * for all elements of java.class.path get a Collection of resources under
-	 * testlibrary
-	 * 
-	 * @return the resources in the order they are found
-	 */
+    /**
+     * for all elements of java.class.path get a Collection of resources under
+     * testlibrary
+     *
+     * @return the resources in the order they are found
+     */
 
-	private Resource[] getResources() throws IOException, URISyntaxException {
-		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		ArrayList<Resource> result = new ArrayList<Resource>();
+    private Resource[] getResources() throws IOException, URISyntaxException {
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        ArrayList<Resource> result = new ArrayList<Resource>();
 
-		// We want all commands.xml files in testlibrary folder anywhere in the
-		// hierarchy in the classpath
-		// There is no single regex to address our requirement. Hence we have
-		// two regex.
-		// The first one gets all entries where testLibrary is under root.
-		// The second gets all
-		Resource[] firstResultSet = resolver
-				.getResources("classpath*:/testlibrary/**/*commands.xml");
-		if (firstResultSet != null) {
-			Collections.addAll(result, firstResultSet);
-		}
-		// This path does not address testlibrary being directly under the root.
-		resolver = new PathMatchingResourcePatternResolver();
-		Resource[] secondResultSet = resolver
-				.getResources("classpath*:/**/testlibrary/**/*commands.xml");
+        // We want all commands.xml files in testlibrary folder anywhere in the
+        // hierarchy in the classpath
+        // There is no single regex to address our requirement. Hence we have
+        // two regex.
+        // The first one gets all entries where testLibrary is under root.
+        // The second gets all
+        Resource[] firstResultSet = resolver
+                .getResources("classpath*:/testlibrary/**/*commands.xml");
+        if (firstResultSet != null) {
+            Collections.addAll(result, firstResultSet);
+        }
+        // This path does not address testlibrary being directly under the root.
+        resolver = new PathMatchingResourcePatternResolver();
+        Resource[] secondResultSet = resolver
+                .getResources("classpath*:/**/testlibrary/**/*commands.xml");
 
-		if (secondResultSet != null) {
-			if (firstResultSet != null) {
-				for (Resource secondResource : secondResultSet) {
-					// check to see if it was already found.
-					boolean found = false;
-					for (Resource firstResource : firstResultSet) {
-						if (firstResource.getDescription().equals(
-								secondResource.getDescription())) {
-							found=true;
-							break;
-						}
-					}
-					if(!found){
-						result.add(secondResource);
-					}
-				}
-			} else {
-				Collections.addAll(result, secondResultSet);
-			}
-		}
+        if (secondResultSet != null) {
+            if (firstResultSet != null) {
+                for (Resource secondResource : secondResultSet) {
+                    // check to see if it was already found.
+                    boolean found = false;
+                    for (Resource firstResource : firstResultSet) {
+                        if (firstResource.getDescription().equals(
+                                secondResource.getDescription())) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        result.add(secondResource);
+                    }
+                }
+            } else {
+                Collections.addAll(result, secondResultSet);
+            }
+        }
 
-		return result.toArray(new Resource[] {});
-	}
+        return result.toArray(new Resource[]{});
+    }
 
-	public final List<InvocationTarget> readLibrary(MessageCollector mc,
-			InputStream is, String description) {
+    public final List<InvocationTarget> readLibrary(MessageCollector mc,
+                                                    InputStream is, String description) {
 
-		List<InvocationTarget> retval = new ArrayList<InvocationTarget>();
+        List<InvocationTarget> retval = new ArrayList<InvocationTarget>();
 
-		try {
-			mc.push("In library '" + description + "'");
-			Document d = db.parse(is);
-			retval.addAll(processLibrary(d.getDocumentElement(), mc));
+        try {
+            mc.push("In library '" + description + "'");
+            Document d = db.parse(is);
+            retval.addAll(processLibrary(d.getDocumentElement(), mc));
 
-		} catch (MalformedURLException e) {
-			logger.warn(String.format(READ_LIBRARY_WARN, description,
-					"the url being malformed!"), e);
-		} catch (IOException e) {
-			logger.warn(String.format(READ_LIBRARY_WARN, description,
-					"an io exception while reading it!"), e);
-		} catch (SAXException e) {
-			logger.warn(String.format(READ_LIBRARY_WARN, description,
-					"a SAX exception!"), e);
-		} catch (ParsingException e) {
-			logger.warn(String.format(READ_LIBRARY_WARN, description,
-					"a parsing exception!"), e);
-		} finally {
-			mc.pop();
-		}
-		return retval;
-	}
+        } catch (MalformedURLException e) {
+            logger.warn(String.format(READ_LIBRARY_WARN, description,
+                    "the url being malformed!"), e);
+        } catch (IOException e) {
+            logger.warn(String.format(READ_LIBRARY_WARN, description,
+                    "an io exception while reading it!"), e);
+        } catch (SAXException e) {
+            logger.warn(String.format(READ_LIBRARY_WARN, description,
+                    "a SAX exception!"), e);
+        } catch (ParsingException e) {
+            logger.warn(String.format(READ_LIBRARY_WARN, description,
+                    "a parsing exception!"), e);
+        } finally {
+            mc.pop();
+        }
+        return retval;
+    }
 
-	private final List<InvocationTarget> handleLibrarySource(File f,
-			MessageCollector mc) throws NameFormatException,
-			NameCollisionException, SAXException, IOException, ParsingException {
+    private final List<InvocationTarget> handleLibrarySource(File f,
+                                                             MessageCollector mc) throws NameFormatException,
+            NameCollisionException, SAXException, IOException, ParsingException {
 
-		List<InvocationTarget> retval = new ArrayList<InvocationTarget>();
-		try {
-			if (!f.exists()) {
-				throw new FileNotFoundException(f.getAbsolutePath());
-			}
+        List<InvocationTarget> retval = new ArrayList<InvocationTarget>();
+        try {
+            if (!f.exists()) {
+                throw new FileNotFoundException(f.getAbsolutePath());
+            }
 
-			if (f.isFile() && f.getName().endsWith(".xml")) {
-				mc.push("In library " + f.getAbsolutePath());
+            if (f.isFile() && f.getName().endsWith(".xml")) {
+                mc.push("In library " + f.getAbsolutePath());
 
-				try {
-					Document d = db.parse(f);
-					retval.addAll(processLibrary(d.getDocumentElement(), mc));
-				} finally {
-					mc.pop();
-				}
-			} else if (f.isDirectory()) {
-				ExceptionAccumulator acc = new ExceptionAccumulator();
-				for (File child : f.listFiles()) {
-					try {
-						retval.addAll(handleLibrarySource(child, mc));
-					} catch (Throwable th) {
-						mc.error(th.getMessage());
-						acc.add(th);
-					}
-				}
+                try {
+                    Document d = db.parse(f);
+                    retval.addAll(processLibrary(d.getDocumentElement(), mc));
+                } finally {
+                    mc.pop();
+                }
+            } else if (f.isDirectory()) {
+                ExceptionAccumulator acc = new ExceptionAccumulator();
+                for (File child : f.listFiles()) {
+                    try {
+                        retval.addAll(handleLibrarySource(child, mc));
+                    } catch (Throwable th) {
+                        mc.error(th.getMessage());
+                        acc.add(th);
+                    }
+                }
 
-				if (!acc.isEmpty()) {
-					throw acc;
-				}
-			}
-		} catch (FileNotFoundException e) {
-			logger.warn("A suspected library file '" + f.getAbsolutePath()
-					+ "' was not found!");
-			logger.debug(e); // debug this to slim down the log files
-		}
-		return retval;
-	}
+                if (!acc.isEmpty()) {
+                    throw acc;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            logger.warn("A suspected library file '" + f.getAbsolutePath()
+                    + "' was not found!");
+            logger.debug(e); // debug this to slim down the log files
+        }
+        return retval;
+    }
 
-	private final List<InvocationTarget> processLibrary(Element elem,
-			MessageCollector mc) throws ParsingException {
-		if (elem.getNodeName().equalsIgnoreCase("library")) {
-			List<InvocationTarget> invocationTargets = new ArrayList<InvocationTarget>();
-			ExceptionAccumulator acc = new ExceptionAccumulator();
+    private final List<InvocationTarget> processLibrary(Element elem,
+                                                        MessageCollector mc) throws ParsingException {
+        if (elem.getNodeName().equalsIgnoreCase("library")) {
+            List<InvocationTarget> invocationTargets = new ArrayList<InvocationTarget>();
+            ExceptionAccumulator acc = new ExceptionAccumulator();
 
-			for (Element child : ParserHelper.getChildren(elem)) {
-				try {
-					invocationTargets.add(processInvocationTarget(child, mc));
-				} catch (Throwable th) {
-					mc.error(th.getMessage());
-					acc.add(th);
-				}
-			}
+            for (Element child : ParserHelper.getChildren(elem)) {
+                try {
+                    invocationTargets.add(processInvocationTarget(child, mc));
+                } catch (Throwable th) {
+                    mc.error(th.getMessage());
+                    acc.add(th);
+                }
+            }
 
-			if (!acc.isEmpty()) {
-				throw acc;
-			}
+            if (!acc.isEmpty()) {
+                throw acc;
+            }
 
-			return invocationTargets;
-		} else {
-			throw new UnexpectedElementException(elem);
-		}
-	}
+            return invocationTargets;
+        } else {
+            throw new UnexpectedElementException(elem);
+        }
+    }
 
-	// This is just called when processing the library.
-	// It basically just gets what are designated as parameters there and stores
-	// the names of them
-	// in the invocation target param list
-	private final InvocationTarget processInvocationTarget(Element elem,
-			MessageCollector mc) throws ParsingException {
-		InvocationTarget retval = null;
-		final String name = elem.getNodeName().toLowerCase();
-		if (name.equals("command")) {
-			retval = processCommand(elem, mc);
-		} else if (name.equals("function")) {
-			retval = processFunction(elem, mc);
-		} else {
-			throw new UnexpectedElementException(elem);
-		}
+    // This is just called when processing the library.
+    // It basically just gets what are designated as parameters there and stores
+    // the names of them
+    // in the invocation target param list
+    private final InvocationTarget processInvocationTarget(Element elem,
+                                                           MessageCollector mc) throws ParsingException {
+        InvocationTarget retval = null;
+        final String name = elem.getNodeName().toLowerCase();
+        if (name.equals("command")) {
+            retval = processCommand(elem, mc);
+        } else if (name.equals("function")) {
+            retval = processFunction(elem, mc);
+        } else {
+            throw new UnexpectedElementException(elem);
+        }
 
-		final Element usage = ParserHelper.getOptionalElement(elem, "usage");
-		if (usage != null) {
-			retval.setUsage(usage.getTextContent());
-		}
+        final Element usage = ParserHelper.getOptionalElement(elem, "usage");
+        if (usage != null) {
+            retval.setUsage(usage.getTextContent());
+        }
 
-		final Element requiredParameters = ParserHelper.getOptionalElement(
-				elem, "requiredParameters");
-		if (requiredParameters != null) {
-			for (Element child : ParserHelper.getChildren(requiredParameters)) {
-				AttributeHelper ah = new AttributeHelper(child);
-				retval.addRequiredParameter(ah.getRequiredString("name"));
-			}
-		}
+        final Element requiredParameters = ParserHelper.getOptionalElement(
+                elem, "requiredParameters");
+        if (requiredParameters != null) {
+            for (Element child : ParserHelper.getChildren(requiredParameters)) {
+                AttributeHelper ah = new AttributeHelper(child);
+                retval.addRequiredParameter(ah.getRequiredString("name"));
+            }
+        }
 
-		final Element optionalParameters = ParserHelper.getOptionalElement(
-				elem, "optionalParameters");
-		if (optionalParameters != null) {
-			for (Element child : ParserHelper.getChildren(optionalParameters)) {
-				AttributeHelper ah = new AttributeHelper(child);
-				retval.addOptionalParameter(ah.getRequiredString("name"));
-			}
-		}
+        final Element optionalParameters = ParserHelper.getOptionalElement(
+                elem, "optionalParameters");
+        if (optionalParameters != null) {
+            for (Element child : ParserHelper.getChildren(optionalParameters)) {
+                AttributeHelper ah = new AttributeHelper(child);
+                retval.addOptionalParameter(ah.getRequiredString("name"));
+            }
+        }
 
-		final Element produces = ParserHelper.getOptionalElement(elem,
-				"produces");
-		if (produces != null) {
-			for (Element child : ParserHelper.getChildren(produces)) {
-				AttributeHelper ah = new AttributeHelper(child);
-				retval.addProduction(ah.getRequiredString("name"));
-			}
-		}
+        final Element produces = ParserHelper.getOptionalElement(elem,
+                "produces");
+        if (produces != null) {
+            for (Element child : ParserHelper.getChildren(produces)) {
+                AttributeHelper ah = new AttributeHelper(child);
+                retval.addProduction(ah.getRequiredString("name"));
+            }
+        }
 
-		return retval;
-	}
+        return retval;
+    }
 
-	private final Command processCommand(Element elem, MessageCollector mc)
-			throws ParsingException {
-		try {
-			AttributeHelper ah = new AttributeHelper(elem);
-			final String commandName = ah.getRequiredString("name");
-			final String commandClass = ah.getRequiredString("class");
+    private final Command processCommand(Element elem, MessageCollector mc)
+            throws ParsingException {
+        try {
+            AttributeHelper ah = new AttributeHelper(elem);
+            final String commandName = ah.getRequiredString("name");
+            final String commandClass = ah.getRequiredString("class");
 
-			Class<?> targetClass = automationClassLoader
-					.loadClass(commandClass);
-			if (Command.class.isAssignableFrom(targetClass)) {
-				Constructor<?> constructor = targetClass
-						.getConstructor(String.class);
-				return (Command) constructor.newInstance(commandName);
-			} else {
-				throw new IllegalArgumentException(
-						"All Commands must extend Command");
-			}
-		} catch (Exception e) {
-			throw new ParsingException(e);
-		}
-	}
+            Class<?> targetClass = automationClassLoader
+                    .loadClass(commandClass);
+            if (Command.class.isAssignableFrom(targetClass)) {
+                Constructor<?> constructor = targetClass
+                        .getConstructor(String.class);
+                return (Command) constructor.newInstance(commandName);
+            } else {
+                throw new IllegalArgumentException(
+                        "All Commands must extend Command");
+            }
+        } catch (Exception e) {
+            throw new ParsingException(e);
+        }
+    }
 
-	private final Function processFunction(Element elem, MessageCollector mc)
-			throws ParsingException {
-		try {
+    private final Function processFunction(Element elem, MessageCollector mc)
+            throws ParsingException {
+        try {
 
-			AttributeHelper ah = new AttributeHelper(elem);
-			Function retval = new Function(ah.getRequiredString("name")
-					.toLowerCase());
+            AttributeHelper ah = new AttributeHelper(elem);
+            Function retval = new Function(ah.getRequiredString("name")
+                    .toLowerCase());
 
-			retval.setBody(stmtParser.processStatementList(
-					ParserHelper.getRequireElement(elem, "body"), mc));
-			return retval;
-		} catch (Exception e) {
-			throw new ParsingException(e);
-		}
-	}
+            retval.setBody(stmtParser.processStatementList(
+                    ParserHelper.getRequireElement(elem, "body"), mc));
+            return retval;
+        } catch (Exception e) {
+            throw new ParsingException(e);
+        }
+    }
 
 }

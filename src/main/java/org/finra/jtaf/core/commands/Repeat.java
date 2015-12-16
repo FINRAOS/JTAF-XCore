@@ -27,7 +27,6 @@ import org.finra.jtaf.core.model.statement.Invocation;
 /**
  * This command surrounds a block of commands to be repeatedly executed based on
  * the value of the iterations parameter.
- * 
  */
 public class Repeat extends Command {
 
@@ -36,7 +35,7 @@ public class Repeat extends Command {
      * interpreter.The recordResult variable is set to false because details
      * about the Repeat step aren't needed, unlike the commands within the
      * Repeat block.
-     * 
+     *
      * @param name - name of the command
      * @throws NameFormatException
      */
@@ -49,11 +48,9 @@ public class Repeat extends Command {
     /**
      * This simply loops through and executes all commands within the Repeat
      * block. This is repeated for the specified iterations.
-     * 
+     *
      * @param ctx - The current context when this method is executed.
-     * 
-     * @throws Throwable
-     *             - Any exception thrown by a command within the Repeat block.
+     * @throws Throwable - Any exception thrown by a command within the Repeat block.
      */
     @SuppressWarnings("unchecked")
     @Override

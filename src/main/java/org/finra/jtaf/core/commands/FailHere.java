@@ -24,16 +24,14 @@ import org.finra.jtaf.core.model.invocationtarget.Command;
 /**
  * This command is used to force a failure. This is mainly used for testing
  * other commands to make sure that they work correctly.
- * 
  */
 public class FailHere extends Command {
 
     /**
      * This called when instantiating the command before it is executed by the
      * interpreter
-     * 
-     * @param name
-     *            - The name of the command
+     *
+     * @param name - The name of the command
      * @throws NameFormatException
      */
     public FailHere(String name) throws NameFormatException {
@@ -43,11 +41,9 @@ public class FailHere extends Command {
 
     /**
      * This method throws an AssertionFailedException to force a failure.
-     * 
-     * @param ctx
-     *            - The current context when this method is executed.
-     * @throws Throwable
-     *             - The AssertionFailedException
+     *
+     * @param ctx - The current context when this method is executed.
+     * @throws Throwable - The AssertionFailedException
      */
     @Override
     protected void execute(IInvocationContext ctx) throws Throwable {

@@ -27,7 +27,6 @@ import org.finra.jtaf.core.model.test.TestStepsDetails;
 
 /**
  * Implements basic methods, but leaves execution phase abstract
- * 
  */
 public abstract class Command extends InvocationTarget {
     private static Logger logger = Logger.getLogger(Command.class.getPackage().getName());
@@ -48,7 +47,7 @@ public abstract class Command extends InvocationTarget {
      * Internal method: Used to share the current Context between methods
      * without having to pass it explicitly. The current Context is set
      * automatically when launch() is called.
-     * 
+     *
      * @return the context of this method
      */
     protected final IInvocationContext getContext() {
@@ -58,11 +57,9 @@ public abstract class Command extends InvocationTarget {
     /**
      * Sets up the context before executing the actual command. Also handles the
      * updating of the TestStepDetails to record information on step execution.
-     * 
-     * @param ctx
-     *            - the current context when the command is being executed
-     * @param interpreter
-     *            - the interpreter that is executing the command
+     *
+     * @param ctx         - the current context when the command is being executed
+     * @param interpreter - the interpreter that is executing the command
      * @throws Throwable
      */
     public final void launch(IInvocationContext ctx, Interpreter interpreter) throws Throwable {
@@ -111,11 +108,11 @@ public abstract class Command extends InvocationTarget {
             throw th;
 
         } finally {
-        	
-            try{
-            	this.deinitialize(this.getContext());
-            }catch(Throwable th){
-            	logger.error("Error in Command deinitialization", th);
+
+            try {
+                this.deinitialize(this.getContext());
+            } catch (Throwable th) {
+                logger.error("Error in Command deinitialization", th);
             }
 
         }
@@ -123,7 +120,7 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Optional method to initialize a command before execution
-     * 
+     *
      * @param ctx
      */
     protected void initialize(IInvocationContext ctx) throws Throwable {
@@ -132,7 +129,7 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * This method should be overridden by every Command object.
-     * 
+     *
      * @param ctx
      * @throws Exception
      */
@@ -140,7 +137,7 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Optional method to deinitialize a command after execution.
-     * 
+     *
      * @param ctx
      */
     protected void deinitialize(IInvocationContext ctx) throws Throwable {
@@ -149,7 +146,7 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Grabs an Object from the Context.
-     * 
+     *
      * @param key
      * @return
      */
@@ -178,6 +175,7 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Processing the paramters for RandomGenerator before execution.
+     *
      * @param params the paramters of the RandomGenerator instance.
      * @return the randomly generated string.
      */
@@ -233,9 +231,8 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Replace a key of an object in the context.
-     * 
-     * @param result
-     *            - the new key to be used to replace
+     *
+     * @param result - the new key to be used to replace
      * @return
      */
     // TODO: add $ escape
@@ -246,9 +243,8 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Get an object that was stored in the context as an required parameter.
-     * 
-     * @param key
-     *            - key of object in context
+     *
+     * @param key - key of object in context
      * @return the object value
      */
     protected Object getRequiredObject(String key) {
@@ -262,9 +258,8 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Get an integer that was stored in the context as an required parameter.
-     * 
-     * @param attributeName
-     *            - key of object in context
+     *
+     * @param attributeName - key of object in context
      * @return the integer value
      */
     protected final int getRequiredInteger(String attributeName) {
@@ -278,12 +273,10 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Get an integer stored in the context or return a default value.
-     * 
-     * @param attributeName
-     *            - key of object in context
-     * @param defaultValue
-     *            - the default value if the attributeName has no associated
-     *            value in the context.
+     *
+     * @param attributeName - key of object in context
+     * @param defaultValue  - the default value if the attributeName has no associated
+     *                      value in the context.
      * @return the default value or the value from the context.
      */
     protected final int getIntegerOrDefault(String attributeName, int defaultValue) {
@@ -296,9 +289,8 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Get a float that was stored in the context as an required parameter.
-     * 
-     * @param attributeName
-     *            - key of object in context
+     *
+     * @param attributeName - key of object in context
      * @return the float value
      */
     protected final float getRequiredFloat(String attributeName) {
@@ -312,12 +304,10 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Get a float stored in the context or return a default value.
-     * 
-     * @param attributeName
-     *            - key of object in context
-     * @param defaultValue
-     *            - the default value if the attributeName has no associated
-     *            value in the context.
+     *
+     * @param attributeName - key of object in context
+     * @param defaultValue  - the default value if the attributeName has no associated
+     *                      value in the context.
      * @return the default value or the value from the context.
      */
     protected final float getFloatOrDefault(String attributeName, float defaultValue) {
@@ -330,9 +320,8 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Get a string that was stored in the context as an required parameter.
-     * 
-     * @param attributeName
-     *            - key of object in context
+     *
+     * @param attributeName - key of object in context
      * @return the string value
      */
     protected final String getRequiredString(String attributeName) {
@@ -347,12 +336,10 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Get a string stored in the context or return a default value.
-     * 
-     * @param attributeName
-     *            - key of object in context
-     * @param defaultValue
-     *            - the default value if the attributeName has no associated
-     *            value in the context.
+     *
+     * @param attributeName - key of object in context
+     * @param defaultValue  - the default value if the attributeName has no associated
+     *                      value in the context.
      * @return the default value or the value from the context.
      */
     protected final String getStringOrDefault(String attributeName, String defaultValue) {
@@ -365,9 +352,8 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Get a string that was stored in the context as an optional parameter.
-     * 
-     * @param attributeName
-     *            - key of object in context
+     *
+     * @param attributeName - key of object in context
      * @return the string value
      */
     protected final String getOptionalString(String attributeName) {
@@ -376,9 +362,8 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Get a boolean that was stored in the context as a required parameter.
-     * 
-     * @param attributeName
-     *            - key of object in context
+     *
+     * @param attributeName - key of object in context
      * @return the boolean value
      */
     protected final boolean getRequiredBoolean(String attributeName) {
@@ -401,12 +386,10 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Get a boolean stored in the context or return a default value.
-     * 
-     * @param attributeName
-     *            - key of object in context
-     * @param defaultValue
-     *            - the default value if the attributeName has no associated
-     *            value in the context.
+     *
+     * @param attributeName - key of object in context
+     * @param defaultValue  - the default value if the attributeName has no associated
+     *                      value in the context.
      * @return the default value or the value from the context.
      */
     protected final boolean getBooleanOrDefault(String attributeName, boolean defaultValue) {
@@ -430,9 +413,8 @@ public abstract class Command extends InvocationTarget {
      * This is used by the interpreter so that the visitCommand method is
      * called, allowing the interpreter to not have to know what kind of
      * InvocationTarget it is executing.
-     * 
-     * @param v
-     *            - the interpreter executing this command
+     *
+     * @param v - the interpreter executing this command
      */
     public final void acceptInvocationTargetVisitor(Interpreter v) throws Throwable {
         v.visitCommand(this);
@@ -441,7 +423,7 @@ public abstract class Command extends InvocationTarget {
     /**
      * Used to check whether or not this command needs to have its details
      * recorded in testStepDetails.
-     * 
+     *
      * @return
      */
     protected boolean recordResult() {
@@ -450,9 +432,8 @@ public abstract class Command extends InvocationTarget {
 
     /**
      * Used by other commands to execute invocations in their bodies.
-     * 
-     * @param child
-     *            - the command in the block
+     *
+     * @param child - the command in the block
      * @throws Throwable
      */
     protected void executeInvocation(Invocation child) throws Throwable {

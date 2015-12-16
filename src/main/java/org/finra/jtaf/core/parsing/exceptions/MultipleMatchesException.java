@@ -23,25 +23,25 @@ package org.finra.jtaf.core.parsing.exceptions;
  */
 public class MultipleMatchesException extends ParsingException {
 
-	/**
-	 * AUTO-GENERATED
-	 */
-	private static final long serialVersionUID = 51467102839218606L;
+    /**
+     * AUTO-GENERATED
+     */
+    private static final long serialVersionUID = 51467102839218606L;
 
-	private final String xpath;
+    private final String xpath;
 
-	/**
-	 * @param xpath The XPath that is giving multiple matches
-	 */
-	public MultipleMatchesException(String xpath) {
-		super("The XPath query \"" + xpath + "\" matched multiple nodes (only one match was expected)");
-		this.xpath = xpath;
-	}
-	
-	/**
-	 * @param xpath The XPath that is giving multiple matches
-	 */
-	public final String getXPath() {
-		return this.xpath;
-	}
+    /**
+     * @param xpath The XPath that is giving multiple matches
+     */
+    public MultipleMatchesException(String xpath) {
+        super("The XPath query \"" + xpath + "\" matched multiple nodes (only one match was expected)");
+        this.xpath = xpath;
+    }
+
+    /**
+     * @param xpath The XPath that is giving multiple matches
+     */
+    public final String getXPath() {
+        return this.xpath;
+    }
 }

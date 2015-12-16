@@ -20,18 +20,17 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
 
 /**
  * Removes an object from context by replacing it with null
- *
  */
 public class RemoveObjectFromContextCmd extends AbstractContextCmd {
-	public static final String VALUE_ATTRIBUTE = "object";
+    public static final String VALUE_ATTRIBUTE = "object";
 
-	public RemoveObjectFromContextCmd(String name) throws NameFormatException {
-		super(name);
-	}
+    public RemoveObjectFromContextCmd(String name) throws NameFormatException {
+        super(name);
+    }
 
-	@Override
-	protected void execute() throws Throwable {
-		mch.setValueOut(getRequiredString(VALUE_ATTRIBUTE), (Object) null);
-	}
+    @Override
+    protected void execute() throws Throwable {
+        mch.setValueOut(getRequiredString(VALUE_ATTRIBUTE), (Object) null);
+    }
 
 }

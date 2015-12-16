@@ -19,24 +19,21 @@ package org.finra.jtaf.core.model.invocationtarget;
 /**
  * This is used when an InvocationTarget's acceptInvocationTargetVisitor method
  * is called by the interpreter.
- * 
  */
 public interface IInvocationTargetVisitor {
 
     /**
      * Operates on the Function object
-     * 
-     * @param c
-     *            - The function to be executed
+     *
+     * @param c - The function to be executed
      * @throws Throwable
      */
     void visitFunction(Function c) throws Throwable;
 
     /**
      * Operates on a Command object
-     * 
-     * @param abstractCommand
-     *            - The command to be executed
+     *
+     * @param abstractCommand - The command to be executed
      * @throws Throwable
      */
     void visitCommand(Command abstractCommand) throws Throwable;

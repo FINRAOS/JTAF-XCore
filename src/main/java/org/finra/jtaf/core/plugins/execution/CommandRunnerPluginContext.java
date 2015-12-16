@@ -24,27 +24,27 @@ import org.finra.jtaf.core.model.test.TestStepsDetails;
  */
 public class CommandRunnerPluginContext {
 
-	private TestStepsDetails testStepsDetails;
-	private IInvocationContext context;
+    private TestStepsDetails testStepsDetails;
+    private IInvocationContext context;
 
-	public CommandRunnerPluginContext(TestStepsDetails ts, IInvocationContext ctx){
-		this.context=ctx;
-		this.testStepsDetails=ts;
-	}
-	
-	/***
-	 * @return IInovocationContext - holds a map of values over the life of a Test Script
-	 */
-	public IInvocationContext getIInvocationContext() {
-		return context;
-	}
+    public CommandRunnerPluginContext(TestStepsDetails ts, IInvocationContext ctx) {
+        this.context = ctx;
+        this.testStepsDetails = ts;
+    }
 
-	/***
-	 * @return TestStepsDetails - contains some metadata concerning the command
-	 */
-	public TestStepsDetails getTestStepsDetails() {
-		return testStepsDetails;
-	}
+    /***
+     * @return IInovocationContext - holds a map of values over the life of a Test Script
+     */
+    public IInvocationContext getIInvocationContext() {
+        return context;
+    }
 
-	
+    /***
+     * @return TestStepsDetails - contains some metadata concerning the command
+     */
+    public TestStepsDetails getTestStepsDetails() {
+        return testStepsDetails;
+    }
+
+
 }

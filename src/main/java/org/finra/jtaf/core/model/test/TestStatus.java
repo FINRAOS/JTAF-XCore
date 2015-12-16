@@ -18,10 +18,9 @@ package org.finra.jtaf.core.model.test;
 
 /**
  * Enum to maintain status of the current test
- *
  */
 public enum TestStatus {
-	Running, // Test failed, but we still need to run plugins
+    Running, // Test failed, but we still need to run plugins
     Failed, // Test passed, but we still need to run plugins
     Passed
 }

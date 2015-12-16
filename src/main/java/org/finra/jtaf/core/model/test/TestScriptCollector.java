@@ -22,40 +22,40 @@ import java.util.List;
 
 /**
  * Crawls the TestComponent model to discover TestScript elements
- *
  */
 public class TestScriptCollector implements ITestVisitor {
 
-	private final List<TestScript> testScripts;
-	
-	public TestScriptCollector() {
-		testScripts = new ArrayList<TestScript>();
-	}
-	
-	/**
-	 * @return A copy of the list of testScripts
-	 */
-	public final List<TestScript> getTestScripts() {
-		return new ArrayList<TestScript>(testScripts);
-	}
-	
-	public final void addToTestScripts(TestScript c){
-		this.testScripts.add(c);
-	}
-	public void visitTestNamespace(TestNamespace ns) throws Exception {
-		for(TestComponent c : ns) {
-			c.acceptTestVisitor(this);
-		}
-	}
+    private final List<TestScript> testScripts;
 
-	public void visitTestScript(TestScript test) throws Exception {
-		this.testScripts.add(test);
-	}
+    public TestScriptCollector() {
+        testScripts = new ArrayList<TestScript>();
+    }
 
-	@Override
-	public void visitTestSuite(TestSuite testSuite) throws Exception {
-		for(TestComponent c : testSuite) {
-			c.acceptTestVisitor(this);
-		}
-	}
+    /**
+     * @return A copy of the list of testScripts
+     */
+    public final List<TestScript> getTestScripts() {
+        return new ArrayList<TestScript>(testScripts);
+    }
+
+    public final void addToTestScripts(TestScript c) {
+        this.testScripts.add(c);
+    }
+
+    public void visitTestNamespace(TestNamespace ns) throws Exception {
+        for (TestComponent c : ns) {
+            c.acceptTestVisitor(this);
+        }
+    }
+
+    public void visitTestScript(TestScript test) throws Exception {
+        this.testScripts.add(test);
+    }
+
+    @Override
+    public void visitTestSuite(TestSuite testSuite) throws Exception {
+        for (TestComponent c : testSuite) {
+            c.acceptTestVisitor(this);
+        }
+    }
 }

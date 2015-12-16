@@ -22,16 +22,19 @@ package org.finra.jtaf.core.plugins.execution;
  */
 public interface ICommandRunnerPlugin {
 
-	/**
-	 * Called before every command is run
-	 * @param ctx
-	 * @throws RunnerPluginException
-	 */
-	void handleCommandBefore(CommandRunnerPluginContext ctx) throws RunnerPluginException;
-	/**
-	 * Called after every command is finished running
-	 * @param ctx
-	 * @throws RunnerPluginException
-	 */
-	void handleCommandAfter(CommandRunnerPluginContext ctx) throws RunnerPluginException;
+    /**
+     * Called before every command is run
+     *
+     * @param ctx
+     * @throws RunnerPluginException
+     */
+    void handleCommandBefore(CommandRunnerPluginContext ctx) throws RunnerPluginException;
+
+    /**
+     * Called after every command is finished running
+     *
+     * @param ctx
+     * @throws RunnerPluginException
+     */
+    void handleCommandAfter(CommandRunnerPluginContext ctx) throws RunnerPluginException;
 }

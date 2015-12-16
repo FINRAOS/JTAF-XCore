@@ -25,57 +25,56 @@ import org.finra.jtaf.core.model.test.TestScript;
 
 /**
  * InvocationTargets can access objects currently inside the context. They are not allowed to push or pop frames.
- * 
  */
 public interface IInvocationContext {
 
-	/**
-	 * Returns an Object associated w/ the given name, or null if no such Object
-	 * is available in the current Context
-	 * 
-	 * @param name
-	 * @return
-	 * @throws UndefinedParameterError
-	 */
-	Object getObject(String name) throws UndefinedParameterError;
+    /**
+     * Returns an Object associated w/ the given name, or null if no such Object
+     * is available in the current Context
+     *
+     * @param name
+     * @return
+     * @throws UndefinedParameterError
+     */
+    Object getObject(String name) throws UndefinedParameterError;
 
-	/**
-	 * Returns map<name, value> of all objects in the current Context
-	 * 
-	 * @return
-	 */
-	Map<String, Object> getAllObjects();
+    /**
+     * Returns map<name, value> of all objects in the current Context
+     *
+     * @return
+     */
+    Map<String, Object> getAllObjects();
 
-	/**
-	 * Inserts the specified Object into the current Context.
-	 * 
-	 * @param name
-	 * @param value
-	 */
-	void putObject(String name, Object value) throws UndefinedProductionError;
+    /**
+     * Inserts the specified Object into the current Context.
+     *
+     * @param name
+     * @param value
+     */
+    void putObject(String name, Object value) throws UndefinedProductionError;
 
-	/**
-	 * TODO: This should probably throw some type of exception if the name is
-	 * not specified in the script contract
-	 * 
-	 * @param name
-	 * @return True if the given name is associated w/ an Object; False
-	 *         otherwise
-	 */
-	boolean contains(String name);
+    /**
+     * TODO: This should probably throw some type of exception if the name is
+     * not specified in the script contract
+     *
+     * @param name
+     * @return True if the given name is associated w/ an Object; False
+     * otherwise
+     */
+    boolean contains(String name);
 
-	/**
-	 * Removes the object w/ the given name TODO: This should probably throw
-	 * some kind of exception if the name is not specified in the script
-	 * contract
-	 * 
-	 * @param name
-	 */
-	void removeObject(String name);
+    /**
+     * Removes the object w/ the given name TODO: This should probably throw
+     * some kind of exception if the name is not specified in the script
+     * contract
+     *
+     * @param name
+     */
+    void removeObject(String name);
 
-	/**
-	 * @return The TestScript that is being executed.
-	 */
-	TestScript getTestScript();
+    /**
+     * @return The TestScript that is being executed.
+     */
+    TestScript getTestScript();
 
 }

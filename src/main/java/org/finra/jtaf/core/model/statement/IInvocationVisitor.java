@@ -21,11 +21,12 @@ package org.finra.jtaf.core.model.statement;
  */
 public interface IInvocationVisitor {
 
-	/**
-	 * Visit Invocation
-	 * @param Invocation - represent calls to Commands, Functions, etc
-	 * @throws Throwable
-	 */
-	void visitInvocation(Invocation invocation) throws Throwable;
+    /**
+     * Visit Invocation
+     *
+     * @param Invocation - represent calls to Commands, Functions, etc
+     * @throws Throwable
+     */
+    void visitInvocation(Invocation invocation) throws Throwable;
 
 }

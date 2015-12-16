@@ -20,26 +20,25 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
 
 /**
  * Stores a default value into context unless the object already exists in context
- *
  */
 public class StoreDefaultObjectCmd extends AbstractContextCmd {
-	public static final String DEFAULT_ATTRIBUTE = "defaultKey";
-    public static final String DEFAULT= "default";
-	public static final String VALUE_OUT_ATTRIBUTE = "contextKey";
+    public static final String DEFAULT_ATTRIBUTE = "defaultKey";
+    public static final String DEFAULT = "default";
+    public static final String VALUE_OUT_ATTRIBUTE = "contextKey";
 
-	public StoreDefaultObjectCmd(String name) throws NameFormatException {
-		super(name);
-	}
+    public StoreDefaultObjectCmd(String name) throws NameFormatException {
+        super(name);
+    }
 
-	@Override
-	protected void execute() {
-		String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
-		Object valueOut = getOptionalObject(valueOutAttribute);
-		if(valueOut == null) {
-			String defaultAttribute = getStringOrDefault(DEFAULT_ATTRIBUTE, DEFAULT);
-			valueOut = getRequiredObject(defaultAttribute);
-		}
-		mch.setValueOut(valueOutAttribute, valueOut);
-	}
+    @Override
+    protected void execute() {
+        String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
+        Object valueOut = getOptionalObject(valueOutAttribute);
+        if (valueOut == null) {
+            String defaultAttribute = getStringOrDefault(DEFAULT_ATTRIBUTE, DEFAULT);
+            valueOut = getRequiredObject(defaultAttribute);
+        }
+        mch.setValueOut(valueOutAttribute, valueOut);
+    }
 
 }

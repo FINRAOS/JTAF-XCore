@@ -18,25 +18,23 @@ import org.w3c.dom.NodeList;
 public class ConcurrentSchedulerTest {
 
 
-
     @Test
     public void testCheckTestsStatus() throws Exception {
- 
-        if ( AutomationEngine.getInstance().getTestAgenda() == null) {
+
+        if (AutomationEngine.getInstance().getTestAgenda() == null) {
             AutomationEngine.getInstance().buildModel(new File("testlibrary"), new File("testscripts"));
-          //  TraceabilityMatrix.produceTraceabilityMatrix(testAgenda);
+            //  TraceabilityMatrix.produceTraceabilityMatrix(testAgenda);
         }
-        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestB","FAILED");
+        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestB", "FAILED");
         AutomationEngine.getInstance().getTestAgenda().setThreadCount("-1");
         ConcurrentScheduler scheduler = new ConcurrentScheduler();
-        
+
         //scheduler.registerTestName("Test");
         scheduler.finished();
-        
-        
-        
-        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestB","READY");
-        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestA","FAILED");
+
+
+        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestB", "READY");
+        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestA", "FAILED");
 
         scheduler.finished();
 
@@ -52,7 +50,7 @@ public class ConcurrentSchedulerTest {
             Node suiteNodeChildNode = suiteNodeChildNodes.item(suiteNodeChildIndex);
             if (suiteNodeChildNode.getNodeName().equalsIgnoreCase("test")
                     && suiteNodeChildNode.getAttributes().getNamedItem("name").getTextContent()
-                            .equals(testOfInterestName)) {
+                    .equals(testOfInterestName)) {
                 testRoot = suiteNodeChildNode;
                 break;
             }

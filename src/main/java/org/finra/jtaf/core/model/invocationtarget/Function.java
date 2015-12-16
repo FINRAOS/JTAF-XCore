@@ -31,9 +31,8 @@ public final class Function extends InvocationTarget {
     /**
      * This called when instantiating the function before it is executed by the
      * interpreter.
-     * 
-     * @param name
-     *            - name of the function
+     *
+     * @param name - name of the function
      * @throws NameFormatException
      */
     public Function(String name) throws NameFormatException {
@@ -43,7 +42,7 @@ public final class Function extends InvocationTarget {
 
     /**
      * Get the invocations that make up this function.
-     * 
+     *
      * @return The InvocationList associated with this function
      */
     public final InvocationList getBody() {
@@ -52,9 +51,8 @@ public final class Function extends InvocationTarget {
 
     /**
      * Set the body of this function.
-     * 
-     * @param invocations
-     *            - the invocation list that will be used as the function body.
+     *
+     * @param invocations - the invocation list that will be used as the function body.
      */
     public final void setBody(InvocationList invocations) {
         this.invocations = invocations;

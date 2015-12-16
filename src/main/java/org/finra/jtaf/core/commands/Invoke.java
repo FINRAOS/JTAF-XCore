@@ -28,7 +28,6 @@ import org.finra.jtaf.core.model.statement.Invocation;
 /**
  * This class allows functions to invoke blocks of code. It gives some degree of
  * functional programming within a test script.
- * 
  */
 public class Invoke extends Command {
 
@@ -37,9 +36,8 @@ public class Invoke extends Command {
      * interpreter.The recordResult variable is set to false because details
      * about the Invoke step aren't needed, unlike the commands within the
      * Invoke block.
-     * 
-     * @param name
-     *            - name of the command
+     *
+     * @param name - name of the command
      * @throws NameFormatException
      */
     public Invoke(String name) throws NameFormatException {
@@ -51,12 +49,9 @@ public class Invoke extends Command {
     /**
      * This goes through all commands in the context and executes the block that
      * has the same name.
-     * 
-     * @param ctx
-     *            - The current context when this method is executed.
-     * 
-     * @throws Throwable
-     *             - Any exception thrown by a command within the Repeat block.
+     *
+     * @param ctx - The current context when this method is executed.
+     * @throws Throwable - Any exception thrown by a command within the Repeat block.
      */
     @SuppressWarnings("unchecked")
     @Override

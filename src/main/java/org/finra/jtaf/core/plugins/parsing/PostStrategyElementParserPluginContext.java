@@ -21,36 +21,32 @@ import org.w3c.dom.Element;
 
 /***
  * Exposes the data that can be used and/or modified by a IPostParseStrategyElementPlugin.
- *
  */
-public class PostStrategyElementParserPluginContext
-{
-	private TestAgenda testAgenda;
-	private Element element;
-	
-	public PostStrategyElementParserPluginContext(TestAgenda testAgenda, Element element)
-	{
-		this.testAgenda = testAgenda;
-		this.element = element;
-	}
-	
-	/***
-	 * Returns the Test Agenda associated with the test run, so plugins can read and modify the data
-	 * 
-	 * @return testAgenda
-	 */
-	public TestAgenda getTestAgenda() {
-		return testAgenda;
-	}
-	
-	/***
-	 * Returns the parsed Element object so that the relevant xml data can be used
-	 * in the plugin
-	 *  
-	 * @return element
-	 */
-	public Element getElement()
-	{
-		return element;
-	}
+public class PostStrategyElementParserPluginContext {
+    private TestAgenda testAgenda;
+    private Element element;
+
+    public PostStrategyElementParserPluginContext(TestAgenda testAgenda, Element element) {
+        this.testAgenda = testAgenda;
+        this.element = element;
+    }
+
+    /***
+     * Returns the Test Agenda associated with the test run, so plugins can read and modify the data
+     *
+     * @return testAgenda
+     */
+    public TestAgenda getTestAgenda() {
+        return testAgenda;
+    }
+
+    /***
+     * Returns the parsed Element object so that the relevant xml data can be used
+     * in the plugin
+     *
+     * @return element
+     */
+    public Element getElement() {
+        return element;
+    }
 }

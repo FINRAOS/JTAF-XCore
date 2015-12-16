@@ -33,71 +33,71 @@ import org.finra.jtaf.core.plugins.parsing.IPostParseTestPlugin;
  */
 public class PluginManager {
 
-	private List<IPostParseAllPlugin> postParseAllPlugins;
-	private List<IPostParseSuitePlugin> postParseSuitePlugins;
-	private List<IPostParseTestPlugin> postParseTestPlugins;
-	private List<IPostParseStrategyElementPlugin> postParseStrategyElementPlugins;
-	private List<ITearDownPlugin> tearDownPlugins;
+    private List<IPostParseAllPlugin> postParseAllPlugins;
+    private List<IPostParseSuitePlugin> postParseSuitePlugins;
+    private List<IPostParseTestPlugin> postParseTestPlugins;
+    private List<IPostParseStrategyElementPlugin> postParseStrategyElementPlugins;
+    private List<ITearDownPlugin> tearDownPlugins;
 
-	private List<ITestRunnerPlugin> testRunnerPlugins;
-	private List<ICommandRunnerPlugin> commandRunnerPlugins;
+    private List<ITestRunnerPlugin> testRunnerPlugins;
+    private List<ICommandRunnerPlugin> commandRunnerPlugins;
 
-	public void setPostParseAllPlugins(List<IPostParseAllPlugin> plugins) {
-		postParseAllPlugins = plugins;
-	}
+    public void setPostParseAllPlugins(List<IPostParseAllPlugin> plugins) {
+        postParseAllPlugins = plugins;
+    }
 
-	public List<IPostParseAllPlugin> getPostParseAllPlugins() {
-		return postParseAllPlugins;
-	}
+    public List<IPostParseAllPlugin> getPostParseAllPlugins() {
+        return postParseAllPlugins;
+    }
 
-	public void setPostParseSuitePlugins(
-			List<IPostParseSuitePlugin> customPlugins) {
-		postParseSuitePlugins = customPlugins;
-	}
+    public void setPostParseSuitePlugins(
+            List<IPostParseSuitePlugin> customPlugins) {
+        postParseSuitePlugins = customPlugins;
+    }
 
-	public List<IPostParseSuitePlugin> getPostParseSuitePlugins() {
-		return postParseSuitePlugins;
-	}
+    public List<IPostParseSuitePlugin> getPostParseSuitePlugins() {
+        return postParseSuitePlugins;
+    }
 
-	public void setPostParseTestPlugins(List<IPostParseTestPlugin> plugins) {
-		postParseTestPlugins = plugins;
-	}
+    public void setPostParseTestPlugins(List<IPostParseTestPlugin> plugins) {
+        postParseTestPlugins = plugins;
+    }
 
-	public List<IPostParseTestPlugin> getPostParseTestPlugins() {
-		return postParseTestPlugins;
-	}
+    public List<IPostParseTestPlugin> getPostParseTestPlugins() {
+        return postParseTestPlugins;
+    }
 
-	public void setPostParseStrategyElementPlugins(
-			List<IPostParseStrategyElementPlugin> plugins) {
-		postParseStrategyElementPlugins = plugins;
-	}
+    public void setPostParseStrategyElementPlugins(
+            List<IPostParseStrategyElementPlugin> plugins) {
+        postParseStrategyElementPlugins = plugins;
+    }
 
-	public List<IPostParseStrategyElementPlugin> getPostParseStrategyElementPlugins() {
-		return postParseStrategyElementPlugins;
-	}
+    public List<IPostParseStrategyElementPlugin> getPostParseStrategyElementPlugins() {
+        return postParseStrategyElementPlugins;
+    }
 
-	public void setTestRunnerPlugins(List<ITestRunnerPlugin> customPlugins) {
-		this.testRunnerPlugins = customPlugins;
-	}
+    public void setTestRunnerPlugins(List<ITestRunnerPlugin> customPlugins) {
+        this.testRunnerPlugins = customPlugins;
+    }
 
-	public List<ITestRunnerPlugin> getTestRunnerPlugins() {
-		return testRunnerPlugins;
-	}
+    public List<ITestRunnerPlugin> getTestRunnerPlugins() {
+        return testRunnerPlugins;
+    }
 
-	public void setCommandRunnerPlugins(List<ICommandRunnerPlugin> customPlugins) {
-		this.commandRunnerPlugins = customPlugins;
-	}
+    public void setCommandRunnerPlugins(List<ICommandRunnerPlugin> customPlugins) {
+        this.commandRunnerPlugins = customPlugins;
+    }
 
-	public List<ICommandRunnerPlugin> getCommandRunnerPlugins() {
-		return commandRunnerPlugins;
-	}
- 	
-	public void setTearDownPlugins(List<ITearDownPlugin> tearDownPlugins) {
-		this.tearDownPlugins = tearDownPlugins;
-	}
-	
-	public List<ITearDownPlugin> getTearDownPlugins() {
-		return tearDownPlugins;
-	}
+    public List<ICommandRunnerPlugin> getCommandRunnerPlugins() {
+        return commandRunnerPlugins;
+    }
+
+    public void setTearDownPlugins(List<ITearDownPlugin> tearDownPlugins) {
+        this.tearDownPlugins = tearDownPlugins;
+    }
+
+    public List<ITearDownPlugin> getTearDownPlugins() {
+        return tearDownPlugins;
+    }
 
 }

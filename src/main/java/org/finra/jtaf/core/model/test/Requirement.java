@@ -20,19 +20,22 @@ package org.finra.jtaf.core.model.test;
  * Represents the requirement the test is addressing.
  */
 public class Requirement {
-	String type;
-	String value;
+    String type;
+    String value;
 
-	public String getType() {
-		return type;
-	}
-	public void setType(String key) {
-		this.type = key;
-	}
-	public String getValue() {
-		return value;
-	}
-	public void setValue(String value) {
-		this.value = value;
-	}
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String key) {
+        this.type = key;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }

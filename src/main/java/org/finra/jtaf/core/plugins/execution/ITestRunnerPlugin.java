@@ -21,19 +21,21 @@ package org.finra.jtaf.core.plugins.execution;
  * This is the interface to be used for Test Execution plugins
  */
 public interface ITestRunnerPlugin {
-	
-	/**
-	 * Called before every test starts
-	 * @param ctx
-	 * @throws RunnerPluginException
-	 */
-	void handleTestStart(TestRunnerPluginContext ctx) throws RunnerPluginException;
-	
-	/**
-	 * Called after every test finishes
-	 * @param ctx
-	 * @throws RunnerPluginException
-	 */
-	void handleTestFinish(TestRunnerPluginContext ctx) throws RunnerPluginException;
-	
+
+    /**
+     * Called before every test starts
+     *
+     * @param ctx
+     * @throws RunnerPluginException
+     */
+    void handleTestStart(TestRunnerPluginContext ctx) throws RunnerPluginException;
+
+    /**
+     * Called after every test finishes
+     *
+     * @param ctx
+     * @throws RunnerPluginException
+     */
+    void handleTestFinish(TestRunnerPluginContext ctx) throws RunnerPluginException;
+
 }

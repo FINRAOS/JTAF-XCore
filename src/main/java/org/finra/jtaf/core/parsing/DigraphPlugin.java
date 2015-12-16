@@ -34,38 +34,34 @@ import org.finra.jtaf.core.utilities.logging.MessageCollector;
 /**
  * Parser plugin that runs post all. Scans through the test scripts to create a Digraph as per denpencies.
  */
-public class DigraphPlugin implements IPostParseAllPlugin
-{
-	protected TestNamespace testNamespace;
-	
-	@Override
-	public void execute(PostAllParserPluginContext ctx) throws ParserPluginException
-	{
-		TestDigraph testDigraph = AutomationEngine.getInstance().getTestDigraph();
-		TestAgenda testAgenda = ctx.getTestAgenda();
-		testNamespace = AutomationEngine.getInstance().getTestRoot();
-		DigraphFactory graphFactory = new DigraphFactory(testDigraph, new MessageCollector());
-		graphFactory.createGraph(testNamespace);
-		
-		Set<TestScript> dependentTests = new LinkedHashSet<TestScript>();
-		for (TestScript t : testAgenda.getTestScripts())
-			if(testAgenda.containsAutomationValue(t.getAutomationValue()))
-				dependentTests.addAll(addDependentTests(testDigraph, (TestScript) t));
-		
-		for (TestScript t : dependentTests)
-			if(!testAgenda.getTestScripts().contains(t))
-				testAgenda.getTestScripts().add(t);
-	}
-	
-	private Set<TestScript> addDependentTests(TestDigraph testDigraph, TestScript test)
-	{
-		Set<TestScript> additionalScript = new LinkedHashSet<TestScript>();
-		for (DiNode d : testDigraph.getAllDependencies(test.getName()))
-		{
-			d.getTestScript().setAutomationValue(test.getAutomationValue());
-			additionalScript.add(d.getTestScript());
-			additionalScript.addAll(addDependentTests(testDigraph, d.getTestScript()));
-		}
-		return additionalScript;
-	}
+public class DigraphPlugin implements IPostParseAllPlugin {
+    protected TestNamespace testNamespace;
+
+    @Override
+    public void execute(PostAllParserPluginContext ctx) throws ParserPluginException {
+        TestDigraph testDigraph = AutomationEngine.getInstance().getTestDigraph();
+        TestAgenda testAgenda = ctx.getTestAgenda();
+        testNamespace = AutomationEngine.getInstance().getTestRoot();
+        DigraphFactory graphFactory = new DigraphFactory(testDigraph, new MessageCollector());
+        graphFactory.createGraph(testNamespace);
+
+        Set<TestScript> dependentTests = new LinkedHashSet<TestScript>();
+        for (TestScript t : testAgenda.getTestScripts())
+            if (testAgenda.containsAutomationValue(t.getAutomationValue()))
+                dependentTests.addAll(addDependentTests(testDigraph, (TestScript) t));
+
+        for (TestScript t : dependentTests)
+            if (!testAgenda.getTestScripts().contains(t))
+                testAgenda.getTestScripts().add(t);
+    }
+
+    private Set<TestScript> addDependentTests(TestDigraph testDigraph, TestScript test) {
+        Set<TestScript> additionalScript = new LinkedHashSet<TestScript>();
+        for (DiNode d : testDigraph.getAllDependencies(test.getName())) {
+            d.getTestScript().setAutomationValue(test.getAutomationValue());
+            additionalScript.add(d.getTestScript());
+            additionalScript.addAll(addDependentTests(testDigraph, d.getTestScript()));
+        }
+        return additionalScript;
+    }
 }

@@ -334,10 +334,10 @@ public class ManipulateContextHelperTest {
 
         helper.setValueOut("test", "$contextKey(test2)");
         Assert.assertEquals("testString", (String) helper.getOptionalObject("test"));
-        
+
         helper.setValueOut("testStartIndex", "$contextKeyy(startIndex)");
         Assert.assertEquals("startIndexString", (String) helper.getOptionalObject("testStartIndex"));
-        
+
         helper.setValueOut("testEndIndex", "$contextKeyy(endIndex");
         Assert.assertEquals("", (String) helper.getOptionalObject("testEndIndex"));
         RuntimeException exception = null;
@@ -386,7 +386,7 @@ public class ManipulateContextHelperTest {
             Node suiteNodeChildNode = suiteNodeChildNodes.item(suiteNodeChildIndex);
             if (suiteNodeChildNode.getNodeName().equalsIgnoreCase("test")
                     && suiteNodeChildNode.getAttributes().getNamedItem("name").getTextContent()
-                            .equals(testOfInterestName)) {
+                    .equals(testOfInterestName)) {
                 testRoot = suiteNodeChildNode;
                 break;
             }

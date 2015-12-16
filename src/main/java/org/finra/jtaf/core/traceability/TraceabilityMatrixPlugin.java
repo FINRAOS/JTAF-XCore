@@ -21,18 +21,18 @@ import org.finra.jtaf.core.plugins.parsing.IPostParseAllPlugin;
 import org.finra.jtaf.core.plugins.parsing.ParserPluginException;
 import org.finra.jtaf.core.plugins.parsing.PostAllParserPluginContext;
 
-/** Plugin to produce a traceability matrix
- *
+/**
+ * Plugin to produce a traceability matrix
  */
-public class TraceabilityMatrixPlugin implements IPostParseAllPlugin
-{
-	/** Produces a traceability matrix after all parsing has completed
-	 * @param ctx PostAllParserPluginContext
-	 */
-	@Override
-	public void execute(PostAllParserPluginContext ctx) throws ParserPluginException
-	{
-		TestAgenda testAgenda = ctx.getTestAgenda();
-		TraceabilityMatrix.produceTraceabilityMatrix(testAgenda);
-	}
+public class TraceabilityMatrixPlugin implements IPostParseAllPlugin {
+    /**
+     * Produces a traceability matrix after all parsing has completed
+     *
+     * @param ctx PostAllParserPluginContext
+     */
+    @Override
+    public void execute(PostAllParserPluginContext ctx) throws ParserPluginException {
+        TestAgenda testAgenda = ctx.getTestAgenda();
+        TraceabilityMatrix.produceTraceabilityMatrix(testAgenda);
+    }
 }

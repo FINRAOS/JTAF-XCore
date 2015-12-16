@@ -24,35 +24,35 @@ import org.finra.jtaf.core.model.test.TestScript;
  * This is the context visible to Test Runner Plugins
  */
 public class TestRunnerPluginContext {
-	private TestScript testScript;
-	private TestResult testResult;
-	private IInvocationContext invocationContext;
-	
-	public TestRunnerPluginContext(TestScript ts, TestResult tr, IInvocationContext ctx){
-		this.testScript = ts;
-		this.testResult = tr;
-		this.invocationContext = ctx;
-	}
-	
-	/***
-	 * @return TestScript
-	 */
-	public TestScript getTestScript() {
-		return testScript;
-	}
-	
-	/***
-	 * @return TestResult of the Test Script
-	 */
-	public TestResult getTestResult() {
-		return testResult;
-	}
-	
-	/***
-	 * @return IInovocationContext - holds a map of values over the life of the Test Script
-	 */
-	public IInvocationContext getIInvocationContext() {
-		return invocationContext;
-	}
+    private TestScript testScript;
+    private TestResult testResult;
+    private IInvocationContext invocationContext;
+
+    public TestRunnerPluginContext(TestScript ts, TestResult tr, IInvocationContext ctx) {
+        this.testScript = ts;
+        this.testResult = tr;
+        this.invocationContext = ctx;
+    }
+
+    /***
+     * @return TestScript
+     */
+    public TestScript getTestScript() {
+        return testScript;
+    }
+
+    /***
+     * @return TestResult of the Test Script
+     */
+    public TestResult getTestResult() {
+        return testResult;
+    }
+
+    /***
+     * @return IInovocationContext - holds a map of values over the life of the Test Script
+     */
+    public IInvocationContext getIInvocationContext() {
+        return invocationContext;
+    }
 
 }

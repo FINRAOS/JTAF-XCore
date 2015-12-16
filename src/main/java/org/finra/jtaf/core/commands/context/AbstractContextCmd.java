@@ -22,26 +22,25 @@ import org.finra.jtaf.core.model.invocationtarget.Command;
 
 /**
  * Base class for context-manipulating commands
- *
  */
 public abstract class AbstractContextCmd extends Command {
-	protected final ManipulateContextHelper mch = new ManipulateContextHelper(this, Command.getGlobalContext());
-	protected IInvocationContext ctx = null;
+    protected final ManipulateContextHelper mch = new ManipulateContextHelper(this, Command.getGlobalContext());
+    protected IInvocationContext ctx = null;
 
-	public AbstractContextCmd(String name) throws NameFormatException {
-		super(name);
-	}
-	
-	@Override
-	protected final void execute(IInvocationContext ctx) throws Throwable {
-		this.ctx = ctx;
-		execute();
-	}
-	
-	protected abstract void execute() throws Throwable;
-	
-	IInvocationContext ctx() {
-		return this.getContext();
-	}
+    public AbstractContextCmd(String name) throws NameFormatException {
+        super(name);
+    }
+
+    @Override
+    protected final void execute(IInvocationContext ctx) throws Throwable {
+        this.ctx = ctx;
+        execute();
+    }
+
+    protected abstract void execute() throws Throwable;
+
+    IInvocationContext ctx() {
+        return this.getContext();
+    }
 
 }

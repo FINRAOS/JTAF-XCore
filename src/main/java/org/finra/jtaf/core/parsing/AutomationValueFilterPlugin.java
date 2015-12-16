@@ -28,26 +28,22 @@ import org.finra.jtaf.core.plugins.parsing.PostAllParserPluginContext;
 
 /**
  * Core plugin that filters testscripts to run based on the automation value provided in the strategy file
- *
  */
-public class AutomationValueFilterPlugin implements IPostParseAllPlugin
-{
-	@Override
-	public void execute(PostAllParserPluginContext ctx) throws ParserPluginException
-	{
-		TestAgenda testAgenda = ctx.getTestAgenda();
-		if(testAgenda.isAutomationValuesEmpty())
-			return;
-		
-		List<TestScript> testScripts = ctx.getTestAgenda().getTestScripts();
-		List<TestScript> testsToRemove = new ArrayList<TestScript>();
-		for(TestScript testScript : testScripts)
-		{
-			String automationValue = testScript.getAutomationValue();
-			if(!testAgenda.containsAutomationValue(automationValue))
-				testsToRemove.add(testScript);
-		}
-		
-		testScripts.removeAll(testsToRemove);
-	}
+public class AutomationValueFilterPlugin implements IPostParseAllPlugin {
+    @Override
+    public void execute(PostAllParserPluginContext ctx) throws ParserPluginException {
+        TestAgenda testAgenda = ctx.getTestAgenda();
+        if (testAgenda.isAutomationValuesEmpty())
+            return;
+
+        List<TestScript> testScripts = ctx.getTestAgenda().getTestScripts();
+        List<TestScript> testsToRemove = new ArrayList<TestScript>();
+        for (TestScript testScript : testScripts) {
+            String automationValue = testScript.getAutomationValue();
+            if (!testAgenda.containsAutomationValue(automationValue))
+                testsToRemove.add(testScript);
+        }
+
+        testScripts.removeAll(testsToRemove);
+    }
 }

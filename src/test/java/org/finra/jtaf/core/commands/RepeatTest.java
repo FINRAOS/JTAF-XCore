@@ -14,8 +14,8 @@ import org.junit.Test;
 
 public class RepeatTest {
 
-    private static AutomationEngine engine=null;
-    private static TestAgenda testAgenda =null;
+    private static AutomationEngine engine = null;
+    private static TestAgenda testAgenda = null;
     private static boolean setup = false;
     private static TestScript complex = null;
     private static TestScript repeat = null;
@@ -23,17 +23,17 @@ public class RepeatTest {
 
     @Before
     public void setup() {
-        
+
         engine = AutomationEngine.getInstance();
 
         if (engine.getTestAgenda() == null) {
             engine.buildModel(new File("testlibrary"), new File("testscripts"));
             testAgenda = engine.getTestAgenda();
 
-          //  TraceabilityMatrix.produceTraceabilityMatrix(testAgenda);
+            //  TraceabilityMatrix.produceTraceabilityMatrix(testAgenda);
         }
-    
-        
+
+
         if (!setup) {
             testAgenda = engine.getTestAgenda();
 
@@ -50,7 +50,7 @@ public class RepeatTest {
                     repeat = testScript;
                 }
             }
-            
+
         }
         setup = true;
 

@@ -66,7 +66,6 @@ import au.com.bytecode.opencsv.CSVReader;
 /**
  * FIXME This is a "just get the job done" implementation. I plan to replace
  * this class as soon as I get the chance. (I mean... ay ay ay! This is bad!)
- * 
  */
 public class ScriptParser {
 
@@ -77,9 +76,9 @@ public class ScriptParser {
     private Document d;
     private CommandRegistry commandRegistry;
 
-	private List<IPostParseSuitePlugin> postParseSuitePlugins;
-	private List<IPostParseTestPlugin> postParseTestPlugins;
-    
+    private List<IPostParseSuitePlugin> postParseSuitePlugins;
+    private List<IPostParseTestPlugin> postParseTestPlugins;
+
 
     public ScriptParser() throws ParserConfigurationException {
         db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -89,19 +88,20 @@ public class ScriptParser {
     public void setDigraph(TestDigraph digraph) {
         this.digraph = digraph;
     }
-		
-	public void setPostParseSuitePlugins(List<IPostParseSuitePlugin> plugins) {
-		postParseSuitePlugins = plugins;
-	}
-	
-	
-	public void setPostParseTestPlugins(List<IPostParseTestPlugin> plugins) {
-		postParseTestPlugins = plugins;
-	}
-	
+
+    public void setPostParseSuitePlugins(List<IPostParseSuitePlugin> plugins) {
+        postParseSuitePlugins = plugins;
+    }
+
+
+    public void setPostParseTestPlugins(List<IPostParseTestPlugin> plugins) {
+        postParseTestPlugins = plugins;
+    }
+
     public void setCommandRegistry(CommandRegistry commandRegistry) {
         this.commandRegistry = commandRegistry;
     }
+
     public final TestNamespace handleTestSource(File f, MessageCollector mc)
             throws NameFormatException, SAXException, IOException, ParsingException {
         if (!f.exists()) {
@@ -125,11 +125,11 @@ public class ScriptParser {
                         if (ts != null) {
                             testNamespace.add(ts);
                             // run all post suite parse plugins
-                            
+
                             Node suiteRootNode = (Node) (d.getDocumentElement());
                             // TODO: This needs to check for null, otherwise it
                             // crashes
-                     
+
                             if (postParseSuitePlugins != null) {
                                 for (IPostParseSuitePlugin p : postParseSuitePlugins) {
                                     if (suiteContainsTheTag(suiteRootNode, p.getTagName())) {
@@ -169,7 +169,7 @@ public class ScriptParser {
         }
         TestSuite testSuite = null;
         if (f.isFile() && f.getName().endsWith(".xml")) { // This should be a
-                                                          // TestSuite
+            // TestSuite
             mc.push("In test file " + f.getAbsolutePath());
             try {
                 d = db.parse(f);
@@ -248,7 +248,7 @@ public class ScriptParser {
                 logger.debug("Oops! Test suite has no 'name' attribute! ('" + element.toString()
                         + "')");
             }
-            
+
             testSuite.setDependencies(new Dependencies(null, null));
             testSuite.setExclusions(new Dependencies(null, null));
 
@@ -300,7 +300,7 @@ public class ScriptParser {
     }
 
     private List<TestScript> parseTests(List<Element> elementList, MessageCollector mc,
-            String testSuiteName) throws ExceptionAccumulator {
+                                        String testSuiteName) throws ExceptionAccumulator {
         List<TestScript> testScripts = new ArrayList<TestScript>();
         ExceptionAccumulator acc = new ExceptionAccumulator();
         for (Element child : elementList) {
@@ -408,7 +408,7 @@ public class ScriptParser {
     }
 
     private final List<List<String>> getExcelDataFromFile(String testDataFile, String sheetName,
-            MessageCollector mc, boolean isXlsx) {
+                                                          MessageCollector mc, boolean isXlsx) {
         if (testDataFile != null && testDataFile.length() > 0) {
             ExcelFileParser excelFileParser = null;
             try {
@@ -429,9 +429,9 @@ public class ScriptParser {
 
     private final List<List<String>> getCSVDataFromFile(String testDataFile, MessageCollector mc) {
         List<List<String>> result = new ArrayList<List<String>>();
-        CSVReader reader = null ;
+        CSVReader reader = null;
         try {
-             reader = new CSVReader(new FileReader(testDataFile));
+            reader = new CSVReader(new FileReader(testDataFile));
             List<String> nextLine;
 
             while ((nextLine = StringHelper.ArrayToList(reader.readNext())) != null) {
@@ -443,16 +443,16 @@ public class ScriptParser {
         } catch (Exception e) {
             logger.fatal("Oops! Can't open file '" + testDataFile + "'!");
             return null;
-        }finally{
-        	if(reader!=null){
-        		try{
-        		reader.close();
-        		}catch(Exception e){
-        			//Dont care
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (Exception e) {
+                    //Dont care
                     logger.fatal("Oops! Can't close file '" + testDataFile + "'!");
 
-        		}
-        	}
+                }
+            }
         }
         return result;
     }
@@ -498,12 +498,12 @@ public class ScriptParser {
             /**
              * if (statement instanceof TryRecoverCleanup) { TryRecoverCleanup
              * trcSt = (TryRecoverCleanup) statement;
-             * 
+             *
              * // StatementList statementList = trcSt.getTry(); //
              * statementList.addAll(trcSt.getRecover()); //
              * statementList.addAll(trcSt.getCleanup()); // TODO: Ask author why
              * this was placed and when?
-             * 
+             *
              * for (IStatement currentStatement : statementList) { if
              * (currentStatement instanceof Invocation) { Map<String, Object>
              * parameters = ((Invocation) currentStatement) .getParameters();
@@ -598,7 +598,7 @@ public class ScriptParser {
             Element avElem = ParserHelper.getFirstChildElementCaseInsensitive(elem,
                     "automationvalue");
             if (avElem != null) {
-            	// not sure why this doesn't just call avElem.getTextContent()
+                // not sure why this doesn't just call avElem.getTextContent()
                 testScript.setAutomationValue(stmtParser.processString(avElem, mc).toString());
             }
 

@@ -22,73 +22,73 @@ package org.finra.jtaf.core.model.test;
  * - Removes unnecessary '/' characters
  * - Determines if the path is absolute
  * - Splits the components
- * 
  */
 public class TestPath {
-	public static final String SEPARATOR    = "/";
-	public static final String CURRENT      = ".";
-	public static final String PARENT       = "..";
-
-	
-	private final String   path;
-	private final String   normalizedPath;
-	private final String[] components;
-	private final boolean  absolute;
-
-	public TestPath(final String path) {
-		this.path = path;
-		normalizedPath = path.replaceAll("/+", "/");
-
-		String[] temp = normalizedPath.split(TestPath.SEPARATOR);
-		if(normalizedPath.charAt(0) == '/') {
-			absolute = true;
-		}
-		else {
-			absolute = false;
-		}
-		components = temp;
-	}
-
-	/**
-	 * @return True if this is an absolute path; false otherwise
-	 */
-	public final boolean isAbsolute() {
-		return absolute;
-	}
-
-	/**
-	 * @return True if this is a relative path; false otherwise
-	 */
-	public final boolean isRelative() {
-		return !absolute;
-	}
-
-	/**
-	 * This is identical to toString
-	 * @return
-	 */
-	public final String getPath() {
-		return path;
-	}
-	
-	/**
-	 * @return The path wo/ duplicate / characters
-	 */
-	public final String getNormalizedPath() {
-		return normalizedPath;
-	}
+    public static final String SEPARATOR = "/";
+    public static final String CURRENT = ".";
+    public static final String PARENT = "..";
 
 
-	/**
-	 * TODO: It may be necessary to return a copy of the components
-	 * @return
-	 */
-	public String[] getComponents() {
-		return components;
-	}
+    private final String path;
+    private final String normalizedPath;
+    private final String[] components;
+    private final boolean absolute;
+
+    public TestPath(final String path) {
+        this.path = path;
+        normalizedPath = path.replaceAll("/+", "/");
+
+        String[] temp = normalizedPath.split(TestPath.SEPARATOR);
+        if (normalizedPath.charAt(0) == '/') {
+            absolute = true;
+        } else {
+            absolute = false;
+        }
+        components = temp;
+    }
+
+    /**
+     * @return True if this is an absolute path; false otherwise
+     */
+    public final boolean isAbsolute() {
+        return absolute;
+    }
+
+    /**
+     * @return True if this is a relative path; false otherwise
+     */
+    public final boolean isRelative() {
+        return !absolute;
+    }
+
+    /**
+     * This is identical to toString
+     *
+     * @return
+     */
+    public final String getPath() {
+        return path;
+    }
+
+    /**
+     * @return The path wo/ duplicate / characters
+     */
+    public final String getNormalizedPath() {
+        return normalizedPath;
+    }
 
 
-	public String toString() {
-		return path;
-	}
+    /**
+     * TODO: It may be necessary to return a copy of the components
+     *
+     * @return
+     */
+    public String[] getComponents() {
+        return components;
+    }
+
+
+    public String toString() {
+        return path;
+    }
 }

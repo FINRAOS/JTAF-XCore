@@ -23,47 +23,46 @@ import org.w3c.dom.Node;
 
 /***
  * Exposes the data that can be used and/or modified by a IPostParseTestPlugin.
- * 
  */
 public class PostTestParserPluginContext {
 
-	private CommandRegistry commandRegistry;
-	private TestSuite testSuite;
-	private Node testRoot;
+    private CommandRegistry commandRegistry;
+    private TestSuite testSuite;
+    private Node testRoot;
 
-	public PostTestParserPluginContext(CommandRegistry commandRegistry,
-			TestSuite testSuite, Node testRoot) {
-		this.commandRegistry = commandRegistry;
-		this.testSuite = testSuite;
-		this.testRoot = testRoot;
-	}
+    public PostTestParserPluginContext(CommandRegistry commandRegistry,
+                                       TestSuite testSuite, Node testRoot) {
+        this.commandRegistry = commandRegistry;
+        this.testSuite = testSuite;
+        this.testRoot = testRoot;
+    }
 
-	/***
-	 * Returns the Command Library model, so plugins can use the data
-	 * 
-	 * @return commandModel
-	 */
-	public CommandRegistry getCommandRegistry() {
-		return commandRegistry;
-	}
+    /***
+     * Returns the Command Library model, so plugins can use the data
+     *
+     * @return commandModel
+     */
+    public CommandRegistry getCommandRegistry() {
+        return commandRegistry;
+    }
 
-	/***
-	 * Returns the Test Suite the test is a part of, so plugins can add test
-	 * scripts to the suite if needed
-	 * 
-	 * @return testSuite
-	 */
-	public TestSuite getTestSuite() {
-		return testSuite;
-	}
+    /***
+     * Returns the Test Suite the test is a part of, so plugins can add test
+     * scripts to the suite if needed
+     *
+     * @return testSuite
+     */
+    public TestSuite getTestSuite() {
+        return testSuite;
+    }
 
-	/***
-	 * Returns the root Node object of the current test so that the relevant xml
-	 * data can be used in the plugin
-	 * 
-	 * @return elementRoot
-	 */
-	public Node getRootNodeTest() {
-		return testRoot;
-	}
+    /***
+     * Returns the root Node object of the current test so that the relevant xml
+     * data can be used in the plugin
+     *
+     * @return elementRoot
+     */
+    public Node getRootNodeTest() {
+        return testRoot;
+    }
 }

@@ -25,24 +25,24 @@ import org.w3c.dom.Element;
 
 public class MissingAttributeException extends ParsingException {
 
-	
-	private static final long serialVersionUID = -3806789951904835575L;
 
-	private static final String createMessage(Element e, String name) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("The element '");
-		sb.append(e.getNodeName());
-		sb.append("' is missing the required attribute '");
-		sb.append(name);
-		sb.append("'");
-		return sb.toString();
-	}
-	
-	/**
-	 * @param e The element that is missing the attribute
-	 * @param name The attribute that is missing from the element
-	 */
-	public MissingAttributeException(Element e, String name) {
-		super(MissingAttributeException.createMessage(e, name));
-	}
+    private static final long serialVersionUID = -3806789951904835575L;
+
+    private static final String createMessage(Element e, String name) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("The element '");
+        sb.append(e.getNodeName());
+        sb.append("' is missing the required attribute '");
+        sb.append(name);
+        sb.append("'");
+        return sb.toString();
+    }
+
+    /**
+     * @param e    The element that is missing the attribute
+     * @param name The attribute that is missing from the element
+     */
+    public MissingAttributeException(Element e, String name) {
+        super(MissingAttributeException.createMessage(e, name));
+    }
 }

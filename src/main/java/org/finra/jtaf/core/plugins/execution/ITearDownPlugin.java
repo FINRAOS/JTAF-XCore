@@ -18,14 +18,13 @@ package org.finra.jtaf.core.plugins.execution;
 
 /**
  * This is the interface for tearDown plugins
- *
  */
-public interface ITearDownPlugin
-{
-	/**
-	 * This method is called when a script fails and the tearDown is entered
-	 * @param tearDownPluginContext
-	 * @throws RunnerPluginException
-	 */
-	void handleBeforeTearDown(TearDownPluginContext tearDownPluginContext) throws RunnerPluginException;
+public interface ITearDownPlugin {
+    /**
+     * This method is called when a script fails and the tearDown is entered
+     *
+     * @param tearDownPluginContext
+     * @throws RunnerPluginException
+     */
+    void handleBeforeTearDown(TearDownPluginContext tearDownPluginContext) throws RunnerPluginException;
 }

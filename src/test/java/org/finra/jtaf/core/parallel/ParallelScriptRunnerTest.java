@@ -82,7 +82,7 @@ public class ParallelScriptRunnerTest {
 
             AutomationEngine.getInstance().getTestDigraph().addVertex(node);
         }
-      
+
         runner = new ParallelScriptRunner(testScript);
 
         Throwable error = null;
@@ -93,8 +93,8 @@ public class ParallelScriptRunnerTest {
         }
         Assert.assertTrue(error.getClass().getSimpleName().equals("AssertionError"));
         Assert.assertTrue(error.getMessage().equals("One or more Dependent tests failed"));
-        
-        
+
+
         AutomationEngine.getInstance().getTestDigraph().updateTestStatus(testScript.getName(),
                 "SUCCESS");
         try {
@@ -116,7 +116,7 @@ public class ParallelScriptRunnerTest {
             Node suiteNodeChildNode = suiteNodeChildNodes.item(suiteNodeChildIndex);
             if (suiteNodeChildNode.getNodeName().equalsIgnoreCase("test")
                     && suiteNodeChildNode.getAttributes().getNamedItem("name").getTextContent()
-                            .equals(testOfInterestName)) {
+                    .equals(testOfInterestName)) {
                 testRoot = suiteNodeChildNode;
                 break;
             }
@@ -135,10 +135,10 @@ public class ParallelScriptRunnerTest {
     private class MyNode extends DiNode {
 
         private String testName = ""; // This shouldnt change after being set
-                                      // initially
+        // initially
         private String testStatus = "";
         private TestScript testScript = null; // This shouldnt change after
-                                              // being set initially
+        // being set initially
 
         public MyNode(TestScript ts) {
             super(ts);

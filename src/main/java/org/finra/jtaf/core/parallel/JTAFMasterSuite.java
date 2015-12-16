@@ -30,23 +30,22 @@ import org.xml.sax.SAXException;
 
 /**
  * The test suite of the tests that will run together
- *
  */
-public class JTAFMasterSuite extends Suite{
+public class JTAFMasterSuite extends Suite {
 
-	public JTAFMasterSuite(Class<?> klass, RunnerBuilder builder)
-			throws InitializationError, ParsingException, SAXException, IOException, IllegalArgumentException, SecurityException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
-		super(klass, (new MasterSuiteRunnersBuilder().runners()));
-		setScheduler(new ConcurrentScheduler());
+    public JTAFMasterSuite(Class<?> klass, RunnerBuilder builder)
+            throws InitializationError, ParsingException, SAXException, IOException, IllegalArgumentException, SecurityException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+        super(klass, (new MasterSuiteRunnersBuilder().runners()));
+        setScheduler(new ConcurrentScheduler());
 
-	}
+    }
 
-	@Override
-	public Description getDescription() {
-		Description description = Description.createSuiteDescription("Automated Tests");
-		for (Runner child : getChildren())
-			description.addChild(describeChild(child));
-		return description;
-	}
+    @Override
+    public Description getDescription() {
+        Description description = Description.createSuiteDescription("Automated Tests");
+        for (Runner child : getChildren())
+            description.addChild(describeChild(child));
+        return description;
+    }
 
 }

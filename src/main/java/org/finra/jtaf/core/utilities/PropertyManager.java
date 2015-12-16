@@ -24,54 +24,54 @@ import java.util.Enumeration;
 import java.util.PropertyResourceBundle;
 
 /**
- * This class is similar to java Properties reader. It takes care of reading properties from the specified file. 
+ * This class is similar to java Properties reader. It takes care of reading properties from the specified file.
  * The difference however is, it allows to override any property by specifying it as a System
  * property.
  */
 public class PropertyManager {
 
-	protected String fileName;
-	protected String propertyPrefix;
-	protected PropertyResourceBundle propertyResourceBundle;
+    protected String fileName;
+    protected String propertyPrefix;
+    protected PropertyResourceBundle propertyResourceBundle;
 
-	public PropertyManager(String fileName, String propertyPrefix) {
-		this.fileName = fileName;
-		this.propertyPrefix = propertyPrefix;
-		propertyResourceBundle = getPropertyResourceBundle();
-		if (propertyResourceBundle != null) {
-			loadProperties();
-		}
-	}
+    public PropertyManager(String fileName, String propertyPrefix) {
+        this.fileName = fileName;
+        this.propertyPrefix = propertyPrefix;
+        propertyResourceBundle = getPropertyResourceBundle();
+        if (propertyResourceBundle != null) {
+            loadProperties();
+        }
+    }
 
-	public String getProperty(String propertyName) {
-		return System.getProperty(propertyPrefix + "." + propertyName);
-	}
+    public String getProperty(String propertyName) {
+        return System.getProperty(propertyPrefix + "." + propertyName);
+    }
 
-	protected PropertyResourceBundle getPropertyResourceBundle() {
-		try {
-			InputStream inputStream = PropertyManager.class.getClassLoader()
-					.getResourceAsStream(fileName);
-			if (inputStream == null) {
-				File propertiesFile = new File(fileName);
-				inputStream = new FileInputStream(propertiesFile);
-			}
-			return new PropertyResourceBundle(inputStream);
-		} catch (FileNotFoundException fileNotFoundException) {
-			return null;
-		} catch (Exception exception) {
-			throw new RuntimeException("Problem loading properties", exception);
-		}
-	}
+    protected PropertyResourceBundle getPropertyResourceBundle() {
+        try {
+            InputStream inputStream = PropertyManager.class.getClassLoader()
+                    .getResourceAsStream(fileName);
+            if (inputStream == null) {
+                File propertiesFile = new File(fileName);
+                inputStream = new FileInputStream(propertiesFile);
+            }
+            return new PropertyResourceBundle(inputStream);
+        } catch (FileNotFoundException fileNotFoundException) {
+            return null;
+        } catch (Exception exception) {
+            throw new RuntimeException("Problem loading properties", exception);
+        }
+    }
 
-	protected void loadProperties() {
-		Enumeration<String> keys = propertyResourceBundle.getKeys();
-		while (keys.hasMoreElements()) {
-			String key = keys.nextElement();
-			String newProperty = propertyResourceBundle.getString(key);
-			String newKey = propertyPrefix + "." + key;
-			if (System.getProperty(newKey) == null) {
-				System.setProperty(newKey, newProperty);
-			}
-		}
-	}
+    protected void loadProperties() {
+        Enumeration<String> keys = propertyResourceBundle.getKeys();
+        while (keys.hasMoreElements()) {
+            String key = keys.nextElement();
+            String newProperty = propertyResourceBundle.getString(key);
+            String newKey = propertyPrefix + "." + key;
+            if (System.getProperty(newKey) == null) {
+                System.setProperty(newKey, newProperty);
+            }
+        }
+    }
 }

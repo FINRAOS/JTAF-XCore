@@ -20,25 +20,24 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
 
 /**
  * Gets an object from context and stores that object into context as its .toString() value
- *
  */
 public class StoreObjectAsStringCmd extends AbstractContextCmd {
-	public static final String VALUE_ATTRIBUTE = "key";
+    public static final String VALUE_ATTRIBUTE = "key";
 
-	public StoreObjectAsStringCmd(String name) throws NameFormatException {
-		super(name);
-	}
+    public StoreObjectAsStringCmd(String name) throws NameFormatException {
+        super(name);
+    }
 
-	@Override
-	protected void execute() throws Throwable {
-		String valueName = getRequiredString(VALUE_ATTRIBUTE);
-		Object value = getOptionalObject(valueName);
-		if(value == null) {
-			value = "null";
-		} else {
-			value = value.toString();
-		}
-		getContext().putObject(valueName, value);
-	}
+    @Override
+    protected void execute() throws Throwable {
+        String valueName = getRequiredString(VALUE_ATTRIBUTE);
+        Object value = getOptionalObject(valueName);
+        if (value == null) {
+            value = "null";
+        } else {
+            value = value.toString();
+        }
+        getContext().putObject(valueName, value);
+    }
 
 }

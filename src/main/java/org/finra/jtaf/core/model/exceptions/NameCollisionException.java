@@ -18,26 +18,24 @@ package org.finra.jtaf.core.model.exceptions;
 
 /**
  * This is thrown whenever an element with the same name
- * already exists 
- *
+ * already exists
  */
 public class NameCollisionException extends Exception {
 
-	
-	private static final long serialVersionUID = -3361740674217851439L;
 
-	private final String name;
-	
-	/**
-	 * @param name
-	 * This is called when same test name exist during building model
-	 */
-	public NameCollisionException(String name) {
-		super("The name '" + name + "' is already in use");
-		this.name = name;
-	}
-	
-	public String getName() {
-		return this.name;
-	}
+    private static final long serialVersionUID = -3361740674217851439L;
+
+    private final String name;
+
+    /**
+     * @param name This is called when same test name exist during building model
+     */
+    public NameCollisionException(String name) {
+        super("The name '" + name + "' is already in use");
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 }

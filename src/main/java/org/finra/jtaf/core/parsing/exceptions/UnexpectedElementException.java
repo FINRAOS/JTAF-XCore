@@ -23,15 +23,15 @@ import org.w3c.dom.Element;
  */
 public class UnexpectedElementException extends ParsingException {
 
-	/**
-	 * Auto-generated
-	 */
-	private static final long serialVersionUID = 1270431357009356272L;
+    /**
+     * Auto-generated
+     */
+    private static final long serialVersionUID = 1270431357009356272L;
 
-	/**
-	 * @param e the element that was not expected
-	 */
-	public UnexpectedElementException(Element e) {
-		super("Unexpected element '" + e.getNodeName() + "' encountered while parsing document");
-	}
+    /**
+     * @param e the element that was not expected
+     */
+    public UnexpectedElementException(Element e) {
+        super("Unexpected element '" + e.getNodeName() + "' encountered while parsing document");
+    }
 }

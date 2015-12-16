@@ -29,7 +29,6 @@ import org.finra.jtaf.core.model.statement.Invocation;
  * to throw an exception. If one of them throws an exception, no more commands
  * from the block are executed and the remainder of the script is run through.
  * If no exception is thrown, an ExpectedFailureException to signify this.
- * 
  */
 public class ExpectFailure extends Command {
 
@@ -38,9 +37,8 @@ public class ExpectFailure extends Command {
      * interpreter. The recordResult variable is set to false because details
      * about the ExpectFailure step aren't needed, unlike the commands within
      * the ExpectFailure block.
-     * 
-     * @param name
-     *            - The name of the command
+     *
+     * @param name - The name of the command
      * @throws NameFormatException
      */
     public ExpectFailure(String name) throws NameFormatException {
@@ -58,12 +56,10 @@ public class ExpectFailure extends Command {
      * exception is an ExpectedFailureException, it is thrown and if no
      * exception is encountered when executing the block, a new
      * ExpectedFailureException is thrown.
-     * 
-     * @param ctx
-     *            - The current context when this method is executed.
-     * @throws Throwable
-     *             - Either a ExpectedFailureException or the exception thrown
-     *             by a command in the block
+     *
+     * @param ctx - The current context when this method is executed.
+     * @throws Throwable - Either a ExpectedFailureException or the exception thrown
+     *                   by a command in the block
      */
     @SuppressWarnings("unchecked")
     @Override

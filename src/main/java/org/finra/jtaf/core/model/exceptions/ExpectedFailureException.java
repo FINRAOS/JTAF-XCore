@@ -21,14 +21,13 @@ package org.finra.jtaf.core.model.exceptions;
  * <expectFailure> block.  This allows us to reverse the normal
  * logic of our testing and verify that our validation commands
  * are doing what they are supposed to do.
- * 
  */
 public class ExpectedFailureException extends ModelException {
 
-	
-	private static final long serialVersionUID = -8114949982502430018L;
 
-	public ExpectedFailureException() {
-		super("Expected this script to fail, but it did not");
-	}
+    private static final long serialVersionUID = -8114949982502430018L;
+
+    public ExpectedFailureException() {
+        super("Expected this script to fail, but it did not");
+    }
 }

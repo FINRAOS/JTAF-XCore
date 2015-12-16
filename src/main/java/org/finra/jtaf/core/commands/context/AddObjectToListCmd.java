@@ -23,36 +23,35 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
 
 /**
  * Gets an object from context and stores that object into a list in context
- *
  */
 public class AddObjectToListCmd extends AbstractContextCmd {
-	public static final String VALUE_IN_ATTRIBUTE = "object";
-	public static final String INDEX_ATTRIBUTE = "index";
-	public static final String VALUE_OUT_ATTRIBUTE = "list";
+    public static final String VALUE_IN_ATTRIBUTE = "object";
+    public static final String INDEX_ATTRIBUTE = "index";
+    public static final String VALUE_OUT_ATTRIBUTE = "list";
 
-	public AddObjectToListCmd(String name) throws NameFormatException {
-		super(name);
-	}
+    public AddObjectToListCmd(String name) throws NameFormatException {
+        super(name);
+    }
 
-	@Override
-	protected void execute() throws Throwable {
-		Object valueIn = getRequiredObject(getRequiredString(VALUE_IN_ATTRIBUTE));
-		String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
-		@SuppressWarnings("unchecked")
-		List<Object> valueOut = (List<Object>) getOptionalObject(valueOutAttribute);
-		if(valueOut == null) {
-			List<Object> suppression = new ArrayList<Object>();
-			valueOut = suppression;
-		}
-		Integer index = mch.getOptionalInteger(INDEX_ATTRIBUTE);
-		if(index == null || index < 0 || index > valueOut.size()) {
-			mch.setValueOut(valueOutAttribute, valueOut, valueIn);
-		} else {
-			if(index > 0) { // for one-based
-				index -= 1;
-			}
-			mch.setValueOut(valueOutAttribute, valueOut, valueIn, index);
-		}
-	}
+    @Override
+    protected void execute() throws Throwable {
+        Object valueIn = getRequiredObject(getRequiredString(VALUE_IN_ATTRIBUTE));
+        String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
+        @SuppressWarnings("unchecked")
+        List<Object> valueOut = (List<Object>) getOptionalObject(valueOutAttribute);
+        if (valueOut == null) {
+            List<Object> suppression = new ArrayList<Object>();
+            valueOut = suppression;
+        }
+        Integer index = mch.getOptionalInteger(INDEX_ATTRIBUTE);
+        if (index == null || index < 0 || index > valueOut.size()) {
+            mch.setValueOut(valueOutAttribute, valueOut, valueIn);
+        } else {
+            if (index > 0) { // for one-based
+                index -= 1;
+            }
+            mch.setValueOut(valueOutAttribute, valueOut, valueIn, index);
+        }
+    }
 
 }

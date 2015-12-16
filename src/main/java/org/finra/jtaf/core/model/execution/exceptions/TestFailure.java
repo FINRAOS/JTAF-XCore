@@ -20,33 +20,33 @@ package org.finra.jtaf.core.model.execution.exceptions;
  * This should be thrown whenever a test fails.  Originally, we were
  * using the jUnit AssertionFailedException, but this won't work if
  * we begin using different execution drivers.
- * 
- *
  */
 public class TestFailure extends Error {
 
-	
-	private static final long serialVersionUID = 9025217872075585782L;
 
-	/**
-	 * @param message
-	 */
-	public TestFailure(String message) {
-		super(message);
-	}
-	/**
-	 * @param Throwable
-	 */
-	
-	public TestFailure(Throwable e) {
-		super(e);
-	}
-	/**
-	 * @param message
-	 * @param throwable
-	 */
-	
-	public TestFailure(String message, Throwable e) {
-		super(message, e);
-	}
+    private static final long serialVersionUID = 9025217872075585782L;
+
+    /**
+     * @param message
+     */
+    public TestFailure(String message) {
+        super(message);
+    }
+
+    /**
+     * @param Throwable
+     */
+
+    public TestFailure(Throwable e) {
+        super(e);
+    }
+
+    /**
+     * @param message
+     * @param throwable
+     */
+
+    public TestFailure(String message, Throwable e) {
+        super(message, e);
+    }
 }

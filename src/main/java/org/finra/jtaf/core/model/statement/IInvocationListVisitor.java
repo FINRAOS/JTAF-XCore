@@ -21,10 +21,11 @@ package org.finra.jtaf.core.model.statement;
  */
 public interface IInvocationListVisitor {
 
-	/**
-	 * Perform some operation on a statement list
-	 * @param sl
-	 * @throws Throwable 
-	 */
-	void visitStatementList(InvocationList sl) throws Throwable;
+    /**
+     * Perform some operation on a statement list
+     *
+     * @param sl
+     * @throws Throwable
+     */
+    void visitStatementList(InvocationList sl) throws Throwable;
 }

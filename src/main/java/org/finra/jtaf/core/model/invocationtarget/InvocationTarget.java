@@ -29,10 +29,8 @@ import org.finra.jtaf.core.model.execution.Interpreter;
 
 /**
  * Common base class for any form of invocation target.
- * 
+ * <p/>
  * TODO: Throw an exception if a parameter has already been defined?
- * 
- * 
  */
 public abstract class InvocationTarget {
     // TODO: Come to a consensus on what should be a valid name, potentially
@@ -47,7 +45,7 @@ public abstract class InvocationTarget {
     // TODO: Determine if allParameters is really better as a separately managed
     // set.
     private final Set<String> allParameters; // union of required and optional
-                                             // parameters
+    // parameters
     private final Set<String> productions;
 
     protected static Map<String, Object> globalContext = new HashMap<String, Object>();
@@ -58,9 +56,8 @@ public abstract class InvocationTarget {
 
     /**
      * Used to set global context to be used by the command.
-     * 
-     * @param contextGlobal
-     *            - The map to be used as the global context.
+     *
+     * @param contextGlobal - The map to be used as the global context.
      */
     protected static void setGlobalContext(Map<String, Object> contextGlobal) {
         Command.globalContext = contextGlobal;
@@ -68,11 +65,9 @@ public abstract class InvocationTarget {
 
     /**
      * Used to add values to the global context of the command.
-     * 
-     * @param key
-     *            - the key to be used in the map.
-     * @param value
-     *            - the value to be stored in the context.
+     *
+     * @param key   - the key to be used in the map.
+     * @param value - the value to be stored in the context.
      */
     protected static void putToGlobalContext(String key, Object value) {
         Command.globalContext.put(key, value);
@@ -81,9 +76,8 @@ public abstract class InvocationTarget {
     /**
      * Used to get an object from the global context that is associated with the
      * passed in key.
-     * 
-     * @param key
-     *            - the key associated with the value in the global context
+     *
+     * @param key - the key associated with the value in the global context
      * @return the value in the context.
      */
     public static Object getFromGlobalContext(String key) {
@@ -101,9 +95,8 @@ public abstract class InvocationTarget {
      * This is called when the InvocationTarget is instantiated by the
      * interpreter. All sets used to keep track of the invocation targets
      * parameters are instantiated as well.
-     * 
-     * @param name
-     *            - name of the invocation target.
+     *
+     * @param name - name of the invocation target.
      * @throws NameFormatException
      */
     public InvocationTarget(String name) throws NameFormatException {
@@ -121,7 +114,7 @@ public abstract class InvocationTarget {
 
     /**
      * Get the name of this InvocationTarget
-     * 
+     *
      * @return the name of the target.
      */
     public final String getName() {
@@ -130,7 +123,7 @@ public abstract class InvocationTarget {
 
     /**
      * Get the usage of this InvocationTarget
-     * 
+     *
      * @return the usage of the target.
      */
     public final String getUsage() {
@@ -139,9 +132,8 @@ public abstract class InvocationTarget {
 
     /**
      * Set the usage of this InvocationTarget
-     * 
-     * @param usage
-     *            - the new value for this InvocationTargets usage
+     *
+     * @param usage - the new value for this InvocationTargets usage
      */
     public final void setUsage(String usage) {
         this.usage = usage;
@@ -149,7 +141,7 @@ public abstract class InvocationTarget {
 
     /**
      * Get all of the required parameters of this InvocationTarget
-     * 
+     *
      * @return A read-only set of required parameters
      */
     public final Set<String> getRequiredParameters() {
@@ -158,9 +150,8 @@ public abstract class InvocationTarget {
 
     /**
      * Add a new value as a required parameter.
-     * 
-     * @param name
-     *            - the name to be used for this required parameter.
+     *
+     * @param name - the name to be used for this required parameter.
      */
     public final void addRequiredParameter(String name) {
         name = name.toLowerCase();
@@ -170,7 +161,7 @@ public abstract class InvocationTarget {
 
     /**
      * Get all of the registered optional parameters of this InvocationTarget.
-     * 
+     *
      * @return the set containing all of the optional parameters.
      */
     public final Set<String> getOptionalParameters() {
@@ -179,9 +170,8 @@ public abstract class InvocationTarget {
 
     /**
      * Add a new value as an optional parameter.
-     * 
-     * @param name
-     *            - the name to be used for this optional parameter.
+     *
+     * @param name - the name to be used for this optional parameter.
      */
     public final void addOptionalParameter(String name) {
         name = name.toLowerCase();
@@ -191,7 +181,7 @@ public abstract class InvocationTarget {
 
     /**
      * Get all of the parameters of this InvocationTarget.
-     * 
+     *
      * @return the set containing all of the parameters.
      */
     public final Set<String> getAllParameters() {
@@ -200,7 +190,7 @@ public abstract class InvocationTarget {
 
     /**
      * Get all of the productions of this InvocationTarget.
-     * 
+     *
      * @return the set containing all of the productions.
      */
     public final Set<String> getProductions() {
@@ -209,9 +199,8 @@ public abstract class InvocationTarget {
 
     /**
      * Add a new value to the production set.
-     * 
-     * @param name
-     *            - the name to be used for this production.
+     *
+     * @param name - the name to be used for this production.
      */
     public final void addProduction(String name) {
         this.productions.add(name.toLowerCase());
@@ -219,6 +208,7 @@ public abstract class InvocationTarget {
 
     /**
      * This is used by the interpreter to either execute the command or the function.
+     *
      * @param v - The interpreter that is executing this InvocationTarget.
      * @throws Throwable
      */

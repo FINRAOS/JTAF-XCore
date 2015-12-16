@@ -19,16 +19,15 @@ package org.finra.jtaf.core.model.test;
 /**
  * Retrieves test model elements from some backend. The backend is the file
  * system and certain XML files
- * 
  */
 public interface ITestComponentFactory {
 
-	/**
-	 * Retrieves a component given its TestPath. TODO: Perhaps this should just
-	 * be a URI?
-	 * 
-	 * @param path
-	 * @return
-	 */
-	TestComponent getComponent(TestPath path);
+    /**
+     * Retrieves a component given its TestPath. TODO: Perhaps this should just
+     * be a URI?
+     *
+     * @param path
+     * @return
+     */
+    TestComponent getComponent(TestPath path);
 }

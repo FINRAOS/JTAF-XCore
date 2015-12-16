@@ -25,37 +25,36 @@ import org.junit.runners.model.InitializationError;
 
 /**
  * The test case runner class
- *
  */
 public class TestCaseRunner extends BlockJUnit4ClassRunner {
-	
-	private ParallelScriptRunner scriptWrapper;
 
-	public TestCaseRunner(Class<?> klass, ParallelScriptRunner scriptWrapper)
-			throws InitializationError {
-		super(klass);
-		this.scriptWrapper = scriptWrapper;
-	}
+    private ParallelScriptRunner scriptWrapper;
 
-	protected Object createTest() throws Exception {
-		return scriptWrapper;
-	}
+    public TestCaseRunner(Class<?> klass, ParallelScriptRunner scriptWrapper)
+            throws InitializationError {
+        super(klass);
+        this.scriptWrapper = scriptWrapper;
+    }
 
-	@Override
-	protected Description describeChild(FrameworkMethod method) {
+    protected Object createTest() throws Exception {
+        return scriptWrapper;
+    }
 
-		return Description.createSuiteDescription(scriptWrapper.getName());
+    @Override
+    protected Description describeChild(FrameworkMethod method) {
 
-	}
+        return Description.createSuiteDescription(scriptWrapper.getName());
 
-	
-	public Description getDescription() {
-		return Description.createSuiteDescription(scriptWrapper.getName());
+    }
 
-	}
 
-	@Override
-	protected void collectInitializationErrors(List<Throwable> errors) {
-	}
+    public Description getDescription() {
+        return Description.createSuiteDescription(scriptWrapper.getName());
+
+    }
+
+    @Override
+    protected void collectInitializationErrors(List<Throwable> errors) {
+    }
 
 }

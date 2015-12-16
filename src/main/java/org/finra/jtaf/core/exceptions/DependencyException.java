@@ -18,24 +18,24 @@ package org.finra.jtaf.core.exceptions;
 
 public class DependencyException extends RuntimeException {
 
-	/**
-	 * Auto-generated
-	 */
-	private static final long serialVersionUID = 4864467896129227737L;
+    /**
+     * Auto-generated
+     */
+    private static final long serialVersionUID = 4864467896129227737L;
 
-	public DependencyException() {
-		super();
-	}
-	
-	public DependencyException(String message) {
-		super(message);
-	}
-	
-	public DependencyException(String message, Throwable th) {
-		super(message, th);
-	}
-	
-	public DependencyException(Throwable th) {
-		super(th);
-	}
+    public DependencyException() {
+        super();
+    }
+
+    public DependencyException(String message) {
+        super(message);
+    }
+
+    public DependencyException(String message, Throwable th) {
+        super(message, th);
+    }
+
+    public DependencyException(Throwable th) {
+        super(th);
+    }
 }
