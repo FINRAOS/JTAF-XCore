@@ -47,11 +47,12 @@ public class DiNode {
         return testScript;
     }
 
+    /*
     @Override
     public int hashCode() {
-        return this.getTestName().hashCode()
+        return this.getTestName().toLowerCase().hashCode()
                 + this.getTestScript().hashCode();
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
