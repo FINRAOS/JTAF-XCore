@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/FINRAOS/JTAF-XCore.svg?branch=master)](https://travis-ci.org/FINRAOS/JTAF-XCore)
+
 JTAF-XCore 
 ==================
 [XCore](http://finraos.github.io/JTAF-XCore/) is a framework to define and execute automated tests. It enables automation code development in Java, test script development in XML via domain specific language, and execution & reporting via JUnit.
