@@ -22,11 +22,11 @@ package org.finra.jtaf.core.plugins.parsing;
  */
 public interface IPostParseAllPlugin {
 
-	/***
-	 * This method executes after all tests are parsed
-	 * 
-	 * @param ctx
-	 * @throws ParserPluginException
-	 */
-	public void execute(PostAllParserPluginContext ctx) throws ParserPluginException;
+    /***
+     * This method executes after all tests are parsed
+     *
+     * @param ctx
+     * @throws ParserPluginException
+     */
+    public void execute(PostAllParserPluginContext ctx) throws ParserPluginException;
 }

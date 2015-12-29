@@ -21,53 +21,57 @@ import org.finra.jtaf.core.model.test.digraph.Dependencies;
 
 /**
  * This class represents a testsuite object
- *
  */
-public class TestSuite extends TestNamespace{
-	private Dependencies dependencies;
-	private Dependencies exclusions;
-	private String testSuiteName;
-	public TestSuite(String name) throws NameFormatException {
-		super(name);
-	}
+public class TestSuite extends TestNamespace {
+    private Dependencies dependencies;
+    private Dependencies exclusions;
+    private String testSuiteName;
 
-	/**
-	 * Return the tests this testsuite depends upon
-	 * @return
-	 */
-	public Dependencies getDependencies() {
-		return dependencies;
-	}
+    public TestSuite(String name) throws NameFormatException {
+        super(name);
+    }
 
-	/**
-	 * Set the dependencies for this testsuite
-	 * @param dp
-	 */
-	public void setDependencies(Dependencies dp) {
-		dependencies = dp;
-	}
+    /**
+     * Return the tests this testsuite depends upon
+     *
+     * @return
+     */
+    public Dependencies getDependencies() {
+        return dependencies;
+    }
 
-	public Dependencies getExclusions() {
-		return exclusions;
-	}
+    /**
+     * Set the dependencies for this testsuite
+     *
+     * @param dp
+     */
+    public void setDependencies(Dependencies dp) {
+        dependencies = dp;
+    }
 
-	public void setExclusions(Dependencies exc) {
-		exclusions = exc;
-	}
+    public Dependencies getExclusions() {
+        return exclusions;
+    }
 
-	/**
-	 * Return the name of the testsuite
-	 * @return
-	 */
-	public String getTestSuiteName() {
-		return testSuiteName;
-	}
-	
-	/**
-	 * Set the name of the testsuite
-	 * @param tsn
-	 */
-	public void setTestSuiteName(String tsn){
-		testSuiteName = tsn;
-	}
+    public void setExclusions(Dependencies exc) {
+        exclusions = exc;
+    }
+
+    /**
+     * Return the name of the testsuite
+     *
+     * @return
+     */
+    public String getTestSuiteName() {
+        return testSuiteName;
+    }
+
+    /**
+     * Set the name of the testsuite
+     *
+     * @param tsn
+     */
+    public void setTestSuiteName(String tsn) {
+        testSuiteName = tsn;
+    }
 }

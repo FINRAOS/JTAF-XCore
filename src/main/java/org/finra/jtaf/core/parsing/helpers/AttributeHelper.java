@@ -29,148 +29,150 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 
 
-
-
 /**
  * Helper class to fetch attributes of an element.
  */
-public class AttributeHelper { 
-	/**
-	 * I want to remove this class once I figure out how to treat node names
-	 * in a case-insensitive manner.  Until this, this is a necessary evil :-D
-	 *
-	 */
-	
-	private static final Pattern integerRegex = Pattern.compile("\\s*\\d+\\s*");
-	
-	private final Map<String, String> attrs;
-	private final Element             source;
-	private final Set<String>         collisions;
-	
-	/**
-	 * Collect the attributes, make sure their names are all cast to lowercase,
-	 * and throw an exception if there are name collisions.
-	 * 
-	 * @param qName
-	 * @param attributes 
-	 */
-	public AttributeHelper(Element e) {
-		attrs  = new HashMap<String, String>();
-		source = e;
-		collisions = new HashSet<String>();
-		NamedNodeMap origAttrs = source.getAttributes();
-		
-		for(int i = 0; i < origAttrs.getLength(); ++i) {
-			final String name  = origAttrs.item(i).getNodeName().toLowerCase();
-			if(attrs.containsKey(name)) {
-				collisions.add(name);
-			}
-			attrs.put(name, origAttrs.item(i).getNodeValue());
-		}
-	}
+public class AttributeHelper {
+    /**
+     * I want to remove this class once I figure out how to treat node names
+     * in a case-insensitive manner.  Until this, this is a necessary evil :-D
+     */
 
-	
-	/**
-	 * @return A copy of the collision set
-	 */
-	public final Set<String> getCollisions() {
-		return new HashSet<String>(this.collisions);
-	}
-	
-	/**
-	 * @return The entrySet used internally
-	 */
-	public Set<Entry<String, String>> entrySet() {
-		return this.attrs.entrySet();
-	}
+    private static final Pattern integerRegex = Pattern.compile("\\s*\\d+\\s*");
 
-	
-	/**
-	 * Make sure you don't modify this return value
-	 * @return The map maintained internally
-	 */
-	public final Map<String, String> getMap() {
-		return this.attrs;
-	}
-	
-	/**
-	 * Search for the given key, ignoring case
-	 * @param key
-	 * @return
-	 */
-	public boolean containsKey(String key) {
-		return this.attrs.containsKey(key.toLowerCase());
-	}
-	
-	/**
-	 * Search for the given value
-	 * @param value
-	 * @return
-	 */
-	public boolean containsValue(String value) {
-		return this.attrs.containsValue(value);
-	}
+    private final Map<String, String> attrs;
+    private final Element source;
+    private final Set<String> collisions;
 
-	
-	
-	/**
-	 * Throws an exception if the requested attribute is undefined or an empty string
-	 * @param key
-	 * @return
-	 * @throws MissingAttributeException
-	 */
-	public String getRequiredString(String key) throws MissingAttributeException {
-		String retval = this.getOptionalString(key);
-		if((retval == null) || (retval.trim().equals(""))) {
-			throw new MissingAttributeException(this.source, key);
-		}
-		return retval;
-	}
+    /**
+     * Collect the attributes, make sure their names are all cast to lowercase,
+     * and throw an exception if there are name collisions.
+     *
+     * @param qName
+     * @param attributes
+     */
+    public AttributeHelper(Element e) {
+        attrs = new HashMap<String, String>();
+        source = e;
+        collisions = new HashSet<String>();
+        NamedNodeMap origAttrs = source.getAttributes();
 
-	/**
-	 * Search for the given key, ignoring case
-	 * @param key
-	 * @return
-	 */
-	public String getOptionalString(String key) {
-		return this.attrs.get(key.toLowerCase());
-	}
-
-	
-	/**
-	 * If the requested attribute 
-	 * @param key
-	 * @param defaultValue
-	 * @return
-	 */
-	public final String getStringOrDefault(String key, String defaultValue) {
-		String retval = this.getOptionalString(key);
-		if(retval == null) {
-			return defaultValue;
-		}
-		return retval;
-	}
+        for (int i = 0; i < origAttrs.getLength(); ++i) {
+            final String name = origAttrs.item(i).getNodeName().toLowerCase();
+            if (attrs.containsKey(name)) {
+                collisions.add(name);
+            }
+            attrs.put(name, origAttrs.item(i).getNodeValue());
+        }
+    }
 
 
+    /**
+     * @return A copy of the collision set
+     */
+    public final Set<String> getCollisions() {
+        return new HashSet<String>(this.collisions);
+    }
 
-	/**
-	 * Ensures that the attribute is a properly-formatted integer
-	 * @param key
-	 * @return
-	 * @throws MissingAttributeException
-	 * @throws AttributeFormatException
-	 */
-	public final int getRequiredInteger(String key) throws MissingAttributeException, AttributeFormatException {
-		final String retval = this.getOptionalString(key);
-		if( (retval == null) || (retval.equals(""))) {
-			throw new MissingAttributeException(this.source, key);
-		}
-		
-		if(integerRegex.matcher(retval) == null) {
-			throw new AttributeFormatException("Integer");
-		}
-		
-		return Integer.parseInt(retval);
-	}
+    /**
+     * @return The entrySet used internally
+     */
+    public Set<Entry<String, String>> entrySet() {
+        return this.attrs.entrySet();
+    }
+
+
+    /**
+     * Make sure you don't modify this return value
+     *
+     * @return The map maintained internally
+     */
+    public final Map<String, String> getMap() {
+        return this.attrs;
+    }
+
+    /**
+     * Search for the given key, ignoring case
+     *
+     * @param key
+     * @return
+     */
+    public boolean containsKey(String key) {
+        return this.attrs.containsKey(key.toLowerCase());
+    }
+
+    /**
+     * Search for the given value
+     *
+     * @param value
+     * @return
+     */
+    public boolean containsValue(String value) {
+        return this.attrs.containsValue(value);
+    }
+
+
+    /**
+     * Throws an exception if the requested attribute is undefined or an empty string
+     *
+     * @param key
+     * @return
+     * @throws MissingAttributeException
+     */
+    public String getRequiredString(String key) throws MissingAttributeException {
+        String retval = this.getOptionalString(key);
+        if ((retval == null) || (retval.trim().equals(""))) {
+            throw new MissingAttributeException(this.source, key);
+        }
+        return retval;
+    }
+
+    /**
+     * Search for the given key, ignoring case
+     *
+     * @param key
+     * @return
+     */
+    public String getOptionalString(String key) {
+        return this.attrs.get(key.toLowerCase());
+    }
+
+
+    /**
+     * If the requested attribute
+     *
+     * @param key
+     * @param defaultValue
+     * @return
+     */
+    public final String getStringOrDefault(String key, String defaultValue) {
+        String retval = this.getOptionalString(key);
+        if (retval == null) {
+            return defaultValue;
+        }
+        return retval;
+    }
+
+
+    /**
+     * Ensures that the attribute is a properly-formatted integer
+     *
+     * @param key
+     * @return
+     * @throws MissingAttributeException
+     * @throws AttributeFormatException
+     */
+    public final int getRequiredInteger(String key) throws MissingAttributeException, AttributeFormatException {
+        final String retval = this.getOptionalString(key);
+        if ((retval == null) || (retval.equals(""))) {
+            throw new MissingAttributeException(this.source, key);
+        }
+
+        if (integerRegex.matcher(retval) == null) {
+            throw new AttributeFormatException("Integer");
+        }
+
+        return Integer.parseInt(retval);
+    }
 
 }

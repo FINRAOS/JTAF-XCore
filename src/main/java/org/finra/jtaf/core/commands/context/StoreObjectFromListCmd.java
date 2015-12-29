@@ -20,7 +20,6 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
 
 /**
  * Gets an object from a list in context and stores that object into context
- *
  */
 public class StoreObjectFromListCmd extends AbstractContextCmd {
     public static final String VALUE_IN_ATTRIBUTE = "list";

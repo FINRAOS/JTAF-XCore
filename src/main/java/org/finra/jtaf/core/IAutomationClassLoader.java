@@ -21,13 +21,13 @@ package org.finra.jtaf.core;
  */
 public interface IAutomationClassLoader {
 
-	/**
-	 * Returns the class object associated with the given classname
-	 * @param commandClass
-	 * 					=> The class the object of which is needed
-	 * @return
-	 * @throws ClassNotFoundException
-	 */
-	Class<?> loadClass(String commandClass) throws ClassNotFoundException;
+    /**
+     * Returns the class object associated with the given classname
+     *
+     * @param commandClass => The class the object of which is needed
+     * @return
+     * @throws ClassNotFoundException
+     */
+    Class<?> loadClass(String commandClass) throws ClassNotFoundException;
 
 }

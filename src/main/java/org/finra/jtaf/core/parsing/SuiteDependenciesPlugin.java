@@ -31,53 +31,40 @@ import org.w3c.dom.Element;
 /**
  * Parser plugin to parse test suite dependencies
  */
-public class SuiteDependenciesPlugin implements IPostParseSuitePlugin
-{
-	private static final String DEPENDENCIES_NAME = "dependencies";
-	private static Logger logger = Logger.getLogger(SuiteDependenciesPlugin.class.getPackage().getName());
-	
-	@Override
-	public void execute(PostSuiteParserPluginContext ctx) throws ParserPluginException
-	{
-		ExceptionAccumulator acc = new ExceptionAccumulator();
-		Set<String> dependentTests = ctx.getTestSuite().getDependencies().getDependenciesTests();
-		Set<String> dependentTestSuites = ctx.getTestSuite().getDependencies().getDependenciesSuites();
-		Element dependenciesElement = ParserHelper.getFirstChildElementCaseInsensitive((Element) ctx.getRootNodeSuite(), DEPENDENCIES_NAME);
-		for (Element e : ParserHelper.getChildren(dependenciesElement))
-		{
-			try
-			{
-				AttributeHelper depAttributeHelper = new AttributeHelper(e);
-				String dependentValue = depAttributeHelper.getRequiredString("name");
-				if(e.getNodeName().equalsIgnoreCase("test"))
-				{
-					dependentTests.add(dependentValue);
-				}
-				else if(e.getNodeName().equalsIgnoreCase("testsuite"))
-				{
-					dependentTestSuites.add(dependentValue);
-				}
-				else
-				{
-					throw new UnexpectedElementException(e);
-				}
-			}
-			catch (Throwable th)
-			{
-				logger.fatal(th.getMessage());
+public class SuiteDependenciesPlugin implements IPostParseSuitePlugin {
+    private static final String DEPENDENCIES_NAME = "dependencies";
+    private static Logger logger = Logger.getLogger(SuiteDependenciesPlugin.class.getPackage().getName());
+
+    @Override
+    public void execute(PostSuiteParserPluginContext ctx) throws ParserPluginException {
+        ExceptionAccumulator acc = new ExceptionAccumulator();
+        Set<String> dependentTests = ctx.getTestSuite().getDependencies().getDependenciesTests();
+        Set<String> dependentTestSuites = ctx.getTestSuite().getDependencies().getDependenciesSuites();
+        Element dependenciesElement = ParserHelper.getFirstChildElementCaseInsensitive((Element) ctx.getRootNodeSuite(), DEPENDENCIES_NAME);
+        for (Element e : ParserHelper.getChildren(dependenciesElement)) {
+            try {
+                AttributeHelper depAttributeHelper = new AttributeHelper(e);
+                String dependentValue = depAttributeHelper.getRequiredString("name");
+                if (e.getNodeName().equalsIgnoreCase("test")) {
+                    dependentTests.add(dependentValue);
+                } else if (e.getNodeName().equalsIgnoreCase("testsuite")) {
+                    dependentTestSuites.add(dependentValue);
+                } else {
+                    throw new UnexpectedElementException(e);
+                }
+            } catch (Throwable th) {
+                logger.fatal(th.getMessage());
 //				mc.error(th.getMessage());
-				acc.add(th);
-			}
-		}
-		if(!acc.isEmpty())
-		{
-			throw new ParserPluginException(acc);
-		}
-	}
-	
-	@Override
-	public String getTagName()
-	{
-		return DEPENDENCIES_NAME;
-	}
+                acc.add(th);
+            }
+        }
+        if (!acc.isEmpty()) {
+            throw new ParserPluginException(acc);
+        }
+    }
+
+    @Override
+    public String getTagName() {
+        return DEPENDENCIES_NAME;
+    }
 }

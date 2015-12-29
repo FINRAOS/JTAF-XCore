@@ -22,17 +22,17 @@ package org.finra.jtaf.core.plugins.parsing;
  */
 public interface IPostParseTestPlugin {
 
-	/***
-	 * This method executes after each test is parsed which has the tag name returned by getTagName()
-	 * 
-	 * @param ctx
-	 * @throws ParserPluginException
-	 */
-	public void execute(PostTestParserPluginContext ctx) throws ParserPluginException;
-	
-	/***
-	 * This will return the tag name the ScriptParser will be looking for in the test body. If not found,
-	 * the execute method will not be run.
-	 */
-	public String getTagName();
+    /***
+     * This method executes after each test is parsed which has the tag name returned by getTagName()
+     *
+     * @param ctx
+     * @throws ParserPluginException
+     */
+    public void execute(PostTestParserPluginContext ctx) throws ParserPluginException;
+
+    /***
+     * This will return the tag name the ScriptParser will be looking for in the test body. If not found,
+     * the execute method will not be run.
+     */
+    public String getTagName();
 }

@@ -22,15 +22,15 @@ package org.finra.jtaf.core.parsing.exceptions;
  */
 public class AttributeFormatException extends ParsingException {
 
-	/**
-	 * Auto-generated
-	 */
-	private static final long serialVersionUID = 4579028460955204606L;
+    /**
+     * Auto-generated
+     */
+    private static final long serialVersionUID = 4579028460955204606L;
 
-	/**
-	 * @param expectedType a String describing the expected format. For example, "Integer"
-	 */
-	public AttributeFormatException(final String expectedType) {
-		super("Illegal attribute format (expected " + expectedType + ")");
-	}
+    /**
+     * @param expectedType a String describing the expected format. For example, "Integer"
+     */
+    public AttributeFormatException(final String expectedType) {
+        super("Illegal attribute format (expected " + expectedType + ")");
+    }
 }

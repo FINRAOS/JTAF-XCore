@@ -19,25 +19,22 @@ package org.finra.jtaf.core;
 
 /**
  * Implementation of the {@link IAutomationClassLoader}
- *
  */
-public class DefaultAutomationClassLoader implements IAutomationClassLoader{
+public class DefaultAutomationClassLoader implements IAutomationClassLoader {
 
-	/* (non-Javadoc)
-	 * @see org.finra.jtaf.core.IAutomationClassLoader#loadClass(java.lang.String)
-	 */
-	@Override
-	public Class<?> loadClass(String commandClass) throws ClassNotFoundException {
-		
-		try{
-		return Class.forName(commandClass);
-		}
-		catch(ClassNotFoundException e){
-			throw new ClassNotFoundException("Unable to Load command class " + commandClass, e);
-		}
-		catch(NoClassDefFoundError e1){
-			throw new NoClassDefFoundError("Unable to Load command class " + commandClass + "Exception "+ e1);
-		}
-	}
+    /* (non-Javadoc)
+     * @see org.finra.jtaf.core.IAutomationClassLoader#loadClass(java.lang.String)
+     */
+    @Override
+    public Class<?> loadClass(String commandClass) throws ClassNotFoundException {
+
+        try {
+            return Class.forName(commandClass);
+        } catch (ClassNotFoundException e) {
+            throw new ClassNotFoundException("Unable to Load command class " + commandClass, e);
+        } catch (NoClassDefFoundError e1) {
+            throw new NoClassDefFoundError("Unable to Load command class " + commandClass + "Exception " + e1);
+        }
+    }
 
 }

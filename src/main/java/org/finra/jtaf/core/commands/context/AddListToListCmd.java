@@ -23,36 +23,35 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
 
 /**
  * Gets a list from context and adds all elements to another list stored in context
- *
  */
 public class AddListToListCmd extends AbstractContextCmd {
-	public static final String VALUE_IN_ATTRIBUTE = "addlist";
-	public static final String INDEX_ATTRIBUTE = "index";
-	public static final String VALUE_OUT_ATTRIBUTE = "tolist";
+    public static final String VALUE_IN_ATTRIBUTE = "addlist";
+    public static final String INDEX_ATTRIBUTE = "index";
+    public static final String VALUE_OUT_ATTRIBUTE = "tolist";
 
-	public AddListToListCmd(String name) throws NameFormatException {
-		super(name);
-	}
+    public AddListToListCmd(String name) throws NameFormatException {
+        super(name);
+    }
 
-	@Override
-	protected void execute() throws Throwable {
-		@SuppressWarnings("unchecked")
-		List<Object> valueIn = (List<Object>) getRequiredObject(getRequiredString(VALUE_IN_ATTRIBUTE));
-		String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
-		@SuppressWarnings("unchecked")
-		List<Object> valueOut = (List<Object>) getOptionalObject(valueOutAttribute);
-		if(valueOut == null) {
-			List<Object> suppression = new ArrayList<Object>();
-			valueOut = suppression;
-		}
-		Integer index = mch.getOptionalInteger(INDEX_ATTRIBUTE);
-		if(index == null || index < 0) {
-			index = valueOut.size(); 
-		} else if(index > 0) { // for one-based
-			index -= 1;
-		}
-		valueOut.addAll(index, valueIn);
-		mch.setValueOut(valueOutAttribute, valueOut);
-	}
+    @Override
+    protected void execute() throws Throwable {
+        @SuppressWarnings("unchecked")
+        List<Object> valueIn = (List<Object>) getRequiredObject(getRequiredString(VALUE_IN_ATTRIBUTE));
+        String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
+        @SuppressWarnings("unchecked")
+        List<Object> valueOut = (List<Object>) getOptionalObject(valueOutAttribute);
+        if (valueOut == null) {
+            List<Object> suppression = new ArrayList<Object>();
+            valueOut = suppression;
+        }
+        Integer index = mch.getOptionalInteger(INDEX_ATTRIBUTE);
+        if (index == null || index < 0) {
+            index = valueOut.size();
+        } else if (index > 0) { // for one-based
+            index -= 1;
+        }
+        valueOut.addAll(index, valueIn);
+        mch.setValueOut(valueOutAttribute, valueOut);
+    }
 
 }

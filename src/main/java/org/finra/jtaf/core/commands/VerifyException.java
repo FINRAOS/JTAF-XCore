@@ -37,9 +37,8 @@ public class VerifyException extends Command {
      * interpreter.The recordResult variable is set to false because details
      * about the VerifyException step aren't needed, unlike the commands within
      * the VerifyException block.
-     * 
-     * @param name
-     *            - name of the command
+     *
+     * @param name - name of the command
      * @throws NameFormatException
      */
     public VerifyException(String name) throws NameFormatException {
@@ -54,12 +53,9 @@ public class VerifyException extends Command {
      * parameter. If it is not the same, an exception is thrown. If no exception
      * is encountered, an exception will be thrown. Otherwise, no exception is
      * thrown.
-     * 
-     * @param ctx
-     *            - The current context when this method is executed.
-     * 
-     * @throws Throwable
-     *             - Any exception thrown by a command within the Repeat block.
+     *
+     * @param ctx - The current context when this method is executed.
+     * @throws Throwable - Any exception thrown by a command within the Repeat block.
      */
     @SuppressWarnings("unchecked")
     @Override

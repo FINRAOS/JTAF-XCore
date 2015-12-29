@@ -25,17 +25,17 @@ import org.finra.jtaf.core.model.invocationtarget.Command;
  */
 public class StoreObjectInContextCmd extends Command {
 
-	public StoreObjectInContextCmd(String name) throws NameFormatException {
-		super(name);
-	}
+    public StoreObjectInContextCmd(String name) throws NameFormatException {
+        super(name);
+    }
 
-	@Override
-	protected void execute(IInvocationContext arg0) throws Throwable {
-		String newKey = getRequiredString("storeKey");
-		String key = getRequiredString("loadKey");
-		
-		Object o = getRequiredObject(key);
-		arg0.putObject(newKey, o);
-	}
+    @Override
+    protected void execute(IInvocationContext arg0) throws Throwable {
+        String newKey = getRequiredString("storeKey");
+        String key = getRequiredString("loadKey");
+
+        Object o = getRequiredObject(key);
+        arg0.putObject(newKey, o);
+    }
 
 }

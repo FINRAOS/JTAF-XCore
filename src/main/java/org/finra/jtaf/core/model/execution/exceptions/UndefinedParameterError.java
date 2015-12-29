@@ -21,24 +21,23 @@ package org.finra.jtaf.core.model.execution.exceptions;
  * Some implementations of IInvocationContext will throw this error
  * when a Command tries to retrieve a parameter that was not specified
  * in the Script Contract.
- *
  */
 public class UndefinedParameterError extends Error {
 
-	private static final long serialVersionUID = 364767996067850085L;
+    private static final long serialVersionUID = 364767996067850085L;
 
-	private final String parameter;
-	
-	/**
-	 * @param name
-	 */
-	
-	public UndefinedParameterError(String name) {
-		super("The parameter '" + name + "' was not specified in the Script Contract");
-		this.parameter = name;
-	}
-	
-	public final String getParameter() {
-		return this.parameter;
-	}
+    private final String parameter;
+
+    /**
+     * @param name
+     */
+
+    public UndefinedParameterError(String name) {
+        super("The parameter '" + name + "' was not specified in the Script Contract");
+        this.parameter = name;
+    }
+
+    public final String getParameter() {
+        return this.parameter;
+    }
 }

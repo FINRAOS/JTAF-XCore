@@ -22,15 +22,15 @@ package org.finra.jtaf.core.parsing.exceptions;
  */
 public class MissingRequiredElementException extends ParsingException {
 
-	/**
-	 * AUTO-GENERATED
-	 */
-	private static final long serialVersionUID = 3859741174693262134L;
+    /**
+     * AUTO-GENERATED
+     */
+    private static final long serialVersionUID = 3859741174693262134L;
 
-	/**
-	 * @param xpath An XPath that describes the missing element
-	 */
-	public MissingRequiredElementException(String xpath) {
-		super("The XPath \"" + xpath + "\" did not match any nodes");
-	}
+    /**
+     * @param xpath An XPath that describes the missing element
+     */
+    public MissingRequiredElementException(String xpath) {
+        super("The XPath \"" + xpath + "\" did not match any nodes");
+    }
 }

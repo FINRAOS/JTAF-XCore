@@ -23,34 +23,33 @@ import org.finra.jtaf.core.model.test.TestAgenda;
 
 /***
  * Exposes the data that can be used and/or modified by a IPostParseTestPlugin.
- *
  */
 public class PostAllParserPluginContext {
 
-	private TestAgenda testAgenda;
-	private CommandRegistry commandRegistry;
-	
-	public PostAllParserPluginContext(TestAgenda testAgenda, CommandRegistry commandRegistry) {
-		this.testAgenda = testAgenda;
-		this.commandRegistry = commandRegistry;
-	}
-	
-	/***
-	 * Returns the Test Agenda associated with the test run, so plugins can read and modify the data
-	 * 
-	 * @return testAgenda
-	 */
-	public TestAgenda getTestAgenda() {
-		return testAgenda;
-	}
-	
-	/***
-	 * Returns the Command Library model, so plugins can use the data
-	 * 
-	 * @return commandModel
-	 */
-	public CommandRegistry getCommandRegistry() {
-		return commandRegistry;
-	}
-	
+    private TestAgenda testAgenda;
+    private CommandRegistry commandRegistry;
+
+    public PostAllParserPluginContext(TestAgenda testAgenda, CommandRegistry commandRegistry) {
+        this.testAgenda = testAgenda;
+        this.commandRegistry = commandRegistry;
+    }
+
+    /***
+     * Returns the Test Agenda associated with the test run, so plugins can read and modify the data
+     *
+     * @return testAgenda
+     */
+    public TestAgenda getTestAgenda() {
+        return testAgenda;
+    }
+
+    /***
+     * Returns the Command Library model, so plugins can use the data
+     *
+     * @return commandModel
+     */
+    public CommandRegistry getCommandRegistry() {
+        return commandRegistry;
+    }
+
 }

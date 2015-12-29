@@ -22,17 +22,17 @@ package org.finra.jtaf.core.plugins.parsing;
  */
 public interface IPostParseSuitePlugin {
 
-	/***
-	 * This method executes after each suite is parsed which has the tag name returned by getTagName()
-	 * 
-	 * @param ctx
-	 * @throws ParserPluginException
-	 */
-	public void execute(PostSuiteParserPluginContext ctx) throws ParserPluginException;
-	
-	/***
-	 * This will return the tag name the ScriptParser will be looking for in the suite. If not found,
-	 * the execute method will not be run.
-	 */
-	public String getTagName();
+    /***
+     * This method executes after each suite is parsed which has the tag name returned by getTagName()
+     *
+     * @param ctx
+     * @throws ParserPluginException
+     */
+    public void execute(PostSuiteParserPluginContext ctx) throws ParserPluginException;
+
+    /***
+     * This will return the tag name the ScriptParser will be looking for in the suite. If not found,
+     * the execute method will not be run.
+     */
+    public String getTagName();
 }

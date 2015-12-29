@@ -18,25 +18,24 @@ package org.finra.jtaf.core.parallel;
 
 /**
  * This class updates the test status and test result
- * 
  */
 public class ResultUpdate {
 
-	private String testName;
-	private String status;
-	
-	public ResultUpdate(String testName, String status){
-		this.testName = testName;
-		this.status = status;
-	}
-	
-	public String getTestName(){
-		return testName;
-	}
-	
-	public String getTestStatus(){
-		return status;
-	}
+    private String testName;
+    private String status;
+
+    public ResultUpdate(String testName, String status) {
+        this.testName = testName;
+        this.status = status;
+    }
+
+    public String getTestName() {
+        return testName;
+    }
+
+    public String getTestStatus() {
+        return status;
+    }
 }
 
 

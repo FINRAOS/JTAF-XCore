@@ -20,19 +20,18 @@ import javax.xml.xpath.XPathException;
 
 /**
  * This is a wrapper for XPath exceptions.
- * 
  */
 public class NestedXPathException extends ParsingException {
 
-	/**
-	 * AUTO-GENERATED
-	 */
-	private static final long serialVersionUID = -6483364508583432000L;
+    /**
+     * AUTO-GENERATED
+     */
+    private static final long serialVersionUID = -6483364508583432000L;
 
-	/**
-	 * @param e The wrapped XPath
-	 */
-	public NestedXPathException(XPathException e) {
-		super(e);
-	}
+    /**
+     * @param e The wrapped XPath
+     */
+    public NestedXPathException(XPathException e) {
+        super(e);
+    }
 }

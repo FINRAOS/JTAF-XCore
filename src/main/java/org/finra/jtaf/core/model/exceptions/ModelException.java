@@ -18,26 +18,25 @@ package org.finra.jtaf.core.model.exceptions;
 
 /**
  * Generic base class for every model-related exception
- * 
  */
 public class ModelException extends Exception {
 
-	
-	private static final long serialVersionUID = 4621730379026731543L;
 
-	public ModelException() {
-		super();
-	}
-	
-	public ModelException(String message) {
-		super(message);
-	}
-	
-	public ModelException(String message, Throwable th) {
-		super(message, th);
-	}
-	
-	public ModelException(Throwable th) {
-		super(th);
-	}
+    private static final long serialVersionUID = 4621730379026731543L;
+
+    public ModelException() {
+        super();
+    }
+
+    public ModelException(String message) {
+        super(message);
+    }
+
+    public ModelException(String message, Throwable th) {
+        super(message, th);
+    }
+
+    public ModelException(Throwable th) {
+        super(th);
+    }
 }

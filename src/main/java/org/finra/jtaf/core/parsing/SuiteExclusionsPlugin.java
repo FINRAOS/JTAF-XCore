@@ -30,55 +30,41 @@ import org.w3c.dom.Element;
 
 /**
  * Parser plugin to handle exclusions defined in a test suite.
- *
  */
-public class SuiteExclusionsPlugin implements IPostParseSuitePlugin
-{
-	private static final String EXCLUSIONS_NAME = "exclusions";
-	private static Logger logger = Logger.getLogger(SuiteExclusionsPlugin.class.getPackage().getName());
-	
-	@Override
-	public void execute(PostSuiteParserPluginContext ctx) throws ParserPluginException
-	{
-		ExceptionAccumulator acc = new ExceptionAccumulator();
-		Set<String> exclusionTests = ctx.getTestSuite().getExclusions().getDependenciesTests();
-		Set<String> exclusionTestSuites = ctx.getTestSuite().getExclusions().getDependenciesSuites();
-		Element exclusionsElement = ParserHelper.getFirstChildElementCaseInsensitive((Element) ctx.getRootNodeSuite(), EXCLUSIONS_NAME);
-		for (Element e : ParserHelper.getChildren(exclusionsElement))
-		{
-			try
-			{
-				AttributeHelper excAttributeHelper = new AttributeHelper(e);
-				String exclusionValue = excAttributeHelper.getRequiredString("name");
-				if(e.getNodeName().equalsIgnoreCase("test"))
-				{
-					exclusionTests.add(exclusionValue);
-				}
-				else if(e.getNodeName().equalsIgnoreCase("testsuite"))
-				{
-					exclusionTestSuites.add(exclusionValue);
-				}
-				else
-				{
-					throw new UnexpectedElementException(e);
-				}
-			}
-			catch (Throwable th)
-			{
-				logger.fatal(th.getMessage());
+public class SuiteExclusionsPlugin implements IPostParseSuitePlugin {
+    private static final String EXCLUSIONS_NAME = "exclusions";
+    private static Logger logger = Logger.getLogger(SuiteExclusionsPlugin.class.getPackage().getName());
+
+    @Override
+    public void execute(PostSuiteParserPluginContext ctx) throws ParserPluginException {
+        ExceptionAccumulator acc = new ExceptionAccumulator();
+        Set<String> exclusionTests = ctx.getTestSuite().getExclusions().getDependenciesTests();
+        Set<String> exclusionTestSuites = ctx.getTestSuite().getExclusions().getDependenciesSuites();
+        Element exclusionsElement = ParserHelper.getFirstChildElementCaseInsensitive((Element) ctx.getRootNodeSuite(), EXCLUSIONS_NAME);
+        for (Element e : ParserHelper.getChildren(exclusionsElement)) {
+            try {
+                AttributeHelper excAttributeHelper = new AttributeHelper(e);
+                String exclusionValue = excAttributeHelper.getRequiredString("name");
+                if (e.getNodeName().equalsIgnoreCase("test")) {
+                    exclusionTests.add(exclusionValue);
+                } else if (e.getNodeName().equalsIgnoreCase("testsuite")) {
+                    exclusionTestSuites.add(exclusionValue);
+                } else {
+                    throw new UnexpectedElementException(e);
+                }
+            } catch (Throwable th) {
+                logger.fatal(th.getMessage());
 //				mc.error(th.getMessage());
-				acc.add(th);
-			}
-		}
-		if(!acc.isEmpty())
-		{
-			throw new ParserPluginException(acc);
-		}
-	}
-	
-	@Override
-	public String getTagName()
-	{
-		return EXCLUSIONS_NAME;
-	}
+                acc.add(th);
+            }
+        }
+        if (!acc.isEmpty()) {
+            throw new ParserPluginException(acc);
+        }
+    }
+
+    @Override
+    public String getTagName() {
+        return EXCLUSIONS_NAME;
+    }
 }

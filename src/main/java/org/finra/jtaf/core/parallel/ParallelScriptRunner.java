@@ -31,72 +31,71 @@ import org.junit.Test;
 
 /**
  * Allows more than one script to run in parallel
- *
  */
 public class ParallelScriptRunner extends TestCase {
 
-	private TestScript theTestScript ;
-	boolean expectedFailureFlag = false;
-	public static final Logger logger = Logger.getLogger(ParallelScriptRunner.class);
-	
-	public ParallelScriptRunner(TestScript theTestScript) {
-		super(createJUnitName(theTestScript));
-		this.theTestScript = theTestScript;
-	}
+    private TestScript theTestScript;
+    boolean expectedFailureFlag = false;
+    public static final Logger logger = Logger.getLogger(ParallelScriptRunner.class);
 
-	private static final String createJUnitName(TestScript test) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(test.getFullName());
-		boolean issuesExist = false;
-		if (test.getCRs() != null && test.getCRs().size() > 0) {
-			sb.append(" CR=\"");
-			sb.append(StringHelper.join(test.getCRs(), ", "));
+    public ParallelScriptRunner(TestScript theTestScript) {
+        super(createJUnitName(theTestScript));
+        this.theTestScript = theTestScript;
+    }
 
-			sb.append("\"");
+    private static final String createJUnitName(TestScript test) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(test.getFullName());
+        boolean issuesExist = false;
+        if (test.getCRs() != null && test.getCRs().size() > 0) {
+            sb.append(" CR=\"");
+            sb.append(StringHelper.join(test.getCRs(), ", "));
 
-			issuesExist = true;
-		}
+            sb.append("\"");
 
-		if (test.getIssue() != null && !test.getIssue().equals("")) {
-			issuesExist = true;
-		}
+            issuesExist = true;
+        }
 
-		if (test.getStatus() != null) {
-			sb.append(" STATUS=\"");
-			sb.append(test.getStatus());
-			sb.append("\"");
-		}
+        if (test.getIssue() != null && !test.getIssue().equals("")) {
+            issuesExist = true;
+        }
 
-		if (issuesExist) {
-			sb.append(" [ISSUE EXISTS]");
-		}
+        if (test.getStatus() != null) {
+            sb.append(" STATUS=\"");
+            sb.append(test.getStatus());
+            sb.append("\"");
+        }
 
-		return sb.toString();
-	}
-	
-	@Test
-	public void runJtafTestScript() throws Throwable {
-	
-		logger.info("Thread " + Thread.currentThread().getId() + " is executing " + this.getName());
-		DiNode theTest = AutomationEngine.getInstance().getTestDigraph().getVertex(this.theTestScript.getName());
-		Interpreter iv = AutomationEngine.getInstance().getInterpreter();
-		try {
-			if(theTest.getTestStatus().equalsIgnoreCase("FAILED")){
-				ConcurrentScheduler.updateWithStatus(new ResultUpdate(this.theTestScript.getName(), "FAILED"));
-				Assert.fail("One or more Dependent tests failed");
-			}
-			TestResult tr = iv.interpret(this.theTestScript);
-			if (!tr.isTestPassed()) {
-				ConcurrentScheduler.updateWithStatus(new ResultUpdate(this.theTestScript.getName(), "FAILED"));
-				throw tr.getFailureReason();
-			}
-			ConcurrentScheduler.updateWithStatus(new ResultUpdate(this.theTestScript.getName(), "PASSED"));
-		} catch (Throwable t) {
-			throw t;
-		} finally {
-			
-		}
-		
-		
-	}
+        if (issuesExist) {
+            sb.append(" [ISSUE EXISTS]");
+        }
+
+        return sb.toString();
+    }
+
+    @Test
+    public void runJtafTestScript() throws Throwable {
+
+        logger.info("Thread " + Thread.currentThread().getId() + " is executing " + this.getName());
+        DiNode theTest = AutomationEngine.getInstance().getTestDigraph().getVertex(this.theTestScript.getName());
+        Interpreter iv = AutomationEngine.getInstance().getInterpreter();
+        try {
+            if (theTest.getTestStatus().equalsIgnoreCase("FAILED")) {
+                ConcurrentScheduler.updateWithStatus(new ResultUpdate(this.theTestScript.getName(), "FAILED"));
+                Assert.fail("One or more Dependent tests failed");
+            }
+            TestResult tr = iv.interpret(this.theTestScript);
+            if (!tr.isTestPassed()) {
+                ConcurrentScheduler.updateWithStatus(new ResultUpdate(this.theTestScript.getName(), "FAILED"));
+                throw tr.getFailureReason();
+            }
+            ConcurrentScheduler.updateWithStatus(new ResultUpdate(this.theTestScript.getName(), "PASSED"));
+        } catch (Throwable t) {
+            throw t;
+        } finally {
+
+        }
+
+
+    }
 }

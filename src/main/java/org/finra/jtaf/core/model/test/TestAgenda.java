@@ -24,68 +24,67 @@ import java.util.Set;
 
 /**
  * Maintains a list of TestScripts that have been executed and TestScripts that still need to be executed
- * 
  */
 public class TestAgenda {
-	private final List<TestScript> testScripts;
+    private final List<TestScript> testScripts;
 
-	private Set<String> automationValues;
-	private int maxThreads = 1;
+    private Set<String> automationValues;
+    private int maxThreads = 1;
 
-	public TestAgenda() {
-		testScripts = new ArrayList<TestScript>();
-		automationValues = new HashSet<String>();
-	}
+    public TestAgenda() {
+        testScripts = new ArrayList<TestScript>();
+        automationValues = new HashSet<String>();
+    }
 
-	public List<TestScript> getTestScripts() {
-		return testScripts;
-	}
+    public List<TestScript> getTestScripts() {
+        return testScripts;
+    }
 
-	/**
-	 * This is a set operation and values are converted to lowercase first
-	 * 
-	 * @param automationValue
-	 * @return 
-	 */
-	public boolean addAutomationValue(String automationValue) {
-		return this.automationValues.add(automationValue.toLowerCase());
-	}
-	
-	/**
-	 * returns a read only version of the set of automation values for the test agenda
-	 * 
-	 * @return read only set of automation values
-	 */
-	public Set<String> getAutomationValues() {
-		Set<String> setToWrap = automationValues == null ? (new HashSet<String>()) : automationValues;
-		return Collections.unmodifiableSet(setToWrap);
-	}
-	
-	/**
-	 * Checks whether the automationValues set contains the given value.
-	 * Ensures correct case sensitivity.
-	 * 
-	 * @param value to check for
-	 * @return true if value exists, case insensitive
-	 */
-	public boolean containsAutomationValue(String value) {
-		return value != null && (automationValues == null ? false : automationValues.contains(value.toLowerCase()));
-	}
-	
-	/**
-	 * pass through of is empty for the automationValues set .
-	 * 
-	 * @return true if null or empty
-	 */
-	public boolean isAutomationValuesEmpty() {
-		return automationValues == null ? true : automationValues.isEmpty();
-	}
+    /**
+     * This is a set operation and values are converted to lowercase first
+     *
+     * @param automationValue
+     * @return
+     */
+    public boolean addAutomationValue(String automationValue) {
+        return this.automationValues.add(automationValue.toLowerCase());
+    }
 
-	public void setThreadCount(String threads){
-		maxThreads = Integer.parseInt(threads);
-	}
-	
-	public int getThreadCount(){
-		return maxThreads;
-	}
+    /**
+     * returns a read only version of the set of automation values for the test agenda
+     *
+     * @return read only set of automation values
+     */
+    public Set<String> getAutomationValues() {
+        Set<String> setToWrap = automationValues == null ? (new HashSet<String>()) : automationValues;
+        return Collections.unmodifiableSet(setToWrap);
+    }
+
+    /**
+     * Checks whether the automationValues set contains the given value.
+     * Ensures correct case sensitivity.
+     *
+     * @param value to check for
+     * @return true if value exists, case insensitive
+     */
+    public boolean containsAutomationValue(String value) {
+        return value != null && (automationValues == null ? false : automationValues.contains(value.toLowerCase()));
+    }
+
+    /**
+     * pass through of is empty for the automationValues set .
+     *
+     * @return true if null or empty
+     */
+    public boolean isAutomationValuesEmpty() {
+        return automationValues == null ? true : automationValues.isEmpty();
+    }
+
+    public void setThreadCount(String threads) {
+        maxThreads = Integer.parseInt(threads);
+    }
+
+    public int getThreadCount() {
+        return maxThreads;
+    }
 }

@@ -26,7 +26,6 @@ import org.finra.jtaf.core.model.execution.IInvocationContext;
 
 /**
  * Used to replace keys in the context.
- * 
  */
 public class ContextKeyHandler {
 
@@ -36,21 +35,19 @@ public class ContextKeyHandler {
 
     /**
      * Called when instantiated
-     * 
-     * @param context
-     *            - the current context when this is executed.
+     *
+     * @param context - the current context when this is executed.
      */
     public ContextKeyHandler(IInvocationContext context) {
         this.context = context;
     }
 
     /**
-     * 
-     * @param value - the key 
+     * @param value - the key
      * @return -
      */
     @SuppressWarnings("unchecked")
-	public Object replaceContextKey(Object value) {
+    public Object replaceContextKey(Object value) {
         // This is to avoid replaceContext from getting into an infinite loop of
         // recursive calls.
         resolveCount++;
@@ -115,7 +112,7 @@ public class ContextKeyHandler {
 
     /**
      * Get the current context.
-     * 
+     *
      * @return the current context.
      */
     public IInvocationContext getContext() {

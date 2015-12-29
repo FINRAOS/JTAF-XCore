@@ -27,7 +27,6 @@ import org.finra.jtaf.core.model.statement.Invocation;
 
 /**
  * This is a collection of commands that are to be executed.
- * 
  */
 public class Block extends Command {
 
@@ -36,9 +35,8 @@ public class Block extends Command {
      * interpreter.The recordResult variable is set to false because details
      * about the Block step aren't needed, unlike the commands within the
      * Block block.
-     * 
-     * @param name
-     *            - name of the command
+     *
+     * @param name - name of the command
      * @throws NameFormatException
      */
     public Block(String name) throws NameFormatException {
@@ -49,12 +47,9 @@ public class Block extends Command {
 
     /**
      * This goes through all commands in the context and executes them.
-     * 
-     * @param ctx
-     *            - The current context when this method is executed.
-     * 
-     * @throws Throwable
-     *             - Any exception thrown by a command within the Block.
+     *
+     * @param ctx - The current context when this method is executed.
+     * @throws Throwable - Any exception thrown by a command within the Block.
      */
     @SuppressWarnings("unchecked")
     @Override

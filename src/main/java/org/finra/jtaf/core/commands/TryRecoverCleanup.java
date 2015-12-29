@@ -26,7 +26,6 @@ import org.finra.jtaf.core.model.statement.Invocation;
 
 /**
  * Allows for try-catch-finally type logic to be performed within a test script.
- * 
  */
 public class TryRecoverCleanup extends Command {
 
@@ -35,9 +34,8 @@ public class TryRecoverCleanup extends Command {
      * interpreter.The recordResult variable is set to false because details
      * about the TryRecoverCleanup step aren't needed, unlike the commands
      * within the TryRecoverCleanup block.
-     * 
-     * @param name
-     *            - name of the command
+     *
+     * @param name - name of the command
      * @throws NameFormatException
      */
     public TryRecoverCleanup(String name) throws NameFormatException {
@@ -51,12 +49,9 @@ public class TryRecoverCleanup extends Command {
      * an exception is thrown, it will then try to execute all commands in the
      * recover block, if it exists, and finally execute all commands in the
      * cleanup block if it exists.
-     * 
-     * @param ctx
-     *            - The current context when this method is executed.
-     * 
-     * @throws Throwable
-     *             - Any exception thrown by a command within one of the blocks.
+     *
+     * @param ctx - The current context when this method is executed.
+     * @throws Throwable - Any exception thrown by a command within one of the blocks.
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -83,12 +78,12 @@ public class TryRecoverCleanup extends Command {
                 try {
                     Invocation cleanupInvocation = (Invocation) params.get(cleanup);
                     if (cleanupInvocation.getTargetName().equalsIgnoreCase("cleanup")) {
-                    	// handle tearDown block
-                       	Object isTearDownParameter = cleanupInvocation.getParameters().get("isteardown");
-                       	boolean isTearDown = isTearDownParameter != null && isTearDownParameter.toString().equalsIgnoreCase("true");
-                       	if(isTearDown)
-                       		interpreter.executeTearDownPlugins(error, ctx);
-                       	executeInvocation(cleanupInvocation);
+                        // handle tearDown block
+                        Object isTearDownParameter = cleanupInvocation.getParameters().get("isteardown");
+                        boolean isTearDown = isTearDownParameter != null && isTearDownParameter.toString().equalsIgnoreCase("true");
+                        if (isTearDown)
+                            interpreter.executeTearDownPlugins(error, ctx);
+                        executeInvocation(cleanupInvocation);
                     }
                 } catch (Throwable ignore) {
                     // Only handle cleanup exceptions if there was no other

@@ -27,7 +27,6 @@ import org.finra.jtaf.core.model.statement.Invocation;
 
 /**
  * This command overwrites the values in the current context.
- * 
  */
 public class ReplaceContext extends Command {
 
@@ -36,9 +35,8 @@ public class ReplaceContext extends Command {
      * interpreter.The recordResult variable is set to false because details
      * about the ReplaceContext step aren't needed, unlike the commands within
      * the ReplaceContext block.
-     * 
-     * @param name
-     *            - name of the command
+     *
+     * @param name - name of the command
      * @throws NameFormatException
      */
     public ReplaceContext(String name) throws NameFormatException {
@@ -50,13 +48,10 @@ public class ReplaceContext extends Command {
     /**
      * This clears the current context and then puts all values from within the
      * ReplaceContext block into the context.
-     * 
-     * @param ctx
-     *            - The current context when this method is executed.
-     * 
-     * @throws Throwable
-     *             - Any exception thrown by a command within the ReplaceContext
-     *             block.
+     *
+     * @param ctx - The current context when this method is executed.
+     * @throws Throwable - Any exception thrown by a command within the ReplaceContext
+     *                   block.
      */
     @Override
     protected void execute(IInvocationContext ctx) throws Throwable {
@@ -83,7 +78,7 @@ public class ReplaceContext extends Command {
                     ((CorrectiveContext) ctx).putObject(key, params.get(key));
                 } else if (!previousParams.keySet().contains(key)
                         || (previousParams.keySet().contains(key) && previousParams.get(key) != params
-                                .get(key))) {
+                        .get(key))) {
                     ((CorrectiveContext) ctx).putObject(key, params.get(key));
                     // ((CorrectiveContext) ctx).getAllObjects().p
                 }

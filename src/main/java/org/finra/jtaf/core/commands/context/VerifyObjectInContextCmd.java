@@ -30,28 +30,28 @@ import org.finra.jtaf.core.utilities.CompositeDataComparator;
  */
 public class VerifyObjectInContextCmd extends Command {
 
-	public VerifyObjectInContextCmd(String name) throws NameFormatException {
-		super(name);
-	}
+    public VerifyObjectInContextCmd(String name) throws NameFormatException {
+        super(name);
+    }
 
-	@Override
-	protected void execute(IInvocationContext arg0) throws Throwable {
-		String actualKey = getRequiredString("actualKey");
-		String expectedKey = getRequiredString("expectedKey");
-		String title = getOptionalString("title");
-		boolean failOnNotEqual = getBooleanOrDefault("failOnNotEqual", true);
-		Object actual = getRequiredObject(actualKey);
-		Object expected = getRequiredObject(expectedKey);
-		CompositeDataComparator cdc = new CompositeDataComparator();
-		cdc.setAccumulateErrors(true);
-		cdc.compareObject(title, null, expected, actual);
-		List<String> errorList = cdc.getErrorList();
-		if(failOnNotEqual && errorList != null && !errorList.isEmpty()) {
-		    if(title != null) {
-		        throw new AssertionError("Expected " + title + " did not match actual:\n" + StringUtils.join(errorList,  "\n"));
-		    }
-		    throw new AssertionError("Expected did not match actual:\n" + StringUtils.join(errorList,  "\n"));
-		}
-		arg0.putObject("errorList", errorList);
-	}
+    @Override
+    protected void execute(IInvocationContext arg0) throws Throwable {
+        String actualKey = getRequiredString("actualKey");
+        String expectedKey = getRequiredString("expectedKey");
+        String title = getOptionalString("title");
+        boolean failOnNotEqual = getBooleanOrDefault("failOnNotEqual", true);
+        Object actual = getRequiredObject(actualKey);
+        Object expected = getRequiredObject(expectedKey);
+        CompositeDataComparator cdc = new CompositeDataComparator();
+        cdc.setAccumulateErrors(true);
+        cdc.compareObject(title, null, expected, actual);
+        List<String> errorList = cdc.getErrorList();
+        if (failOnNotEqual && errorList != null && !errorList.isEmpty()) {
+            if (title != null) {
+                throw new AssertionError("Expected " + title + " did not match actual:\n" + StringUtils.join(errorList, "\n"));
+            }
+            throw new AssertionError("Expected did not match actual:\n" + StringUtils.join(errorList, "\n"));
+        }
+        arg0.putObject("errorList", errorList);
+    }
 }

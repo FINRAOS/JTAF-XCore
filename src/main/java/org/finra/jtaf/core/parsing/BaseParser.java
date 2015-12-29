@@ -34,88 +34,81 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 
-
-
 /**
  * I plan to scrap these parsers within a few releases to allow for a more
  * flexible model.  In particular, I want the plugins to be able to extend
  * the behavior of the parser.  For example, if we create a StarTeam plugin,
  * then we will want to pull CR information from the tests and commands.
- * 
- * 
- *
  */
 public abstract class BaseParser {
-	private final DocumentBuilder  db;
-	private       Document         currentDocument;
-	private final MessageCollector errorCollector;
-	
-	public BaseParser() throws ParserConfigurationException {
-		this.db              = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-		this.currentDocument = null;
-		this.errorCollector  = new MessageCollector();
-	}
-	
+    private final DocumentBuilder db;
+    private Document currentDocument;
+    private final MessageCollector errorCollector;
 
-	public final void parse(File f) throws ParsingException, SAXException, IOException {
-		currentDocument = db.parse(f);
-		getErrorCollector().reset("In file " + f.getAbsolutePath());
-		handleRoot(getCurrentDocument().getDocumentElement());
-		currentDocument = null;
-	}
+    public BaseParser() throws ParserConfigurationException {
+        this.db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        this.currentDocument = null;
+        this.errorCollector = new MessageCollector();
+    }
 
 
-	/**
-	 * Do whatever to the document root
-	 * @param root
-	 */
-	protected abstract void handleRoot(Element root) throws ParsingException ;
+    public final void parse(File f) throws ParsingException, SAXException, IOException {
+        currentDocument = db.parse(f);
+        getErrorCollector().reset("In file " + f.getAbsolutePath());
+        handleRoot(getCurrentDocument().getDocumentElement());
+        currentDocument = null;
+    }
 
 
-
-	protected final Document getCurrentDocument() {
-		return this.currentDocument;
-	}
-	
-	/**
-	 * It is the caller's responsibility to print the log, if desired
-	 * @return The ErrorCollector used by this parser
-	 */
-	public final MessageCollector getErrorCollector() {
-		return this.errorCollector;
-	}
-	
-	
-	
-	
-	/**
-	 * TODO: There is probably a more effective way to do this, but this does the trick for now
-	 * @param elem
-	 * @return
-	 */
-	protected final List<Element> getChildElements(Element elem) {
-		ArrayList<Element> retval = new ArrayList<Element>();
-		final NodeList children = elem.getChildNodes();
-		for(int i = 0; i < children.getLength(); ++i) {
-			Node child = children.item(i);
-			if(child.getNodeType() == Node.ELEMENT_NODE) {
-				retval.add((Element) child);
-			}
-		}
-		return retval;
-	}
+    /**
+     * Do whatever to the document root
+     *
+     * @param root
+     */
+    protected abstract void handleRoot(Element root) throws ParsingException;
 
 
-	
-	
-	/**
-	 * Generic method for printing unexpected element errors
-	 * @param elem
-	 */
-	protected final void reportUnexpectedElement(Element elem) {
-		this.getErrorCollector().error("Unexpected element: " + elem.getNodeName());
-	}
-	
-	
+    protected final Document getCurrentDocument() {
+        return this.currentDocument;
+    }
+
+    /**
+     * It is the caller's responsibility to print the log, if desired
+     *
+     * @return The ErrorCollector used by this parser
+     */
+    public final MessageCollector getErrorCollector() {
+        return this.errorCollector;
+    }
+
+
+    /**
+     * TODO: There is probably a more effective way to do this, but this does the trick for now
+     *
+     * @param elem
+     * @return
+     */
+    protected final List<Element> getChildElements(Element elem) {
+        ArrayList<Element> retval = new ArrayList<Element>();
+        final NodeList children = elem.getChildNodes();
+        for (int i = 0; i < children.getLength(); ++i) {
+            Node child = children.item(i);
+            if (child.getNodeType() == Node.ELEMENT_NODE) {
+                retval.add((Element) child);
+            }
+        }
+        return retval;
+    }
+
+
+    /**
+     * Generic method for printing unexpected element errors
+     *
+     * @param elem
+     */
+    protected final void reportUnexpectedElement(Element elem) {
+        this.getErrorCollector().error("Unexpected element: " + elem.getNodeName());
+    }
+
 
 }

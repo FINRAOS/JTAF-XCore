@@ -29,11 +29,9 @@ import org.finra.jtaf.core.model.statement.Invocation;
  * Used to specify control paths that have the same end result. This allows
  * testers to write their scripts at a higher level of abstraction rather than
  * paying attention to an explicit set of actions that need to be performed.
- * 
+ * <p/>
  * TODO: Add an optional weight to each of the paths. This will cause certain
  * paths to be executed w/ a higher probability.
- * 
- * 
  */
 public class Multipath extends Command {
 
@@ -42,7 +40,7 @@ public class Multipath extends Command {
      * interpreter.The recordResult variable is set to false because details
      * about the Multipath step aren't needed, unlike the commands within the
      * Multipath block.
-     * 
+     *
      * @param name - name of the command
      * @throws NameFormatException
      */
@@ -55,12 +53,9 @@ public class Multipath extends Command {
     /**
      * This randomly picks a path and executes all commands in the block. For
      * this command, 'Path' is a named Block command.
-     * 
-     * @param ctx
-     *            - The current context when this method is executed.
-     * 
-     * @throws Throwable
-     *             - Any exception thrown by a command within the Repeat block.
+     *
+     * @param ctx - The current context when this method is executed.
+     * @throws Throwable - Any exception thrown by a command within the Repeat block.
      */
     @SuppressWarnings("unchecked")
     @Override

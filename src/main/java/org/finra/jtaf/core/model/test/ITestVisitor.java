@@ -18,28 +18,30 @@ package org.finra.jtaf.core.model.test;
 
 /**
  * Visitor for different test elements
- *
  */
 public interface ITestVisitor {
 
-	/**
-	 * Operates on a folder level
-	 * @param testSuite
-	 * @throws Exception
-	 */
-	void visitTestNamespace(TestNamespace suite) throws Exception;
-	
-	
-	/**
-	 * Operates on a Test element
-	 * @param test
-	 * @throws Exception
-	 */
-	void visitTestScript(TestScript test) throws Exception;
-	
-	/**
-	 * Operates on a file level
-	 * @param testSuite
-	 */
-	void visitTestSuite(TestSuite testSuite) throws Exception;
+    /**
+     * Operates on a folder level
+     *
+     * @param testSuite
+     * @throws Exception
+     */
+    void visitTestNamespace(TestNamespace suite) throws Exception;
+
+
+    /**
+     * Operates on a Test element
+     *
+     * @param test
+     * @throws Exception
+     */
+    void visitTestScript(TestScript test) throws Exception;
+
+    /**
+     * Operates on a file level
+     *
+     * @param testSuite
+     */
+    void visitTestSuite(TestSuite testSuite) throws Exception;
 }

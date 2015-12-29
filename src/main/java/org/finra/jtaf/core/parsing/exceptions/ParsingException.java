@@ -22,24 +22,24 @@ package org.finra.jtaf.core.parsing.exceptions;
  */
 public class ParsingException extends Exception {
 
-	/**
-	 * Auto-generated
-	 */
-	private static final long serialVersionUID = -218747052989712917L;
+    /**
+     * Auto-generated
+     */
+    private static final long serialVersionUID = -218747052989712917L;
 
-	public ParsingException() {
-		super();
-	}
-	
-	public ParsingException(String message) {
-		super(message);
-	}
-	
-	public ParsingException(String message, Throwable e) {
-		super(message, e);
-	}
-	
-	public ParsingException(Throwable e) {
-		super(e);
-	}
+    public ParsingException() {
+        super();
+    }
+
+    public ParsingException(String message) {
+        super(message);
+    }
+
+    public ParsingException(String message, Throwable e) {
+        super(message, e);
+    }
+
+    public ParsingException(Throwable e) {
+        super(e);
+    }
 }

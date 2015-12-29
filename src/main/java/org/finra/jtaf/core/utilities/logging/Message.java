@@ -23,29 +23,28 @@ import org.apache.log4j.Level;
  * Message w/ associated logging level.  Used to print logging
  * messages in a hierarchical fashion (useful for printing messages
  * from parsers, etc)
- *
  */
 public class Message {
-	private final Level  level;
-	private final String text;
+    private final Level level;
+    private final String text;
 
 
-	public Message(Level level, String text) {
-		this.level   = level;
-		this.text = text;
-	}
-	
-	/**
-	 * @return Log level associated w/ this message
-	 */
-	public final Level getLevel() {
-		return this.level;
-	}
+    public Message(Level level, String text) {
+        this.level = level;
+        this.text = text;
+    }
 
-	/**
-	 * @return The text of the message
-	 */
-	public final String getText() {
-		return this.text;
-	}
+    /**
+     * @return Log level associated w/ this message
+     */
+    public final Level getLevel() {
+        return this.level;
+    }
+
+    /**
+     * @return The text of the message
+     */
+    public final String getText() {
+        return this.text;
+    }
 }

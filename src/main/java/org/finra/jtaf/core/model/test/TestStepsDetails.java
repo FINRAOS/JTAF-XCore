@@ -18,56 +18,56 @@ package org.finra.jtaf.core.model.test;
 
 /**
  * This class represents a single test step object i.e. a command in the test
- *
  */
 public class TestStepsDetails {
-	String name;
-	String usage;
-	boolean expectedResult = true;
-	boolean actualResult = true;
-	String type = "general";
+    String name;
+    String usage;
+    boolean expectedResult = true;
+    boolean actualResult = true;
+    String type = "general";
 
-	public TestStepsDetails(String name, String usage){
-		this.name=name;
-		this.usage=usage;		
-	}
-	public String getUsage() {
-		return usage;
-	}
+    public TestStepsDetails(String name, String usage) {
+        this.name = name;
+        this.usage = usage;
+    }
 
-	public void setUsage(String usage) {
-		this.usage = usage;
-	}
+    public String getUsage() {
+        return usage;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setUsage(String usage) {
+        this.usage = usage;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public boolean getExpectedResult() {
-		return expectedResult;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setExpectedResult(boolean expectedResult) {
-		this.expectedResult = expectedResult;
-	}
+    public boolean getExpectedResult() {
+        return expectedResult;
+    }
 
-	public boolean getActualResult() {
-		return actualResult;
-	}
+    public void setExpectedResult(boolean expectedResult) {
+        this.expectedResult = expectedResult;
+    }
 
-	public void setActualResult(boolean actualResult) {
-		this.actualResult = actualResult;
-	}
+    public boolean getActualResult() {
+        return actualResult;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public void setActualResult(boolean actualResult) {
+        this.actualResult = actualResult;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

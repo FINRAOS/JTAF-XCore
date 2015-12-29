@@ -27,7 +27,6 @@ import org.finra.jtaf.core.model.statement.Invocation;
  * This command surrounds a block of commands to be executed. If one of them
  * throws an exception, it is stored to be reported at the end of the test and
  * any commands after this block are then executed.
- * 
  */
 public class IgnoreErrors extends Command {
 
@@ -36,9 +35,8 @@ public class IgnoreErrors extends Command {
      * interpreter. The recordResult variable is set to false because details
      * about the IgnoreErrors step aren't needed, unlike the commands within the
      * IgnoreErrors block.
-     * 
-     * @param name
-     *            - The name of the command
+     *
+     * @param name - The name of the command
      * @throws NameFormatException
      */
     public IgnoreErrors(String name) throws NameFormatException {
@@ -52,9 +50,8 @@ public class IgnoreErrors extends Command {
      * block and executes them until they have all been executed or an exception
      * has been thrown. If an exception is thrown, it is stored in the
      * ErrorAccumulator to be reported at the end of the test.
-     * 
-     * @param ctx
-     *            - The current context when this method is executed.
+     *
+     * @param ctx - The current context when this method is executed.
      */
     @SuppressWarnings("unchecked")
     @Override

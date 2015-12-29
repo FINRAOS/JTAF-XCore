@@ -23,32 +23,30 @@ import java.util.regex.Pattern;
  * Exception stating that a given name does not satisfy some regular
  * expression.  This is completely opaque for test script writers,
  * but it may be useful for test command writers.
- *
  */
 public class NameFormatException extends Exception {
 
-	private static final long serialVersionUID = 1625699244250298524L;
+    private static final long serialVersionUID = 1625699244250298524L;
 
-	private final String  invalidName;
-	private final Pattern pattern;
-	
-	/**
-	 * @param invalidName
-	 * @param pattern
-	 *
-	 */
-	
-	public NameFormatException(String invalidName, Pattern pattern) {
-		super("'" + invalidName + "' does not satisfy the pattern " + pattern.pattern());
-		this.invalidName = invalidName;
-		this.pattern     = pattern;
-	}
-	
-	public final String getInvalidName() {
-		return this.invalidName;
-	}
-	
-	public final Pattern getPattern() {
-		return this.pattern;
-	}
+    private final String invalidName;
+    private final Pattern pattern;
+
+    /**
+     * @param invalidName
+     * @param pattern
+     */
+
+    public NameFormatException(String invalidName, Pattern pattern) {
+        super("'" + invalidName + "' does not satisfy the pattern " + pattern.pattern());
+        this.invalidName = invalidName;
+        this.pattern = pattern;
+    }
+
+    public final String getInvalidName() {
+        return this.invalidName;
+    }
+
+    public final Pattern getPattern() {
+        return this.pattern;
+    }
 }

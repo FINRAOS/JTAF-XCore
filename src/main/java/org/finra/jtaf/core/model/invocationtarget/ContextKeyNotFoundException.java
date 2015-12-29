@@ -19,16 +19,15 @@ package org.finra.jtaf.core.model.invocationtarget;
 /**
  * This is an exception thrown when a key, that hasn't been stored in the
  * context, is used to get a value from the context.
- * 
  */
 public class ContextKeyNotFoundException extends RuntimeException {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
+    /**
      * A constructor used without specifying the message or throwable.
      */
     public ContextKeyNotFoundException() {
@@ -38,11 +37,9 @@ public class ContextKeyNotFoundException extends RuntimeException {
 
     /**
      * A constructor used with specifying the message or throwable.
-     * 
-     * @param message
-     *            - The message to be thrown.
-     * @param cause
-     *            - The exception encountered that will be thrown.
+     *
+     * @param message - The message to be thrown.
+     * @param cause   - The exception encountered that will be thrown.
      */
     public ContextKeyNotFoundException(String message, Throwable cause) {
         super(message, cause);
@@ -51,9 +48,8 @@ public class ContextKeyNotFoundException extends RuntimeException {
 
     /**
      * A constructor used without specifying the message.
-     * 
-     * @param message
-     *            - The message to be thrown.
+     *
+     * @param message - The message to be thrown.
      */
     public ContextKeyNotFoundException(String message) {
         super(message);
@@ -62,9 +58,8 @@ public class ContextKeyNotFoundException extends RuntimeException {
 
     /**
      * A constructor used without specifying the throwable.
-     * 
-     * @param cause
-     *            - The exception encountered that will be thrown.
+     *
+     * @param cause - The exception encountered that will be thrown.
      */
     public ContextKeyNotFoundException(Throwable cause) {
         super(cause);

@@ -26,54 +26,50 @@ import org.finra.jtaf.core.utilities.StringHelper;
  * A class representing an invocable test step.
  * Primarily used to validate a Command's registration in the command library
  */
-public class Invocation {	
-	private final String              targetName;
-	private       Map<String, Object> parameters;
-	
-	public Invocation(String targetName) {
-		this.targetName = targetName;
-		this.parameters = new HashMap<String, Object>();
-	}
+public class Invocation {
+    private final String targetName;
+    private Map<String, Object> parameters;
 
-	/***
-	 * 
-	 * @return targetName - name of the target
-	 */
-	public final String getTargetName() {
-		return this.targetName;
-	}
+    public Invocation(String targetName) {
+        this.targetName = targetName;
+        this.parameters = new HashMap<String, Object>();
+    }
 
-	/***
-	 * 
-	 * @return parameters - map of parameter key-values
-	 */
-	public final Map<String, Object> getParameters() {
-		return this.parameters;
-	}
-	
-	/***
-	 * 
-	 * @param parameters - map of parameter key-values
-	 */
-	public final void setParameters(Map<String, ? extends Object> parameters) {
-		this.parameters = new HashMap<String, Object>();
-		this.parameters.putAll(parameters);
-	}
+    /***
+     * @return targetName - name of the target
+     */
+    public final String getTargetName() {
+        return this.targetName;
+    }
 
-	/***
-	 * 
-	 * @return a String representation of the Invocation in the following format:
-	 * 	Target Name(key1=value1, key2=value2)
-	 */
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(this.getTargetName());
-		sb.append("(");
-		sb.append(StringHelper.join(this.getParameters().entrySet(), ", "));
-		sb.append(")");
-		
-		return sb.toString();
-	}
+    /***
+     * @return parameters - map of parameter key-values
+     */
+    public final Map<String, Object> getParameters() {
+        return this.parameters;
+    }
+
+    /***
+     * @param parameters - map of parameter key-values
+     */
+    public final void setParameters(Map<String, ? extends Object> parameters) {
+        this.parameters = new HashMap<String, Object>();
+        this.parameters.putAll(parameters);
+    }
+
+    /***
+     * @return a String representation of the Invocation in the following format:
+     * Target Name(key1=value1, key2=value2)
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.getTargetName());
+        sb.append("(");
+        sb.append(StringHelper.join(this.getParameters().entrySet(), ", "));
+        sb.append(")");
+
+        return sb.toString();
+    }
 
 }

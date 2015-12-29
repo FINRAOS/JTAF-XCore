@@ -19,30 +19,25 @@ package org.finra.jtaf.core.plugins.parsing;
 
 /***
  * This exception is thrown by the parser plugins
- *
  */
 public class ParserPluginException extends Exception {
-	
-	// automatically generated
-	private static final long serialVersionUID = -195286095131824362L;
 
-	public ParserPluginException()
-	{
-		super();
-	}
-	
-	public ParserPluginException(String message)
-	{
-		super(message);
-	}
-	
-	public ParserPluginException(Throwable throwable)
-	{
-		super(throwable);
-	}
-	
-	public ParserPluginException(String message, Throwable throwable)
-	{
-		super(message, throwable);
-	}
+    // automatically generated
+    private static final long serialVersionUID = -195286095131824362L;
+
+    public ParserPluginException() {
+        super();
+    }
+
+    public ParserPluginException(String message) {
+        super(message);
+    }
+
+    public ParserPluginException(Throwable throwable) {
+        super(throwable);
+    }
+
+    public ParserPluginException(String message, Throwable throwable) {
+        super(message, throwable);
+    }
 }

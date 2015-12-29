@@ -21,30 +21,27 @@ import org.finra.jtaf.core.model.statement.Invocation;
 
 /**
  * This will be used by the Interpreter to report broken invocation
- * targets during test execution.  
- * 
- *
+ * targets during test execution.
  */
 public class MissingInvocationTargetException extends Exception {
 
-	
-	private static final long serialVersionUID = 1616653146326672452L;
 
-	private final Invocation invocation;
-	
-	/**
-	 * @param invocation
-	 * This will be called from interpreter when invocation target is missing during test execution
-	 */
-	public MissingInvocationTargetException(Invocation invocation) {
-		super("The invocation " + invocation.toString() + " refers to a non-existent InvocationTarget");
-		this.invocation = invocation;
-	}
+    private static final long serialVersionUID = 1616653146326672452L;
 
-	/**
-	 * @return The Invocation associated with this exception
-	 */
-	public final Invocation getInvocation() {
-		return this.invocation;
-	}
+    private final Invocation invocation;
+
+    /**
+     * @param invocation This will be called from interpreter when invocation target is missing during test execution
+     */
+    public MissingInvocationTargetException(Invocation invocation) {
+        super("The invocation " + invocation.toString() + " refers to a non-existent InvocationTarget");
+        this.invocation = invocation;
+    }
+
+    /**
+     * @return The Invocation associated with this exception
+     */
+    public final Invocation getInvocation() {
+        return this.invocation;
+    }
 }

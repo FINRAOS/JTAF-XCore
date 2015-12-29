@@ -20,23 +20,22 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
 
 /**
  * Gets an object from a map in context and stores that object into context
- *
  */
 public class StoreObjectFromMapCmd extends AbstractContextCmd {
-	public static final String VALUE_IN_ATTRIBUTE = "map";
-	public static final String INDEX_ATTRIBUTE = "mapKey";
-	public static final String VALUE_OUT_ATTRIBUTE = "objectKey";
+    public static final String VALUE_IN_ATTRIBUTE = "map";
+    public static final String INDEX_ATTRIBUTE = "mapKey";
+    public static final String VALUE_OUT_ATTRIBUTE = "objectKey";
 
-	public StoreObjectFromMapCmd(String name) throws NameFormatException {
-		super(name);
-	}
+    public StoreObjectFromMapCmd(String name) throws NameFormatException {
+        super(name);
+    }
 
-	@Override
-	protected void execute() throws Throwable {
-		Object key = mch.getRequiredObject(INDEX_ATTRIBUTE);
-		Object valueIn = mch.getValueIn(getRequiredString(VALUE_IN_ATTRIBUTE), key);
-		String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
-		mch.setValueOut(valueOutAttribute, valueIn);
-	}
+    @Override
+    protected void execute() throws Throwable {
+        Object key = mch.getRequiredObject(INDEX_ATTRIBUTE);
+        Object valueIn = mch.getValueIn(getRequiredString(VALUE_IN_ATTRIBUTE), key);
+        String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
+        mch.setValueOut(valueOutAttribute, valueIn);
+    }
 
 }

@@ -34,41 +34,37 @@ import org.xml.sax.SAXException;
 
 /**
  * Builds the list of runners for the tests in Test Agenda
- *
  */
 public class MasterSuiteRunnersBuilder extends RunnerBuilder {
-	
-	public MasterSuiteRunnersBuilder() throws IllegalAccessException
-	{
-		
-	}
-	
-	public List<Runner> runners()
-			throws InitializationError, ParsingException, SAXException, IOException, IllegalArgumentException, SecurityException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
-		
-		
-		AutomationEngine engine = AutomationEngine.getInstance();
-		ArrayList<Runner> tests = new ArrayList<Runner>();
-		
-		engine.buildModel(new File("testlibrary"), new File("testscripts"));
-		TestAgenda testAgenda = engine.getTestAgenda();
 
-		for (TestScript testScript : testAgenda.getTestScripts()) {
-			TestCaseRunner theRunner = new TestCaseRunner(ParallelScriptRunner.class, new ParallelScriptRunner(testScript));
-			tests.add(theRunner);
-			ConcurrentScheduler.registerTestName(testScript.getName());
-		}
-		
-		return tests;
-	}
+    public MasterSuiteRunnersBuilder() throws IllegalAccessException {
 
-	@Override
-	public Runner runnerForClass(Class<?> testClass) throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
+    }
+
+    public List<Runner> runners()
+            throws InitializationError, ParsingException, SAXException, IOException, IllegalArgumentException, SecurityException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+
+
+        AutomationEngine engine = AutomationEngine.getInstance();
+        ArrayList<Runner> tests = new ArrayList<Runner>();
+
+        engine.buildModel(new File("testlibrary"), new File("testscripts"));
+        TestAgenda testAgenda = engine.getTestAgenda();
+
+        for (TestScript testScript : testAgenda.getTestScripts()) {
+            TestCaseRunner theRunner = new TestCaseRunner(ParallelScriptRunner.class, new ParallelScriptRunner(testScript));
+            tests.add(theRunner);
+            ConcurrentScheduler.registerTestName(testScript.getName());
+        }
+
+        return tests;
+    }
+
+    @Override
+    public Runner runnerForClass(Class<?> testClass) throws Throwable {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
 }

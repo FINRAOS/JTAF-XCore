@@ -20,24 +20,20 @@ package org.finra.jtaf.core.utilities;
 /**
  * Responsible for reading properties configured in jtaf.properties file.
  */
-public class JTAFPropertyManager extends PropertyManager
-{
-	private static JTAFPropertyManager instance;
-	
-	public static final String JTAF_PROPERTIES_FILE_NAME = "jtaf.properties";
-	public static final String PROPERTY_PREFIX = "jtaf";
-	
-	private JTAFPropertyManager()
-	{
-		super(JTAF_PROPERTIES_FILE_NAME, PROPERTY_PREFIX);
-	}
-	
-	public static JTAFPropertyManager getInstance()
-	{
-		if(instance == null)
-		{
-			instance = new JTAFPropertyManager();
-		}
-		return instance;
-	}
+public class JTAFPropertyManager extends PropertyManager {
+    private static JTAFPropertyManager instance;
+
+    public static final String JTAF_PROPERTIES_FILE_NAME = "jtaf.properties";
+    public static final String PROPERTY_PREFIX = "jtaf";
+
+    private JTAFPropertyManager() {
+        super(JTAF_PROPERTIES_FILE_NAME, PROPERTY_PREFIX);
+    }
+
+    public static JTAFPropertyManager getInstance() {
+        if (instance == null) {
+            instance = new JTAFPropertyManager();
+        }
+        return instance;
+    }
 }
