@@ -191,7 +191,7 @@ public class ScriptParser {
                                 p.execute(new PostTestParserPluginContext(commandRegistry, testSuite, testRootNode));
                             }
                         }
-                    } catch (DependencyException de) {
+                    } catch (DependencyException de) { // TODO: Why are we catching a RuntimException here ?
                         mc.error(de.getMessage());
                         throw de;
                     } catch (Throwable th) {

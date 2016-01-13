@@ -17,6 +17,7 @@
 package org.finra.jtaf.core.model.execution;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,7 @@ import org.finra.jtaf.core.CommandRegistry;
 import org.finra.jtaf.core.DefaultAutomationClassLoader;
 import org.finra.jtaf.core.IAutomationClassLoader;
 import org.finra.jtaf.core.asserts.ErrorAccumulator;
+import org.finra.jtaf.core.exceptions.GetInvocationTargetException;
 import org.finra.jtaf.core.model.exceptions.MissingInvocationTargetException;
 import org.finra.jtaf.core.model.invocationtarget.Command;
 import org.finra.jtaf.core.model.invocationtarget.Function;
@@ -246,8 +248,7 @@ public class Interpreter {
      * @return
      * @throws Throwable
      */
-    public InvocationTarget getInvocationTarget(Invocation invocation)
-            throws Throwable {
+    public InvocationTarget getInvocationTarget(Invocation invocation) throws GetInvocationTargetException {
         // Check if it exists in the local map already
         InvocationTarget target = null;
         // Get the InvocationTarget from the previously mapped ones.
@@ -263,29 +264,34 @@ public class Interpreter {
             target = mappedInvocationTarget;
         } else {
             // Instantiate the InvocationTarget.
-            Class<?> targetClass = automationClassLoader
-                    .loadClass(mappedInvocationTarget.getClass().getName());
-            if (InvocationTarget.class.isAssignableFrom(targetClass)) {
-                Constructor<?> constructor = targetClass
-                        .getConstructor(String.class);
-                target = (InvocationTarget) constructor.newInstance(invocation
-                        .getTargetName());
+            try {
+                Class<?> targetClass = automationClassLoader
+                        .loadClass(mappedInvocationTarget.getClass().getName());
+                if (InvocationTarget.class.isAssignableFrom(targetClass)) {
+                    Constructor<?> constructor = targetClass
+                            .getConstructor(String.class);
+                    target = (InvocationTarget) constructor.newInstance(invocation
+                            .getTargetName());
 
-                // This is to reload the parameters from preparsed Map of
-                // InvocationTargets (ScriptParser)
-                for (String s : mappedInvocationTarget.getRequiredParameters()) {
-                    target.addRequiredParameter(s);
-                }
+                    // This is to reload the parameters from preparsed Map of
+                    // InvocationTargets (ScriptParser)
+                    for (String s : mappedInvocationTarget.getRequiredParameters()) {
+                        target.addRequiredParameter(s);
+                    }
 
-                for (String s : mappedInvocationTarget.getOptionalParameters()) {
-                    target.addOptionalParameter(s);
-                }
+                    for (String s : mappedInvocationTarget.getOptionalParameters()) {
+                        target.addOptionalParameter(s);
+                    }
 
-                for (String s : mappedInvocationTarget.getProductions()) {
-                    target.addProduction(s);
+                    for (String s : mappedInvocationTarget.getProductions()) {
+                        target.addProduction(s);
+                    }
+                } else {
+                    throw new GetInvocationTargetException("Invocation not found: " + invocation.toString());
                 }
-            } else {
-                throw new IllegalArgumentException("Invocation not found");
+            } catch (IllegalAccessException | ClassNotFoundException | NoSuchMethodException |
+                    InvocationTargetException | InstantiationException e) {
+                throw new GetInvocationTargetException("Error while ", e);
             }
         }
         return target;
