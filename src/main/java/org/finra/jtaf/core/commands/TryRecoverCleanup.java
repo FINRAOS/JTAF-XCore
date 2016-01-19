@@ -19,6 +19,7 @@ package org.finra.jtaf.core.commands;
 
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
 import org.finra.jtaf.core.model.exceptions.NameFormatException;
 import org.finra.jtaf.core.model.execution.IInvocationContext;
 import org.finra.jtaf.core.model.invocationtarget.Command;
@@ -29,6 +30,8 @@ import org.finra.jtaf.core.model.statement.Invocation;
  * 
  */
 public class TryRecoverCleanup extends Command {
+	
+	private static final Logger LOGGER = Logger.getLogger(TryRecoverCleanup.class);
 
     /**
      * This called when instantiating the command before it is executed by the
@@ -78,6 +81,7 @@ public class TryRecoverCleanup extends Command {
                         executeInvocation((Invocation) params.get(1));
                     }
                 } catch (Throwable ignore) {
+                	LOGGER.error("Error in Recover block", ignore);
                 }
             } finally { // Cleanup
                 try {

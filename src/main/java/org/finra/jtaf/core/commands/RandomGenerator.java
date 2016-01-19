@@ -39,6 +39,7 @@ import org.apache.log4j.Logger;
  * 
  */
 public class RandomGenerator extends Command {
+	private static final int DEFAULT_LENGTH = 5;
 	static Logger logger = Logger.getLogger(RandomGenerator.class.getPackage().getName());
 
 	/**
@@ -140,15 +141,16 @@ public class RandomGenerator extends Command {
 						lengthMax = null;
 					}
 
-					int lengthInt = 5;
+					int lengthInt;
 					try {
 						int lengthMinInt = Integer.valueOf(lengthMin);
 						int lengthMaxInt = Integer.valueOf(lengthMax);
 						lengthInt = lengthMinInt + (int) (Math.random() * (lengthMaxInt - lengthMinInt));
-					} catch (Exception e) {
+					} catch (NumberFormatException numberFormatException) {
 						try {
 							lengthInt = Integer.valueOf(length);
-						} catch (Exception e2) {
+						} catch (NumberFormatException numberFormatException2) {
+							lengthInt = DEFAULT_LENGTH;
 						}
 					}
 
