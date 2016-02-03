@@ -85,9 +85,7 @@ public class CommandLibraryParser {
 			NameCollisionException, SAXException, IOException,
 			ParsingException, URISyntaxException {
 
-		FileWriter fileWriter = null;
-		try {
-			fileWriter = new FileWriter("commandNames.txt");
+		try(FileWriter fileWriter = new FileWriter("commandNames.txt")) {
 			// process Core commands
 			for (InvocationTarget t : handleCoreLibrarySource(mc)) {
 				fileWriter.write(t.getName()
@@ -125,13 +123,6 @@ public class CommandLibraryParser {
 			}
 
 			return commandRegistry;
-		} finally {
-			if (fileWriter != null) {
-				try {
-					fileWriter.close();
-				} catch (IOException e) {
-				}
-			}
 		}
 	}
 
