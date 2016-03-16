@@ -10,9 +10,7 @@ Here is the link to [getting started](http://finraos.github.io/JTAF-XCore/howitw
 
 Releases
 ========
->[Release 1.0](https://github.com/FINRAOS/JTAF-XCore/releases/tag/jtaf-xcore-1.0) - 12/23/2014
-
->Release 1.1 - Coming soon!
+> [Current release is 1.1](https://github.com/FINRAOS/JTAF-XCore/releases/tag/jtaf-xcore-1.1) - 2/25/2016
 
 Contributing
 =============
