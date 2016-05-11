@@ -121,8 +121,8 @@ public class RandomGenerator extends Command {
 					}
 
 					try {
-						int maxInt = Integer.valueOf(max);
-						int minInt = Integer.valueOf(min);
+						int maxInt = Integer.parseInt(max);
+						int minInt = Integer.parseInt(min);
 						valueGenerated = String.valueOf(minInt + (int) (Math.random() * (maxInt - minInt)));
 					} catch (Exception e) {
 						Generex generex = new Generex("[0-9]{" + length + "}");
@@ -143,12 +143,12 @@ public class RandomGenerator extends Command {
 
 					int lengthInt;
 					try {
-						int lengthMinInt = Integer.valueOf(lengthMin);
-						int lengthMaxInt = Integer.valueOf(lengthMax);
+						int lengthMinInt = Integer.parseInt(lengthMin);
+						int lengthMaxInt = Integer.parseInt(lengthMax);
 						lengthInt = lengthMinInt + (int) (Math.random() * (lengthMaxInt - lengthMinInt));
 					} catch (NumberFormatException numberFormatException) {
 						try {
-							lengthInt = Integer.valueOf(length);
+							lengthInt = Integer.parseInt(length);
 						} catch (NumberFormatException numberFormatException2) {
 							lengthInt = DEFAULT_LENGTH;
 						}
