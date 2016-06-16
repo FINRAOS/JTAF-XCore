@@ -26,7 +26,6 @@ import org.finra.jtaf.core.model.invocationtarget.Command;
  */
 public abstract class AbstractContextCmd extends Command {
 	protected final ManipulateContextHelper mch = new ManipulateContextHelper(this, Command.getGlobalContext());
-	protected IInvocationContext ctx = null;
 
 	public AbstractContextCmd(String name) throws NameFormatException {
 		super(name);
@@ -34,7 +33,6 @@ public abstract class AbstractContextCmd extends Command {
 	
 	@Override
 	protected final void execute(IInvocationContext ctx) throws Throwable {
-		this.ctx = ctx;
 		execute();
 	}
 	
