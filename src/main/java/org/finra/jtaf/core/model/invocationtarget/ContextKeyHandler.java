@@ -104,9 +104,8 @@ public class ContextKeyHandler {
             Map<String, Object> map = (Map<String, Object>) value;
             HashMap<String, Object> resultMap = new HashMap<String, Object>();
 
-            Set<String> keys = map.keySet();
-            for (String key : keys) {
-                resultMap.put((String) replaceContextKey(key), replaceContextKey(map.get(key)));
+            for (Map.Entry<String, Object> entry : map.entrySet()) {
+                resultMap.put((String) replaceContextKey(entry.getKey()), replaceContextKey(entry.getValue()));
             }
             return resultMap;
         }
