@@ -166,11 +166,8 @@ public abstract class Command extends InvocationTarget {
         result = replaceContextKey(result);
 
         // process '$randomGenerator' command parameter
-        if (result != null && result.getClass().equals(String.class)) {
-            if (result.toString().toLowerCase().startsWith("$randomGenerator".toLowerCase())) {
-                System.out.println("");
-                result = processRandomGenerator(result.toString());
-            }
+        if(result instanceof String && result.toString().toLowerCase().startsWith("$randomgenerator")) {
+            result = processRandomGenerator(result.toString());
         }
 
         return result;
