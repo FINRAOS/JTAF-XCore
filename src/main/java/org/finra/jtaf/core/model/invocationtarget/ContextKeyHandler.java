@@ -54,8 +54,9 @@ public class ContextKeyHandler {
         // This is to avoid replaceContext from getting into an infinite loop of
         // recursive calls.
         resolveCount++;
-        if (resolveCount > maxNumberOfResolves)
+        if (resolveCount > maxNumberOfResolves) {
             return value;
+        }
 
         if ((value != null) && (value.getClass().equals(String.class))) {
             String[] resultSplitted = ((String) value).split("\\$contextKey");

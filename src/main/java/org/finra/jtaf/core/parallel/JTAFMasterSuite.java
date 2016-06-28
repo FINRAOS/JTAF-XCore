@@ -44,8 +44,9 @@ public class JTAFMasterSuite extends Suite{
 	@Override
 	public Description getDescription() {
 		Description description = Description.createSuiteDescription("Automated Tests");
-		for (Runner child : getChildren())
+		for (Runner child : getChildren()) {
 			description.addChild(describeChild(child));
+		}
 		return description;
 	}
 

@@ -143,13 +143,15 @@ public class ErrorAccumulator {
 
 	public AssertionFailedError getWrappedErrors() {
 
-		if (isEmpty())
+		if (isEmpty()) {
 			return null;
+		}
 
 		String message = getErrorStackTraces();
 
-		if (message.equals(""))
+		if (message.equals("")) {
 			return null;
+		}
 
 		return new AssertionFailedError(
 				"Error accumulator found and ignored the following errors in "

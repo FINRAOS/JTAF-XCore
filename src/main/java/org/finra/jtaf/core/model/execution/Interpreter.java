@@ -123,8 +123,9 @@ public class Interpreter {
 			this.testStatus = TestStatus.Failed;
 		}
 		finally {
-			if (failure == null)
+			if (failure == null) {
 				this.testStatus = TestStatus.Passed;
+			}
 			else {
 				this.testStatus = TestStatus.Failed;
 			}

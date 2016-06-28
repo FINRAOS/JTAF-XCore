@@ -96,8 +96,9 @@ public class TestDataPlugin implements IPostParseTestPlugin
 			if(children.item(i).getNodeName().equalsIgnoreCase("testData"))
 			{
 				Node attribute = children.item(i).getAttributes().getNamedItem(attributeName);
-				if(attribute == null)
+				if (attribute == null) {
 					continue;
+				}
 				result = attribute.getNodeValue();
 			}
 		}
@@ -198,8 +199,9 @@ public class TestDataPlugin implements IPostParseTestPlugin
 		{
 			try
 			{
-				if(reader != null)
+				if (reader != null) {
 					reader.close();
+				}
 			}
 			catch(IOException ioException)
 			{

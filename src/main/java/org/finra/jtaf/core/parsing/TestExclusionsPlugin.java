@@ -72,8 +72,9 @@ public class TestExclusionsPlugin implements IPostParseTestPlugin
 		{
 			Node exclusionChildNode = exclusionChildNodes.item(exclusionChildNodeIndex);
 			Set<String> addSet = determineSet(exclusionChildNode.getNodeName(), exclusionSuites, exclusionTests);
-			if(addSet == null)
+			if (addSet == null) {
 				continue;
+			}
 			String name = exclusionChildNode.getAttributes().getNamedItem("name").getTextContent();
 			addSet.add(name);
 		}

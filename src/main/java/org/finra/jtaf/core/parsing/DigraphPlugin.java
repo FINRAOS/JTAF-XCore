@@ -48,13 +48,17 @@ public class DigraphPlugin implements IPostParseAllPlugin
 		graphFactory.createGraph(testNamespace);
 		
 		Set<TestScript> dependentTests = new LinkedHashSet<TestScript>();
-		for (TestScript t : testAgenda.getTestScripts())
-			if(testAgenda.containsAutomationValue(t.getAutomationValue()))
+		for (TestScript t : testAgenda.getTestScripts()) {
+			if (testAgenda.containsAutomationValue(t.getAutomationValue())) {
 				dependentTests.addAll(addDependentTests(testDigraph, (TestScript) t));
+			}
+		}
 		
-		for (TestScript t : dependentTests)
-			if(!testAgenda.getTestScripts().contains(t))
+		for (TestScript t : dependentTests) {
+			if (!testAgenda.getTestScripts().contains(t)) {
 				testAgenda.getTestScripts().add(t);
+			}
+		}
 	}
 	
 	private Set<TestScript> addDependentTests(TestDigraph testDigraph, TestScript test)

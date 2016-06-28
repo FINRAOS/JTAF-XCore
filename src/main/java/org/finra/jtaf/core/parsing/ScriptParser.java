@@ -689,10 +689,12 @@ public class ScriptParser {
             }
         }
 
-        if (!retval.equals(""))
+        if (!retval.equals("")) {
             return retval.trim();
-        else
+        }
+        else {
             return null;
+        }
     }
 
     private final List<String> processCRs(Element elem) {

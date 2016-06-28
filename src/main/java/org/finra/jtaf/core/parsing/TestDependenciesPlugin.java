@@ -72,8 +72,9 @@ public class TestDependenciesPlugin implements IPostParseTestPlugin
 		{
 			Node dependencyChildNode = dependencyChildNodes.item(dependencyChildNodeIndex);
 			Set<String> addSet = determineSet(dependencyChildNode.getNodeName(), exclusionSuites, exclusionTests);
-			if(addSet == null)
+			if (addSet == null) {
 				continue;
+			}
 			String name = dependencyChildNode.getAttributes().getNamedItem("name").getTextContent();
 			addSet.add(name);
 		}
