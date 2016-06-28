@@ -59,8 +59,9 @@ public class TestStrategyParser extends BaseParser {
 		return testPlan;
 	}
 
-	public void setDigraph(TestDigraph digraph){
+	public void setDigraph(TestDigraph digraph) {
 	}
+
 	@Override
 	protected final void handleRoot(Element root) throws ParsingException {
 		testPlan = new TestAgenda();
@@ -77,12 +78,10 @@ public class TestStrategyParser extends BaseParser {
 		try {
 			getErrorCollector().push("In " + EXECUTE + "block");
 			for (Element child : getChildElements(elem)) {
-				if(child.getNodeName().equalsIgnoreCase(TARGET) /*|| child.getNodeName().equalsIgnoreCase(UNION)*/)
-				{
+				if (child.getNodeName().equalsIgnoreCase(TARGET) /*|| child.getNodeName().equalsIgnoreCase(UNION)*/) {
 					getTestPlan().getTestScripts().addAll(handleTarget(child));
 				}
-				for(IPostParseStrategyElementPlugin postParseStrategyElementPlugin : postParseStrategyElementPlugins)
-				{
+				for (IPostParseStrategyElementPlugin postParseStrategyElementPlugin : postParseStrategyElementPlugins) {
 					postParseStrategyElementPlugin.execute(new PostStrategyElementParserPluginContext(testPlan, child));
 				}
 			}
@@ -121,8 +120,7 @@ public class TestStrategyParser extends BaseParser {
 		}
 	}
 	
-	public void setPostParseStrategyElementPlugins(List<IPostParseStrategyElementPlugin> postParseStrategyElementPlugins)
-	{
+	public void setPostParseStrategyElementPlugins(List<IPostParseStrategyElementPlugin> postParseStrategyElementPlugins) {
 		this.postParseStrategyElementPlugins = postParseStrategyElementPlugins;
 	}
 }

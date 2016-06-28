@@ -32,30 +32,25 @@ import org.w3c.dom.NodeList;
 /**
  * parser plugin to parse the dependencies defined in a test script.
  */
-public class TestDependenciesPlugin implements IPostParseTestPlugin
-{
+public class TestDependenciesPlugin implements IPostParseTestPlugin {
 	public static final String DEPENDENCIES_NAME = "dependencies";
 	public static final String TEST_NAME = "test";
 	public static final String TEST_SUITE_NAME = "testsuite";
 
 	@Override
-	public String getTagName()
-	{
+	public String getTagName() {
 		return DEPENDENCIES_NAME;
 	}
 
 	@Override
-	public void execute(PostTestParserPluginContext ctx) throws ParserPluginException
-	{
+	public void execute(PostTestParserPluginContext ctx) throws ParserPluginException {
 		Set<String> exclusionSuites = new HashSet<String>();
 		Set<String> exclusionTests = new HashSet<String>();
 		
 		NodeList testChildNodes = ctx.getRootNodeTest().getChildNodes();
-		for(int testChildNodeIndex = 0; testChildNodeIndex < testChildNodes.getLength(); testChildNodeIndex++)
-		{
+		for (int testChildNodeIndex = 0; testChildNodeIndex < testChildNodes.getLength(); testChildNodeIndex++) {
 			Node testChildNode = testChildNodes.item(testChildNodeIndex);
-			if(testChildNode.getNodeName().equalsIgnoreCase(DEPENDENCIES_NAME))
-			{
+			if (testChildNode.getNodeName().equalsIgnoreCase(DEPENDENCIES_NAME)) {
 				handleDependencyNode(testChildNode, exclusionSuites, exclusionTests);
 			}
 		}
@@ -65,11 +60,9 @@ public class TestDependenciesPlugin implements IPostParseTestPlugin
 		lastTestScript.setDependencies(exclusionSuites, exclusionTests);
 	}
 
-	private void handleDependencyNode(Node testChildNode, Set<String> exclusionSuites, Set<String> exclusionTests)
-	{
+	private void handleDependencyNode(Node testChildNode, Set<String> exclusionSuites, Set<String> exclusionTests) {
 		NodeList dependencyChildNodes = testChildNode.getChildNodes();
-		for(int dependencyChildNodeIndex = 0; dependencyChildNodeIndex < dependencyChildNodes.getLength(); dependencyChildNodeIndex++)
-		{
+		for (int dependencyChildNodeIndex = 0; dependencyChildNodeIndex < dependencyChildNodes.getLength(); dependencyChildNodeIndex++) {
 			Node dependencyChildNode = dependencyChildNodes.item(dependencyChildNodeIndex);
 			Set<String> addSet = determineSet(dependencyChildNode.getNodeName(), exclusionSuites, exclusionTests);
 			if (addSet == null) {
@@ -80,14 +73,11 @@ public class TestDependenciesPlugin implements IPostParseTestPlugin
 		}
 	}
 
-	private Set<String> determineSet(String nodeName, Set<String> exclusionSuites, Set<String> exclusionTests)
-	{
-		if(nodeName.equalsIgnoreCase(TEST_SUITE_NAME))
-		{
+	private Set<String> determineSet(String nodeName, Set<String> exclusionSuites, Set<String> exclusionTests) {
+		if (nodeName.equalsIgnoreCase(TEST_SUITE_NAME)) {
 			return exclusionSuites;
 		}
-		else if(nodeName.equalsIgnoreCase(TEST_NAME))
-		{
+		else if (nodeName.equalsIgnoreCase(TEST_NAME)) {
 			return exclusionTests;
 		}
 		return null;

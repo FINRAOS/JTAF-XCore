@@ -34,13 +34,11 @@ import org.finra.jtaf.core.utilities.logging.MessageCollector;
 /**
  * Parser plugin that runs post all. Scans through the test scripts to create a Digraph as per denpencies.
  */
-public class DigraphPlugin implements IPostParseAllPlugin
-{
+public class DigraphPlugin implements IPostParseAllPlugin {
 	protected TestNamespace testNamespace;
 	
 	@Override
-	public void execute(PostAllParserPluginContext ctx) throws ParserPluginException
-	{
+	public void execute(PostAllParserPluginContext ctx) throws ParserPluginException {
 		TestDigraph testDigraph = AutomationEngine.getInstance().getTestDigraph();
 		TestAgenda testAgenda = ctx.getTestAgenda();
 		testNamespace = AutomationEngine.getInstance().getTestRoot();
@@ -61,11 +59,9 @@ public class DigraphPlugin implements IPostParseAllPlugin
 		}
 	}
 	
-	private Set<TestScript> addDependentTests(TestDigraph testDigraph, TestScript test)
-	{
+	private Set<TestScript> addDependentTests(TestDigraph testDigraph, TestScript test) {
 		Set<TestScript> additionalScript = new LinkedHashSet<TestScript>();
-		for (DiNode d : testDigraph.getAllDependencies(test.getName()))
-		{
+		for (DiNode d : testDigraph.getAllDependencies(test.getName())) {
 			d.getTestScript().setAutomationValue(test.getAutomationValue());
 			additionalScript.add(d.getTestScript());
 			additionalScript.addAll(addDependentTests(testDigraph, d.getTestScript()));

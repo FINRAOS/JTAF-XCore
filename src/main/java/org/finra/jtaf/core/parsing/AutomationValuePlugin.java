@@ -24,16 +24,13 @@ import org.w3c.dom.Element;
 /**
  * Plugin that runs post parse of the strategy. Takes care of parsing the automation value in the agenda.
  */
-public class AutomationValuePlugin implements IPostParseStrategyElementPlugin
-{
+public class AutomationValuePlugin implements IPostParseStrategyElementPlugin {
 	private static final String AUTOMATION_VALUE_NAME = "automationValue";
 	
 	@Override
-	public void execute(PostStrategyElementParserPluginContext ctx) throws ParserPluginException
-	{
+	public void execute(PostStrategyElementParserPluginContext ctx) throws ParserPluginException {
 		Element element = ctx.getElement();
-		if(element.getNodeName().equalsIgnoreCase(AUTOMATION_VALUE_NAME))
-		{
+		if (element.getNodeName().equalsIgnoreCase(AUTOMATION_VALUE_NAME)) {
 			ctx.getTestAgenda().addAutomationValue(element.getTextContent());
 		}
 	}

@@ -206,8 +206,7 @@ public class StatementParser {
   }
 
 
-  private boolean isNonBlockParameterType(String nodeName)
-  {
+  private boolean isNonBlockParameterType(String nodeName) {
 	  return NON_BLOCK_PARAMETER_TYPES.contains(nodeName.toLowerCase());
   }
 
@@ -273,8 +272,7 @@ private final Map<String, Object> processMap(Element elem, MessageCollector mc)
       }
   }
   
-  private boolean isStringParameterType(String parameterType)
-  {
+  private boolean isStringParameterType(String parameterType) {
 	  return STRING_PARAMETER_TYPES.contains(parameterType.toLowerCase());
   }
   

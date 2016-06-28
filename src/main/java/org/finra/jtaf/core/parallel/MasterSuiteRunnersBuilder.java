@@ -38,8 +38,7 @@ import org.xml.sax.SAXException;
  */
 public class MasterSuiteRunnersBuilder extends RunnerBuilder {
 	
-	public MasterSuiteRunnersBuilder() throws IllegalAccessException
-	{
+	public MasterSuiteRunnersBuilder() throws IllegalAccessException {
 		
 	}
 	
