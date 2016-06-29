@@ -31,6 +31,10 @@ public class AssertionFailedError extends AssertionError {
 	}
 
 	private static String defaultString(String message) {
-		return message == null ? "" : message;
+		if (message == null) {
+			return "";
+		} else {
+			return message;
+		}
 	}
 }
