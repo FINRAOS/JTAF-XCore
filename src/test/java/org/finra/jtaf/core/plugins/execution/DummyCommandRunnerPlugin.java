@@ -16,7 +16,7 @@ public class DummyCommandRunnerPlugin implements ICommandRunnerPlugin {
 	public void handleCommandBefore(CommandRunnerPluginContext args)
 			throws RunnerPluginException {
 	
-		before=args;
+		before = args;
 		if(before.getTestStepsDetails().getName().equals("mockstep2"))
 			Assert.assertEquals(false,MockCommand2.testEnd);
 		
@@ -25,7 +25,7 @@ public class DummyCommandRunnerPlugin implements ICommandRunnerPlugin {
 	@Override
 	public void handleCommandAfter(CommandRunnerPluginContext args)
 			throws RunnerPluginException {
-		after=args;		
+		after = args;
 		if(before.getTestStepsDetails().getName().equals("mockstep2")){
 			Assert.assertEquals(true,MockCommand2.testEnd);
 		

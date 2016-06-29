@@ -21,7 +21,7 @@ package org.finra.jtaf.core.asserts;
  */
 public class AssertionFailedError extends AssertionError {
 
-	private static final long serialVersionUID= 1L;
+	private static final long serialVersionUID = 1L;
 
 	public AssertionFailedError() {
 	}

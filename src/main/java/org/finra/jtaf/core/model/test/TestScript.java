@@ -188,7 +188,7 @@ public final class TestScript extends TestComponent {
 	
 	
 	public void setException(String expectedException){
-	    exception=expectedException;
+	    exception = expectedException;
 	}
 	
 	public String getException(){

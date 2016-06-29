@@ -28,8 +28,8 @@ public class CommandRunnerPluginContext {
 	private IInvocationContext context;
 
 	public CommandRunnerPluginContext(TestStepsDetails ts, IInvocationContext ctx){
-		this.context=ctx;
-		this.testStepsDetails=ts;
+		this.context = ctx;
+		this.testStepsDetails = ts;
 	}
 	
 	/***

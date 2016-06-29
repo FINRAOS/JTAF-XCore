@@ -18,8 +18,8 @@ import org.junit.Test;
 
 public class RandomGeneratorTest {
 
-    private static AutomationEngine engine=null;
-    private static TestAgenda testAgenda =null;
+    private static AutomationEngine engine = null;
+    private static TestAgenda testAgenda = null;
     private static boolean setup = false;
     private static TestScript generateRegexp = null;
     private static TestScript generateRegexp2 = null;

@@ -182,7 +182,7 @@ public class CommandLibraryParser {
 					for (Resource firstResource : firstResultSet) {
 						if (firstResource.getDescription().equals(
 								secondResource.getDescription())) {
-							found=true;
+							found = true;
 							break;
 						}
 					}
