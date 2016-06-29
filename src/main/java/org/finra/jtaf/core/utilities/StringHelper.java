@@ -46,7 +46,7 @@ public class StringHelper {
 	 */
 	public static final String indent(int depth) {
 		String largestIndentation = INDENTATION_CACHE.get(INDENTATION_CACHE.size() - 1);
-		for(int i = INDENTATION_CACHE.size(); i <= depth; ++i) {
+		for (int i = INDENTATION_CACHE.size(); i <= depth; ++i) {
 			largestIndentation += INDENTATION;
 			INDENTATION_CACHE.add(largestIndentation);
 		}
@@ -55,7 +55,7 @@ public class StringHelper {
 	
 	public static final String join(Object[] elements, String glue) {
 		ArrayList<Object> temp = new ArrayList<Object>(elements.length);
-		for(Object s : elements) {
+		for (Object s : elements) {
 			temp.add(s);
 		}
 		return StringHelper.join(temp, glue);
@@ -70,7 +70,7 @@ public class StringHelper {
 		Iterator<? extends Object> itr = elements.iterator();
 		sb.append(itr.next().toString());
 		
-		while(itr.hasNext()) {
+		while (itr.hasNext()) {
 			sb.append(glue);
 			sb.append(itr.next().toString());
 		}
@@ -79,7 +79,7 @@ public class StringHelper {
 	
 	public static String getConcatenatedStringFromList(List<String> input, String delimiter) {
 		StringBuffer concatenatedString = new StringBuffer();
-		for(String data: input) {
+		for (String data: input) {
 			concatenatedString.append(data);
 			concatenatedString.append(delimiter);
 		}
@@ -89,7 +89,7 @@ public class StringHelper {
 	public static String getZipAndConcatenated(List<String> input1, List<String> input2, String delimiter) {
 		StringBuffer concatenatedString = new StringBuffer();
 
-		for(int i = 0; i < input1.size(); i++) {
+		for (int i = 0; i < input1.size(); i++) {
 			concatenatedString.append(input1.get(i));
 			concatenatedString.append("='");
 			if (i < input2.size()) {
@@ -107,7 +107,7 @@ public class StringHelper {
 		}
 		
 		List<String> output = new ArrayList<String>();
-		for(int i = 0; i < input.length; i++) {
+		for (int i = 0; i < input.length; i++) {
 			output.add(input[i]);
 		}
 		return output;

@@ -293,7 +293,7 @@ public class RandomGenerator extends Command {
 			} else if (obj.getClass().equals(HashMap.class)) {
 				Map<String, Object> ar = (Map<String, Object>) obj;
 				Map<String, Object> arNew = new HashMap<String, Object>();
-				for(String key2 : ar.keySet()) {
+				for (String key2 : ar.keySet()) {
 					Object value = ar.get(key2);
 					if (value.getClass().equals(AttributeHelper.class)) {
 						AttributeHelper ah = (AttributeHelper) value;

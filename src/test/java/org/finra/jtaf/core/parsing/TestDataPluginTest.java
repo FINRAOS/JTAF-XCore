@@ -36,7 +36,7 @@ public class TestDataPluginTest extends ParserPluginTest
 		
 		testDataPlugin.execute(postTestParserPluginContext);
 		Assert.assertEquals(ITERATION_COUNT, testSuite.getComponentList().size());
-		for(int iterationNumber = 1; iterationNumber <= ITERATION_COUNT; iterationNumber++)
+		for (int iterationNumber = 1; iterationNumber <= ITERATION_COUNT; iterationNumber++)
 		{
 			TestScript iterationTestScript = (TestScript) componentList.get(iterationNumber - 1);
 			String testNameFromDataFile = TEST_NAMES_FROM_DATA_FILE[iterationNumber - 1];

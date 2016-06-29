@@ -60,7 +60,7 @@ public class AttributeHelper {
 		collisions = new HashSet<String>();
 		NamedNodeMap origAttrs = source.getAttributes();
 		
-		for(int i = 0; i < origAttrs.getLength(); ++i) {
+		for (int i = 0; i < origAttrs.getLength(); ++i) {
 			final String name  = origAttrs.item(i).getNodeName().toLowerCase();
 			if (attrs.containsKey(name)) {
 				collisions.add(name);

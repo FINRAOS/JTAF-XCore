@@ -52,7 +52,7 @@ public class Base64EncoderDecoder {
 		String key;
 		String value;
 		
-		while((line = in.readLine()) != null){
+		while ((line = in.readLine()) != null){
 			if (!line.startsWith("#")){
 				if (line.contains("=")){
 					key = line.substring(0, line.indexOf("="));

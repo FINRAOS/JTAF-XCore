@@ -85,7 +85,7 @@ public class TestDataPlugin implements IPostParseTestPlugin {
 		NodeList children = ctx.getRootNodeTest().getChildNodes();
 		String result = null;
 
-		for(int i = 0; i < children.getLength(); i++) {
+		for (int i = 0; i < children.getLength(); i++) {
 			if (children.item(i).getNodeName().equalsIgnoreCase("testData")) {
 				Node attribute = children.item(i).getAttributes().getNamedItem(attributeName);
 				if (attribute == null) {
@@ -120,7 +120,7 @@ public class TestDataPlugin implements IPostParseTestPlugin {
 		if (testData != null && testData.size() > 0) {
 			List<String> firstLine = testData.get(0);
 			int pos = 0;
-			for(String firstLineItem : firstLine) {
+			for (String firstLineItem : firstLine) {
 				if (firstLineItem != null && firstLineItem.equalsIgnoreCase("JTAF.test.name")) {
 					return pos;
 				}

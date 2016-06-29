@@ -107,11 +107,11 @@ public class MessageCollector {
 			
 			++depth;
 			
-			for(Message m : section.getMessages()) {
+			for (Message m : section.getMessages()) {
 				log.log(m.getLevel(), StringHelper.indent(depth) + m.getText());
 			}
 			
-			for(Section s : section.getSections()) {
+			for (Section s : section.getSections()) {
 				this.recursiveDump(log, s, depth);
 			}
 		}

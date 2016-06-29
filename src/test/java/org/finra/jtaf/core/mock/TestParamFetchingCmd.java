@@ -24,38 +24,38 @@ public class TestParamFetchingCmd extends Command {
 	}
 
 	private void testParameters() {
-		try{
+		try {
 			getRequiredString("testStringRequired");
 		}catch(Exception e){
 			Assert.assertEquals("testParameters: missing required String attribute 'testStringRequired'", e.getMessage());
 		
 		}
-		try{
+		try {
 			getRequiredInteger("testIntegerRequired");
 		}catch(Exception e){
 			Assert.assertEquals("testParameters: missing required integer attribute 'testIntegerRequired'", e.getMessage());
 		
 		}
-		try{
+		try {
 			getRequiredBoolean("testBooleanRequired");
 		}catch(Exception e){
 			Assert.assertEquals("testParameters: missing required boolean attribute 'testBooleanRequired'", e.getMessage());
 		
 		}
-		try{
+		try {
 			getRequiredFloat("testFloatRequired");
 		}catch(Exception e){
 			Assert.assertEquals("testParameters: missing required float attribute 'testFloatRequired'", e.getMessage());
 		
 		}
-		try{
+		try {
 			getRequiredObject("testObjectRequired");
 		}catch(Exception e){
 			Assert.assertEquals("testParameters : The parameter with key [testObjectRequired] is not set.", e.getMessage());
 		
 		}
 		getOptionalObject("testObjectOptional");
-		Assert.assertTrue(getGlobalContext().get("OptString")!=null);
+		Assert.assertTrue(getGlobalContext().get("OptString") != null);
 		
 		
 	}
@@ -82,7 +82,7 @@ public class TestParamFetchingCmd extends Command {
 		Assert.assertEquals("{1,2}", getRequiredObject("testObjectRequired"));
 		Assert.assertTrue(getOptionalString("testStringOptional") == null);
 		getOptionalObject("testObjectOptional");
-		Assert.assertTrue(getGlobalContext().get("OptObj")!=null);
+		Assert.assertTrue(getGlobalContext().get("OptObj") != null);
 		Assert.assertEquals(true, getBooleanOrDefault("testBooleanDefault", true));		
 		Assert.assertEquals("default string",getStringOrDefault("testStringDefault", "default string"));
 		Assert.assertEquals(1,getIntegerOrDefault("testIntegerDefault", 1));

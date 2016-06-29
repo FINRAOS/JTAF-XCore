@@ -45,7 +45,7 @@ public class TraceabilityMatrixPluginTest
 	@Test
 	public void testNoAutomationValue() throws ParserPluginException
 	{
-		try{
+		try {
 			TestStrategyParser tsp= new TestStrategyParser();
 			TestAgenda ta = new TestAgenda();
 			tsp.parse(new File(System.getProperty("user.dir") + "/profiles/strategies/test.strategy.xml"));

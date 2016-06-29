@@ -65,7 +65,7 @@ public class ParserHelper {
 	public static final List<Element> getChildren(Element elem) {
 		ArrayList<Element> retval = new ArrayList<Element>();
 		NodeList nl = elem.getChildNodes();
-		for(int i = 0; i < nl.getLength(); ++i) {
+		for (int i = 0; i < nl.getLength(); ++i) {
 			Node n = nl.item(i);
 			if (n.getNodeType() == Node.ELEMENT_NODE) {
 				retval.add((Element) n);
@@ -111,7 +111,7 @@ public class ParserHelper {
 	public static final Element getFirstChildElementCaseInsensitive(Element root, String elementName) {
 		NodeList nl = root.getChildNodes();
 		if (nl.getLength() > 1) {
-			for(int i = 0; i < nl.getLength(); i++) {
+			for (int i = 0; i < nl.getLength(); i++) {
 				Node node = nl.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE && (node.getNodeName().equalsIgnoreCase(elementName))) {
 					return (Element)node;

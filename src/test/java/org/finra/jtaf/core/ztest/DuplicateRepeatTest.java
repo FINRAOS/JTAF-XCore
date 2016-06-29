@@ -14,7 +14,7 @@ public class DuplicateRepeatTest {
 	    public void testBuildmodel() {
 	        engine = AutomationEngine.getInstance();
 
-	        	try{
+	        	try {
 	        		 engine.buildModel(new File("mocktestlibrary/dupe.commands.xml"), new File("mocktestscripts"));
 	        		 Assert.assertEquals("Oops! We have more then one command with same name ('repeat') (case insensitive)! Fix your test commands, please.", engine.mc.getCurrentSection().getName());
 	        		 

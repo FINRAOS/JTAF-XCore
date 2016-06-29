@@ -36,7 +36,7 @@ public class TraceabilityMatrix {
 			fw = new FileWriter(OUTPUT_FILE);
 			fw.write("Test Scenario;Coverage;Test Case ID;Test Name;Automation Script;Automation Value" + "\n");
 			
-			for(TestScript s : ta.getTestScripts()) {
+			for (TestScript s : ta.getTestScripts()) {
 				if (!ta.isAutomationValuesEmpty()) {
 					if (ta.containsAutomationValue(s.getAutomationValue())) {
 						String test = s.getTestSuiteName()

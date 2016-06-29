@@ -26,7 +26,7 @@ public class DummyTestRunnerPlugin implements ITestRunnerPlugin {
 			throws RunnerPluginException {
 		argsAfter = new TestRunnerPluginContext(null, null, null);
 		argsAfter = args;
-		try{
+		try {
 			if (argsAfter.getTestResult().getTestStepsDetails().size() > 0){
 				if (argsAfter.getTestResult().getTestStepsDetails().get(0).getName().equalsIgnoreCase("mockstep2"))
 					throw new RunnerPluginException("Testing Plugin Exceptions");

@@ -29,7 +29,7 @@ public class DefaultAutomationClassLoader implements IAutomationClassLoader{
 	@Override
 	public Class<?> loadClass(String commandClass) throws ClassNotFoundException {
 		
-		try{
+		try {
 		return Class.forName(commandClass);
 		}
 		catch(ClassNotFoundException e){

@@ -39,7 +39,7 @@ public class AutomationValuePluginTest
 		Element executeRoot = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputStream).getDocumentElement();
 		NodeList nodeList = executeRoot.getChildNodes();
 		Element element = null;
-		for(int nodeIndex = 0; nodeIndex < nodeList.getLength(); nodeIndex++)
+		for (int nodeIndex = 0; nodeIndex < nodeList.getLength(); nodeIndex++)
 		{
 			Node node = nodeList.item(nodeIndex);
 			if (node.getNodeName().equalsIgnoreCase(AUTOMATION_VALUE_NAME))

@@ -150,7 +150,7 @@ public class StatementParserTest
 	{
 		Element documentElement = documentBuilder.parse(FILE_NAME).getDocumentElement();
 		NodeList childNodes = documentElement.getChildNodes();
-		for(int childNodeIndex = 0; childNodeIndex < childNodes.getLength(); childNodeIndex++)
+		for (int childNodeIndex = 0; childNodeIndex < childNodes.getLength(); childNodeIndex++)
 		{
 			Node testNode = childNodes.item(childNodeIndex);
 			if (!testNode.getNodeName().equalsIgnoreCase(TEST_ELEMENT))

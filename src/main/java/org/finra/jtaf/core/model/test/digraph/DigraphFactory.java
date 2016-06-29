@@ -94,7 +94,7 @@ public class DigraphFactory {
 				for (String tsDepend: dependTest.getDependenciesSuites()){
 					//Given tsDepend as the testSuite
 					if (tsMap.get(tsDepend) != null){
-						for(TestComponent tcTest: tsMap.get(tsDepend).getComponentList()){
+						for (TestComponent tcTest: tsMap.get(tsDepend).getComponentList()){
 							testScriptDependencies.add(tcTest.getName());
 						}
 					}
@@ -105,7 +105,7 @@ public class DigraphFactory {
 				for (String tsExclude: excludeTest.getDependenciesSuites()){
 					//Given tsDepend as the testSuite
 					if (tsMap.get(tsExclude) != null){
-						for(TestComponent tcTest: tsMap.get(tsExclude).getComponentList()){
+						for (TestComponent tcTest: tsMap.get(tsExclude).getComponentList()){
 							testScriptExclusions.add(tcTest.getName());
 						}
 					}
@@ -127,7 +127,7 @@ public class DigraphFactory {
 		}
 		Set<DiEdge> tempEdgeSet = new HashSet<DiEdge>();
 		tempEdgeSet.addAll(digraph.edgeSet());
-		for(DiEdge e: tempEdgeSet){
+		for (DiEdge e: tempEdgeSet){
 			if (e.isDependency()){
 				forCyclesGraph.addEdge(forCyclesGraph.getVertex(digraph.getEdgeSource(e).getTestName()), forCyclesGraph.getVertex(digraph.getEdgeTarget(e).getTestName()));
 			}

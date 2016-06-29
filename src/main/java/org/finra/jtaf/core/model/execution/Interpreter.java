@@ -408,7 +408,7 @@ public class Interpreter {
 	public void executeTearDownPlugins(Throwable failureReason, IInvocationContext invocationContext) {
 		try {
 			if (tearDownPlugins != null) {
-				for(ITearDownPlugin tearDownPlugin : tearDownPlugins) {
+				for (ITearDownPlugin tearDownPlugin : tearDownPlugins) {
 					TestScript testScript = context.getTestScript();
 					TearDownPluginContext tearDownPluginContext = new TearDownPluginContext(testScript, failureReason, invocationContext);
 					tearDownPlugin.handleBeforeTearDown(tearDownPluginContext);
