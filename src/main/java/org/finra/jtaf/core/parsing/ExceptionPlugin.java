@@ -35,7 +35,7 @@ public class ExceptionPlugin implements IPostParseTestPlugin {
 		for (int childNodeIndex = 0; childNodeIndex < childNodes.getLength(); childNodeIndex++) {
 			if (childNodes.item(childNodeIndex).getNodeName().equalsIgnoreCase(NODE_NAME)) {
 			    int size = ctx.getTestSuite().getComponentList().size();
-			    TestScript script= (TestScript) ctx.getTestSuite().getComponentList().get(size-1);
+			    TestScript script = (TestScript) ctx.getTestSuite().getComponentList().get(size - 1);
 			    script.setException(childNodes.item(childNodeIndex).getTextContent());
 	            //ctx.getTestAgenda().setThreadCount(maxThreads);
 			}

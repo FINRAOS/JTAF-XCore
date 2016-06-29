@@ -20,22 +20,22 @@ import org.finra.jtaf.core.model.test.TestScript;
  * This class represents a vertex in the digraph
  *
  */
-public class DiNode{
+public class DiNode {
 		private String testName = ""; //This shouldnt change after being set initially
 		private String testStatus = "";
 		private TestScript testScript = null; //This shouldnt change after being set initially
 		
-		public DiNode(TestScript ts){
+		public DiNode(TestScript ts) {
 			this.testName = ts.getName();
 			this.testScript = ts;
 		}
-		public String getTestStatus(){
+		public String getTestStatus() {
 			return testStatus;
 		}
-		protected void setTestStatus(String newTestStatus){
+		protected void setTestStatus(String newTestStatus) {
 			testStatus = newTestStatus;
 		}
-		public String getTestName(){
+		public String getTestName() {
 			return testName;
 		}
 		
@@ -43,12 +43,12 @@ public class DiNode{
 			return testScript;
 		}
 		@Override
-		public boolean equals(Object o){
-			if (o instanceof DiNode){
+		public boolean equals(Object o) {
+			if (o instanceof DiNode) {
 				if (this.getTestName().equalsIgnoreCase(((DiNode) o).getTestName())
-						&& this.getTestScript().equals(((DiNode) o).getTestScript())){
+						&& this.getTestScript().equals(((DiNode) o).getTestScript())) {
 					return true;
-				}else{
+				} else {
 					return false;
 				}
 			}

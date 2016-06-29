@@ -47,7 +47,7 @@ public class TraceabilityMatrix {
 						+ ";" + s.getAutomationValue();
 						fw.write(test + "\n");
 					}	
-				}else {
+				} else {
 					String test = s.getTestSuiteName()
 					+ ";" + s.getCoverage()
 					+ ";" + s.getTestCaseID()

@@ -3,7 +3,7 @@ package org.finra.jtaf.core.commands;
 import org.finra.jtaf.core.model.exceptions.NameFormatException;
 import org.finra.jtaf.core.model.execution.IInvocationContext;
 
-public class ExtendedHelloCommand extends HelloCommand{
+public class ExtendedHelloCommand extends HelloCommand {
 
 	public ExtendedHelloCommand(String name) throws NameFormatException {
 		super(name);

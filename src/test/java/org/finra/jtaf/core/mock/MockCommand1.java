@@ -4,7 +4,7 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
 import org.finra.jtaf.core.model.execution.IInvocationContext;
 import org.finra.jtaf.core.model.invocationtarget.Command;
 
-public class MockCommand1 extends Command{
+public class MockCommand1 extends Command {
 
 	public MockCommand1(String name) throws NameFormatException {
 		super(name);

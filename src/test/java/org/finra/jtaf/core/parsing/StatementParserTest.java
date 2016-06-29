@@ -110,7 +110,7 @@ public class StatementParserTest
 		{
 			statementParser.processStatementList(testElement, new MessageCollector());
 		}
-		catch(ParsingException parsingException)
+		catch (ParsingException parsingException)
 		{
 			ExceptionAccumulator asExceptionAccumulator = (ExceptionAccumulator) parsingException;
 			ExceptionAccumulator innerExceptionAccumulator = (ExceptionAccumulator) asExceptionAccumulator.getExceptions().get(0);
@@ -137,7 +137,7 @@ public class StatementParserTest
 		{
 			statementParser.processStatementList(testElement, new MessageCollector());
 		}
-		catch(ParsingException parsingException)
+		catch (ParsingException parsingException)
 		{
 			ExceptionAccumulator asExceptionAccumulator = (ExceptionAccumulator) parsingException;
 			ExceptionAccumulator innerExceptionAccumulator = (ExceptionAccumulator) asExceptionAccumulator.getExceptions().get(0);

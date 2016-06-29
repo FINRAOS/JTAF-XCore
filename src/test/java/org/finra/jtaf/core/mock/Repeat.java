@@ -4,7 +4,7 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
 import org.finra.jtaf.core.model.execution.IInvocationContext;
 import org.finra.jtaf.core.model.invocationtarget.Command;
 
-public class Repeat extends Command{
+public class Repeat extends Command {
 
 	public Repeat(String name) throws NameFormatException {
 		super(name);

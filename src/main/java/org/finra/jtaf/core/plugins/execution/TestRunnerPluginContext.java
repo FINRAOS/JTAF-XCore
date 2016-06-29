@@ -28,7 +28,7 @@ public class TestRunnerPluginContext {
 	private TestResult testResult;
 	private IInvocationContext invocationContext;
 	
-	public TestRunnerPluginContext(TestScript ts, TestResult tr, IInvocationContext ctx){
+	public TestRunnerPluginContext(TestScript ts, TestResult tr, IInvocationContext ctx) {
 		this.testScript = ts;
 		this.testResult = tr;
 		this.invocationContext = ctx;

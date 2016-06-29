@@ -3,7 +3,7 @@ package org.finra.jtaf.core.commands;
 import org.finra.jtaf.core.model.exceptions.NameFormatException;
 import org.finra.jtaf.core.model.execution.IInvocationContext;
 
-public class ExtendedByeCommand extends ByeCommand{
+public class ExtendedByeCommand extends ByeCommand {
 
 	public ExtendedByeCommand(String name) throws NameFormatException {
 		super(name);

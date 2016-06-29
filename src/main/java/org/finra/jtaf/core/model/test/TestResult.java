@@ -57,7 +57,7 @@ public class TestResult {
 	public boolean isTestPassed() {
 		if (failureReason == null) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
@@ -75,7 +75,7 @@ public class TestResult {
 	 * Set the failure reason for the current test
 	 * @param failureReason
 	 */
-	public void setFailureReason(Throwable failureReason){
+	public void setFailureReason(Throwable failureReason) {
 		this.failureReason = failureReason;
 	}
 	
@@ -91,7 +91,7 @@ public class TestResult {
 	 * Update the test status
 	 * @param testStatus
 	 */
-	public void updateTestStatus(TestStatus testStatus){
+	public void updateTestStatus(TestStatus testStatus) {
 		this.testStatus = testStatus;
 	}
 	
@@ -99,7 +99,7 @@ public class TestResult {
 	 * Get the test status
 	 * @return
 	 */
-	public TestStatus getTestStatus(){
+	public TestStatus getTestStatus() {
 		return this.testStatus;
 	}
 		

@@ -48,7 +48,7 @@ public class ExcelFileParser {
 		if (isXlsx) {
 			workBookXlsx = new XSSFWorkbook(new FileInputStream(fileName));
 			workBookSheetXlsx = workBookXlsx.getSheetAt(0);
-		}else {
+		} else {
 			workBookXls = new HSSFWorkbook(new FileInputStream(fileName));
 			workBookSheetXls = workBookXls.getSheetAt(0);
 		}
@@ -58,7 +58,7 @@ public class ExcelFileParser {
 		if (isXlsx) {
 			workBookXlsx = new XSSFWorkbook(new FileInputStream(fileName));
 			workBookSheetXlsx = workBookXlsx.getSheet(sheetName);
-		}else {
+		} else {
 			workBookXls = new HSSFWorkbook(new FileInputStream(fileName));
 			workBookSheetXls = workBookXls.getSheet(sheetName);
 		}
@@ -99,7 +99,7 @@ public class ExcelFileParser {
 					parsedExcelFile.add(parsedExcelRow);
 				}
 			}	
-		}else {
+		} else {
 			for (int i = 0, numberOfRows = workBookSheetXls.getPhysicalNumberOfRows(); i < numberOfRows + 1; i++) {
 				HSSFRow row = workBookSheetXls.getRow(i);
 				if (row != null) {

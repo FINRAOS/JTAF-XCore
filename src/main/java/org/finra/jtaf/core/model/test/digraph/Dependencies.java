@@ -23,23 +23,23 @@ import java.util.Set;
  * Set of Test Case and Test Suite Dependencies
  *
  */
-public class Dependencies{
+public class Dependencies {
 	private Set<String> dependentSuites = new HashSet<String>();
 	private Set<String> dependentTests = new HashSet<String>();
 	
-	public Dependencies(Set<String> suite, Set<String> test){
-		if (suite != null){
+	public Dependencies(Set<String> suite, Set<String> test) {
+		if (suite != null) {
 			dependentSuites = suite;
 		}
-		if (test != null){
+		if (test != null) {
 			dependentTests = test;
 		}
 	}
 	
-	public Set<String> getDependenciesSuites(){
+	public Set<String> getDependenciesSuites() {
 		return dependentSuites;
 	}
-	public Set<String> getDependenciesTests(){
+	public Set<String> getDependenciesTests() {
 		return dependentTests;
 	}
 }

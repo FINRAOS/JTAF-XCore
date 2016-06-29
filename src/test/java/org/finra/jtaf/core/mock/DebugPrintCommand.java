@@ -14,7 +14,7 @@ public class DebugPrintCommand extends Command
 	@Override
 	protected void execute(IInvocationContext ctx) throws Throwable
 	{
-		synchronized(DebugPrintCommand.class)
+		synchronized (DebugPrintCommand.class)
 		{
 			System.err.println(getRequiredString("message"));
 		}

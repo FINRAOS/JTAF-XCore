@@ -443,11 +443,11 @@ public class ScriptParser {
         } catch (Exception e) {
             logger.fatal("Oops! Can't open file '" + testDataFile + "'!");
             return null;
-        }finally {
-        	if (reader != null){
+        } finally {
+        	if (reader != null) {
         		try {
         		reader.close();
-        		}catch(Exception e){
+        		} catch (Exception e) {
         			//Dont care
                     logger.fatal("Oops! Can't close file '" + testDataFile + "'!");
 

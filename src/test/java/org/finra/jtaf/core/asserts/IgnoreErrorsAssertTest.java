@@ -589,7 +589,7 @@ public class IgnoreErrorsAssertTest {
 		Assert.assertEquals("expected:<Superman> but was:<Batman>", iea.format(null, "Superman", "Batman"));
 	}
 	
-	@Test(expected=AssertionFailedError.class)
+	@Test(expected = AssertionFailedError.class)
 	public void testEndOfCommand() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
 		String a = "tomato";

@@ -18,14 +18,14 @@ public class AssertionFailedErrorTest {
 		Assert.assertEquals("This is an assertion failed", e.getMessage());
 	}
 	
-	@Test(expected=AssertionFailedError.class)
+	@Test(expected = AssertionFailedError.class)
 	public void testAssertionFailedError1() {
 		AssertionFailedError e = new AssertionFailedError(null);
 		Assert.assertEquals("", e.getMessage());
 		throw e;
 	}
 	
-	@Test(expected=AssertionFailedError.class)
+	@Test(expected = AssertionFailedError.class)
 	public void testAssertionFailedError2() {
 		AssertionFailedError e = new AssertionFailedError("This is an assertion failed");
 		Assert.assertEquals("This is an assertion failed", e.getMessage());

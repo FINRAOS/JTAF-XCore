@@ -24,7 +24,7 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
  */
 public class StoreDefaultObjectCmd extends AbstractContextCmd {
 	public static final String DEFAULT_ATTRIBUTE = "defaultKey";
-    public static final String DEFAULT= "default";
+    public static final String DEFAULT = "default";
 	public static final String VALUE_OUT_ATTRIBUTE = "contextKey";
 
 	public StoreDefaultObjectCmd(String name) throws NameFormatException {

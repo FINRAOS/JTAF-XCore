@@ -114,7 +114,7 @@ public abstract class Command extends InvocationTarget {
         	
             try {
             	this.deinitialize(this.getContext());
-            }catch(Throwable th){
+            } catch (Throwable th) {
             	logger.error("Error in Command deinitialization", th);
             }
 

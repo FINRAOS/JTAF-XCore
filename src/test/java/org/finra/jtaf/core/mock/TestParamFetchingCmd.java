@@ -26,31 +26,31 @@ public class TestParamFetchingCmd extends Command {
 	private void testParameters() {
 		try {
 			getRequiredString("testStringRequired");
-		}catch(Exception e){
+		} catch (Exception e) {
 			Assert.assertEquals("testParameters: missing required String attribute 'testStringRequired'", e.getMessage());
 		
 		}
 		try {
 			getRequiredInteger("testIntegerRequired");
-		}catch(Exception e){
+		} catch (Exception e) {
 			Assert.assertEquals("testParameters: missing required integer attribute 'testIntegerRequired'", e.getMessage());
 		
 		}
 		try {
 			getRequiredBoolean("testBooleanRequired");
-		}catch(Exception e){
+		} catch (Exception e) {
 			Assert.assertEquals("testParameters: missing required boolean attribute 'testBooleanRequired'", e.getMessage());
 		
 		}
 		try {
 			getRequiredFloat("testFloatRequired");
-		}catch(Exception e){
+		} catch (Exception e) {
 			Assert.assertEquals("testParameters: missing required float attribute 'testFloatRequired'", e.getMessage());
 		
 		}
 		try {
 			getRequiredObject("testObjectRequired");
-		}catch(Exception e){
+		} catch (Exception e) {
 			Assert.assertEquals("testParameters : The parameter with key [testObjectRequired] is not set.", e.getMessage());
 		
 		}
@@ -60,7 +60,7 @@ public class TestParamFetchingCmd extends Command {
 		
 	}
 
-	private void testOptionalParameters(){
+	private void testOptionalParameters() {
 		Assert.assertEquals("test string", getRequiredString("testStringRequired"));
 		Assert.assertEquals(1, getRequiredInteger("testIntegerRequired"));
 		Assert.assertEquals(1.1f, getRequiredFloat("testFloatRequired"), 0.2);

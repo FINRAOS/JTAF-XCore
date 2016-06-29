@@ -36,12 +36,12 @@ public class Base64EncoderDecoder {
 	 * main method is used to decode a property file only. It can take one incoming parameter - the location of 
 	 * the file to be encoded. If there is no incoming parameter (or more than one provided), then the default 'propertyFileLocation' value used.
 	 */
-	public static void main(String[] args) throws Exception{
-		if (args.length == 1){
+	public static void main(String[] args) throws Exception {
+		if (args.length == 1) {
 			setPropertyFileLocation(args[0]); 
 		}	
 	
-		String fileName = fileLocation.split("\\\\")[fileLocation.split("\\\\").length -1];
+		String fileName = fileLocation.split("\\\\")[fileLocation.split("\\\\").length - 1];
 		String encodedFileName = fileName.split("\\.")[0] + "_Encoded." + fileName.split("\\.")[1];
 		String encodedFileLocation = fileLocation.replace(fileName, encodedFileName);
 				
@@ -52,12 +52,12 @@ public class Base64EncoderDecoder {
 		String key;
 		String value;
 		
-		while ((line = in.readLine()) != null){
-			if (!line.startsWith("#")){
-				if (line.contains("=")){
+		while ((line = in.readLine()) != null) {
+			if (!line.startsWith("#")) {
+				if (line.contains("=")) {
 					key = line.substring(0, line.indexOf("="));
 					value =  line.substring(line.indexOf("=") + 1);
-					if (key.endsWith(".password")){
+					if (key.endsWith(".password")) {
 						value = encodeString(value);
 						line = key + "=" + value;
 					}
@@ -73,12 +73,12 @@ public class Base64EncoderDecoder {
 	}
 	
 	
-	public static String encodeString(String stringToEncode){
+	public static String encodeString(String stringToEncode) {
 		byte[] encodedBytes = Base64.encodeBase64(stringToEncode.getBytes());
 		return new String(encodedBytes);
 	}
 	
-	public static String decodeString(String stringToDecode){
+	public static String decodeString(String stringToDecode) {
 		 byte[] decodedBytes = Base64.decodeBase64(stringToDecode.getBytes());
 		 return new String(decodedBytes);
 	}

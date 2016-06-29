@@ -92,7 +92,7 @@ public class TestStrategyParser extends BaseParser {
 		}
 	}
 
-	protected List<TestScript> handleTarget(Element elem) throws MissingAttributeException{
+	protected List<TestScript> handleTarget(Element elem) throws MissingAttributeException {
 		AttributeHelper attrs = new AttributeHelper(elem);
 		final String targetName = attrs.getRequiredString("name");
 

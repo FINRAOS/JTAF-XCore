@@ -27,7 +27,7 @@ public class TestStepsDetails {
 	boolean actualResult = true;
 	String type = "general";
 
-	public TestStepsDetails(String name, String usage){
+	public TestStepsDetails(String name, String usage) {
 		this.name = name;
 		this.usage = usage;
 	}

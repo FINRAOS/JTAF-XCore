@@ -95,7 +95,7 @@ public class ParserHelper {
 			// TODO: Ensure the return value is an Element?
 			return (Element) nl.item(0);
 		}
-		catch(XPathException e) {
+		catch (XPathException e) {
 			throw new NestedXPathException(e);
 		}
 	}

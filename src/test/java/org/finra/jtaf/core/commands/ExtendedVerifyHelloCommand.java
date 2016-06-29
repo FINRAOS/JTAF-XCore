@@ -6,7 +6,7 @@ import org.finra.jtaf.core.model.execution.IInvocationContext;
 import org.finra.jtaf.core.model.invocationtarget.Command;
 import org.junit.Assert;
 
-public class ExtendedVerifyHelloCommand extends Command{
+public class ExtendedVerifyHelloCommand extends Command {
 
 	public ExtendedVerifyHelloCommand(String name) throws NameFormatException {
 		super(name);

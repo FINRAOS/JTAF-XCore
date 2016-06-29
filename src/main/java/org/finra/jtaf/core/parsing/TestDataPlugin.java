@@ -144,7 +144,7 @@ public class TestDataPlugin implements IPostParseTestPlugin {
 				}
 				return excelFileParser.parseExcelFile(isXlsx);
 			}
-			catch(Exception e) {
+			catch (Exception e) {
 				throw new ParserPluginException("Oops! Can't parse excel file '" + testDataFile + "'!");
 			}
 		}
@@ -185,7 +185,7 @@ public class TestDataPlugin implements IPostParseTestPlugin {
 		try {
 			return sp.processTestScript((Element) ctx.getRootNodeTest(), new MessageCollector());
 		}
-		catch(Exception exception) {
+		catch (Exception exception) {
 			throw new ParserPluginException(exception);
 		}
 	}

@@ -39,7 +39,7 @@ public class TestScriptCollector implements ITestVisitor {
 		return new ArrayList<TestScript>(testScripts);
 	}
 	
-	public final void addToTestScripts(TestScript c){
+	public final void addToTestScripts(TestScript c) {
 		this.testScripts.add(c);
 	}
 	public void visitTestNamespace(TestNamespace ns) throws Exception {

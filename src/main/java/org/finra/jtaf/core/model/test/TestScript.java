@@ -49,7 +49,7 @@ public final class TestScript extends TestComponent {
 	private Dependencies dependencies;
 	private Dependencies exclusions;
 	
-	private String exception="";
+	private String exception = "";
 	
 	public TestScript(String name, boolean isCaptureSystemInformation) throws NameFormatException {
 		super(name);
@@ -187,17 +187,17 @@ public final class TestScript extends TestComponent {
 	}
 	
 	
-	public void setException(String expectedException){
+	public void setException(String expectedException) {
 	    exception = expectedException;
 	}
 	
-	public String getException(){
+	public String getException() {
         return exception;
     }
 	
 	@Override
-	public boolean equals(Object o){
-		if (!(o instanceof TestScript)){
+	public boolean equals(Object o) {
+		if (!(o instanceof TestScript)) {
 			return false;
 		}
 		else {
@@ -205,10 +205,10 @@ public final class TestScript extends TestComponent {
 			if (this.getName().equals(ts.getName())
 				&& this.getBody().equals(ts.getBody())
 				&& this.getFileName().equals(ts.getFileName())
-				&& this.getFullName().equals(ts.getFullName())){
+				&& this.getFullName().equals(ts.getFullName())) {
 					return true;
 				}
-			else{
+			else {
 				return false;
 			}
 		}		
