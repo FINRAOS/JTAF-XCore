@@ -62,7 +62,7 @@ public class SuiteExclusionsPlugin implements IPostParseSuitePlugin {
 				acc.add(th);
 			}
 		}
-		if(!acc.isEmpty()) {
+		if (!acc.isEmpty()) {
 			throw new ParserPluginException(acc);
 		}
 	}

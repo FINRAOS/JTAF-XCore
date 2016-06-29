@@ -62,7 +62,7 @@ public class StringHelper {
 	}
 	
 	public static final String join(Collection<? extends Object> elements, String glue) {
-		if(elements.isEmpty()) {
+		if (elements.isEmpty()) {
 			return "";
 		}
 

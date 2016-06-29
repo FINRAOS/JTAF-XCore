@@ -153,9 +153,9 @@ public class StatementParserTest
 		for(int childNodeIndex = 0; childNodeIndex < childNodes.getLength(); childNodeIndex++)
 		{
 			Node testNode = childNodes.item(childNodeIndex);
-			if(!testNode.getNodeName().equalsIgnoreCase(TEST_ELEMENT))
+			if (!testNode.getNodeName().equalsIgnoreCase(TEST_ELEMENT))
 				continue;
-			if(!testNode.getAttributes().getNamedItem(NAME_ATTRIBUTE).getTextContent().equals(testName))
+			if (!testNode.getAttributes().getNamedItem(NAME_ATTRIBUTE).getTextContent().equals(testName))
 				continue;
 			return ParserHelper.getFirstChildElementCaseInsensitive((Element) testNode, TEST_STEPS_ELEMENT);
 		}

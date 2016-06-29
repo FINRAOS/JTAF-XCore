@@ -42,7 +42,7 @@ public class AutomationValuePluginTest
 		for(int nodeIndex = 0; nodeIndex < nodeList.getLength(); nodeIndex++)
 		{
 			Node node = nodeList.item(nodeIndex);
-			if(node.getNodeName().equalsIgnoreCase(AUTOMATION_VALUE_NAME))
+			if (node.getNodeName().equalsIgnoreCase(AUTOMATION_VALUE_NAME))
 			{
 				element = (Element) node;
 			}

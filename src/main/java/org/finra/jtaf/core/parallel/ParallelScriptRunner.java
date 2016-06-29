@@ -81,7 +81,7 @@ public class ParallelScriptRunner extends TestCase {
 		DiNode theTest = AutomationEngine.getInstance().getTestDigraph().getVertex(this.theTestScript.getName());
 		Interpreter iv = AutomationEngine.getInstance().getInterpreter();
 		try {
-			if(theTest.getTestStatus().equalsIgnoreCase("FAILED")){
+			if (theTest.getTestStatus().equalsIgnoreCase("FAILED")){
 				ConcurrentScheduler.updateWithStatus(new ResultUpdate(this.theTestScript.getName(), "FAILED"));
 				Assert.fail("One or more Dependent tests failed");
 			}

@@ -53,9 +53,9 @@ public class ElementScanner {
 	 * @return
 	 */
 	public Element tryMatch(String name) {
-		if(this.hasNext()) {
+		if (this.hasNext()) {
 			Element next = this.peek();
-			if(next.getNodeName().equalsIgnoreCase(name)) {
+			if (next.getNodeName().equalsIgnoreCase(name)) {
 				++(this.index);
 				return next;
 			}
@@ -69,7 +69,7 @@ public class ElementScanner {
 	 * @return
 	 */
 	public Element match() {
-		if(this.hasNext()) {
+		if (this.hasNext()) {
 			Element retval = this.peek();
 			++(this.index);
 			return retval;

@@ -98,7 +98,7 @@ public abstract class BaseParser {
 		final NodeList children = elem.getChildNodes();
 		for(int i = 0; i < children.getLength(); ++i) {
 			Node child = children.item(i);
-			if(child.getNodeType() == Node.ELEMENT_NODE) {
+			if (child.getNodeType() == Node.ELEMENT_NODE) {
 				retval.add((Element) child);
 			}
 		}

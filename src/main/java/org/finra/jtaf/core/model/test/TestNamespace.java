@@ -85,7 +85,7 @@ public class TestNamespace extends TestComponent implements Iterable<TestCompone
 	
 	public final void add(TestComponent testComponent) throws NameCollisionException {
 		// Don't allow multiple components to have the same name
-		if(isComponentMapContain(testComponent.getName())) {
+		if (isComponentMapContain(testComponent.getName())) {
 			throw new NameCollisionException(testComponent.getName());
 		}
 		componentMap.put(testComponent.getName(), testComponent);

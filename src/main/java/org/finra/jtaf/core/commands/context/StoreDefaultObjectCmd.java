@@ -35,7 +35,7 @@ public class StoreDefaultObjectCmd extends AbstractContextCmd {
 	protected void execute() {
 		String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
 		Object valueOut = getOptionalObject(valueOutAttribute);
-		if(valueOut == null) {
+		if (valueOut == null) {
 			String defaultAttribute = getStringOrDefault(DEFAULT_ATTRIBUTE, DEFAULT);
 			valueOut = getRequiredObject(defaultAttribute);
 		}

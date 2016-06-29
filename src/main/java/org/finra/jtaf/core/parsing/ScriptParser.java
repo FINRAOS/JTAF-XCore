@@ -444,7 +444,7 @@ public class ScriptParser {
             logger.fatal("Oops! Can't open file '" + testDataFile + "'!");
             return null;
         }finally{
-        	if(reader!=null){
+        	if (reader!=null){
         		try{
         		reader.close();
         		}catch(Exception e){

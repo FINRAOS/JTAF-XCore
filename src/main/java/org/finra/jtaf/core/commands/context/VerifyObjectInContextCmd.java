@@ -46,8 +46,8 @@ public class VerifyObjectInContextCmd extends Command {
 		cdc.setAccumulateErrors(true);
 		cdc.compareObject(title, null, expected, actual);
 		List<String> errorList = cdc.getErrorList();
-		if(failOnNotEqual && errorList != null && !errorList.isEmpty()) {
-		    if(title != null) {
+		if (failOnNotEqual && errorList != null && !errorList.isEmpty()) {
+		    if (title != null) {
 		        throw new AssertionError("Expected " + title + " did not match actual:\n" + StringUtils.join(errorList,  "\n"));
 		    }
 		    throw new AssertionError("Expected did not match actual:\n" + StringUtils.join(errorList,  "\n"));

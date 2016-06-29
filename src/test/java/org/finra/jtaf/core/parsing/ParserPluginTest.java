@@ -25,7 +25,7 @@ public abstract class ParserPluginTest
 		for(int suiteNodeChildIndex = 0; suiteNodeChildIndex < suiteNodeChildNodes.getLength(); suiteNodeChildIndex++)
 		{
 			Node suiteNodeChildNode = suiteNodeChildNodes.item(suiteNodeChildIndex);
-			if(suiteNodeChildNode.getNodeName().equalsIgnoreCase("test") && suiteNodeChildNode.getAttributes().getNamedItem("name").getTextContent().equals(testOfInterestName))
+			if (suiteNodeChildNode.getNodeName().equalsIgnoreCase("test") && suiteNodeChildNode.getAttributes().getNamedItem("name").getTextContent().equals(testOfInterestName))
 			{
 				testRoot = suiteNodeChildNode;
 				break;

@@ -45,7 +45,7 @@ public class ExcelFileParser {
 	private HSSFSheet workBookSheetXls;
 
 	public ExcelFileParser(String fileName, boolean isXlsx) throws Exception {
-		if(isXlsx) {
+		if (isXlsx) {
 			workBookXlsx = new XSSFWorkbook(new FileInputStream(fileName));
 			workBookSheetXlsx = workBookXlsx.getSheetAt(0);
 		}else {
@@ -55,7 +55,7 @@ public class ExcelFileParser {
 	}
 	
 	public ExcelFileParser(String fileName, String sheetName, boolean isXlsx) throws Exception {
-		if(isXlsx) {
+		if (isXlsx) {
 			workBookXlsx = new XSSFWorkbook(new FileInputStream(fileName));
 			workBookSheetXlsx = workBookXlsx.getSheet(sheetName);
 		}else {
@@ -66,7 +66,7 @@ public class ExcelFileParser {
 
 	public List<List<String>> parseExcelFile(boolean isXlsx) throws Exception {
 		List<List<String>> parsedExcelFile = new ArrayList<List<String>>();
-		if(isXlsx) {
+		if (isXlsx) {
 			for (int i = 0, numberOfRows = workBookSheetXlsx.getPhysicalNumberOfRows(); i < numberOfRows + 1; i++) {
 				XSSFRow row = workBookSheetXlsx.getRow(i);
 				if (row != null) {

@@ -42,7 +42,7 @@ public class MaxThreadsPluginTest
 		for(int nodeIndex = 0; nodeIndex < nodeList.getLength(); nodeIndex++)
 		{
 			Node node = nodeList.item(nodeIndex);
-			if(node.getNodeName().equalsIgnoreCase(MAX_THREADS_NAME))
+			if (node.getNodeName().equalsIgnoreCase(MAX_THREADS_NAME))
 			{
 				element = (Element) node;
 			}

@@ -186,7 +186,7 @@ public class CommandLibraryParser {
 							break;
 						}
 					}
-					if(!found){
+					if (!found){
 						result.add(secondResource);
 					}
 				}

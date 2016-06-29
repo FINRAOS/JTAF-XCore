@@ -106,7 +106,7 @@ public class CompositeDataComparator {
 	 */
 	public void setAccumulateErrors(boolean accumulateErrors) {
 	    this.accumulateErrors = accumulateErrors;
-	    if(accumulateErrors && errorList == null) {
+	    if (accumulateErrors && errorList == null) {
 	        errorList = new ArrayList<String>();
 	    }
 	}

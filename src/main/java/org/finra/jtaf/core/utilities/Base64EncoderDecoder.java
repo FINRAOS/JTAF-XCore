@@ -37,7 +37,7 @@ public class Base64EncoderDecoder {
 	 * the file to be encoded. If there is no incoming parameter (or more than one provided), then the default 'propertyFileLocation' value used.
 	 */
 	public static void main(String[] args) throws Exception{
-		if(args.length == 1){
+		if (args.length == 1){
 			setPropertyFileLocation(args[0]); 
 		}	
 	
@@ -53,11 +53,11 @@ public class Base64EncoderDecoder {
 		String value;
 		
 		while((line = in.readLine()) != null){
-			if(!line.startsWith("#")){
-				if(line.contains("=")){
+			if (!line.startsWith("#")){
+				if (line.contains("=")){
 					key = line.substring(0, line.indexOf("="));
 					value =  line.substring(line.indexOf("=") + 1);
-					if(key.endsWith(".password")){
+					if (key.endsWith(".password")){
 						value = encodeString(value);
 						line = key + "=" + value;
 					}

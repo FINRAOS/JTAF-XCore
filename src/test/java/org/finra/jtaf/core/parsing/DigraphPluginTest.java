@@ -19,7 +19,7 @@ public class DigraphPluginTest
 	public void testAutomationValueChangedWhenDependent()
 	{
 		AutomationEngine automationEngine = AutomationEngine.getInstance();
-		if(automationEngine.getTestAgenda() == null)
+		if (automationEngine.getTestAgenda() == null)
 			automationEngine.buildModel(new File("testlibrary"), new File("testscripts"));
 		testAgenda = automationEngine.getTestAgenda();
 		
@@ -35,7 +35,7 @@ public class DigraphPluginTest
 	private TestScript getScriptByName(String dependentTest)
 	{
 		for (TestScript testScript : testAgenda.getTestScripts())
-			if(testScript.getName().equals(dependentTest))
+			if (testScript.getName().equals(dependentTest))
 				return testScript;
 		return null;
 	}

@@ -49,7 +49,7 @@ public class ParserHelper {
 	private static HashMap<String, XPathExpression> compiledMap  = new HashMap<String, XPathExpression>();
 	
 	private static final XPathFactory getXPathFactory() {
-		if(ParserHelper.xpathFactory == null) {
+		if (ParserHelper.xpathFactory == null) {
 			ParserHelper.xpathFactory = XPathFactory.newInstance();
 		}
 		return ParserHelper.xpathFactory;
@@ -67,7 +67,7 @@ public class ParserHelper {
 		NodeList nl = elem.getChildNodes();
 		for(int i = 0; i < nl.getLength(); ++i) {
 			Node n = nl.item(i);
-			if(n.getNodeType() == Node.ELEMENT_NODE) {
+			if (n.getNodeType() == Node.ELEMENT_NODE) {
 				retval.add((Element) n);
 			}
 			
@@ -79,7 +79,7 @@ public class ParserHelper {
 		try {
 			XPathExpression expr = null;
 			
-			if((expr = ParserHelper.compiledMap.get(xpath)) == null) {
+			if ((expr = ParserHelper.compiledMap.get(xpath)) == null) {
 				expr = getXPathFactory().newXPath().compile(xpath);
 				ParserHelper.compiledMap.put(xpath, expr);
 			}
@@ -88,7 +88,7 @@ public class ParserHelper {
 			// there are not multiple return values
 			NodeList nl = (NodeList) expr.evaluate(root, XPathConstants.NODESET);
 			
-			if(nl.getLength() > 1) {
+			if (nl.getLength() > 1) {
 				throw new MultipleMatchesException(xpath);
 			}
 
@@ -102,7 +102,7 @@ public class ParserHelper {
 	
 	public static final Element getRequireElement(Element root, String xpath) throws MultipleMatchesException, MissingRequiredElementException, NestedXPathException {
 		Element retval = getOptionalElement(root, xpath);
-		if(retval == null) {
+		if (retval == null) {
 			throw new MissingRequiredElementException(xpath);
 		}
 		return retval;
@@ -110,10 +110,10 @@ public class ParserHelper {
 	
 	public static final Element getFirstChildElementCaseInsensitive(Element root, String elementName) {
 		NodeList nl = root.getChildNodes();
-		if(nl.getLength() > 1) {
+		if (nl.getLength() > 1) {
 			for(int i = 0; i < nl.getLength(); i++) {
 				Node node = nl.item(i);
-				if(node.getNodeType() == Node.ELEMENT_NODE && (node.getNodeName().equalsIgnoreCase(elementName))) {
+				if (node.getNodeType() == Node.ELEMENT_NODE && (node.getNodeName().equalsIgnoreCase(elementName))) {
 					return (Element)node;
 				}
 			}

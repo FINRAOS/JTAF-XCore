@@ -71,7 +71,7 @@ public class ManipulateContextHelper {
 	}
 	
 	private IInvocationContext ctx() {
-		if(ctx != null) {
+		if (ctx != null) {
 			return ctx;
 		}
 		return cmd.ctx();
@@ -91,7 +91,7 @@ public class ManipulateContextHelper {
 	 */
 	public String getVerifiedAction() {
 		String action = getStringOrDefault(ACTION_ATTRIBUTE, REPLACE_ACTION);
-		if(!(action.equalsIgnoreCase(REPLACE_ACTION) || action.equalsIgnoreCase(APPEND_ACTION) || action.equalsIgnoreCase(PREPEND_ACTION))) {
+		if (!(action.equalsIgnoreCase(REPLACE_ACTION) || action.equalsIgnoreCase(APPEND_ACTION) || action.equalsIgnoreCase(PREPEND_ACTION))) {
 			throw new IllegalArgumentException(this.name() + ": attribute '" + ACTION_ATTRIBUTE + "' must be '" + REPLACE_ACTION + "' or '" + APPEND_ACTION + "' or '" + PREPEND_ACTION + "' (or left unspecified)");
 		}
 		return action;
@@ -105,9 +105,9 @@ public class ManipulateContextHelper {
 	 * @return
 	 */
 	public Object getValueIn(String valueInAttribute, Integer index, Object key) {
-		if(index != null) {
+		if (index != null) {
 			return getValueIn(valueInAttribute, index);
-		} else if(key != null) {
+		} else if (key != null) {
 			return getValueIn(valueInAttribute, key);
 		} else {
 			return getOptionalObject(valueInAttribute);
@@ -133,7 +133,7 @@ public class ManipulateContextHelper {
 	 */
 	public Object getValueIn(String valueInAttribute, Integer index) {
 		List<?> list = (List<?>) getOptionalObject(valueInAttribute);
-		if(index < 0) {
+		if (index < 0) {
 			index += list.size();
 		}
 		return list.get(index);
@@ -272,7 +272,7 @@ public class ManipulateContextHelper {
 	 */
 	public int getRequiredInteger(String attributeName) {
 		String value = (String) this.getOptionalObject(attributeName);
-		if(value == null) {
+		if (value == null) {
 			throw new NullPointerException(this.name() + ": missing required integer attribute '" + attributeName + "'");
 		}
 		return Integer.parseInt(value);
@@ -288,7 +288,7 @@ public class ManipulateContextHelper {
 	 */
 	public int getIntegerOrDefault(String attributeName, int defaultValue) {
 		String value = (String) this.getOptionalObject(attributeName);
-		if(value == null) {
+		if (value == null) {
 			return defaultValue;
 		}
 		return Integer.parseInt(value);
@@ -301,7 +301,7 @@ public class ManipulateContextHelper {
 	 */
 	public float getRequiredFloat(String attributeName) {
 		String value = (String) this.getOptionalObject(attributeName);
-		if(value == null) {
+		if (value == null) {
 			throw new NullPointerException(this.name() + ": missing required float attribute '" + attributeName + "'");
 		}
 		return Float.parseFloat(value);
@@ -315,7 +315,7 @@ public class ManipulateContextHelper {
 	 */
 	public float getFloatOrDefault(String attributeName, float defaultValue) {
 		String value = (String) this.getOptionalObject(attributeName);
-		if(value == null) {
+		if (value == null) {
 			return defaultValue;
 		}
 		return Float.parseFloat(value);
@@ -329,7 +329,7 @@ public class ManipulateContextHelper {
 	 */
 	public String getRequiredString(String attributeName) {
 		String value = (String) this.getOptionalObject(attributeName);
-		if(value == null) {
+		if (value == null) {
 			throw new NullPointerException(this.name() + ": missing required String attribute '" + attributeName + "'");
 		}
 		return value;
@@ -344,7 +344,7 @@ public class ManipulateContextHelper {
 	 */
 	public String getStringOrDefault(String attributeName, String defaultValue) {
 		String value = (String) this.getOptionalObject(attributeName);
-		if(value == null) {
+		if (value == null) {
 			return defaultValue;
 		}
 		return value;
@@ -366,15 +366,15 @@ public class ManipulateContextHelper {
 	 */
 	public boolean getRequiredBoolean(String attributeName) {
 		String temp = (String) this.getOptionalObject(attributeName);
-		if(temp == null) {
+		if (temp == null) {
 			throw new NullPointerException(this.name() + ": missing required boolean attribute '" + attributeName + "'");
 		}
 		
 		temp = temp.trim();
-		if(temp.equalsIgnoreCase("true")) {
+		if (temp.equalsIgnoreCase("true")) {
 			return true;
 		}
-		else if(temp.equalsIgnoreCase("false")) {
+		else if (temp.equalsIgnoreCase("false")) {
 			return false;
 		}
 		else {
@@ -390,15 +390,15 @@ public class ManipulateContextHelper {
 	 */
 	public boolean getBooleanOrDefault(String attributeName, boolean defaultValue) {
 		String temp = (String) this.getOptionalObject(attributeName);
-		if(temp == null) {
+		if (temp == null) {
 			return defaultValue;
 		}
 		
 		temp = temp.trim();
-		if(temp.equalsIgnoreCase("true")) {
+		if (temp.equalsIgnoreCase("true")) {
 			return true;
 		}
-		else if(temp.equalsIgnoreCase("false")) {
+		else if (temp.equalsIgnoreCase("false")) {
 			return false;
 		}
 		else {
@@ -413,7 +413,7 @@ public class ManipulateContextHelper {
 	 */
 	public Integer getOptionalInteger(String key) {
 		String integerAsString = (String) getOptionalObject(key);
-		if(integerAsString == null) {
+		if (integerAsString == null) {
 			return null;
 		} else {
 			return Integer.parseInt(integerAsString);

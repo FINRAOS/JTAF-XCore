@@ -21,7 +21,7 @@ public class TraceabilityMatrixPluginTest
 	public void setup()
 	{
 		file = new File(TraceabilityMatrix.OUTPUT_FILE);
-		if(file.exists())
+		if (file.exists())
 			file.delete();
 	}
 	

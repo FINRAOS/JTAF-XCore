@@ -31,7 +31,7 @@ public class JTAFPropertyManager extends PropertyManager {
 	}
 	
 	public static JTAFPropertyManager getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new JTAFPropertyManager();
 		}
 		return instance;

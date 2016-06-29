@@ -117,7 +117,7 @@ public class TestDataPlugin implements IPostParseTestPlugin {
 	private int getTSNameFromDataFilePosition(List<List<String>> testData) {
 		// try to findout 'JTAF.test.name' column. Value from this column
 		// necessary to add to ts name.
-		if(testData != null && testData.size() > 0) {
+		if (testData != null && testData.size() > 0) {
 			List<String> firstLine = testData.get(0);
 			int pos = 0;
 			for(String firstLineItem : firstLine) {
@@ -133,7 +133,7 @@ public class TestDataPlugin implements IPostParseTestPlugin {
 	}
 
 	private final List<List<String>> getExcelDataFromFile(String testDataFile, String sheetName, boolean isXlsx) throws ParserPluginException {
-		if(testDataFile != null && testDataFile.length() > 0) {
+		if (testDataFile != null && testDataFile.length() > 0) {
 			ExcelFileParser excelFileParser = null;
 			try {
 				if (sheetName != null) {

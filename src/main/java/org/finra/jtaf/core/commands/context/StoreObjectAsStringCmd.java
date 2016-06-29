@@ -33,7 +33,7 @@ public class StoreObjectAsStringCmd extends AbstractContextCmd {
 	protected void execute() throws Throwable {
 		String valueName = getRequiredString(VALUE_ATTRIBUTE);
 		Object value = getOptionalObject(valueName);
-		if(value == null) {
+		if (value == null) {
 			value = "null";
 		} else {
 			value = value.toString();

@@ -40,7 +40,7 @@ public class PutObjectInMapCmd extends AbstractContextCmd {
 		String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
 		@SuppressWarnings("unchecked")
 		Map<Object,Object> valueOut = (Map<Object,Object>) getOptionalObject(valueOutAttribute);
-		if(valueOut == null) {
+		if (valueOut == null) {
 			Map<Object,Object> suppression = new HashMap<Object,Object>();
 			valueOut = suppression;
 		}

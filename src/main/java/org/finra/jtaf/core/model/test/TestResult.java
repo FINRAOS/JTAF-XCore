@@ -55,7 +55,7 @@ public class TestResult {
 	 * @return
 	 */
 	public boolean isTestPassed() {
-		if(failureReason == null) {
+		if (failureReason == null) {
 			return true;
 		}else {
 			return false;

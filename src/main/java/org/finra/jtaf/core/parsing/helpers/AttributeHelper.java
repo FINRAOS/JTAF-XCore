@@ -62,7 +62,7 @@ public class AttributeHelper {
 		
 		for(int i = 0; i < origAttrs.getLength(); ++i) {
 			final String name  = origAttrs.item(i).getNodeName().toLowerCase();
-			if(attrs.containsKey(name)) {
+			if (attrs.containsKey(name)) {
 				collisions.add(name);
 			}
 			attrs.put(name, origAttrs.item(i).getNodeValue());
@@ -121,7 +121,7 @@ public class AttributeHelper {
 	 */
 	public String getRequiredString(String key) throws MissingAttributeException {
 		String retval = this.getOptionalString(key);
-		if((retval == null) || (retval.trim().equals(""))) {
+		if ((retval == null) || (retval.trim().equals(""))) {
 			throw new MissingAttributeException(this.source, key);
 		}
 		return retval;
@@ -145,7 +145,7 @@ public class AttributeHelper {
 	 */
 	public final String getStringOrDefault(String key, String defaultValue) {
 		String retval = this.getOptionalString(key);
-		if(retval == null) {
+		if (retval == null) {
 			return defaultValue;
 		}
 		return retval;
@@ -162,11 +162,11 @@ public class AttributeHelper {
 	 */
 	public final int getRequiredInteger(String key) throws MissingAttributeException, AttributeFormatException {
 		final String retval = this.getOptionalString(key);
-		if( (retval == null) || (retval.equals(""))) {
+		if ( (retval == null) || (retval.equals(""))) {
 			throw new MissingAttributeException(this.source, key);
 		}
 		
-		if(integerRegex.matcher(retval) == null) {
+		if (integerRegex.matcher(retval) == null) {
 			throw new AttributeFormatException("Integer");
 		}
 		
