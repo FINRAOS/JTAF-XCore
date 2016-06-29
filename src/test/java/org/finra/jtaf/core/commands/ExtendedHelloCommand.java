@@ -14,6 +14,6 @@ public class ExtendedHelloCommand extends HelloCommand{
 	
 		super.execute(ctx);
 		String data = (String )getContext().getObject("data");
-		data = "Hello Hello" + data ;
+		data = "Hello Hello" + data;
 	}
 }

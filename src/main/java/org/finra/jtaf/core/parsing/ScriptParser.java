@@ -429,7 +429,7 @@ public class ScriptParser {
 
     private final List<List<String>> getCSVDataFromFile(String testDataFile, MessageCollector mc) {
         List<List<String>> result = new ArrayList<List<String>>();
-        CSVReader reader = null ;
+        CSVReader reader = null;
         try {
              reader = new CSVReader(new FileReader(testDataFile));
             List<String> nextLine;

@@ -35,7 +35,7 @@ import org.junit.Test;
  */
 public class ParallelScriptRunner extends TestCase {
 
-	private TestScript theTestScript ;
+	private TestScript theTestScript;
 	boolean expectedFailureFlag = false;
 	public static final Logger logger = Logger.getLogger(ParallelScriptRunner.class);
 	

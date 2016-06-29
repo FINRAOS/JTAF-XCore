@@ -69,7 +69,7 @@ public abstract class BaseParser {
 	 * Do whatever to the document root
 	 * @param root
 	 */
-	protected abstract void handleRoot(Element root) throws ParsingException ;
+	protected abstract void handleRoot(Element root) throws ParsingException;
 
 
 
