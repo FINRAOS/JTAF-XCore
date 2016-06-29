@@ -14,7 +14,7 @@ public class ExtendedVerifyHelloCommand extends Command{
 
 	@Override
 	protected void execute(IInvocationContext ctx) throws Throwable {
-		String data = getStringOrDefault("data","");
+		String data = getStringOrDefault("data", "");
 		Assert.assertEquals(data, "Hello Hello Hello World !");
 	}
 

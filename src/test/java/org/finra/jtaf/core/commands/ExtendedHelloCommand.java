@@ -13,7 +13,7 @@ public class ExtendedHelloCommand extends HelloCommand{
 	protected void execute(IInvocationContext ctx) throws Throwable {
 	
 		super.execute(ctx);
-		String data = (String)getContext().getObject("data");
+		String data = (String) getContext().getObject("data");
 		data = "Hello Hello" + data;
 	}
 }

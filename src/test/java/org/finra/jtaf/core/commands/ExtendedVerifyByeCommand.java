@@ -14,7 +14,7 @@ public class ExtendedVerifyByeCommand extends Command{
 
 	@Override
 	protected void execute(IInvocationContext ctx) throws Throwable {
-		String data = getStringOrDefault("data","");
+		String data = getStringOrDefault("data", "");
 		Assert.assertEquals(data, "Bye Bye Bye !");
 	}
 

@@ -114,7 +114,7 @@ public class ParserHelper {
 			for (int i = 0; i < nl.getLength(); i++) {
 				Node node = nl.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE && (node.getNodeName().equalsIgnoreCase(elementName))) {
-					return (Element)node;
+					return (Element) node;
 				}
 			}
 		}

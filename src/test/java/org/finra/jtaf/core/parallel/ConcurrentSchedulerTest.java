@@ -26,7 +26,7 @@ public class ConcurrentSchedulerTest {
             AutomationEngine.getInstance().buildModel(new File("testlibrary"), new File("testscripts"));
           //  TraceabilityMatrix.produceTraceabilityMatrix(testAgenda);
         }
-        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestB","FAILED");
+        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestB", "FAILED");
         AutomationEngine.getInstance().getTestAgenda().setThreadCount("-1");
         ConcurrentScheduler scheduler = new ConcurrentScheduler();
         
@@ -35,8 +35,8 @@ public class ConcurrentSchedulerTest {
         
         
         
-        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestB","READY");
-        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestA","FAILED");
+        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestB", "READY");
+        AutomationEngine.getInstance().getTestDigraph().updateTestStatus("TestA", "FAILED");
 
         scheduler.finished();
 

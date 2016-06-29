@@ -30,7 +30,7 @@ import org.jgrapht.graph.AbstractBaseGraph;
  * This is a container class that houses the dependencies and exclusions across the tests.
  *
  */
-public class TestDigraph extends AbstractBaseGraph<DiNode, DiEdge> implements DirectedGraph<DiNode, DiEdge>{
+public class TestDigraph extends AbstractBaseGraph<DiNode, DiEdge> implements DirectedGraph<DiNode, DiEdge> {
 	private static final long serialVersionUID = 1L;
 	private Map<String, DiNode> digraphVertexMapping = new HashMap<String, DiNode>();
 	

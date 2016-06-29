@@ -58,9 +58,9 @@ public class ManipulateContextHelper {
 	public static final String NONE_CHANGE = "none";
 	private AbstractContextCmd cmd;
 	private IInvocationContext ctx;
-	private Map<?,?> globalCtx;
+	private Map<?, ?> globalCtx;
 
-	public ManipulateContextHelper(AbstractContextCmd cmd, Map<?,?> globalCtx) {
+	public ManipulateContextHelper(AbstractContextCmd cmd, Map<?, ?> globalCtx) {
 		this.cmd = cmd;
 		this.ctx = null;
 		this.globalCtx = globalCtx;
@@ -122,7 +122,7 @@ public class ManipulateContextHelper {
 	 * @return
 	 */
 	public Object getValueIn(String valueInAttribute, Object key) {
-		return ((Map<?,?>) getOptionalObject(valueInAttribute)).get(key);
+		return ((Map<?, ?>) getOptionalObject(valueInAttribute)).get(key);
 	}
 	
 	/**
@@ -192,7 +192,7 @@ public class ManipulateContextHelper {
 	 * @param value The value being stored in the map
 	 * @param key The key at which to store the value in the map
 	 */
-	public <T,K> void setValueOut(String valueOutAttribute, Map<? super K,? super T> list, T value, K key) {
+	public <T, K> void setValueOut(String valueOutAttribute, Map<? super K, ? super T> list, T value, K key) {
 		list.put(key, value);
 		ctx().putObject(valueOutAttribute, list);
 	}
