@@ -22,7 +22,7 @@ public class ConcurrentSchedulerTest {
     @Test
     public void testCheckTestsStatus() throws Exception {
  
-        if ( AutomationEngine.getInstance().getTestAgenda() == null) {
+        if (AutomationEngine.getInstance().getTestAgenda() == null) {
             AutomationEngine.getInstance().buildModel(new File("testlibrary"), new File("testscripts"));
           //  TraceabilityMatrix.produceTraceabilityMatrix(testAgenda);
         }

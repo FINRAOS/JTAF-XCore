@@ -162,7 +162,7 @@ public class AttributeHelper {
 	 */
 	public final int getRequiredInteger(String key) throws MissingAttributeException, AttributeFormatException {
 		final String retval = this.getOptionalString(key);
-		if ( (retval == null) || (retval.equals(""))) {
+		if ((retval == null) || (retval.equals(""))) {
 			throw new MissingAttributeException(this.source, key);
 		}
 		
