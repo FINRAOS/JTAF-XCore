@@ -63,9 +63,9 @@ public class ErrorAccumulatorTest {
 		
 		
 		
-		String errorStackTracesExpected = "\n java.lang.Throwable\n\tat Banana.unpeel(helloworld.txt:47)\n\t" +
-				"at Orange.unpeel(helloworld.txt:49)\n\n java.lang.Throwable\n\tat Apple.unpeel(helloworld.txt:47)" +
-				"\n\tat Pear.unpeel(helloworld.txt:49)";
+		String errorStackTracesExpected = "\n java.lang.Throwable\n\tat Banana.unpeel(helloworld.txt:47)\n\t"
+				+ "at Orange.unpeel(helloworld.txt:49)\n\n java.lang.Throwable\n\tat Apple.unpeel(helloworld.txt:47)"
+				+ "\n\tat Pear.unpeel(helloworld.txt:49)";
 		Assert.assertEquals(errorStackTracesExpected.replaceAll("[\t\n\r]", ""), 
 				ea.getErrorStackTraces().replaceAll("[\t\n\r]", ""));
 	}

@@ -125,9 +125,9 @@ public class ConcurrentScheduler implements RunnerScheduler {
 			DiNode theTestNode = digraph.getVertex(theTestName);
 			
 			//test complete -skip
-			if (theTestNode.getTestStatus().equalsIgnoreCase("FAILED") ||
-					theTestNode.getTestStatus().equalsIgnoreCase("PASSED")||
-					theTestNode.getTestStatus().equalsIgnoreCase("READY")){
+			if (theTestNode.getTestStatus().equalsIgnoreCase("FAILED")
+					|| theTestNode.getTestStatus().equalsIgnoreCase("PASSED")
+					|| theTestNode.getTestStatus().equalsIgnoreCase("READY")){
 				continue;
 			}
 			
