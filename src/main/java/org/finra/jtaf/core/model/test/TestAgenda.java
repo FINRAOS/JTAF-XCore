@@ -57,8 +57,11 @@ public class TestAgenda {
 	 * @return read only set of automation values
 	 */
 	public Set<String> getAutomationValues() {
-		Set<String> setToWrap = automationValues == null ? (new HashSet<String>()) : automationValues;
-		return Collections.unmodifiableSet(setToWrap);
+		if (automationValues == null) {
+			return Collections.emptySet();
+		} else {
+			return Collections.unmodifiableSet(automationValues);
+		}
 	}
 	
 	/**
@@ -69,7 +72,11 @@ public class TestAgenda {
 	 * @return true if value exists, case insensitive
 	 */
 	public boolean containsAutomationValue(String value) {
-		return value != null && (automationValues == null ? false : automationValues.contains(value.toLowerCase()));
+		if (value == null || automationValues == null) {
+			return false;
+		} else {
+			return automationValues.contains(value.toLowerCase());
+		}
 	}
 	
 	/**
@@ -78,7 +85,7 @@ public class TestAgenda {
 	 * @return true if null or empty
 	 */
 	public boolean isAutomationValuesEmpty() {
-		return automationValues == null ? true : automationValues.isEmpty();
+		return automationValues == null || automationValues.isEmpty();
 	}
 
 	public void setThreadCount(String threads){
