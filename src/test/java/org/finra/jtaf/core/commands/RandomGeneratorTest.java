@@ -216,7 +216,7 @@ public class RandomGeneratorTest {
         if(!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
-        Assert.assertTrue("String generation failed", str.matches("["+ charsForRandomString + "]{5}"));
+        Assert.assertTrue("String generation failed", str.matches("[" + charsForRandomString + "]{5}"));
     }
 
     /***
@@ -230,7 +230,7 @@ public class RandomGeneratorTest {
         if(!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
-        Assert.assertTrue("String generation failed", str.matches("["+ charsForRandomString + "]{7}"));
+        Assert.assertTrue("String generation failed", str.matches("[" + charsForRandomString + "]{7}"));
     }
     
     /**
@@ -244,7 +244,7 @@ public class RandomGeneratorTest {
         if(!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
-        Assert.assertTrue("String generation failed", str.matches("["+ charsForRandomString + "]{5,10}"));
+        Assert.assertTrue("String generation failed", str.matches("[" + charsForRandomString + "]{5,10}"));
     }
 
     /**
@@ -258,7 +258,7 @@ public class RandomGeneratorTest {
         if(!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
-        Assert.assertTrue("String generation failed", str.matches("["+ charsForRandomString + "]{7}"));
+        Assert.assertTrue("String generation failed", str.matches("[" + charsForRandomString + "]{7}"));
     }
     
     /**
@@ -272,7 +272,7 @@ public class RandomGeneratorTest {
         if(!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
-        Assert.assertTrue("String generation failed", str.matches("["+ charsForRandomString + "]{5}"));
+        Assert.assertTrue("String generation failed", str.matches("[" + charsForRandomString + "]{5}"));
     }
 
 }

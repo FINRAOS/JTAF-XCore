@@ -273,7 +273,7 @@ public class ManipulateContextHelper {
 	public int getRequiredInteger(String attributeName) {
 		String value = (String) this.getOptionalObject(attributeName);
 		if(value == null) {
-			throw new NullPointerException(this.name() + ": missing required integer attribute '"+ attributeName +"'");
+			throw new NullPointerException(this.name() + ": missing required integer attribute '" + attributeName + "'");
 		}
 		return Integer.parseInt(value);
 	}
@@ -302,7 +302,7 @@ public class ManipulateContextHelper {
 	public float getRequiredFloat(String attributeName) {
 		String value = (String) this.getOptionalObject(attributeName);
 		if(value == null) {
-			throw new NullPointerException(this.name() + ": missing required float attribute '"+ attributeName +"'");
+			throw new NullPointerException(this.name() + ": missing required float attribute '" + attributeName + "'");
 		}
 		return Float.parseFloat(value);
 	}
@@ -330,7 +330,7 @@ public class ManipulateContextHelper {
 	public String getRequiredString(String attributeName) {
 		String value = (String) this.getOptionalObject(attributeName);
 		if(value == null) {
-			throw new NullPointerException(this.name() + ": missing required String attribute '"+ attributeName +"'");
+			throw new NullPointerException(this.name() + ": missing required String attribute '" + attributeName + "'");
 		}
 		return value;
 	}

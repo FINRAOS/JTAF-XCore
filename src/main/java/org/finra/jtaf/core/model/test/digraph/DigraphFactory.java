@@ -69,7 +69,7 @@ public class DigraphFactory {
 					}
 				}
 				else{
-					throw new DependencyException("The TestSuite '"+dependentSuites+"' specified for TestSuite '" + s +"' dependencies does not exist!");
+					throw new DependencyException("The TestSuite '" + dependentSuites + "' specified for TestSuite '" + s + "' dependencies does not exist!");
 				}
 			}
 			//Grabbing the TestSuite exclusions and converting
@@ -80,7 +80,7 @@ public class DigraphFactory {
 						tsExclusionsAsTests.add(ts.getName());
 					}
 				}else{
-					throw new DependencyException("The TestSuite '"+excludedSuites+"' specified for TestSuite '" + s +"' exclusions does not exist!");
+					throw new DependencyException("The TestSuite '" + excludedSuites + "' specified for TestSuite '" + s + "' exclusions does not exist!");
 				}
 			}
 			//Now all the TestSuite dependencies have been converted and placed into a list.
@@ -99,7 +99,7 @@ public class DigraphFactory {
 						}
 					}
 					else{
-						throw new DependencyException("The TestSuite '"+tsDepend+"' specified @ '" + ((TestScript) tc).getFullName() + "' dependencies does not exist!");
+						throw new DependencyException("The TestSuite '" + tsDepend + "' specified @ '" + ((TestScript) tc).getFullName() + "' dependencies does not exist!");
 					}
 				}
 				for (String tsExclude: excludeTest.getDependenciesSuites()){
@@ -110,7 +110,7 @@ public class DigraphFactory {
 						}
 					}
 					else{
-						throw new DependencyException("The TestSuite '"+tsExclude+"' specified @ '" + ((TestScript) tc).getFullName() + "' exclusions does not exist!");
+						throw new DependencyException("The TestSuite '" + tsExclude + "' specified @ '" + ((TestScript) tc).getFullName() + "' exclusions does not exist!");
 					}
 				}
 				testScriptDependencies.addAll(tsDependenciesAsTests);
@@ -137,7 +137,7 @@ public class DigraphFactory {
 		if (cycleList.size() > 0){
 			mc.fatal("Cycle(s) detected");
 			for (DiNode d: cycleList){
-				mc.fatal("@"+ d.getTestScript().getFullName());
+				mc.fatal("@" + d.getTestScript().getFullName());
 			}
 			throw new DependencyException("Found cycle(s)");
 		}

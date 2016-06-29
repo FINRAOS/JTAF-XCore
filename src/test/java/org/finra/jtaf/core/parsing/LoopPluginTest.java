@@ -37,7 +37,7 @@ public class LoopPluginTest extends ParserPluginTest
 		for(int iterationNumber = 1; iterationNumber <= ITERATION_COUNT; iterationNumber++)
 		{
 			TestScript iterationTestScript = (TestScript) componentList.get(iterationNumber - 1);
-			Assert.assertEquals(TEST_OF_INTEREST_NAME + " [iteration " + iterationNumber +" of " + ITERATION_COUNT + "]", iterationTestScript.getName());
+			Assert.assertEquals(TEST_OF_INTEREST_NAME + " [iteration " + iterationNumber + " of " + ITERATION_COUNT + "]", iterationTestScript.getName());
 			System.out.println(iterationTestScript.getName());
 		}
 	}

@@ -12,7 +12,7 @@ public class ExtendedByeCommand extends ByeCommand{
 	@Override
 	protected void execute(IInvocationContext ctx) throws Throwable {
 	
-		getContext().putObject("data","Bye Bye "+getContext().getObject("data"));
+		getContext().putObject("data","Bye Bye " + getContext().getObject("data"));
 	}
 
 }

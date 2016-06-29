@@ -40,7 +40,7 @@ public class TestDataPluginTest extends ParserPluginTest
 		{
 			TestScript iterationTestScript = (TestScript) componentList.get(iterationNumber - 1);
 			String testNameFromDataFile = TEST_NAMES_FROM_DATA_FILE[iterationNumber - 1];
-			Assert.assertEquals(TEST_OF_INTEREST_NAME + " [data file row #" + iterationNumber +"] ; testNameFromDataFile-" + testNameFromDataFile, iterationTestScript.getName());
+			Assert.assertEquals(TEST_OF_INTEREST_NAME + " [data file row #" + iterationNumber + "] ; testNameFromDataFile-" + testNameFromDataFile, iterationTestScript.getName());
 			System.out.println(iterationTestScript.getName());
 		}
 	}

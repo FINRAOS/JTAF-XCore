@@ -36,7 +36,7 @@ public class DefaultAutomationClassLoader implements IAutomationClassLoader{
 			throw new ClassNotFoundException("Unable to Load command class " + commandClass, e);
 		}
 		catch(NoClassDefFoundError e1){
-			throw new NoClassDefFoundError("Unable to Load command class " + commandClass + "Exception "+ e1);
+			throw new NoClassDefFoundError("Unable to Load command class " + commandClass + "Exception " + e1);
 		}
 	}
 
