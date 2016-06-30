@@ -333,7 +333,7 @@ public class RandomGenerator extends Command {
 				}
 			}
 			
-			if ((obj.getClass().equals(ArrayList.class))) {
+			if (obj instanceof ArrayList) {
 				logger.info("Generated new List: " + obj + "'");
 			}
 		}
