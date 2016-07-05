@@ -32,9 +32,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-
-
-
 /**
  * Helper class for parsing XML file. 
  */
@@ -54,9 +51,7 @@ public class ParserHelper {
 		}
 		return ParserHelper.xpathFactory;
 	}
-	
 
-	
 	/**
 	 * A list of the immediate children of elem
 	 * @param elem
@@ -121,4 +116,5 @@ public class ParserHelper {
 			
 		return null;
 	}
+
 }

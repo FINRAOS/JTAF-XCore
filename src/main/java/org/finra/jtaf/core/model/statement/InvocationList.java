@@ -24,6 +24,7 @@ import org.finra.jtaf.core.model.IScriptVisitor;
  * This is a object to manage an ordered list of IStatement nodes
  */
 public class InvocationList extends ArrayList<Invocation> {
+
 	private static final long serialVersionUID = -7720009887819987235L;
 
 	/***
@@ -34,4 +35,5 @@ public class InvocationList extends ArrayList<Invocation> {
 	public void acceptAutomationNodeVisitor(IScriptVisitor v) throws Throwable {
 		v.visitStatementList(this);
 	}
+
 }

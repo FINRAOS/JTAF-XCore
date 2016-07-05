@@ -34,6 +34,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * Parser for testdata excel files.
  */
 public class ExcelFileParser {
+
 	private static Logger logger = Logger.getLogger(ExcelFileParser.class.getPackage().getName());
 	
 	// For xlsx type
@@ -136,4 +137,5 @@ public class ExcelFileParser {
 		
 		return parsedExcelFile;
 	}
+
 }

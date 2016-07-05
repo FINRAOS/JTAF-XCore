@@ -30,6 +30,7 @@ import org.apache.commons.codec.binary.Base64;
  * Utility class to encode or decode string using base64.
  */
 public class Base64EncoderDecoder {
+
 	private static String fileLocation = "C:\\TEMP\\base64\\test.properties";
 
 	/*
@@ -71,7 +72,6 @@ public class Base64EncoderDecoder {
 		in.close();
 		out.close();
 	}
-	
 	
 	public static String encodeString(String stringToEncode) {
 		byte[] encodedBytes = Base64.encodeBase64(stringToEncode.getBytes());

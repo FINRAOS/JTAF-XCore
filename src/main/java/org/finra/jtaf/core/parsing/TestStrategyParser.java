@@ -35,12 +35,12 @@ import org.finra.jtaf.core.plugins.parsing.IPostParseStrategyElementPlugin;
 import org.finra.jtaf.core.plugins.parsing.PostStrategyElementParserPluginContext;
 import org.w3c.dom.Element;
 
-
 /**
  * Parser for TestAgenda or Strategy xml file. 
  * 
  */
 public class TestStrategyParser extends BaseParser {
+
 	private static final String EXECUTE = "execute";
 
 	private static final String TARGET = "target";
@@ -123,4 +123,5 @@ public class TestStrategyParser extends BaseParser {
 	public void setPostParseStrategyElementPlugins(List<IPostParseStrategyElementPlugin> postParseStrategyElementPlugins) {
 		this.postParseStrategyElementPlugins = postParseStrategyElementPlugins;
 	}
+
 }

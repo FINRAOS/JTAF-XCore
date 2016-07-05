@@ -28,6 +28,7 @@ import org.apache.log4j.Logger;
  *
  */
 public class StringHelper {
+
 	static Logger logger = Logger.getLogger(StringHelper.class.getPackage().getName());
 	private static final String       INDENTATION       = "   ";
 	private static final List<String> INDENTATION_CACHE = createIndentationArray();
@@ -112,4 +113,5 @@ public class StringHelper {
 		}
 		return output;
 	}
+
 }

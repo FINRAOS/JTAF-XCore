@@ -24,6 +24,7 @@ import java.util.Set;
  *
  */
 public class Dependencies {
+
 	private Set<String> dependentSuites = new HashSet<String>();
 	private Set<String> dependentTests = new HashSet<String>();
 	
@@ -39,7 +40,9 @@ public class Dependencies {
 	public Set<String> getDependenciesSuites() {
 		return dependentSuites;
 	}
+
 	public Set<String> getDependenciesTests() {
 		return dependentTests;
 	}
+
 }

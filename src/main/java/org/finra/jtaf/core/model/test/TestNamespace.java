@@ -28,7 +28,6 @@ import java.util.TreeMap;
 import org.finra.jtaf.core.model.exceptions.NameCollisionException;
 import org.finra.jtaf.core.model.exceptions.NameFormatException;
 
-
 /**
  * These are the internal nodes of our testing model.
  * 
@@ -171,4 +170,5 @@ public class TestNamespace extends TestComponent implements Iterable<TestCompone
 	public final void acceptTestVisitor(ITestVisitor v) throws Exception {
 		v.visitTestNamespace(this);
 	}
+
 }
