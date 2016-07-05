@@ -1,6 +1,5 @@
 package org.finra.jtaf.core.asserts;
 
-import org.finra.jtaf.core.asserts.AssertionFailedError;
 import org.junit.Assert;
 
 import org.junit.Test;

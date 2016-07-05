@@ -6,7 +6,6 @@ import org.finra.jtaf.core.AutomationEngine;
 import org.finra.jtaf.core.model.test.TestComponent;
 import org.finra.jtaf.core.model.test.TestScript;
 import org.finra.jtaf.core.model.test.TestSuite;
-import org.finra.jtaf.core.parsing.LoopPlugin;
 import org.finra.jtaf.core.plugins.parsing.PostTestParserPluginContext;
 import org.junit.Assert;
 import org.junit.Test;

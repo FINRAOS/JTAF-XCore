@@ -5,7 +5,6 @@ import java.io.InputStream;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.finra.jtaf.core.model.test.TestAgenda;
-import org.finra.jtaf.core.parsing.MaxThreadsPlugin;
 import org.finra.jtaf.core.plugins.parsing.PostStrategyElementParserPluginContext;
 import org.junit.Assert;
 import org.junit.Test;

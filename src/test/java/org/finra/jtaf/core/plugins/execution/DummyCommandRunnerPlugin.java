@@ -1,9 +1,6 @@
 package org.finra.jtaf.core.plugins.execution;
 
 import org.finra.jtaf.core.mock.MockCommand2;
-import org.finra.jtaf.core.plugins.execution.CommandRunnerPluginContext;
-import org.finra.jtaf.core.plugins.execution.ICommandRunnerPlugin;
-import org.finra.jtaf.core.plugins.execution.RunnerPluginException;
 import org.junit.Assert;
 
 
