@@ -132,7 +132,7 @@ public class TestDataPlugin implements IPostParseTestPlugin {
 		return -1;
 	}
 
-	private final List<List<String>> getExcelDataFromFile(String testDataFile, String sheetName, boolean isXlsx) throws ParserPluginException {
+	private List<List<String>> getExcelDataFromFile(String testDataFile, String sheetName, boolean isXlsx) throws ParserPluginException {
 		if (testDataFile != null && testDataFile.length() > 0) {
 			ExcelFileParser excelFileParser = null;
 			try {

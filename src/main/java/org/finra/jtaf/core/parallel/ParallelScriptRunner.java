@@ -44,7 +44,7 @@ public class ParallelScriptRunner extends TestCase {
 		this.theTestScript = theTestScript;
 	}
 
-	private static final String createJUnitName(TestScript test) {
+	private static String createJUnitName(TestScript test) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(test.getFullName());
 		boolean issuesExist = false;

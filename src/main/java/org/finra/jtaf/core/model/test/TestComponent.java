@@ -67,7 +67,7 @@ public abstract class TestComponent {
 		return sb.toString();
 	}
 
-	private final void getFullNameHelper(StringBuilder sb) {
+	private void getFullNameHelper(StringBuilder sb) {
 		if (getParent() != null) {
 			TestComponent p = getParent();
 			p.getFullNameHelper(sb);

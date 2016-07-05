@@ -226,7 +226,7 @@ public class CommandLibraryParser {
 		return retval;
 	}
 
-	private final List<InvocationTarget> handleLibrarySource(File f,
+	private List<InvocationTarget> handleLibrarySource(File f,
 			MessageCollector mc) throws NameFormatException,
 			NameCollisionException, SAXException, IOException, ParsingException {
 
@@ -268,7 +268,7 @@ public class CommandLibraryParser {
 		return retval;
 	}
 
-	private final List<InvocationTarget> processLibrary(Element elem,
+	private List<InvocationTarget> processLibrary(Element elem,
 			MessageCollector mc) throws ParsingException {
 		if (elem.getNodeName().equalsIgnoreCase("library")) {
 			List<InvocationTarget> invocationTargets = new ArrayList<InvocationTarget>();
@@ -297,7 +297,7 @@ public class CommandLibraryParser {
 	// It basically just gets what are designated as parameters there and stores
 	// the names of them
 	// in the invocation target param list
-	private final InvocationTarget processInvocationTarget(Element elem,
+	private InvocationTarget processInvocationTarget(Element elem,
 			MessageCollector mc) throws ParsingException {
 		InvocationTarget retval = null;
 		final String name = elem.getNodeName().toLowerCase();
@@ -344,7 +344,7 @@ public class CommandLibraryParser {
 		return retval;
 	}
 
-	private final Command processCommand(Element elem, MessageCollector mc)
+	private Command processCommand(Element elem, MessageCollector mc)
 			throws ParsingException {
 		try {
 			AttributeHelper ah = new AttributeHelper(elem);
@@ -366,7 +366,7 @@ public class CommandLibraryParser {
 		}
 	}
 
-	private final Function processFunction(Element elem, MessageCollector mc)
+	private Function processFunction(Element elem, MessageCollector mc)
 			throws ParsingException {
 		try {
 

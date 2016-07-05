@@ -48,7 +48,7 @@ public class ParserHelper {
 	private static XPathFactory                     xpathFactory = null;
 	private static HashMap<String, XPathExpression> compiledMap  = new HashMap<String, XPathExpression>();
 	
-	private static final XPathFactory getXPathFactory() {
+	private static XPathFactory getXPathFactory() {
 		if (ParserHelper.xpathFactory == null) {
 			ParserHelper.xpathFactory = XPathFactory.newInstance();
 		}

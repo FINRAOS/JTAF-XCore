@@ -67,7 +67,7 @@ public final class TestScript extends TestComponent {
 	 * These are the primary statements executed by the Test
 	 * @return
 	 */
-	public final InvocationList getBody() {
+	public InvocationList getBody() {
 		return this.body;
 	}
 	
@@ -75,11 +75,11 @@ public final class TestScript extends TestComponent {
 	 * Sets this test's body to the given statement list
 	 * @param statements
 	 */
-	public final void setBody(InvocationList statements) {
+	public void setBody(InvocationList statements) {
 		this.body = statements;
 	}
 	
-	public final List<String> getCRs() {
+	public List<String> getCRs() {
 		return this.crs;
 	}
 	
@@ -95,7 +95,7 @@ public final class TestScript extends TestComponent {
 		return issue;
 	}
 
-	public final String getStatus() {
+	public String getStatus() {
 		return this.status;
 	}
 	

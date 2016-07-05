@@ -28,11 +28,11 @@ public interface IPostParseTestPlugin {
 	 * @param ctx
 	 * @throws ParserPluginException
 	 */
-	public void execute(PostTestParserPluginContext ctx) throws ParserPluginException;
+	void execute(PostTestParserPluginContext ctx) throws ParserPluginException;
 	
 	/***
 	 * This will return the tag name the ScriptParser will be looking for in the test body. If not found,
 	 * the execute method will not be run.
 	 */
-	public String getTagName();
+	String getTagName();
 }

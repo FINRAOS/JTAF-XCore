@@ -28,11 +28,11 @@ public interface IPostParseSuitePlugin {
 	 * @param ctx
 	 * @throws ParserPluginException
 	 */
-	public void execute(PostSuiteParserPluginContext ctx) throws ParserPluginException;
+	void execute(PostSuiteParserPluginContext ctx) throws ParserPluginException;
 	
 	/***
 	 * This will return the tag name the ScriptParser will be looking for in the suite. If not found,
 	 * the execute method will not be run.
 	 */
-	public String getTagName();
+	String getTagName();
 }

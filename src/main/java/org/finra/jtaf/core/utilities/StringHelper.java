@@ -32,7 +32,7 @@ public class StringHelper {
 	private static final String       INDENTATION       = "   ";
 	private static final List<String> INDENTATION_CACHE = createIndentationArray();
 
-	private static final List<String> createIndentationArray() {
+	private static List<String> createIndentationArray() {
 		List<String> retval = new ArrayList<String>();
 		retval.add(INDENTATION);
 		return retval;

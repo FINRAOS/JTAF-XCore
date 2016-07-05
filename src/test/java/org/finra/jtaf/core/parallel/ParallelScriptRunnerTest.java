@@ -140,7 +140,7 @@ public class ParallelScriptRunnerTest {
         private TestScript testScript = null; // This shouldnt change after
                                               // being set initially
 
-        public MyNode(TestScript ts) {
+        MyNode(TestScript ts) {
             super(ts);
             this.testName = ts.getName();
             this.testScript = ts;

@@ -29,5 +29,5 @@ public interface IPostParseStrategyElementPlugin {
 	 * @param ctx
 	 * @throws ParserPluginException
 	 */
-	public void execute(PostStrategyElementParserPluginContext ctx) throws ParserPluginException;
+	void execute(PostStrategyElementParserPluginContext ctx) throws ParserPluginException;
 }

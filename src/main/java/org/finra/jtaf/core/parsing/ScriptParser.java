@@ -260,7 +260,7 @@ public class ScriptParser {
         }
     }
 
-    private final List<TestScript> processTestScripts(Element element, MessageCollector mc)
+    private List<TestScript> processTestScripts(Element element, MessageCollector mc)
             throws ParsingException {
         if (element.getNodeName().equalsIgnoreCase("testsuite")) {
             List<TestScript> testScripts = null;
@@ -383,7 +383,7 @@ public class ScriptParser {
         return testScripts;
     }
 
-    private final String getTestDataFile(Element test) {
+    private String getTestDataFile(Element test) {
         for (Element testChild : ParserHelper.getChildren(test)) {
             if (testChild.getTagName().equalsIgnoreCase("testData")) {
                 String file = testChild.getAttribute("file");
@@ -395,7 +395,7 @@ public class ScriptParser {
         return null;
     }
 
-    private final String getSheetName(Element test) {
+    private String getSheetName(Element test) {
         for (Element testChild : ParserHelper.getChildren(test)) {
             if (testChild.getTagName().equalsIgnoreCase("testData")) {
                 String file = testChild.getAttribute("sheet");
@@ -407,7 +407,7 @@ public class ScriptParser {
         return null;
     }
 
-    private final List<List<String>> getExcelDataFromFile(String testDataFile, String sheetName,
+    private List<List<String>> getExcelDataFromFile(String testDataFile, String sheetName,
             MessageCollector mc, boolean isXlsx) {
         if (testDataFile != null && testDataFile.length() > 0) {
             ExcelFileParser excelFileParser = null;
@@ -427,7 +427,7 @@ public class ScriptParser {
         return null;
     }
 
-    private final List<List<String>> getCSVDataFromFile(String testDataFile, MessageCollector mc) {
+    private List<List<String>> getCSVDataFromFile(String testDataFile, MessageCollector mc) {
         List<List<String>> result = new ArrayList<List<String>>();
         CSVReader reader = null;
         try {
@@ -457,7 +457,7 @@ public class ScriptParser {
         return result;
     }
 
-    private final int getLoopNumber(AttributeHelper testAttributeHelper, MessageCollector mc) {
+    private int getLoopNumber(AttributeHelper testAttributeHelper, MessageCollector mc) {
         String testLoop = testAttributeHelper.getOptionalString("loop");
         int testLoopNumber = 1;
         if (testLoop != null) {
@@ -647,7 +647,7 @@ public class ScriptParser {
         }
     }
 
-    private final void preprocessTestScript(Element elem, MessageCollector mc) {
+    private void preprocessTestScript(Element elem, MessageCollector mc) {
         List<Element> children = ParserHelper.getChildren(elem);
         if (children.isEmpty()) {
             return;
@@ -679,7 +679,7 @@ public class ScriptParser {
         }
     }
 
-    private final String processIssue(Element elem) {
+    private String processIssue(Element elem) {
         String retval = "";
         NodeList nl = elem.getChildNodes();
         for (int i = 0; i < nl.getLength(); ++i) {
@@ -697,7 +697,7 @@ public class ScriptParser {
         }
     }
 
-    private final List<String> processCRs(Element elem) {
+    private List<String> processCRs(Element elem) {
         List<String> retval = new ArrayList<String>();
         for (Element child : ParserHelper.getChildren(elem)) {
             if (child.getNodeName().equalsIgnoreCase("cr")) {

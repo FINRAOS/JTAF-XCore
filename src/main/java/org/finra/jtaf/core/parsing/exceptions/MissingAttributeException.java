@@ -28,7 +28,7 @@ public class MissingAttributeException extends ParsingException {
 	
 	private static final long serialVersionUID = -3806789951904835575L;
 
-	private static final String createMessage(Element e, String name) {
+	private static String createMessage(Element e, String name) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("The element '");
 		sb.append(e.getNodeName());

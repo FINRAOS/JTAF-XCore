@@ -28,5 +28,5 @@ public interface IPostParseAllPlugin {
 	 * @param ctx
 	 * @throws ParserPluginException
 	 */
-	public void execute(PostAllParserPluginContext ctx) throws ParserPluginException;
+	void execute(PostAllParserPluginContext ctx) throws ParserPluginException;
 }

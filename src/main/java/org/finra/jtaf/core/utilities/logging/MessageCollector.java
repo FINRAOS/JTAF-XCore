@@ -101,7 +101,7 @@ public class MessageCollector {
 		this.recursiveDump(log, this.getRootSection(), 0);
 	}
 	
-	private final void recursiveDump(Logger log, Section section, int depth) {
+	private void recursiveDump(Logger log, Section section, int depth) {
 		if (!Level.ALL.isGreaterOrEqual(section.getLevel())) {
 			log.log(section.getLevel(), StringHelper.indent(depth) + section.getName());
 			

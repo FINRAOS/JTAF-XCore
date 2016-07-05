@@ -115,7 +115,7 @@ public class Section {
 	 * 
 	 * @param level
 	 */
-	private final void tryRaiseLevel(Level level) {
+	private void tryRaiseLevel(Level level) {
 		if (!this.getLevel().isGreaterOrEqual(level)) {
 			this.level = level;
 			if (this.getParent() != null) {
