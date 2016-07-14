@@ -123,8 +123,9 @@ public class Interpreter {
 			this.testStatus = TestStatus.Failed;
 		}
 		finally {
-			if (failure == null)
+			if (failure == null) {
 				this.testStatus = TestStatus.Passed;
+			}
 			else {
 				this.testStatus = TestStatus.Failed;
 			}
@@ -406,8 +407,8 @@ public class Interpreter {
 	
 	public void executeTearDownPlugins(Throwable failureReason, IInvocationContext invocationContext) {
 		try {
-			if(tearDownPlugins != null) {
-				for(ITearDownPlugin tearDownPlugin : tearDownPlugins) {
+			if (tearDownPlugins != null) {
+				for (ITearDownPlugin tearDownPlugin : tearDownPlugins) {
 					TestScript testScript = context.getTestScript();
 					TearDownPluginContext tearDownPluginContext = new TearDownPluginContext(testScript, failureReason, invocationContext);
 					tearDownPlugin.handleBeforeTearDown(tearDownPluginContext);

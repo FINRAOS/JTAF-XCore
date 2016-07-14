@@ -110,7 +110,7 @@ public class StatementParserTest
 		{
 			statementParser.processStatementList(testElement, new MessageCollector());
 		}
-		catch(ParsingException parsingException)
+		catch (ParsingException parsingException)
 		{
 			ExceptionAccumulator asExceptionAccumulator = (ExceptionAccumulator) parsingException;
 			ExceptionAccumulator innerExceptionAccumulator = (ExceptionAccumulator) asExceptionAccumulator.getExceptions().get(0);
@@ -137,7 +137,7 @@ public class StatementParserTest
 		{
 			statementParser.processStatementList(testElement, new MessageCollector());
 		}
-		catch(ParsingException parsingException)
+		catch (ParsingException parsingException)
 		{
 			ExceptionAccumulator asExceptionAccumulator = (ExceptionAccumulator) parsingException;
 			ExceptionAccumulator innerExceptionAccumulator = (ExceptionAccumulator) asExceptionAccumulator.getExceptions().get(0);
@@ -150,12 +150,12 @@ public class StatementParserTest
 	{
 		Element documentElement = documentBuilder.parse(FILE_NAME).getDocumentElement();
 		NodeList childNodes = documentElement.getChildNodes();
-		for(int childNodeIndex = 0; childNodeIndex < childNodes.getLength(); childNodeIndex++)
+		for (int childNodeIndex = 0; childNodeIndex < childNodes.getLength(); childNodeIndex++)
 		{
 			Node testNode = childNodes.item(childNodeIndex);
-			if(!testNode.getNodeName().equalsIgnoreCase(TEST_ELEMENT))
+			if (!testNode.getNodeName().equalsIgnoreCase(TEST_ELEMENT))
 				continue;
-			if(!testNode.getAttributes().getNamedItem(NAME_ATTRIBUTE).getTextContent().equals(testName))
+			if (!testNode.getAttributes().getNamedItem(NAME_ATTRIBUTE).getTextContent().equals(testName))
 				continue;
 			return ParserHelper.getFirstChildElementCaseInsensitive((Element) testNode, TEST_STEPS_ELEMENT);
 		}

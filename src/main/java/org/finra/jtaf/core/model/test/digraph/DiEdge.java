@@ -22,22 +22,22 @@ import org.jgrapht.graph.DefaultEdge;
  * This class represents an edge in the digraph
  *
  */
-public class DiEdge extends DefaultEdge{
+public class DiEdge extends DefaultEdge {
 	private static final long serialVersionUID = 1L;
 	
 	private boolean isExclusionEdge = false;
 	private boolean isDependencyEdge = false;
 
-	public boolean isDependency(){
+	public boolean isDependency() {
 		return isDependencyEdge;
 	}
-	public boolean isExclusion(){
+	public boolean isExclusion() {
 		return isExclusionEdge;
 	}
-	public void setDependencyEdge(){
+	public void setDependencyEdge() {
 		isDependencyEdge = true;
 	}
-	public void setExclusionEdge(){
+	public void setExclusionEdge() {
 		isExclusionEdge = true;
 	}
 }

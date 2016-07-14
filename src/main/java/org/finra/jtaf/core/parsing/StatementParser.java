@@ -59,7 +59,7 @@ public class StatementParser {
   }
 
   //TODO: This needs to come across a TryRecoverCleanup and handle that
-  private final void preprocessStatementList(Element elem, MessageCollector mc)
+  private void preprocessStatementList(Element elem, MessageCollector mc)
           throws ParsingException {
 
       ElementScanner es = new ElementScanner(ParserHelper.getChildren(elem));
@@ -114,7 +114,7 @@ public class StatementParser {
       }
   }
 
-  private final Invocation processStatement(Element elem, MessageCollector mc)
+  private Invocation processStatement(Element elem, MessageCollector mc)
           throws ParsingException {
       try {
           mc.push(elem.getNodeName());
@@ -138,7 +138,7 @@ public class StatementParser {
   // This can be changed so that it either does processCommand or processX
   // depending no what
   // the default value is
-  private final Invocation processInvocation(Element elem, MessageCollector mc)
+  private Invocation processInvocation(Element elem, MessageCollector mc)
           throws ParsingException {
       Invocation retval = new Invocation(elem.getNodeName());
       Map<String, List<Object>> invocationAttributesMap = new HashMap<String, List<Object>>();
@@ -161,7 +161,7 @@ public class StatementParser {
 
   // TODO: This needs to send a child node to processInvocation if it is a
   // command
-  private final Map<String, List<Object>> processInvocationChildNodes(Element elem,
+  private Map<String, List<Object>> processInvocationChildNodes(Element elem,
           MessageCollector mc) throws ParsingException {
       boolean blockCreated = false;
       try {
@@ -206,12 +206,11 @@ public class StatementParser {
   }
 
 
-  private boolean isNonBlockParameterType(String nodeName)
-  {
+  private boolean isNonBlockParameterType(String nodeName) {
 	  return NON_BLOCK_PARAMETER_TYPES.contains(nodeName.toLowerCase());
   }
 
-private final Map<String, Object> processMap(Element elem, MessageCollector mc)
+  private Map<String, Object> processMap(Element elem, MessageCollector mc)
           throws ParsingException {
       ExceptionAccumulator acc = new ExceptionAccumulator();
       HashMap<String, Object> retval = new HashMap<String, Object>();
@@ -237,7 +236,7 @@ private final Map<String, Object> processMap(Element elem, MessageCollector mc)
       return retval;
   }
 
-  private final List<Object> processList(Element elem, MessageCollector mc)
+  private List<Object> processList(Element elem, MessageCollector mc)
           throws ParsingException {
 
       try {
@@ -253,7 +252,7 @@ private final Map<String, Object> processMap(Element elem, MessageCollector mc)
 
   }
 
-  private final Object processObject(Element elem, MessageCollector mc) throws ParsingException {
+  private Object processObject(Element elem, MessageCollector mc) throws ParsingException {
       try {
 
           mc.push("In data element " + elem.getNodeName());
@@ -273,8 +272,7 @@ private final Map<String, Object> processMap(Element elem, MessageCollector mc)
       }
   }
   
-  private boolean isStringParameterType(String parameterType)
-  {
+  private boolean isStringParameterType(String parameterType) {
 	  return STRING_PARAMETER_TYPES.contains(parameterType.toLowerCase());
   }
   

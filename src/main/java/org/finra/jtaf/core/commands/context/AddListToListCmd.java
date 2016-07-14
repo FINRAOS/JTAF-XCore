@@ -41,14 +41,14 @@ public class AddListToListCmd extends AbstractContextCmd {
 		String valueOutAttribute = getRequiredString(VALUE_OUT_ATTRIBUTE);
 		@SuppressWarnings("unchecked")
 		List<Object> valueOut = (List<Object>) getOptionalObject(valueOutAttribute);
-		if(valueOut == null) {
+		if (valueOut == null) {
 			List<Object> suppression = new ArrayList<Object>();
 			valueOut = suppression;
 		}
 		Integer index = mch.getOptionalInteger(INDEX_ATTRIBUTE);
-		if(index == null || index < 0) {
+		if (index == null || index < 0) {
 			index = valueOut.size(); 
-		} else if(index > 0) { // for one-based
+		} else if (index > 0) { // for one-based
 			index -= 1;
 		}
 		valueOut.addAll(index, valueIn);

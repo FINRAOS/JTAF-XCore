@@ -22,7 +22,6 @@ import java.util.List;
 
 import org.apache.log4j.Level;
 
-
 /**
  * Serves as a container for messages and other message sections.
  * 
@@ -31,6 +30,7 @@ import org.apache.log4j.Level;
  * 
  */
 public class Section {
+
 	private final String        text;
 	private final Section       parent;
 	
@@ -90,7 +90,6 @@ public class Section {
 		return retval;
 	}
 
-	
 	/**
 	 * @return A list of subsections
 	 */
@@ -98,7 +97,6 @@ public class Section {
 		return this.subsections;
 	}
 
-	
 	/**
 	 * Inserts the message into this section.  If the message's level
 	 * is greater than this section's level, the section set its level
@@ -115,10 +113,10 @@ public class Section {
 	 * 
 	 * @param level
 	 */
-	private final void tryRaiseLevel(Level level) {
-		if(!this.getLevel().isGreaterOrEqual(level)) {
+	private void tryRaiseLevel(Level level) {
+		if (!this.getLevel().isGreaterOrEqual(level)) {
 			this.level = level;
-			if(this.getParent() != null) {
+			if (this.getParent() != null) {
 				this.getParent().tryRaiseLevel(level);
 			}
 		}
@@ -147,4 +145,5 @@ public class Section {
 	public final Section getParent() {
 		return this.parent;
 	}
+
 }

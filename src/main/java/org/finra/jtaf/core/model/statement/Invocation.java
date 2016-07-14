@@ -21,12 +21,12 @@ import java.util.Map;
 
 import org.finra.jtaf.core.utilities.StringHelper;
 
-
 /**
  * A class representing an invocable test step.
  * Primarily used to validate a Command's registration in the command library
  */
-public class Invocation {	
+public class Invocation {
+
 	private final String              targetName;
 	private       Map<String, Object> parameters;
 	

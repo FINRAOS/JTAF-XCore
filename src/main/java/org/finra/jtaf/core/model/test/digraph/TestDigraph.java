@@ -30,7 +30,7 @@ import org.jgrapht.graph.AbstractBaseGraph;
  * This is a container class that houses the dependencies and exclusions across the tests.
  *
  */
-public class TestDigraph extends AbstractBaseGraph<DiNode, DiEdge> implements DirectedGraph<DiNode, DiEdge>{
+public class TestDigraph extends AbstractBaseGraph<DiNode, DiEdge> implements DirectedGraph<DiNode, DiEdge> {
 	private static final long serialVersionUID = 1L;
 	private Map<String, DiNode> digraphVertexMapping = new HashMap<String, DiNode>();
 	
@@ -39,17 +39,17 @@ public class TestDigraph extends AbstractBaseGraph<DiNode, DiEdge> implements Di
 	}
 	
 	
-	public void updateTestStatus(String testName, String status){
+	public void updateTestStatus(String testName, String status) {
 		digraphVertexMapping.get(testName).setTestStatus(status);
 	}
 	
-	public DiNode getVertex(String testName){
+	public DiNode getVertex(String testName) {
 		return digraphVertexMapping.get(testName);
 	}
 	
 	@Override
 	public boolean addVertex(DiNode d) {
-		if (getVertex(d.getTestName()) != null){
+		if (getVertex(d.getTestName()) != null) {
 			return false;
 		}
 		digraphVertexMapping.put(d.getTestName(), d);
@@ -58,7 +58,7 @@ public class TestDigraph extends AbstractBaseGraph<DiNode, DiEdge> implements Di
 	
 	@Override
 	public boolean removeVertex(DiNode d) {
-		if (getVertex(d.getTestName()) != null){
+		if (getVertex(d.getTestName()) != null) {
 			return false;
 		}
 //		digraphVertexMapping.put(d.getTestName(), d);
@@ -66,21 +66,21 @@ public class TestDigraph extends AbstractBaseGraph<DiNode, DiEdge> implements Di
 		return super.removeVertex(d);
 	}
 	
-	public List<DiNode> getAllDependencies(String testName){
+	public List<DiNode> getAllDependencies(String testName) {
 		DiNode associatedNode = getVertex(testName);
 		List<DiNode> dependentNodes = new ArrayList<DiNode>();
-		for (DiEdge edge: outgoingEdgesOf(associatedNode)){
-			if (edge.isDependency()){
+		for (DiEdge edge: outgoingEdgesOf(associatedNode)) {
+			if (edge.isDependency()) {
 				dependentNodes.add(getEdgeTarget(edge));
 			}
 		}
 		return dependentNodes;
 	}
-	public List<DiNode> getAllExclusions(String testName){
+	public List<DiNode> getAllExclusions(String testName) {
 		DiNode associatedNode = getVertex(testName);
-		List<DiNode> exclusionNodes= new ArrayList<DiNode>();
-		for (DiEdge edge: outgoingEdgesOf(associatedNode)){
-			if (edge.isExclusion()){
+		List<DiNode> exclusionNodes = new ArrayList<DiNode>();
+		for (DiEdge edge: outgoingEdgesOf(associatedNode)) {
+			if (edge.isExclusion()) {
 				exclusionNodes.add(getEdgeTarget(edge));
 			}
 		}

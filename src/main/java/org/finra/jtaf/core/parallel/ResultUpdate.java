@@ -25,16 +25,16 @@ public class ResultUpdate {
 	private String testName;
 	private String status;
 	
-	public ResultUpdate(String testName, String status){
+	public ResultUpdate(String testName, String status) {
 		this.testName = testName;
 		this.status = status;
 	}
 	
-	public String getTestName(){
+	public String getTestName() {
 		return testName;
 	}
 	
-	public String getTestStatus(){
+	public String getTestStatus() {
 		return status;
 	}
 }

@@ -28,7 +28,6 @@ import java.util.TreeMap;
 import org.finra.jtaf.core.model.exceptions.NameCollisionException;
 import org.finra.jtaf.core.model.exceptions.NameFormatException;
 
-
 /**
  * These are the internal nodes of our testing model.
  * 
@@ -57,10 +56,10 @@ public class TestNamespace extends TestComponent implements Iterable<TestCompone
 		componentMap  = new TreeMap<String, TestComponent>();
 		componentList = new LinkedList<TestComponent>();
 		//This logic is so that only the TestNamespace root has the suiteMapping.
-		if (root == null){
+		if (root == null) {
 			suiteMap = new HashMap<String, TestSuite>();
 			root = this;
-		}else{
+		} else {
 			suiteMap = null;
 		}
 	}
@@ -85,14 +84,14 @@ public class TestNamespace extends TestComponent implements Iterable<TestCompone
 	
 	public final void add(TestComponent testComponent) throws NameCollisionException {
 		// Don't allow multiple components to have the same name
-		if(isComponentMapContain(testComponent.getName())) {
+		if (isComponentMapContain(testComponent.getName())) {
 			throw new NameCollisionException(testComponent.getName());
 		}
 		componentMap.put(testComponent.getName(), testComponent);
 		componentList.add(testComponent);
 		testComponent.setParent(this);
 		
-		if (this instanceof TestNamespace && testComponent instanceof TestSuite){
+		if (this instanceof TestNamespace && testComponent instanceof TestSuite) {
 			setSuiteMapping((TestSuite) testComponent);
 		}
 	}
@@ -101,16 +100,16 @@ public class TestNamespace extends TestComponent implements Iterable<TestCompone
 	//This needs to find the testScripts TestNamespace and then propogate the testSuiteName 
 	//and the TestScript name up to that level
 	//This should only set the suitemapping on the main root
-	private void setSuiteMapping(TestSuite ts) throws NameCollisionException{
+	private void setSuiteMapping(TestSuite ts) throws NameCollisionException {
 		String suiteName = ts.getTestSuiteName();
-		if (root.suiteMap.containsKey(suiteName)){
+		if (root.suiteMap.containsKey(suiteName)) {
 			//this exists already throw exception
 			throw new NameCollisionException(suiteName);
 		}
 		root.suiteMap.put(suiteName, ts);
 	}
 
-	public Map<String, TestSuite> getTestSuiteMapping(){
+	public Map<String, TestSuite> getTestSuiteMapping() {
 		return root.suiteMap;
 	}
 	
@@ -171,4 +170,5 @@ public class TestNamespace extends TestComponent implements Iterable<TestCompone
 	public final void acceptTestVisitor(ITestVisitor v) throws Exception {
 		v.visitTestNamespace(this);
 	}
+
 }

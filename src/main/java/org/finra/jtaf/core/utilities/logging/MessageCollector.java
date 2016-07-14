@@ -65,7 +65,7 @@ public class MessageCollector {
 
 		// If the section we just exited didn't contain anything,
 		// then delete it.
-		if(retval.isEmpty()) {
+		if (retval.isEmpty()) {
 			// TODO: This could be optimized, but whatever
 			this.history.peek().getSections().remove(retval);
 		}
@@ -101,17 +101,17 @@ public class MessageCollector {
 		this.recursiveDump(log, this.getRootSection(), 0);
 	}
 	
-	private final void recursiveDump(Logger log, Section section, int depth) {
-		if(!Level.ALL.isGreaterOrEqual(section.getLevel())) {
+	private void recursiveDump(Logger log, Section section, int depth) {
+		if (!Level.ALL.isGreaterOrEqual(section.getLevel())) {
 			log.log(section.getLevel(), StringHelper.indent(depth) + section.getName());
 			
 			++depth;
 			
-			for(Message m : section.getMessages()) {
+			for (Message m : section.getMessages()) {
 				log.log(m.getLevel(), StringHelper.indent(depth) + m.getText());
 			}
 			
-			for(Section s : section.getSections()) {
+			for (Section s : section.getSections()) {
 				this.recursiveDump(log, s, depth);
 			}
 		}

@@ -23,13 +23,11 @@ import org.w3c.dom.Element;
  * Exposes the data that can be used and/or modified by a IPostParseStrategyElementPlugin.
  *
  */
-public class PostStrategyElementParserPluginContext
-{
+public class PostStrategyElementParserPluginContext {
 	private TestAgenda testAgenda;
 	private Element element;
 	
-	public PostStrategyElementParserPluginContext(TestAgenda testAgenda, Element element)
-	{
+	public PostStrategyElementParserPluginContext(TestAgenda testAgenda, Element element) {
 		this.testAgenda = testAgenda;
 		this.element = element;
 	}
@@ -49,8 +47,7 @@ public class PostStrategyElementParserPluginContext
 	 *  
 	 * @return element
 	 */
-	public Element getElement()
-	{
+	public Element getElement() {
 		return element;
 	}
 }

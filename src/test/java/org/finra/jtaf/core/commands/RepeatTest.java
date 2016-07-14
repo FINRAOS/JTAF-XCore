@@ -14,8 +14,8 @@ import org.junit.Test;
 
 public class RepeatTest {
 
-    private static AutomationEngine engine=null;
-    private static TestAgenda testAgenda =null;
+    private static AutomationEngine engine = null;
+    private static TestAgenda testAgenda = null;
     private static boolean setup = false;
     private static TestScript complex = null;
     private static TestScript repeat = null;

@@ -34,6 +34,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * Parser for testdata excel files.
  */
 public class ExcelFileParser {
+
 	private static Logger logger = Logger.getLogger(ExcelFileParser.class.getPackage().getName());
 	
 	// For xlsx type
@@ -45,20 +46,20 @@ public class ExcelFileParser {
 	private HSSFSheet workBookSheetXls;
 
 	public ExcelFileParser(String fileName, boolean isXlsx) throws Exception {
-		if(isXlsx) {
+		if (isXlsx) {
 			workBookXlsx = new XSSFWorkbook(new FileInputStream(fileName));
 			workBookSheetXlsx = workBookXlsx.getSheetAt(0);
-		}else {
+		} else {
 			workBookXls = new HSSFWorkbook(new FileInputStream(fileName));
 			workBookSheetXls = workBookXls.getSheetAt(0);
 		}
 	}
 	
 	public ExcelFileParser(String fileName, String sheetName, boolean isXlsx) throws Exception {
-		if(isXlsx) {
+		if (isXlsx) {
 			workBookXlsx = new XSSFWorkbook(new FileInputStream(fileName));
 			workBookSheetXlsx = workBookXlsx.getSheet(sheetName);
-		}else {
+		} else {
 			workBookXls = new HSSFWorkbook(new FileInputStream(fileName));
 			workBookSheetXls = workBookXls.getSheet(sheetName);
 		}
@@ -66,7 +67,7 @@ public class ExcelFileParser {
 
 	public List<List<String>> parseExcelFile(boolean isXlsx) throws Exception {
 		List<List<String>> parsedExcelFile = new ArrayList<List<String>>();
-		if(isXlsx) {
+		if (isXlsx) {
 			for (int i = 0, numberOfRows = workBookSheetXlsx.getPhysicalNumberOfRows(); i < numberOfRows + 1; i++) {
 				XSSFRow row = workBookSheetXlsx.getRow(i);
 				if (row != null) {
@@ -99,7 +100,7 @@ public class ExcelFileParser {
 					parsedExcelFile.add(parsedExcelRow);
 				}
 			}	
-		}else {
+		} else {
 			for (int i = 0, numberOfRows = workBookSheetXls.getPhysicalNumberOfRows(); i < numberOfRows + 1; i++) {
 				HSSFRow row = workBookSheetXls.getRow(i);
 				if (row != null) {
@@ -136,4 +137,5 @@ public class ExcelFileParser {
 		
 		return parsedExcelFile;
 	}
+
 }

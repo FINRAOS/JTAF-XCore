@@ -18,8 +18,8 @@ import org.junit.Test;
 
 public class RandomGeneratorTest {
 
-    private static AutomationEngine engine=null;
-    private static TestAgenda testAgenda =null;
+    private static AutomationEngine engine = null;
+    private static TestAgenda testAgenda = null;
     private static boolean setup = false;
     private static TestScript generateRegexp = null;
     private static TestScript generateRegexp2 = null;
@@ -36,10 +36,10 @@ public class RandomGeneratorTest {
     private static TestScript generateString4 = null;
     private static TestScript generateString5 = null;
     
-    final static public List<String> abbrevUSState = new ArrayList<String>(Arrays.asList("AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+    public static final List<String> abbrevUSState = new ArrayList<String>(Arrays.asList("AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
 			"NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY"));
     
-    final static public List<String> USState = new ArrayList<String>(Arrays.asList("Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Federated States of Micronesia", "Florida", "Georgia", "Guam", "Hawaii",
+    public static final List<String> USState = new ArrayList<String>(Arrays.asList("Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Federated States of Micronesia", "Florida", "Georgia", "Guam", "Hawaii",
 			"Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Marshall Islands", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York",
 			"North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virgin Island", "Virginia", "Washington", "West Virginia",
 			"Wisconsin", "Wyoming"));
@@ -102,7 +102,7 @@ public class RandomGeneratorTest {
     public void testGenerateRegexp() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateRegexp);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
         Assert.assertTrue("Regexp failed", str.matches("[abc][def]"));
@@ -112,7 +112,7 @@ public class RandomGeneratorTest {
     public void testGenerateRegexp2() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateRegexp2);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
         Assert.assertTrue("Regexp failed", str.matches("[abc][def]"));
@@ -122,7 +122,7 @@ public class RandomGeneratorTest {
     public void testGeneratePhone() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generatePhone);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
         Assert.assertTrue("Phone regex failed", str.matches("[0-9]{10}"));
@@ -132,7 +132,7 @@ public class RandomGeneratorTest {
     public void testGenerateAbbrevUSState() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateAbbrevUSState);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
         Assert.assertTrue("String generated was not an abbreviated US state", abbrevUSState.contains(str));
@@ -142,7 +142,7 @@ public class RandomGeneratorTest {
     public void testGenerateUSState() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateUSState);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
         Assert.assertTrue("String generated was not an abbreviated US state", USState.contains(str));
@@ -156,7 +156,7 @@ public class RandomGeneratorTest {
     public void testGenerateNumber() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateNumber);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
         Assert.assertTrue("Number generation failed", str.matches("[0-9]{5}"));
@@ -170,7 +170,7 @@ public class RandomGeneratorTest {
     public void testGenerateNumber2() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateNumber2);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
         Assert.assertTrue("Number generation failed", str.matches("[0-9]{7}"));
@@ -184,7 +184,7 @@ public class RandomGeneratorTest {
     public void testGenerateNumber3() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateNumber3);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
         int num = Integer.parseInt(str);
@@ -199,7 +199,7 @@ public class RandomGeneratorTest {
     public void testGenerateNumber4() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateNumber4);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
         Assert.assertTrue("Number generation failed", str.matches("[0-9]{5}"));
@@ -213,10 +213,10 @@ public class RandomGeneratorTest {
     public void testGenerateString() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateString);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
-        Assert.assertTrue("String generation failed", str.matches("["+ charsForRandomString + "]{5}"));
+        Assert.assertTrue("String generation failed", str.matches("[" + charsForRandomString + "]{5}"));
     }
 
     /***
@@ -227,10 +227,10 @@ public class RandomGeneratorTest {
     public void testGenerateString2() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateString2);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
-        Assert.assertTrue("String generation failed", str.matches("["+ charsForRandomString + "]{7}"));
+        Assert.assertTrue("String generation failed", str.matches("[" + charsForRandomString + "]{7}"));
     }
     
     /**
@@ -241,10 +241,10 @@ public class RandomGeneratorTest {
     public void testGenerateString3() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateString3);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
-        Assert.assertTrue("String generation failed", str.matches("["+ charsForRandomString + "]{5,10}"));
+        Assert.assertTrue("String generation failed", str.matches("[" + charsForRandomString + "]{5,10}"));
     }
 
     /**
@@ -255,10 +255,10 @@ public class RandomGeneratorTest {
     public void testGenerateString4() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateString4);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
-        Assert.assertTrue("String generation failed", str.matches("["+ charsForRandomString + "]{7}"));
+        Assert.assertTrue("String generation failed", str.matches("[" + charsForRandomString + "]{7}"));
     }
     
     /**
@@ -269,10 +269,10 @@ public class RandomGeneratorTest {
     public void testGenerateString5() throws Throwable {
         Interpreter iv = AutomationEngine.getInstance().getInterpreter();
         TestResult tr = iv.interpret(generateString5);
-        if(!tr.isTestPassed())
+        if (!tr.isTestPassed())
         	Assert.fail("JTAF Test failed: " + tr.getFailureReason());
         String str = "" + Command.getFromGlobalContext("it");
-        Assert.assertTrue("String generation failed", str.matches("["+ charsForRandomString + "]{5}"));
+        Assert.assertTrue("String generation failed", str.matches("[" + charsForRandomString + "]{5}"));
     }
 
 }

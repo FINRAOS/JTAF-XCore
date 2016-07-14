@@ -40,7 +40,7 @@ public class TestPath {
 		normalizedPath = path.replaceAll("/+", "/");
 
 		String[] temp = normalizedPath.split(TestPath.SEPARATOR);
-		if(normalizedPath.charAt(0) == '/') {
+		if (normalizedPath.charAt(0) == '/') {
 			absolute = true;
 		}
 		else {

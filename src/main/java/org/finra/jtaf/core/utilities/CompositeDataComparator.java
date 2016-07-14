@@ -106,7 +106,7 @@ public class CompositeDataComparator {
 	 */
 	public void setAccumulateErrors(boolean accumulateErrors) {
 	    this.accumulateErrors = accumulateErrors;
-	    if(accumulateErrors && errorList == null) {
+	    if (accumulateErrors && errorList == null) {
 	        errorList = new ArrayList<String>();
 	    }
 	}
@@ -121,11 +121,12 @@ public class CompositeDataComparator {
 	}
 
 	private void reportError(String error) {
-		if (!accumulateErrors)
+		if (!accumulateErrors) {
 			throw new AssertionFailedError(error);
-		else
+		}
+		else {
 			errorList.add(error);
-
+		}
 	}
 
 	private String getPrefix(String title, String element) {
@@ -140,8 +141,9 @@ public class CompositeDataComparator {
 		if (expected == null && actual == null) {
 			return;
 		} else if (expected == null || actual == null) {
-			if ("".equals(expected) || "".equals(actual))
+			if ("".equals(expected) || "".equals(actual)) {
 				return;
+			}
 			reportError(prefix + " didn't match. Expected Value[" + expected
 					+ "] and Actual Value [" + actual + "].");
 		} else if (expected instanceof Map) {
@@ -150,20 +152,22 @@ public class CompositeDataComparator {
 			compareList(title, element, (List<?>) expected, (List<?>) actual);
 		} else if (expected instanceof Timestamp) {
 			Timestamp expTimestamp = (Timestamp) expected;
-			if (!(actual instanceof Timestamp))
+			if (!(actual instanceof Timestamp)) {
 				reportError(prefix + " Expected value [" + expTimestamp
 						+ "] and Actual Value [" + actual + "].");
-
-			else
+			}
+			else {
 				compareObject(prefix, expTimestamp, (Timestamp) actual);
+			}
 		} else if (expected instanceof String[]) {
 			String e[] = (String[]) expected;
 			String a[] = (String[]) actual;
 
-			if (e.length != a.length)
+			if (e.length != a.length) {
 				reportError(prefix
 						+ " Length of string array didn't match. Expected ["
 						+ e.length + "] and Actual [" + a.length + "].");
+			}
 
 			for (int i = 0; i < e.length; i++) {
 				try {

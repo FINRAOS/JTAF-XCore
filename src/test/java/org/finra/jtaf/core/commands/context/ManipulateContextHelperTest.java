@@ -357,7 +357,7 @@ public class ManipulateContextHelperTest {
 
     private class DummyCmd extends AbstractContextCmd {
 
-        public DummyCmd(String name) throws NameFormatException {
+        DummyCmd(String name) throws NameFormatException {
             super(name);
             // TODO Auto-generated constructor stub
         }

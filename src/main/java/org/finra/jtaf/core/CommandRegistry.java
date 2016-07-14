@@ -41,7 +41,7 @@ public class CommandRegistry {
 	 * @param name
 	 * @param invocationTarget
 	 */
-	public void registerInvocationTarget(String name, InvocationTarget invocationTarget){
+	public void registerInvocationTarget(String name, InvocationTarget invocationTarget) {
 		this.invocationTargetMap.put(name, invocationTarget);
 	}
 

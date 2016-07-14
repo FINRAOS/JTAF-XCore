@@ -69,7 +69,7 @@ public abstract class BaseParser {
 	 * Do whatever to the document root
 	 * @param root
 	 */
-	protected abstract void handleRoot(Element root) throws ParsingException ;
+	protected abstract void handleRoot(Element root) throws ParsingException;
 
 
 
@@ -96,9 +96,9 @@ public abstract class BaseParser {
 	protected final List<Element> getChildElements(Element elem) {
 		ArrayList<Element> retval = new ArrayList<Element>();
 		final NodeList children = elem.getChildNodes();
-		for(int i = 0; i < children.getLength(); ++i) {
+		for (int i = 0; i < children.getLength(); ++i) {
 			Node child = children.item(i);
-			if(child.getNodeType() == Node.ELEMENT_NODE) {
+			if (child.getNodeType() == Node.ELEMENT_NODE) {
 				retval.add((Element) child);
 			}
 		}

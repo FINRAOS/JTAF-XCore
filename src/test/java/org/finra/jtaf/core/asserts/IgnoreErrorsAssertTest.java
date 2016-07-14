@@ -78,35 +78,35 @@ public class IgnoreErrorsAssertTest {
 	@Test
 	public void testAssertObjectEqualsWhenNull() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals((Object)null, (Object)null);
+		iea.assertEquals((Object) null, (Object) null);
 		Assert.assertEquals("", iea.checkErrors());
 	}
 	
 	@Test
 	public void testAssertObjectEqualsWithMessageWhenTrue() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals("Hopefully there's no failure here", (Object)"", (Object)"");
+		iea.assertEquals("Hopefully there's no failure here", (Object) "", (Object) "");
 		Assert.assertEquals("", iea.checkErrors());
 	}
 	
 	@Test
 	public void testAssertObjectEqualsWithMessageWhenFalse() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals("This was a failure", (Object)"", (Object)" ");
+		iea.assertEquals("This was a failure", (Object) "", (Object) " ");
 		Assert.assertEquals("\n This was a failure expected:<> but was:< >", iea.checkErrors());
 	}
 	
 	@Test
 	public void testAssertObjectEqualsWhenTrue() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals((Object)"", (Object)"");
+		iea.assertEquals((Object) "", (Object) "");
 		Assert.assertEquals("", iea.checkErrors());
 	}
 	
 	@Test
 	public void testAssertObjectEqualsWhenFalse() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals((Object)"", (Object)" ");
+		iea.assertEquals((Object) "", (Object) " ");
 		Assert.assertEquals("\n expected:<> but was:< >", iea.checkErrors());
 	}
 	
@@ -211,28 +211,28 @@ public class IgnoreErrorsAssertTest {
 	@Test
 	public void testAssertLongEqualsWithMessageWhenFalse() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals("This was a failure", (long)100, (long)101);
+		iea.assertEquals("This was a failure", (long) 100, (long) 101);
 		Assert.assertEquals("\n This was a failure expected:<100> but was:<101>", iea.checkErrors());
 	}
 	
 	@Test
 	public void testAssertLongEqualsWithMessageWhenTrue() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals("Hopefully there's no failure here", (long)100, (long)100);
+		iea.assertEquals("Hopefully there's no failure here", (long) 100, (long) 100);
 		Assert.assertEquals("", iea.checkErrors());
 	}
 	
 	@Test
 	public void testAssertLongEqualsWhenFalse() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals((long)100, (long)101);
+		iea.assertEquals((long) 100, (long) 101);
 		Assert.assertEquals("\n expected:<100> but was:<101>", iea.checkErrors());
 	}
 	
 	@Test
 	public void testAssertLongEqualsWhenTrue() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals((long)100, (long)100);
+		iea.assertEquals((long) 100, (long) 100);
 		Assert.assertEquals("", iea.checkErrors());
 	}
 	
@@ -351,28 +351,28 @@ public class IgnoreErrorsAssertTest {
 	@Test
 	public void testAssertShortEqualsWithMessageWhenFalse() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals("This was a failure", (short)1, (short)2);
+		iea.assertEquals("This was a failure", (short) 1, (short) 2);
 		Assert.assertEquals("\n This was a failure expected:<1> but was:<2>", iea.checkErrors());
 	}
 	
 	@Test
 	public void testAssertShortEqualsWithMessageWhenTrue() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals("Hopefully there's no failure here", (short)1, (short)1);
+		iea.assertEquals("Hopefully there's no failure here", (short) 1, (short) 1);
 		Assert.assertEquals("", iea.checkErrors());
 	}
 	
 	@Test
 	public void testAssertShortEqualsWhenFalse() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals((short)1, (short)2);
+		iea.assertEquals((short) 1, (short) 2);
 		Assert.assertEquals("\n expected:<1> but was:<2>", iea.checkErrors());
 	}
 	
 	@Test
 	public void testAssertShortEqualsWhenTrue() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
-		iea.assertEquals((short)1, (short)1);
+		iea.assertEquals((short) 1, (short) 1);
 		Assert.assertEquals("", iea.checkErrors());
 	}
 	
@@ -589,7 +589,7 @@ public class IgnoreErrorsAssertTest {
 		Assert.assertEquals("expected:<Superman> but was:<Batman>", iea.format(null, "Superman", "Batman"));
 	}
 	
-	@Test(expected=AssertionFailedError.class)
+	@Test(expected = AssertionFailedError.class)
 	public void testEndOfCommand() {
 		IgnoreErrorsAssert iea = new IgnoreErrorsAssert(new ErrorAccumulator("test"));
 		String a = "tomato";

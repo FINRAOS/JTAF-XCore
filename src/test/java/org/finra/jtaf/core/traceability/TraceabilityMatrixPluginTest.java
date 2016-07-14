@@ -21,7 +21,7 @@ public class TraceabilityMatrixPluginTest
 	public void setup()
 	{
 		file = new File(TraceabilityMatrix.OUTPUT_FILE);
-		if(file.exists())
+		if (file.exists())
 			file.delete();
 	}
 	
@@ -45,8 +45,8 @@ public class TraceabilityMatrixPluginTest
 	@Test
 	public void testNoAutomationValue() throws ParserPluginException
 	{
-		try{
-			TestStrategyParser tsp= new TestStrategyParser();
+		try {
+			TestStrategyParser tsp = new TestStrategyParser();
 			TestAgenda ta = new TestAgenda();
 			tsp.parse(new File(System.getProperty("user.dir") + "/profiles/strategies/test.strategy.xml"));
 			tsp.setDigraph(AutomationEngine.getInstance().getTestDigraph());
@@ -55,7 +55,7 @@ public class TraceabilityMatrixPluginTest
 			TraceabilityMatrixPlugin traceabilityMatrixPlugin = new TraceabilityMatrixPlugin();
 			traceabilityMatrixPlugin.execute(postAllParserPluginContext);
 			Assert.assertTrue(file.exists());
-		}catch (Exception e) {
+		} catch (Exception e) {
             throw new RuntimeException(e);
         }
 	

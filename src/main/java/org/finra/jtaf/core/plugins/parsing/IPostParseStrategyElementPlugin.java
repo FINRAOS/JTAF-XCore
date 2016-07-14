@@ -22,13 +22,12 @@ package org.finra.jtaf.core.plugins.parsing;
  * parsed
  */
 
-public interface IPostParseStrategyElementPlugin
-{
+public interface IPostParseStrategyElementPlugin {
 	/***
 	 * This method executes after all the test strategy is parsed
 	 * 
 	 * @param ctx
 	 * @throws ParserPluginException
 	 */
-	public void execute(PostStrategyElementParserPluginContext ctx) throws ParserPluginException;
+	void execute(PostStrategyElementParserPluginContext ctx) throws ParserPluginException;
 }

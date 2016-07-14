@@ -32,9 +32,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-
-
-
 /**
  * Helper class for parsing XML file. 
  */
@@ -48,15 +45,13 @@ public class ParserHelper {
 	private static XPathFactory                     xpathFactory = null;
 	private static HashMap<String, XPathExpression> compiledMap  = new HashMap<String, XPathExpression>();
 	
-	private static final XPathFactory getXPathFactory() {
-		if(ParserHelper.xpathFactory == null) {
+	private static XPathFactory getXPathFactory() {
+		if (ParserHelper.xpathFactory == null) {
 			ParserHelper.xpathFactory = XPathFactory.newInstance();
 		}
 		return ParserHelper.xpathFactory;
 	}
-	
 
-	
 	/**
 	 * A list of the immediate children of elem
 	 * @param elem
@@ -65,9 +60,9 @@ public class ParserHelper {
 	public static final List<Element> getChildren(Element elem) {
 		ArrayList<Element> retval = new ArrayList<Element>();
 		NodeList nl = elem.getChildNodes();
-		for(int i = 0; i < nl.getLength(); ++i) {
+		for (int i = 0; i < nl.getLength(); ++i) {
 			Node n = nl.item(i);
-			if(n.getNodeType() == Node.ELEMENT_NODE) {
+			if (n.getNodeType() == Node.ELEMENT_NODE) {
 				retval.add((Element) n);
 			}
 			
@@ -79,7 +74,7 @@ public class ParserHelper {
 		try {
 			XPathExpression expr = null;
 			
-			if((expr = ParserHelper.compiledMap.get(xpath)) == null) {
+			if ((expr = ParserHelper.compiledMap.get(xpath)) == null) {
 				expr = getXPathFactory().newXPath().compile(xpath);
 				ParserHelper.compiledMap.put(xpath, expr);
 			}
@@ -88,21 +83,21 @@ public class ParserHelper {
 			// there are not multiple return values
 			NodeList nl = (NodeList) expr.evaluate(root, XPathConstants.NODESET);
 			
-			if(nl.getLength() > 1) {
+			if (nl.getLength() > 1) {
 				throw new MultipleMatchesException(xpath);
 			}
 
 			// TODO: Ensure the return value is an Element?
 			return (Element) nl.item(0);
 		}
-		catch(XPathException e) {
+		catch (XPathException e) {
 			throw new NestedXPathException(e);
 		}
 	}
 	
 	public static final Element getRequireElement(Element root, String xpath) throws MultipleMatchesException, MissingRequiredElementException, NestedXPathException {
 		Element retval = getOptionalElement(root, xpath);
-		if(retval == null) {
+		if (retval == null) {
 			throw new MissingRequiredElementException(xpath);
 		}
 		return retval;
@@ -110,15 +105,16 @@ public class ParserHelper {
 	
 	public static final Element getFirstChildElementCaseInsensitive(Element root, String elementName) {
 		NodeList nl = root.getChildNodes();
-		if(nl.getLength() > 1) {
-			for(int i = 0; i < nl.getLength(); i++) {
+		if (nl.getLength() > 1) {
+			for (int i = 0; i < nl.getLength(); i++) {
 				Node node = nl.item(i);
-				if(node.getNodeType() == Node.ELEMENT_NODE && (node.getNodeName().equalsIgnoreCase(elementName))) {
-					return (Element)node;
+				if (node.getNodeType() == Node.ELEMENT_NODE && (node.getNodeName().equalsIgnoreCase(elementName))) {
+					return (Element) node;
 				}
 			}
 		}
 			
 		return null;
 	}
+
 }

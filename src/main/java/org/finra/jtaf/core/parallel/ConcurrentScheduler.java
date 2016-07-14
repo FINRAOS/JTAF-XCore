@@ -58,12 +58,12 @@ public class ConcurrentScheduler implements RunnerScheduler {
 	// update test state
 	private static Queue<ResultUpdate> testUpdates = new ConcurrentLinkedQueue<ResultUpdate>();
 	private TestDigraph digraph;
-	public ConcurrentScheduler(){
+	public ConcurrentScheduler() {
 
 		int threadCount = AutomationEngine.getInstance().getTestAgenda().getThreadCount();
-		if (threadCount <= 0){
+		if (threadCount <= 0) {
 			NTHREADS = 1;
-		}else{
+		} else {
 			NTHREADS = threadCount;
 		}
 		execService = Executors.newFixedThreadPool(NTHREADS);
@@ -72,7 +72,7 @@ public class ConcurrentScheduler implements RunnerScheduler {
 		
 	}
 	
-	protected static void updateWithStatus(ResultUpdate theUpdate){
+	protected static void updateWithStatus(ResultUpdate theUpdate) {
 		testUpdates.add(theUpdate);
 	}
 	
@@ -101,7 +101,7 @@ public class ConcurrentScheduler implements RunnerScheduler {
 				updateTestState();
 			}
 		}
-			catch(Exception e){
+			catch (Exception e) {
 				e.printStackTrace();
 		} finally {
 			for (Future<String> task : tasks) {
@@ -111,8 +111,8 @@ public class ConcurrentScheduler implements RunnerScheduler {
 		}
 	}
 
-	private void updateTestState(){
-		while(!testUpdates.isEmpty()){
+	private void updateTestState() {
+		while (!testUpdates.isEmpty()) {
 			ResultUpdate curr = testUpdates.remove();
 			theTests.remove(testNames.indexOf(curr.getTestName()));
 			testNames.remove(curr.getTestName());
@@ -120,24 +120,24 @@ public class ConcurrentScheduler implements RunnerScheduler {
 		}
 	}
 	private void checkTestsStatus() {
-		for(String currentTest: testNames){
+		for (String currentTest: testNames) {
 			String theTestName = currentTest.toString();
 			DiNode theTestNode = digraph.getVertex(theTestName);
 			
 			//test complete -skip
-			if(theTestNode.getTestStatus().equalsIgnoreCase("FAILED") ||
-					theTestNode.getTestStatus().equalsIgnoreCase("PASSED")||
-					theTestNode.getTestStatus().equalsIgnoreCase("READY")){
+			if (theTestNode.getTestStatus().equalsIgnoreCase("FAILED")
+					|| theTestNode.getTestStatus().equalsIgnoreCase("PASSED")
+					|| theTestNode.getTestStatus().equalsIgnoreCase("READY")) {
 				continue;
 			}
 			
 			boolean isAllDepFinished = true;
 			boolean depTestsFailed = false;
 			//Check Dependencies
-			for(DiNode dependency: digraph.getAllDependencies(theTestName)){
-				if(dependency.getTestStatus().equalsIgnoreCase("FAILED")){
+			for (DiNode dependency: digraph.getAllDependencies(theTestName)) {
+				if (dependency.getTestStatus().equalsIgnoreCase("FAILED")) {
 					depTestsFailed = true;
-				}else if(!dependency.getTestStatus().equalsIgnoreCase("PASSED")){
+				} else if (!dependency.getTestStatus().equalsIgnoreCase("PASSED")) {
 					isAllDepFinished = false;
 					break;
 				}
@@ -146,26 +146,26 @@ public class ConcurrentScheduler implements RunnerScheduler {
 			
 			//if dependencies aren't done yet. There's no point in checking the Exclusions for
 			//this test
-			if(!isAllDepFinished){
+			if (!isAllDepFinished) {
 				continue;
 			}
 			
 			//Check Exclusions
 			boolean checkExclusions = true;
-			for(DiNode exclusion: digraph.getAllExclusions(theTestName)){
-				if(exclusion.getTestStatus().equalsIgnoreCase("RUNNING")
-						||exclusion.getTestStatus().equalsIgnoreCase("READY")){
+			for (DiNode exclusion: digraph.getAllExclusions(theTestName)) {
+				if (exclusion.getTestStatus().equalsIgnoreCase("RUNNING")
+						|| exclusion.getTestStatus().equalsIgnoreCase("READY")) {
 					checkExclusions = false;
 					break;
 				}
 			}
 			
-			if(isAllDepFinished && checkExclusions){
+			if (isAllDepFinished && checkExclusions) {
 				int corresponding = testNames.indexOf(currentTest);
 				tasks.add(completionService.submit(theTests.get(corresponding), theTestName));
-				if(!depTestsFailed){
+				if (!depTestsFailed) {
 					digraph.updateTestStatus(theTestName, "READY");
-				}else{
+				} else {
 					digraph.updateTestStatus(theTestName, "FAILED");
 				}
 			}

@@ -23,31 +23,26 @@ import org.finra.jtaf.core.model.test.TestScript;
  * This is the context visible to tearDown plugins
  *
  */
-public class TearDownPluginContext
-{
+public class TearDownPluginContext {
 	private TestScript testScript;
 	private Throwable failureReason;
 	private IInvocationContext invocationContext;
 	
-	public TearDownPluginContext(TestScript testScript, Throwable failureReason, IInvocationContext invocationContext)
-	{
+	public TearDownPluginContext(TestScript testScript, Throwable failureReason, IInvocationContext invocationContext) {
 		this.testScript = testScript;
 		this.failureReason = failureReason;
 		this.invocationContext = invocationContext;
 	}
 	
-	public TestScript getTestScript()
-	{
+	public TestScript getTestScript() {
 		return testScript;
 	}
 	
-	public Throwable getFailureReason()
-	{
+	public Throwable getFailureReason() {
 		return failureReason;
 	}
 	
-	public IInvocationContext getInvocationContext()
-	{
+	public IInvocationContext getInvocationContext() {
 		return invocationContext;
 	}
 }

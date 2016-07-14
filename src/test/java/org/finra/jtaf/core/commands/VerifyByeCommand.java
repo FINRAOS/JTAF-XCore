@@ -6,7 +6,7 @@ import org.finra.jtaf.core.model.execution.IInvocationContext;
 import org.finra.jtaf.core.model.invocationtarget.Command;
 import org.junit.Assert;
 
-public class VerifyByeCommand extends Command{
+public class VerifyByeCommand extends Command {
 
 	public VerifyByeCommand(String name) throws NameFormatException {
 		super(name);
@@ -14,7 +14,7 @@ public class VerifyByeCommand extends Command{
 
 	@Override
 	protected void execute(IInvocationContext ctx) throws Throwable {
-		String data = getStringOrDefault("data","");
+		String data = getStringOrDefault("data", "");
 		Assert.assertEquals(data, "Bye !");
 	}
 

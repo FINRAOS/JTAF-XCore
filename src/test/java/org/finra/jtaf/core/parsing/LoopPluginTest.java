@@ -6,7 +6,6 @@ import org.finra.jtaf.core.AutomationEngine;
 import org.finra.jtaf.core.model.test.TestComponent;
 import org.finra.jtaf.core.model.test.TestScript;
 import org.finra.jtaf.core.model.test.TestSuite;
-import org.finra.jtaf.core.parsing.LoopPlugin;
 import org.finra.jtaf.core.plugins.parsing.PostTestParserPluginContext;
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,10 +33,10 @@ public class LoopPluginTest extends ParserPluginTest
 		
 		loopPlugin.execute(postTestParserPluginContext);
 		Assert.assertEquals(ITERATION_COUNT, testSuite.getComponentList().size());
-		for(int iterationNumber = 1; iterationNumber <= ITERATION_COUNT; iterationNumber++)
+		for (int iterationNumber = 1; iterationNumber <= ITERATION_COUNT; iterationNumber++)
 		{
 			TestScript iterationTestScript = (TestScript) componentList.get(iterationNumber - 1);
-			Assert.assertEquals(TEST_OF_INTEREST_NAME + " [iteration " + iterationNumber +" of " + ITERATION_COUNT + "]", iterationTestScript.getName());
+			Assert.assertEquals(TEST_OF_INTEREST_NAME + " [iteration " + iterationNumber + " of " + ITERATION_COUNT + "]", iterationTestScript.getName());
 			System.out.println(iterationTestScript.getName());
 		}
 	}

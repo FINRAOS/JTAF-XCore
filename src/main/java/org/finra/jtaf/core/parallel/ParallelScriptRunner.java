@@ -35,7 +35,7 @@ import org.junit.Test;
  */
 public class ParallelScriptRunner extends TestCase {
 
-	private TestScript theTestScript ;
+	private TestScript theTestScript;
 	boolean expectedFailureFlag = false;
 	public static final Logger logger = Logger.getLogger(ParallelScriptRunner.class);
 	
@@ -44,7 +44,7 @@ public class ParallelScriptRunner extends TestCase {
 		this.theTestScript = theTestScript;
 	}
 
-	private static final String createJUnitName(TestScript test) {
+	private static String createJUnitName(TestScript test) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(test.getFullName());
 		boolean issuesExist = false;
@@ -81,7 +81,7 @@ public class ParallelScriptRunner extends TestCase {
 		DiNode theTest = AutomationEngine.getInstance().getTestDigraph().getVertex(this.theTestScript.getName());
 		Interpreter iv = AutomationEngine.getInstance().getInterpreter();
 		try {
-			if(theTest.getTestStatus().equalsIgnoreCase("FAILED")){
+			if (theTest.getTestStatus().equalsIgnoreCase("FAILED")) {
 				ConcurrentScheduler.updateWithStatus(new ResultUpdate(this.theTestScript.getName(), "FAILED"));
 				Assert.fail("One or more Dependent tests failed");
 			}

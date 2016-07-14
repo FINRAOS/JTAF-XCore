@@ -6,7 +6,6 @@ import org.finra.jtaf.core.model.test.TestComponent;
 import org.finra.jtaf.core.model.test.TestScript;
 import org.finra.jtaf.core.model.test.TestSuite;
 import org.finra.jtaf.core.model.test.digraph.Dependencies;
-import org.finra.jtaf.core.parsing.TestDependenciesPlugin;
 import org.finra.jtaf.core.plugins.parsing.PostTestParserPluginContext;
 import org.junit.Assert;
 import org.junit.Test;

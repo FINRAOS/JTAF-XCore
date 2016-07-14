@@ -6,7 +6,7 @@ import org.finra.jtaf.core.model.execution.IInvocationContext;
 import org.finra.jtaf.core.model.invocationtarget.Command;
 import org.junit.Assert;
 
-public class VerifyHelloCommand extends Command{
+public class VerifyHelloCommand extends Command {
 
 	public VerifyHelloCommand(String name) throws NameFormatException {
 		super(name);
@@ -14,7 +14,7 @@ public class VerifyHelloCommand extends Command{
 
 	@Override
 	protected void execute(IInvocationContext ctx) throws Throwable {
-		String data = getStringOrDefault("data","");
+		String data = getStringOrDefault("data", "");
 		Assert.assertEquals(data, "Hello World !");
 	}
 

@@ -27,6 +27,7 @@ import java.util.Set;
  * 
  */
 public class TestAgenda {
+
 	private final List<TestScript> testScripts;
 
 	private Set<String> automationValues;
@@ -81,11 +82,12 @@ public class TestAgenda {
 		return automationValues == null ? true : automationValues.isEmpty();
 	}
 
-	public void setThreadCount(String threads){
+	public void setThreadCount(String threads) {
 		maxThreads = Integer.parseInt(threads);
 	}
 	
-	public int getThreadCount(){
+	public int getThreadCount() {
 		return maxThreads;
 	}
+
 }

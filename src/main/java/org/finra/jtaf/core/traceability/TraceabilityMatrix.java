@@ -36,9 +36,9 @@ public class TraceabilityMatrix {
 			fw = new FileWriter(OUTPUT_FILE);
 			fw.write("Test Scenario;Coverage;Test Case ID;Test Name;Automation Script;Automation Value" + "\n");
 			
-			for(TestScript s : ta.getTestScripts()) {
-				if(!ta.isAutomationValuesEmpty()) {
-					if(ta.containsAutomationValue(s.getAutomationValue())) {
+			for (TestScript s : ta.getTestScripts()) {
+				if (!ta.isAutomationValuesEmpty()) {
+					if (ta.containsAutomationValue(s.getAutomationValue())) {
 						String test = s.getTestSuiteName()
 						+ ";" + s.getCoverage()
 						+ ";" + s.getTestCaseID()
@@ -47,7 +47,7 @@ public class TraceabilityMatrix {
 						+ ";" + s.getAutomationValue();
 						fw.write(test + "\n");
 					}	
-				}else {
+				} else {
 					String test = s.getTestSuiteName()
 					+ ";" + s.getCoverage()
 					+ ";" + s.getTestCaseID()
@@ -62,7 +62,7 @@ public class TraceabilityMatrix {
 			System.err.println("Problem while trying to create traceability matrix: " + ie.toString());
 			ie.printStackTrace();
 		} finally {
-			if(fw != null) {
+			if (fw != null) {
 				try {
 					fw.close();
 				} catch (IOException ie) {

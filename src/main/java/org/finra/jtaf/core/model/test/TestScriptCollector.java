@@ -39,11 +39,11 @@ public class TestScriptCollector implements ITestVisitor {
 		return new ArrayList<TestScript>(testScripts);
 	}
 	
-	public final void addToTestScripts(TestScript c){
+	public final void addToTestScripts(TestScript c) {
 		this.testScripts.add(c);
 	}
 	public void visitTestNamespace(TestNamespace ns) throws Exception {
-		for(TestComponent c : ns) {
+		for (TestComponent c : ns) {
 			c.acceptTestVisitor(this);
 		}
 	}
@@ -54,7 +54,7 @@ public class TestScriptCollector implements ITestVisitor {
 
 	@Override
 	public void visitTestSuite(TestSuite testSuite) throws Exception {
-		for(TestComponent c : testSuite) {
+		for (TestComponent c : testSuite) {
 			c.acceptTestVisitor(this);
 		}
 	}

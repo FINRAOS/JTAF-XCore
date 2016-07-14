@@ -25,16 +25,13 @@ import org.w3c.dom.Element;
 /**
  * Strategy parser plugin that parses maximum parallel threads in strategy.
  */
-public class MaxThreadsPlugin implements IPostParseStrategyElementPlugin
-{
+public class MaxThreadsPlugin implements IPostParseStrategyElementPlugin {
 	private static final String MAX_THREADS_NAME = "maxThreads";
 	
 	@Override
-	public void execute(PostStrategyElementParserPluginContext ctx) throws ParserPluginException
-	{
+	public void execute(PostStrategyElementParserPluginContext ctx) throws ParserPluginException {
 		Element element = ctx.getElement();
-		if(element.getNodeName().equalsIgnoreCase(MAX_THREADS_NAME))
-		{
+		if (element.getNodeName().equalsIgnoreCase(MAX_THREADS_NAME)) {
 			ctx.getTestAgenda().setThreadCount(element.getTextContent());
 		}
 	}

@@ -46,7 +46,7 @@ public final class Function extends InvocationTarget {
      * 
      * @return The InvocationList associated with this function
      */
-    public final InvocationList getBody() {
+    public InvocationList getBody() {
         return this.invocations;
     }
 
@@ -56,7 +56,7 @@ public final class Function extends InvocationTarget {
      * @param invocations
      *            - the invocation list that will be used as the function body.
      */
-    public final void setBody(InvocationList invocations) {
+    public void setBody(InvocationList invocations) {
         this.invocations = invocations;
     }
 

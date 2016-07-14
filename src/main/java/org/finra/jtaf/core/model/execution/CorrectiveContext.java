@@ -45,7 +45,7 @@ public class CorrectiveContext implements IInterpreterContext {
 		public Map<String, Object> parameters;
 		public Map<String, Object> produced;
 
-		public ContextFrame(InvocationTarget target) {
+		ContextFrame(InvocationTarget target) {
 			this.target = target;
 			this.parameters = new HashMap<String, Object>();
 			this.produced = new HashMap<String, Object>();

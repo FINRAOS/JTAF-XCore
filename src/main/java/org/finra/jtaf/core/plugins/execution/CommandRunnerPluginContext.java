@@ -27,9 +27,9 @@ public class CommandRunnerPluginContext {
 	private TestStepsDetails testStepsDetails;
 	private IInvocationContext context;
 
-	public CommandRunnerPluginContext(TestStepsDetails ts, IInvocationContext ctx){
-		this.context=ctx;
-		this.testStepsDetails=ts;
+	public CommandRunnerPluginContext(TestStepsDetails ts, IInvocationContext ctx) {
+		this.context = ctx;
+		this.testStepsDetails = ts;
 	}
 	
 	/***

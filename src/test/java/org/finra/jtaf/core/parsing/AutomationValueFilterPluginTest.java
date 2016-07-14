@@ -3,7 +3,6 @@ package org.finra.jtaf.core.parsing;
 import org.finra.jtaf.core.model.exceptions.NameFormatException;
 import org.finra.jtaf.core.model.test.TestAgenda;
 import org.finra.jtaf.core.model.test.TestScript;
-import org.finra.jtaf.core.parsing.AutomationValueFilterPlugin;
 import org.finra.jtaf.core.plugins.parsing.ParserPluginException;
 import org.finra.jtaf.core.plugins.parsing.PostAllParserPluginContext;
 import org.junit.Assert;

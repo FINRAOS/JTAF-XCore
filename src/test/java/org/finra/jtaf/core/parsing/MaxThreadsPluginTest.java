@@ -5,7 +5,6 @@ import java.io.InputStream;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.finra.jtaf.core.model.test.TestAgenda;
-import org.finra.jtaf.core.parsing.MaxThreadsPlugin;
 import org.finra.jtaf.core.plugins.parsing.PostStrategyElementParserPluginContext;
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,10 +38,10 @@ public class MaxThreadsPluginTest
 		Element executeRoot = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputStream).getDocumentElement();
 		NodeList nodeList = executeRoot.getChildNodes();
 		Element element = null;
-		for(int nodeIndex = 0; nodeIndex < nodeList.getLength(); nodeIndex++)
+		for (int nodeIndex = 0; nodeIndex < nodeList.getLength(); nodeIndex++)
 		{
 			Node node = nodeList.item(nodeIndex);
-			if(node.getNodeName().equalsIgnoreCase(MAX_THREADS_NAME))
+			if (node.getNodeName().equalsIgnoreCase(MAX_THREADS_NAME))
 			{
 				element = (Element) node;
 			}

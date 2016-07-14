@@ -90,9 +90,10 @@ public class TryRecoverCleanup extends Command {
                     	// handle tearDown block
                        	Object isTearDownParameter = cleanupInvocation.getParameters().get("isteardown");
                        	boolean isTearDown = isTearDownParameter != null && isTearDownParameter.toString().equalsIgnoreCase("true");
-                       	if(isTearDown)
-                       		interpreter.executeTearDownPlugins(error, ctx);
-                       	executeInvocation(cleanupInvocation);
+                       	if (isTearDown) {
+                            interpreter.executeTearDownPlugins(error, ctx);
+                        }
+                        executeInvocation(cleanupInvocation);
                     }
                 } catch (Throwable ignore) {
                     // Only handle cleanup exceptions if there was no other

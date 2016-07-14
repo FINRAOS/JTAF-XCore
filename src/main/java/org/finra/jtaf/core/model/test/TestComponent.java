@@ -22,7 +22,6 @@ import java.util.regex.Pattern;
 
 import org.finra.jtaf.core.model.exceptions.NameFormatException;
 
-
 /**
  * Base class of all test-related components within the model, includes only TestScripts and TestNamespaces.
  * 
@@ -30,6 +29,7 @@ import org.finra.jtaf.core.model.exceptions.NameFormatException;
  * 
  */
 public abstract class TestComponent {
+
 	// TODO: This needs to be stricter
 	private static final Pattern VALID_NAME = Pattern.compile("[^/]+");
 
@@ -67,7 +67,7 @@ public abstract class TestComponent {
 		return sb.toString();
 	}
 
-	private final void getFullNameHelper(StringBuilder sb) {
+	private void getFullNameHelper(StringBuilder sb) {
 		if (getParent() != null) {
 			TestComponent p = getParent();
 			p.getFullNameHelper(sb);
@@ -155,4 +155,5 @@ public abstract class TestComponent {
 	}
 
 	public abstract void acceptTestVisitor(ITestVisitor v) throws Exception;
+
 }

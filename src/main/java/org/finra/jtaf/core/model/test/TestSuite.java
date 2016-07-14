@@ -23,7 +23,7 @@ import org.finra.jtaf.core.model.test.digraph.Dependencies;
  * This class represents a testsuite object
  *
  */
-public class TestSuite extends TestNamespace{
+public class TestSuite extends TestNamespace {
 	private Dependencies dependencies;
 	private Dependencies exclusions;
 	private String testSuiteName;
@@ -67,7 +67,7 @@ public class TestSuite extends TestNamespace{
 	 * Set the name of the testsuite
 	 * @param tsn
 	 */
-	public void setTestSuiteName(String tsn){
+	public void setTestSuiteName(String tsn) {
 		testSuiteName = tsn;
 	}
 }

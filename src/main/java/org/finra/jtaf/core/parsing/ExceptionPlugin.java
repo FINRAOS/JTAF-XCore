@@ -26,20 +26,16 @@ import org.w3c.dom.NodeList;
 /**
  * This is internal class meant for verification of expected exception in the script
  */
-public class ExceptionPlugin implements IPostParseTestPlugin
-{
+public class ExceptionPlugin implements IPostParseTestPlugin {
 	public static final String NODE_NAME = "expectedException";
 	
 	@Override
-	public void execute(PostTestParserPluginContext ctx) throws ParserPluginException
-	{
+	public void execute(PostTestParserPluginContext ctx) throws ParserPluginException {
 		NodeList childNodes = ctx.getRootNodeTest().getChildNodes();
-		for(int childNodeIndex = 0; childNodeIndex < childNodes.getLength(); childNodeIndex++)
-		{
-			if(childNodes.item(childNodeIndex).getNodeName().equalsIgnoreCase(NODE_NAME))
-			{
+		for (int childNodeIndex = 0; childNodeIndex < childNodes.getLength(); childNodeIndex++) {
+			if (childNodes.item(childNodeIndex).getNodeName().equalsIgnoreCase(NODE_NAME)) {
 			    int size = ctx.getTestSuite().getComponentList().size();
-			    TestScript script= (TestScript) ctx.getTestSuite().getComponentList().get(size-1);
+			    TestScript script = (TestScript) ctx.getTestSuite().getComponentList().get(size - 1);
 			    script.setException(childNodes.item(childNodeIndex).getTextContent());
 	            //ctx.getTestAgenda().setThreadCount(maxThreads);
 			}
