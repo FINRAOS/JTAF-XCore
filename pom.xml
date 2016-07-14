@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.finra.jtaf</groupId>
 	<artifactId>jtaf-xcore</artifactId>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>JTAF XCore</name>
 	<description>The core functionality provided by JTAF. Includes script parsing, test execution, and JUnit support.</description>

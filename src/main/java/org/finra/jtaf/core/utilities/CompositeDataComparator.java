@@ -130,8 +130,11 @@ public class CompositeDataComparator {
 	}
 
 	private String getPrefix(String title, String element) {
-		return (element == null && !"".equals(element)) ? title : title + "-> "
-				+ element + " : ";
+		if (element == null && !"".equals(element)) {
+			return title;
+		} else {
+			return title + "-> " + element + " : ";
+		}
 	}
 
 	private void assessAndCompare(String title, String element,
