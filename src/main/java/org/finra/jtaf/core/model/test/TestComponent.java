@@ -33,6 +33,7 @@ public abstract class TestComponent {
 	// TODO: This needs to be stricter
 	private static final Pattern VALID_NAME = Pattern.compile("[^/]+");
 
+	private final String originalName;
 	private String name;
 	private TestNamespace parent;
 
@@ -46,8 +47,21 @@ public abstract class TestComponent {
 		if (!TestComponent.VALID_NAME.matcher(name).matches()) {
 			throw new NameFormatException(name, TestComponent.VALID_NAME);
 		}
-		this.name = name;
+		this.originalName = this.name = name;
 		this.parent = null;
+	}
+
+	/**
+	 * Returns the original name of the {@link TestComponent} when it was created.
+	 * <p>
+	 * This is particularly useful for when plugins alter the name of the test, but the original
+	 * test name is required in order to look up data from the original test.
+	 * </p>
+	 * 
+	 * @return the original name
+	 */
+	public final String getOriginalName() {
+		return originalName;
 	}
 
 	public final String getName() {
