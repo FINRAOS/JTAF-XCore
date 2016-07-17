@@ -226,7 +226,7 @@ public class ScriptParser {
         NodeList list = documentElement.getElementsByTagName("test");
         for (int i = 0; i < list.getLength(); i++) {
             Node n = list.item(i);
-            if (n.getAttributes().getNamedItem("name").getNodeValue().equals(ts.getName())) {
+            if (n.getAttributes().getNamedItem("name").getNodeValue().equals(ts.getOriginalName())) {
                 return n;
             }
         }
