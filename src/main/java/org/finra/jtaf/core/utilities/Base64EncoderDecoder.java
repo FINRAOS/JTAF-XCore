@@ -54,14 +54,12 @@ public class Base64EncoderDecoder {
 		String value;
 		
 		while ((line = in.readLine()) != null) {
-			if (!line.startsWith("#")) {
-				if (line.contains("=")) {
-					key = line.substring(0, line.indexOf("="));
-					value =  line.substring(line.indexOf("=") + 1);
-					if (key.endsWith(".password")) {
-						value = encodeString(value);
-						line = key + "=" + value;
-					}
+			if (!line.startsWith("#") && line.contains("=")) {
+				key = line.substring(0, line.indexOf("="));
+				value =  line.substring(line.indexOf("=") + 1);
+				if (key.endsWith(".password")) {
+					value = encodeString(value);
+					line = key + "=" + value;
 				}
 			}
 			
