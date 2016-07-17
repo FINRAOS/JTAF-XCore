@@ -29,7 +29,7 @@
 			<string name="name" />
 		</optionalParameters>
 	</command>
-	
+
 
 	<command name="ignoreErrors" class="org.finra.jtaf.core.commands.IgnoreErrors">
 		<usage>IgnoreErrors command</usage>
@@ -50,44 +50,55 @@
 
 	<command name="block" class="org.finra.jtaf.core.commands.Block">
 		<usage>Collection of parameters/commands</usage>
-		
+
 	</command>
 
 	<command name="path" class="org.finra.jtaf.core.commands.Block">
 		<usage>Collection of parameters/commands</usage>
 	</command>
-	
+
 	<command name="try" class="org.finra.jtaf.core.commands.Block">
 		<usage>Collection of parameters/commands</usage>
-		
+
 	</command>
 
 	<command name="recover" class="org.finra.jtaf.core.commands.Block">
 		<usage>Collection of parameters/commands</usage>
 	</command>
-	
+
 	<command name="cleanup" class="org.finra.jtaf.core.commands.Block">
 		<usage>Collection of parameters/commands</usage>
 	</command>
-	
-	
+
+
 	<command name="TryRecoverCleanup" class="org.finra.jtaf.core.commands.TryRecoverCleanup">
 		<usage>TryRecoverCleanup command</usage>
-		
+
 	</command>
-	
+
 	<command name="invoke" class="org.finra.jtaf.core.commands.Invoke">
-		<usage>Invoke command</usage>	
+		<usage>Invoke command</usage>
 	</command>
-	
+
 	<command name="replaceContext" class="org.finra.jtaf.core.commands.ReplaceContext">
-		<usage>ReplaceContext command</usage>	
+		<usage>ReplaceContext command</usage>
 	</command>
-	
+
 	<command name="verifyException" class="org.finra.jtaf.core.commands.VerifyException">
-		<usage>VerifyException command</usage>	
+		<usage>VerifyException command</usage>
 		<string>exceptionType</string>
 	</command>
 
+	<command name="iterateOverList" class="org.finra.jtaf.core.commands.IterateOverList">
+	   <usage>
+	   		This command surrounds a block of commands to be repeatedly executed based on the number of elements in the
+	   		list parameter. In each iteration the current element from the list is placed in the context variable with the
+	   		name provided in the storeElementFromListAs parameter, so that the same block of test can be executed with different parameters each time.
+	 	</usage>
+		<requiredParameters>
+			<string name="list">name of the list </string>>
+			<string name="storeElementFromListAs">name of the context variable where the current element is loaded</string>
+		</requiredParameters>
+	</command>
 
 </library>
