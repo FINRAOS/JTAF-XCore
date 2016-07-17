@@ -19,8 +19,11 @@ package org.finra.jtaf.core.utilities;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -45,9 +48,9 @@ public class Base64EncoderDecoder {
 		String fileName = fileLocation.split("\\\\")[fileLocation.split("\\\\").length - 1];
 		String encodedFileName = fileName.split("\\.")[0] + "_Encoded." + fileName.split("\\.")[1];
 		String encodedFileLocation = fileLocation.replace(fileName, encodedFileName);
-				
-		BufferedReader in = new BufferedReader(new FileReader(fileLocation));
-		BufferedWriter out = new BufferedWriter(new FileWriter(encodedFileLocation));
+		
+		BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileLocation), Charset.forName("UTF-8")));
+		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(encodedFileLocation), Charset.forName("UTF-8")));
 	
 		String line;
 		String key;
@@ -72,12 +75,12 @@ public class Base64EncoderDecoder {
 	}
 	
 	public static String encodeString(String stringToEncode) {
-		byte[] encodedBytes = Base64.encodeBase64(stringToEncode.getBytes());
+		byte[] encodedBytes = Base64.encodeBase64(stringToEncode.getBytes(Charset.forName("UTF-8")));
 		return new String(encodedBytes);
 	}
 	
 	public static String decodeString(String stringToDecode) {
-		 byte[] decodedBytes = Base64.decodeBase64(stringToDecode.getBytes());
+		 byte[] decodedBytes = Base64.decodeBase64(stringToDecode.getBytes(Charset.forName("UTF-8")));
 		 return new String(decodedBytes);
 	}
 	

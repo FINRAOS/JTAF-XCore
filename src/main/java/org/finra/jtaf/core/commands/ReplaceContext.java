@@ -75,16 +75,15 @@ public class ReplaceContext extends Command {
         clearContext();
 
         if (params != null) {
-            for (String key : params.keySet()) {
+            for (Map.Entry<String, Object> paramsEntry : params.entrySet()) {
                 // Replace all non-invocation targets in the context (meaning
                 // strings, maps, lists)
-                if (params.get(key) instanceof Invocation) {
-                    System.out.println("This happens" + params.get(key));
-                    ((CorrectiveContext) ctx).putObject(key, params.get(key));
-                } else if (!previousParams.keySet().contains(key)
-                        || (previousParams.keySet().contains(key) && previousParams.get(key) != params
-                                .get(key))) {
-                    ((CorrectiveContext) ctx).putObject(key, params.get(key));
+                if (paramsEntry.getValue() instanceof Invocation) {
+                    System.out.println("This happens" + paramsEntry.getValue());
+                    ((CorrectiveContext) ctx).putObject(paramsEntry.getKey(), paramsEntry.getValue());
+                } else if (!previousParams.keySet().contains(paramsEntry.getKey())
+                        || (previousParams.keySet().contains(paramsEntry.getKey()) && previousParams.get(paramsEntry.getKey()) != paramsEntry.getValue())) {
+                    ((CorrectiveContext) ctx).putObject(paramsEntry.getKey(), paramsEntry.getValue());
                     // ((CorrectiveContext) ctx).getAllObjects().p
                 }
             }

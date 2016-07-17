@@ -18,19 +18,20 @@ package org.finra.jtaf.core.commands;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.apache.log4j.Logger;
 import org.finra.jtaf.core.model.exceptions.NameFormatException;
 import org.finra.jtaf.core.model.execution.IInvocationContext;
 import org.finra.jtaf.core.model.invocationtarget.Command;
 import org.finra.jtaf.core.parsing.helpers.AttributeHelper;
 
 import com.mifmif.common.regex.Generex;
-import org.apache.log4j.Logger;
 
 
 /**
@@ -56,13 +57,19 @@ public class RandomGenerator extends Command {
 		super(name);
 	}
 
+<<<<<<< HEAD
 	public static final List<String> abbrevUSState = new ArrayList<String>(Arrays.asList("AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
 			"NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY"));
 	public static final List<String> USState = new ArrayList<String>(Arrays.asList("Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Federated States of Micronesia", "Florida", "Georgia", "Guam", "Hawaii",
+=======
+	public static final List<String> ABBREV_US_STATE = Collections.unmodifiableList(Arrays.asList("AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+			"NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY"));
+	public static final List<String> US_STATE = Collections.unmodifiableList(Arrays.asList("Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Federated States of Micronesia", "Florida", "Georgia", "Guam", "Hawaii",
+>>>>>>> e3545e4d595e66e89cdb0fa1003a4580179a8062
 			"Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Marshall Islands", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York",
 			"North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virgin Island", "Virginia", "Washington", "West Virginia",
 			"Wisconsin", "Wyoming"));
-	public static final String charsForRandomString = "qwertyuioplkjhgfdsazxcvbnm";
+	public static final String CHARS_FOR_RANDOM_STRING = "qwertyuioplkjhgfdsazxcvbnm";
 
 	/**
      * Use a regular expression to generate a string or use methods to select US
@@ -121,8 +128,8 @@ public class RandomGenerator extends Command {
 					}
 
 					try {
-						int maxInt = Integer.valueOf(max);
-						int minInt = Integer.valueOf(min);
+						int maxInt = Integer.parseInt(max);
+						int minInt = Integer.parseInt(min);
 						valueGenerated = String.valueOf(minInt + (int) (Math.random() * (maxInt - minInt)));
 					} catch (Exception e) {
 						Generex generex = new Generex("[0-9]{" + length + "}");
@@ -143,18 +150,18 @@ public class RandomGenerator extends Command {
 
 					int lengthInt;
 					try {
-						int lengthMinInt = Integer.valueOf(lengthMin);
-						int lengthMaxInt = Integer.valueOf(lengthMax);
+						int lengthMinInt = Integer.parseInt(lengthMin);
+						int lengthMaxInt = Integer.parseInt(lengthMax);
 						lengthInt = lengthMinInt + (int) (Math.random() * (lengthMaxInt - lengthMinInt));
 					} catch (NumberFormatException numberFormatException) {
 						try {
-							lengthInt = Integer.valueOf(length);
+							lengthInt = Integer.parseInt(length);
 						} catch (NumberFormatException numberFormatException2) {
 							lengthInt = DEFAULT_LENGTH;
 						}
 					}
 
-					valueGenerated = generateString(charsForRandomString, lengthInt);
+					valueGenerated = generateString(CHARS_FOR_RANDOM_STRING, lengthInt);
 				}
 			}
 		}
@@ -189,7 +196,7 @@ public class RandomGenerator extends Command {
      * @return the randomly selected state abbreviation
      */
 	public static String generateAbbrevUSState() {
-		return abbrevUSState.get((new Random()).nextInt(abbrevUSState.size()));
+		return ABBREV_US_STATE.get((new Random()).nextInt(ABBREV_US_STATE.size()));
 	}
 
 	/**
@@ -198,7 +205,7 @@ public class RandomGenerator extends Command {
      * @return the randomly selected state
      */
 	public static String generateUSState() {
-		return USState.get((new Random()).nextInt(USState.size()));
+		return US_STATE.get((new Random()).nextInt(US_STATE.size()));
 	}
 
 	/**
@@ -246,8 +253,8 @@ public class RandomGenerator extends Command {
 		// process List
 		Map<String, Object> allObjects = ctx.getAllObjects();
 		Map<String, Object> newObjects = new HashMap<String, Object>();
-		for (String key : allObjects.keySet()) {
-			Object obj = allObjects.get(key);
+		for(Map.Entry<String, Object> allObjectsEntry : allObjects.entrySet()) {
+			final Object obj = allObjectsEntry.getValue();
 
 			if (obj.getClass().equals(ArrayList.class)) {
 				ArrayList<Object> ar = (ArrayList<Object>) obj;
@@ -284,8 +291,8 @@ public class RandomGenerator extends Command {
 						arNew.add(value);
 					}
 				}
-				newObjects.put(key, arNew);
-				ctx.putObject(key, arNew);
+				newObjects.put(allObjectsEntry.getKey(), arNew);
+				ctx.putObject(allObjectsEntry.getKey(), arNew);
 				
 				if (saveToGlobalContextAs != null) {
 					Command.putToGlobalContext(saveToGlobalContextAs, arNew);
@@ -293,8 +300,8 @@ public class RandomGenerator extends Command {
 			} else if (obj.getClass().equals(HashMap.class)) {
 				Map<String, Object> ar = (Map<String, Object>) obj;
 				Map<String, Object> arNew = new HashMap<String, Object>();
-				for (String key2 : ar.keySet()) {
-					Object value = ar.get(key2);
+				for (Map.Entry<String, Object> arEntry : ar.entrySet()) {
+					Object value = arEntry.getValue();
 					if (value.getClass().equals(AttributeHelper.class)) {
 						AttributeHelper ah = (AttributeHelper) value;
 						if (ah.containsKey("method")) {
@@ -318,21 +325,21 @@ public class RandomGenerator extends Command {
 						if (ah.containsKey("regexp")) {
 							regexp = ah.getOptionalString("regexp");
 						}
-						arNew.put(key2, generate(method, length, lengthMin, lengthMax, min, max, regexp));
+						arNew.put(arEntry.getKey(), generate(method, length, lengthMin, lengthMax, min, max, regexp));
 					} else {
-						arNew.put(key2, value);
+						arNew.put(arEntry.getKey(), value);
 					}
 				}
 				
-				newObjects.put(key, arNew);
-				ctx.putObject(key, arNew);
+				newObjects.put(allObjectsEntry.getKey(), arNew);
+				ctx.putObject(allObjectsEntry.getKey(), arNew);
 				
 				if (saveToGlobalContextAs != null) {
 					Command.putToGlobalContext(saveToGlobalContextAs, arNew);
 				}
 			}
 			
-			if ((obj != null) && (obj.getClass().equals(ArrayList.class))) {
+			if (obj instanceof ArrayList) {
 				logger.info("Generated new List: " + obj + "'");
 			}
 		}

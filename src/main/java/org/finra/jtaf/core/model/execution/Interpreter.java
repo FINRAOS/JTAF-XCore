@@ -49,7 +49,7 @@ import org.finra.jtaf.core.plugins.execution.TestRunnerPluginContext;
 public class Interpreter {
 	private static final Logger logger = Logger.getLogger(Interpreter.class);
 	private CommandRegistry commandRegistry;
-	private static IInterpreterContext context;
+	private IInterpreterContext context;
 	private TestStatus testStatus;
 	public ErrorAccumulator ea;
 

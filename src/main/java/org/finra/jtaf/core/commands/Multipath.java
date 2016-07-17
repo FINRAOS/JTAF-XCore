@@ -69,7 +69,7 @@ public class Multipath extends Command {
         if (params != null) {
 
             Random rand = new Random();
-            int index = Math.abs(rand.nextInt()) % params.size();
+            int index = Math.abs(rand.nextInt(Integer.MAX_VALUE)) % params.size();
             // This gets the 'path'
             Invocation path = (Invocation) params.get(index);
             // This then gets the block in the path that contains all the
