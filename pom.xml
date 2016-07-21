@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.finra.jtaf</groupId>
 	<artifactId>jtaf-xcore</artifactId>
@@ -8,6 +9,7 @@
 	<name>JTAF XCore</name>
 	<description>The core functionality provided by JTAF. Includes script parsing, test execution, and JUnit support.</description>
 	<url>http://finraos.github.io/JTAF-XCore/</url>
+
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -15,12 +17,14 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+
 	<scm>
 		<connection>scm:git:https://github.com/FINRAOS/JTAF-XCore.git</connection>
 		<developerConnection>scm:git:https://github.com/FINRAOS/JTAF-XCore.git</developerConnection>
 		<url>https://github.com/FINRAOS/JTAF-XCore.git</url>
 		<tag>HEAD</tag>
 	</scm>
+
 	<developers>
 		<developer>
 			<id>kood1</id>
@@ -143,7 +147,6 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -175,10 +178,6 @@
 					<argLine>${jaCoCoArgLine}</argLine>
 				</configuration>
 			</plugin>
-
-
-
-
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -217,7 +216,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
@@ -245,7 +243,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
@@ -256,6 +253,7 @@
 						<phase>test</phase>
 						<goals>
 							<goal>check</goal>
+							<goal>checkstyle</goal>
 						</goals>
 						<configuration>
 							<consoleOutput>true</consoleOutput>
@@ -267,9 +265,9 @@
 					</execution>
 				</executions>
 			</plugin>
-
 		</plugins>
 	</build>
+
 	<profiles>
 		<profile>
 			<id>release-sign-artifacts</id>
@@ -299,6 +297,7 @@
 			</build>
 		</profile>
 	</profiles>
+
 	<dependencies>
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -345,15 +344,37 @@
 			<artifactId>generex</artifactId>
 			<version>0.0.3</version>
 		</dependency>
-
 	</dependencies>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<includeTestSourceDirectory>true</includeTestSourceDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>3.0.3</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.6</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
 	<distributionManagement>
 		<repository>
 			<id>sonatype-nexus-staging</id>
 			<name>Sonatype Nexus release repository</name>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
-
 		<snapshotRepository>
 			<id>sonatype-nexus-snapshots</id>
 			<name>Sonatype Snapshot Repository</name>
