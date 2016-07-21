@@ -16,3 +16,7 @@ hs_err_pid*
 /.project
 /commandNames.txt
 /Traceability_Matrix.txt
+
+# IntelliJ files
+**/.idea
+**/*.iml
