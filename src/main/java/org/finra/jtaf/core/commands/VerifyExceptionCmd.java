@@ -30,7 +30,7 @@ import org.finra.jtaf.core.model.statement.Invocation;
  * This command is used to verify that a block of commands throws a specific
  * exception. This is mainly used for testing other commands.
  */
-public class VerifyException extends Command {
+public class VerifyExceptionCmd extends Command {
 
     /**
      * This called when instantiating the command before it is executed by the
@@ -42,7 +42,7 @@ public class VerifyException extends Command {
      *            - name of the command
      * @throws NameFormatException
      */
-    public VerifyException(String name) throws NameFormatException {
+    public VerifyExceptionCmd(String name) throws NameFormatException {
         super(name);
         recordResult = false;
 

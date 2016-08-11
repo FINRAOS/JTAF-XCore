@@ -31,7 +31,7 @@ import org.finra.jtaf.core.model.execution.IInvocationContext;
 public class ContextKeyHandler {
 
     private IInvocationContext context;
-    private final int maxNumberOfResolves = 200;
+    private static final int MAX_NUMBER_OF_RESOLVES = 200;
     private int resolveCount = 0;
 
     /**
@@ -54,7 +54,7 @@ public class ContextKeyHandler {
         // This is to avoid replaceContext from getting into an infinite loop of
         // recursive calls.
         resolveCount++;
-        if (resolveCount > maxNumberOfResolves) {
+        if (resolveCount > MAX_NUMBER_OF_RESOLVES) {
             return value;
         }
 
@@ -105,9 +105,8 @@ public class ContextKeyHandler {
             Map<String, Object> map = (Map<String, Object>) value;
             HashMap<String, Object> resultMap = new HashMap<String, Object>();
 
-            Set<String> keys = map.keySet();
-            for (String key : keys) {
-                resultMap.put((String) replaceContextKey(key), replaceContextKey(map.get(key)));
+            for (Map.Entry<String, Object> entry : map.entrySet()) {
+                resultMap.put((String) replaceContextKey(entry.getKey()), replaceContextKey(entry.getValue()));
             }
             return resultMap;
         }

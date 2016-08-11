@@ -84,7 +84,7 @@
 		<usage>ReplaceContext command</usage>	
 	</command>
 	
-	<command name="verifyException" class="org.finra.jtaf.core.commands.VerifyException">
+	<command name="verifyException" class="org.finra.jtaf.core.commands.VerifyExceptionCmd">
 		<usage>VerifyException command</usage>	
 		<string>exceptionType</string>
 	</command>

@@ -83,13 +83,13 @@ public class ErrorAccumulator {
 	 * @return
 	 */
 	public String getErrorMessages() {
-		String errorInfo = "";
+		StringBuilder errorInfoBuilder = new StringBuilder();
 
 		for (int i = 0; i < errors.size(); i++) {
-			errorInfo = errorInfo + "\n " + errors.get(i).getLocalizedMessage();
+			errorInfoBuilder.append("\n " + errors.get(i).getLocalizedMessage());
 		}
 
-		return errorInfo;
+		return errorInfoBuilder.toString();
 	}
 
 	/**
@@ -97,15 +97,15 @@ public class ErrorAccumulator {
 	 * @return
 	 */
 	public String getErrorStackTraces() {
-		String errorInfo = "";
+		StringBuilder errorInfoBuilder = new StringBuilder();
 		// TODO: use static access
 		// TODO: determine if this dependency is really necessary, do we need to
 		// depend on commons-lang to make stack trace printing easier?
 		for (int i = 0; i < errors.size(); i++) {
-			errorInfo = errorInfo + "\n " + ExceptionUtils.getStackTrace(errors.get(i));
+			errorInfoBuilder.append("\n " + ExceptionUtils.getStackTrace(errors.get(i)));
 		}
 
-		return errorInfo;
+		return errorInfoBuilder.toString();
 	}
 
 	/**

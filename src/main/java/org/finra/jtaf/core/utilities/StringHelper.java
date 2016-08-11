@@ -46,10 +46,10 @@ public class StringHelper {
 	 * @return
 	 */
 	public static final String indent(int depth) {
-		String largestIndentation = INDENTATION_CACHE.get(INDENTATION_CACHE.size() - 1);
+		StringBuilder largestIndentationBuilder = new StringBuilder(INDENTATION_CACHE.get(INDENTATION_CACHE.size() - 1));
 		for (int i = INDENTATION_CACHE.size(); i <= depth; ++i) {
-			largestIndentation += INDENTATION;
-			INDENTATION_CACHE.add(largestIndentation);
+			largestIndentationBuilder.append(INDENTATION);
+			INDENTATION_CACHE.add(largestIndentationBuilder.toString());
 		}
 		return INDENTATION_CACHE.get(depth);
 	}

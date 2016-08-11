@@ -50,7 +50,7 @@ public abstract class InvocationTarget {
                                              // parameters
     private final Set<String> productions;
 
-    protected static Map<String, Object> globalContext = new HashMap<String, Object>();
+    static Map<String, Object> globalContext = new HashMap<String, Object>();
 
     protected static Map<String, Object> getGlobalContext() {
         return globalContext;
